@@ -1,0 +1,11 @@
+#	Type Color Begin
+IfcFooting	0xFFBFFF	1
+IfcWallStandardCase	0x8EC7FF	1
+IfcSlab	0x999999	1
+IfcStair	0xffa500	1
+IfcDoor	0x000000	0.3
+IfcWindow	0x00ffff	0.2
+IfcBeam	0xFFBFFF	1
+IfcCovering	0x999999	1
+Default	0x333333	1
+#	Type Color End

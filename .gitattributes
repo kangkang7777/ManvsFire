@@ -1,0 +1,7 @@
+marine_anims_all.blend filter=lfs diff=lfs merge=lfs -text
+GameObject.obj filter=lfs diff=lfs merge=lfs -text
+newObj.obj filter=lfs diff=lfs merge=lfs -text
+pinecone.obj filter=lfs diff=lfs merge=lfs -text
+UndergroundSmokeData filter=lfs diff=lfs merge=lfs -text
+smoke_small.txt filter=lfs diff=lfs merge=lfs -text
+TJSub_big.vsg filter=lfs diff=lfs merge=lfs -text

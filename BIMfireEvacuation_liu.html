@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Underground Space Escape Demo</title>
+    <title>three.js webgl - materials</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        body {
+            font-family: Monospace;
+            background-color: #000;
+            margin: 0px;
+            overflow: hidden;
+        }
+
+        #buttons {
+            padding-left: 40px;
+        }
+
+        #datgui {
+            position : absolute;
+            bottom: 50px;
+            width: 100%;
+        }
+    </style>
+
+    <script type="text/javascript" src="lib/three.js"></script>
+    <script type="text/javascript" src="lib/OBJLoader.js"></script>
+    <script type="text/javascript" src="lib/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="lib/stats.js"></script>
+    <script type="text/javascript" src="lib/dat.gui.min.js"></script>
+    <script src="lib/FirstPersonControls.js"></script>
+    <script src="lib/TransformControls.js"></script>
+    <script src="lib/MyOrbitControls.js"></script>
+    <script src="lib/BlendCharacter.js"></script>
+    <script src="lib/BlendCharacterGui.js"></script>
+    <script src="lib/zxx.color_exchange.js"></script>
+    <script src="js/FollowerControl.js"></script>
+    <script src="js/MyPathControl.js"></script>
+    <script src="js/RandomPathControl.js"></script>
+    <script src="js/SkyShader.js"></script>
+    <script src="lib/GPUParticleSystem.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/tongCss.css" />
+    <!--<script src="js/UnderGround_PathFind.js"></script>-->
+    <script src="js/UnderGround_Follow_NoServer_liu.js"></script>
+
+
+</head>
+<body>
+<div id="Stats-output">
+</div>
+<div id="WebGL-output" style="overflow: hidden;margin-right: 200px;">
+</div>
+
+<div class="controller">
+    <div id = "buttons">
+        <button  id="startRun" class="btn btn-default btn-lg" style="width:80%;display:block">开始模拟</button>
+        <br>
+        <button  id="transformSmoke" class="btn btn-default btn-lg" style="width:80%;display:block">编辑烟雾</button>
+    </div>
+    <div id="datgui" style="display:block"></div>
+
+</div>
+<div id="progress" class="fade">
+    <div id="view">
+        <div class="view-header">
+            loading，please wait...
+        </div>
+        <div class="view-content" id="progressLable">
+
+        </div>
+        <div class="view-footer clearfix" style="display: none" id="btnview">
+            <button class="page-btn-left" id="preBtn">pre</button>
+            <button class="page-btn-right" id="nextBtn">next</button>
+        </div>
+        <br style="clear: both;">
+    </div>
+</div>
+</body>
+</html>

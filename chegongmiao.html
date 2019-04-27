@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Underground Space Escape Demo</title>
+    <title>three.js webgl - materials</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        body {
+            font-family: Monospace;
+            background-color: #000;
+            margin: 0px;
+
+        }
+    </style>
+
+    <script type="text/javascript" src="lib/three.js"></script>
+    <script type="text/javascript" src="lib/OBJLoader.js"></script>
+    <script type="text/javascript" src="lib/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="lib/stats.js"></script>
+    <script type="text/javascript" src="lib/dat.gui.min.js"></script>
+    <script src="lib/FirstPersonControls.js"></script>
+    <script src="lib/TransformControls.js"></script>
+    <script src="lib/Tween.js"></script>
+
+    <!--<script src="lib/OrbitControls.js"></script>-->
+    <script src="lib/BlendCharacter.js"></script>
+    <script src="lib/BlendCharacterGui.js"></script>
+    <script src="lib/zxx.color_exchange.js"></script>
+    <script src="js/FollowerControl.js"></script>
+    <script src="js/MyPathControl.js"></script>
+
+    <!--<script src="js/RandomPathControl.js"></script>-->
+    <script src="js/SkyShader.js"></script>
+    <script src="lib/GPUParticleSystem.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/tongCss.css" />
+
+    <script src="js/particle_system.js"></script>
+    <script src="js/fire.js"></script>
+
+   <script src="js/UnderGround_Follow_NoServer.js"></script>
+
+
+</head>
+<body style="overflow:hidden">
+<div id="Stats-output" >
+</div>
+<div id="WebGL-output" style="overflow: hidden;">
+</div>
+<div id="menu-div" style="display:none; top: 0px;width: 100%;height: 100%;position: absolute;background-color:rgb(94, 94, 94, 0.8);z-index: 1000;text-align: center">
+    <div style="margin-top:35vh;height: 100%;width: 100%">
+        <h1 style="color: #e5e5e5;margin-bottom: 20px">地下空间逃生模拟</h1>
+        <label style="color: #e5e5e5;margin-left: 0">请设置逃生人数</label>
+        <label style="color: #e5e5e5;margin-left: 0">(手机端建议在100人左右)</label>
+        <label id="totalNum" style="color: #ffff00;margin-left: 0">100</label>
+        <label style="color: #e5e5e5;margin-left: 0">人</label>
+        <button id="addBtn" style="border-radius:0.5em;width: 50px;background-color: #e5e5e5">+</button>
+        <button id="subBtn" style="border-radius:0.5em;width: 50px;background-color: #e5e5e5">-</button>
+        <button id="submitBtn" style="border-radius:0.5em;width: 60px;background-color: #e5e5e5">开始</button>
+    </div>
+</div>
+<div id='createPerson' class="controller" style="display: block">
+    <button  id="createPersonBtn" class="btn btn-default btn-lg" style="width:150px;display:inline-block;margin: 0 5px">创建人群</button>
+</div>
+<div id='controllerPanel' class="controller" style="display: none">
+    <button  id="startRun" class="btn btn-default btn-lg" style="width:150px;display:inline-block;margin: 0 5px">开始模拟</button>
+    <button  id="transformSmoke" class="btn btn-default btn-lg" style="width:150px;display:inline-block;margin: 0 5px">编辑烟雾</button>
+</div>
+<div id="progress" class="fade" style="display: none;">
+    <div id="view">
+        <div class="view-header">
+            loading，please wait...
+        </div>
+        <div class="view-content" id="progressLable">
+
+        </div>
+        <div class="view-footer clearfix" style="display: none" id="btnview">
+            <button class="page-btn-left" id="preBtn">pre</button>
+            <button class="page-btn-right" id="nextBtn">next</button>
+        </div>
+        <br style="clear: both;">
+    </div>
+</div>
+</body>
+</html>

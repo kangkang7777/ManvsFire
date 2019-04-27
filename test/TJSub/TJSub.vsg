@@ -1,0 +1,3302 @@
+#	Voxelization File From WebG3D_IFC V1.0
+
+#	Scene BBox Min:	
+&	-8.40459e+006	2.14206e+006	-18940	3115
+#	Scene BBox Max:	-8.09309e+006	2.16706e+006	-1257.79
+#	Resolution(x,y,z):	100	8	5
+#	Voxel Size:	3115
+
+%	3
+
+#	Voxel Record Begin
+1	1	1	3	8576=IfcWallStandardCase	8792=IfcWall	6950=IfcSlab
+1	1	2	2	8576=IfcWallStandardCase	8792=IfcWall
+1	1	3	6	8576=IfcWallStandardCase	8792=IfcWall	23252=IfcWallStandardCase	23553=IfcBeam	23954=IfcBeam	16909=IfcSlab
+1	1	4	3	23150=IfcWall	23252=IfcWallStandardCase	23553=IfcBeam
+1	1	5	2	23150=IfcWall	23252=IfcWallStandardCase
+1	1	6	2	23150=IfcWall	23252=IfcWallStandardCase
+1	2	1	2	8792=IfcWall	6950=IfcSlab
+1	2	2	1	8792=IfcWall
+1	2	3	3	8792=IfcWall	23553=IfcBeam	16909=IfcSlab
+1	2	4	2	23150=IfcWall	23553=IfcBeam
+1	2	5	1	23150=IfcWall
+1	3	1	3	7337=IfcBeam	8792=IfcWall	6950=IfcSlab
+1	3	2	1	8792=IfcWall
+1	3	3	6	8792=IfcWall	23553=IfcBeam	53689=IfcWallStandardCase	23808=IfcBeam	16909=IfcSlab	16989=IfcColumn
+1	3	4	4	23150=IfcWall	23553=IfcBeam	53689=IfcWallStandardCase	16989=IfcColumn
+1	3	5	3	23150=IfcWall	53689=IfcWallStandardCase	16989=IfcColumn
+1	3	6	1	16989=IfcColumn
+1	4	1	2	8792=IfcWall	6950=IfcSlab
+1	4	2	1	8792=IfcWall
+1	4	3	3	8792=IfcWall	23553=IfcBeam	16909=IfcSlab
+1	4	4	2	23150=IfcWall	23553=IfcBeam
+1	4	5	1	23150=IfcWall
+1	5	1	5	332=IfcColumn	6231=IfcBeam	6424=IfcBeam	8792=IfcWall	6950=IfcSlab
+1	5	2	5	332=IfcColumn	8792=IfcWall	2067320=IfcWallStandardCase	2067353=IfcWallStandardCase	396393=IfcSlab
+1	5	3	10	332=IfcColumn	8792=IfcWall	52600=IfcWallStandardCase	23553=IfcBeam	53656=IfcWallStandardCase	23725=IfcBeam	16909=IfcSlab	16951=IfcColumn	2067320=IfcWallStandardCase	2067353=IfcWallStandardCase
+1	5	4	5	52600=IfcWallStandardCase	23150=IfcWall	23553=IfcBeam	53656=IfcWallStandardCase	16951=IfcColumn
+1	5	5	4	52600=IfcWallStandardCase	23150=IfcWall	53656=IfcWallStandardCase	16951=IfcColumn
+1	5	6	1	16951=IfcColumn
+1	6	1	2	8792=IfcWall	6950=IfcSlab
+1	6	2	3	8792=IfcWall	2067320=IfcWallStandardCase	396393=IfcSlab
+1	6	3	5	8792=IfcWall	52600=IfcWallStandardCase	23553=IfcBeam	16909=IfcSlab	2067320=IfcWallStandardCase
+1	6	4	3	52600=IfcWallStandardCase	23150=IfcWall	23553=IfcBeam
+1	6	5	2	52600=IfcWallStandardCase	23150=IfcWall
+1	7	1	2	8792=IfcWall	6950=IfcSlab
+1	7	2	3	8792=IfcWall	2067320=IfcWallStandardCase	396393=IfcSlab
+1	7	3	5	8792=IfcWall	52600=IfcWallStandardCase	23553=IfcBeam	16909=IfcSlab	2067320=IfcWallStandardCase
+1	7	4	3	52600=IfcWallStandardCase	23150=IfcWall	23553=IfcBeam
+1	7	5	2	52600=IfcWallStandardCase	23150=IfcWall
+1	8	1	3	8502=IfcWallStandardCase	8792=IfcWall	6950=IfcSlab
+1	8	2	5	8502=IfcWallStandardCase	8792=IfcWall	2067287=IfcWallStandardCase	2067320=IfcWallStandardCase	396393=IfcSlab
+1	8	3	9	8502=IfcWallStandardCase	8792=IfcWall	50894=IfcWallStandardCase	52600=IfcWallStandardCase	22942=IfcWallStandardCase	23553=IfcBeam	16909=IfcSlab	2067287=IfcWallStandardCase	2067320=IfcWallStandardCase
+1	8	4	5	50894=IfcWallStandardCase	52600=IfcWallStandardCase	22942=IfcWallStandardCase	23150=IfcWall	23553=IfcBeam
+1	8	5	4	50894=IfcWallStandardCase	52600=IfcWallStandardCase	22942=IfcWallStandardCase	23150=IfcWall
+2	1	1	2	8576=IfcWallStandardCase	6950=IfcSlab
+2	1	2	1	8576=IfcWallStandardCase
+2	1	3	4	8576=IfcWallStandardCase	23252=IfcWallStandardCase	23954=IfcBeam	16909=IfcSlab
+2	1	4	1	23252=IfcWallStandardCase
+2	1	5	1	23252=IfcWallStandardCase
+2	2	1	1	6950=IfcSlab
+2	2	3	1	16909=IfcSlab
+2	3	1	2	7337=IfcBeam	6950=IfcSlab
+2	3	3	3	53689=IfcWallStandardCase	23808=IfcBeam	16909=IfcSlab
+2	3	4	1	53689=IfcWallStandardCase
+2	3	5	1	53689=IfcWallStandardCase
+2	4	1	1	6950=IfcSlab
+2	4	3	1	16909=IfcSlab
+2	5	1	2	6231=IfcBeam	6950=IfcSlab
+2	5	2	2	2067353=IfcWallStandardCase	396393=IfcSlab
+2	5	3	4	53656=IfcWallStandardCase	23725=IfcBeam	16909=IfcSlab	2067353=IfcWallStandardCase
+2	5	4	1	53656=IfcWallStandardCase
+2	5	5	1	53656=IfcWallStandardCase
+2	6	1	2	6231=IfcBeam	6950=IfcSlab
+2	6	2	1	396393=IfcSlab
+2	6	3	2	23725=IfcBeam	16909=IfcSlab
+2	7	1	1	6950=IfcSlab
+2	7	2	1	396393=IfcSlab
+2	7	3	1	16909=IfcSlab
+2	8	1	2	8502=IfcWallStandardCase	6950=IfcSlab
+2	8	2	3	8502=IfcWallStandardCase	2067287=IfcWallStandardCase	396393=IfcSlab
+2	8	3	5	8502=IfcWallStandardCase	50894=IfcWallStandardCase	22942=IfcWallStandardCase	16909=IfcSlab	2067287=IfcWallStandardCase
+2	8	4	2	50894=IfcWallStandardCase	22942=IfcWallStandardCase
+2	8	5	2	50894=IfcWallStandardCase	22942=IfcWallStandardCase
+3	1	1	2	8576=IfcWallStandardCase	6950=IfcSlab
+3	1	2	1	8576=IfcWallStandardCase
+3	1	3	4	8576=IfcWallStandardCase	23252=IfcWallStandardCase	23954=IfcBeam	16909=IfcSlab
+3	1	4	1	23252=IfcWallStandardCase
+3	1	5	1	23252=IfcWallStandardCase
+3	2	1	1	6950=IfcSlab
+3	2	3	1	16909=IfcSlab
+3	3	1	3	421=IfcColumn	7337=IfcBeam	6950=IfcSlab
+3	3	2	1	421=IfcColumn
+3	3	3	5	421=IfcColumn	53689=IfcWallStandardCase	23808=IfcBeam	16909=IfcSlab	17027=IfcColumn
+3	3	4	2	53689=IfcWallStandardCase	17027=IfcColumn
+3	3	5	2	53689=IfcWallStandardCase	17027=IfcColumn
+3	3	6	1	17027=IfcColumn
+3	4	1	1	6950=IfcSlab
+3	4	3	1	16909=IfcSlab
+3	5	1	2	6231=IfcBeam	6950=IfcSlab
+3	5	2	3	2067353=IfcWallStandardCase	2067386=IfcWallStandardCase	396393=IfcSlab
+3	5	3	7	50597=IfcWallStandardCase	50696=IfcWallStandardCase	53656=IfcWallStandardCase	23725=IfcBeam	16909=IfcSlab	2067353=IfcWallStandardCase	2067386=IfcWallStandardCase
+3	5	4	3	50597=IfcWallStandardCase	50696=IfcWallStandardCase	53656=IfcWallStandardCase
+3	5	5	3	50597=IfcWallStandardCase	50696=IfcWallStandardCase	53656=IfcWallStandardCase
+3	6	1	4	510=IfcColumn	6033=IfcBeam	6231=IfcBeam	6950=IfcSlab
+3	6	2	4	510=IfcColumn	2067254=IfcWallStandardCase	2067386=IfcWallStandardCase	396393=IfcSlab
+3	6	3	7	510=IfcColumn	23346=IfcBeam	23725=IfcBeam	16909=IfcSlab	17103=IfcColumn	2067254=IfcWallStandardCase	2067386=IfcWallStandardCase
+3	6	4	1	17103=IfcColumn
+3	6	5	1	17103=IfcColumn
+3	7	1	1	6950=IfcSlab
+3	7	2	1	396393=IfcSlab
+3	7	3	1	16909=IfcSlab
+3	8	1	2	8502=IfcWallStandardCase	6950=IfcSlab
+3	8	2	3	8502=IfcWallStandardCase	2067287=IfcWallStandardCase	396393=IfcSlab
+3	8	3	5	8502=IfcWallStandardCase	50894=IfcWallStandardCase	22942=IfcWallStandardCase	16909=IfcSlab	2067287=IfcWallStandardCase
+3	8	4	2	50894=IfcWallStandardCase	22942=IfcWallStandardCase
+3	8	5	2	50894=IfcWallStandardCase	22942=IfcWallStandardCase
+4	1	1	2	8576=IfcWallStandardCase	6950=IfcSlab
+4	1	2	1	8576=IfcWallStandardCase
+4	1	3	4	8576=IfcWallStandardCase	23252=IfcWallStandardCase	23954=IfcBeam	16909=IfcSlab
+4	1	4	1	23252=IfcWallStandardCase
+4	1	5	1	23252=IfcWallStandardCase
+4	2	1	1	6950=IfcSlab
+4	2	3	1	16909=IfcSlab
+4	3	1	2	7337=IfcBeam	6950=IfcSlab
+4	3	3	3	53689=IfcWallStandardCase	23808=IfcBeam	16909=IfcSlab
+4	3	4	1	53689=IfcWallStandardCase
+4	3	5	1	53689=IfcWallStandardCase
+4	4	1	1	6950=IfcSlab
+4	4	3	1	16909=IfcSlab
+4	5	1	1	6950=IfcSlab
+4	5	2	1	396393=IfcSlab
+4	5	3	2	50597=IfcWallStandardCase	16909=IfcSlab
+4	5	4	1	50597=IfcWallStandardCase
+4	5	5	1	50597=IfcWallStandardCase
+4	6	1	2	6033=IfcBeam	6950=IfcSlab
+4	6	2	2	2067254=IfcWallStandardCase	396393=IfcSlab
+4	6	3	3	23346=IfcBeam	16909=IfcSlab	2067254=IfcWallStandardCase
+4	7	1	1	6950=IfcSlab
+4	7	2	1	396393=IfcSlab
+4	7	3	1	16909=IfcSlab
+4	8	1	2	8502=IfcWallStandardCase	6950=IfcSlab
+4	8	2	3	8502=IfcWallStandardCase	2067287=IfcWallStandardCase	396393=IfcSlab
+4	8	3	5	8502=IfcWallStandardCase	50894=IfcWallStandardCase	22942=IfcWallStandardCase	16909=IfcSlab	2067287=IfcWallStandardCase
+4	8	4	2	50894=IfcWallStandardCase	22942=IfcWallStandardCase
+4	8	5	2	50894=IfcWallStandardCase	22942=IfcWallStandardCase
+5	1	1	5	7198=IfcBeam	8576=IfcWallStandardCase	8875=IfcWallStandardCase	6950=IfcSlab	13373=IfcWallStandardCase
+5	1	2	3	8576=IfcWallStandardCase	8875=IfcWallStandardCase	13373=IfcWallStandardCase
+5	1	3	9	8576=IfcWallStandardCase	8875=IfcWallStandardCase	21446=IfcWallStandardCase	23252=IfcWallStandardCase	23302=IfcWallStandardCase	13373=IfcWallStandardCase	23954=IfcBeam	24106=IfcBeam	16909=IfcSlab
+5	1	4	3	21446=IfcWallStandardCase	23252=IfcWallStandardCase	23302=IfcWallStandardCase
+5	1	5	3	21446=IfcWallStandardCase	23252=IfcWallStandardCase	23302=IfcWallStandardCase
+5	2	1	2	7198=IfcBeam	6950=IfcSlab
+5	2	3	2	24106=IfcBeam	16909=IfcSlab
+5	3	1	4	7198=IfcBeam	7337=IfcBeam	7594=IfcBeam	6950=IfcSlab
+5	3	2	1	7594=IfcBeam
+5	3	3	5	53689=IfcWallStandardCase	23808=IfcBeam	24106=IfcBeam	16909=IfcSlab	17065=IfcColumn
+5	3	4	2	53689=IfcWallStandardCase	17065=IfcColumn
+5	3	5	2	53689=IfcWallStandardCase	17065=IfcColumn
+5	4	1	2	7198=IfcBeam	6950=IfcSlab
+5	4	3	2	24106=IfcBeam	16909=IfcSlab
+5	5	1	2	7198=IfcBeam	6950=IfcSlab
+5	5	2	1	396393=IfcSlab
+5	5	3	3	50597=IfcWallStandardCase	24106=IfcBeam	16909=IfcSlab
+5	5	4	1	50597=IfcWallStandardCase
+5	5	5	1	50597=IfcWallStandardCase
+5	6	1	5	6033=IfcBeam	560=IfcColumn	5120=IfcBeam	7198=IfcBeam	6950=IfcSlab
+5	6	2	4	560=IfcColumn	5120=IfcBeam	2067254=IfcWallStandardCase	396393=IfcSlab
+5	6	3	7	560=IfcColumn	50465=IfcWallStandardCase	23346=IfcBeam	24106=IfcBeam	16909=IfcSlab	17141=IfcColumn	2067254=IfcWallStandardCase
+5	6	4	2	50465=IfcWallStandardCase	17141=IfcColumn
+5	6	5	2	50465=IfcWallStandardCase	17141=IfcColumn
+5	7	1	2	7198=IfcBeam	6950=IfcSlab
+5	7	2	1	396393=IfcSlab
+5	7	3	4	50465=IfcWallStandardCase	50861=IfcWallStandardCase	24106=IfcBeam	16909=IfcSlab
+5	7	4	2	50465=IfcWallStandardCase	50861=IfcWallStandardCase
+5	7	5	2	50465=IfcWallStandardCase	50861=IfcWallStandardCase
+5	8	1	4	9106=IfcWall	7198=IfcBeam	8502=IfcWallStandardCase	6950=IfcSlab
+5	8	2	5	9106=IfcWall	8502=IfcWallStandardCase	2067045=IfcWallStandardCase	2067287=IfcWallStandardCase	396393=IfcSlab
+5	8	3	10	9106=IfcWall	8502=IfcWallStandardCase	50861=IfcWallStandardCase	50894=IfcWallStandardCase	22942=IfcWallStandardCase	52989=IfcWallStandardCase	24106=IfcBeam	16909=IfcSlab	2067045=IfcWallStandardCase	2067287=IfcWallStandardCase
+5	8	4	4	50861=IfcWallStandardCase	50894=IfcWallStandardCase	22942=IfcWallStandardCase	52989=IfcWallStandardCase
+5	8	5	4	50861=IfcWallStandardCase	50894=IfcWallStandardCase	22942=IfcWallStandardCase	52989=IfcWallStandardCase
+6	1	1	3	7198=IfcBeam	6855=IfcSlab	13373=IfcWallStandardCase
+6	1	2	1	13373=IfcWallStandardCase
+6	1	3	4	21446=IfcWallStandardCase	13373=IfcWallStandardCase	24106=IfcBeam	16909=IfcSlab
+6	1	4	1	21446=IfcWallStandardCase
+6	1	5	1	21446=IfcWallStandardCase
+6	2	1	2	7198=IfcBeam	6855=IfcSlab
+6	2	3	2	24106=IfcBeam	16909=IfcSlab
+6	3	1	3	7198=IfcBeam	7594=IfcBeam	6855=IfcSlab
+6	3	2	1	7594=IfcBeam
+6	3	3	5	53689=IfcWallStandardCase	23808=IfcBeam	24106=IfcBeam	16909=IfcSlab	17065=IfcColumn
+6	3	4	2	53689=IfcWallStandardCase	17065=IfcColumn
+6	3	5	2	53689=IfcWallStandardCase	17065=IfcColumn
+6	4	1	2	7198=IfcBeam	6855=IfcSlab
+6	4	3	2	24106=IfcBeam	16909=IfcSlab
+6	5	1	2	7198=IfcBeam	6855=IfcSlab
+6	5	2	1	396393=IfcSlab
+6	5	3	3	50597=IfcWallStandardCase	24106=IfcBeam	16909=IfcSlab
+6	5	4	1	50597=IfcWallStandardCase
+6	5	5	1	50597=IfcWallStandardCase
+6	6	1	4	560=IfcColumn	5120=IfcBeam	7198=IfcBeam	6855=IfcSlab
+6	6	2	4	560=IfcColumn	5120=IfcBeam	2067188=IfcWallStandardCase	396393=IfcSlab
+6	6	3	7	560=IfcColumn	50465=IfcWallStandardCase	23346=IfcBeam	24106=IfcBeam	16909=IfcSlab	17141=IfcColumn	2067188=IfcWallStandardCase
+6	6	4	2	50465=IfcWallStandardCase	17141=IfcColumn
+6	6	5	2	50465=IfcWallStandardCase	17141=IfcColumn
+6	7	1	2	7198=IfcBeam	6855=IfcSlab
+6	7	2	1	396393=IfcSlab
+6	7	3	3	50465=IfcWallStandardCase	24106=IfcBeam	16909=IfcSlab
+6	7	4	1	50465=IfcWallStandardCase
+6	7	5	1	50465=IfcWallStandardCase
+6	8	1	3	9106=IfcWall	7198=IfcBeam	6855=IfcSlab
+6	8	2	3	9106=IfcWall	2067045=IfcWallStandardCase	396393=IfcSlab
+6	8	3	7	9106=IfcWall	22761=IfcWall	22942=IfcWallStandardCase	52989=IfcWallStandardCase	24106=IfcBeam	16909=IfcSlab	2067045=IfcWallStandardCase
+6	8	4	3	22761=IfcWall	22942=IfcWallStandardCase	52989=IfcWallStandardCase
+6	8	5	3	22761=IfcWall	22942=IfcWallStandardCase	52989=IfcWallStandardCase
+7	1	1	2	6855=IfcSlab	13373=IfcWallStandardCase
+7	1	2	1	13373=IfcWallStandardCase
+7	1	3	3	21446=IfcWallStandardCase	13373=IfcWallStandardCase	16909=IfcSlab
+7	1	4	1	21446=IfcWallStandardCase
+7	1	5	1	21446=IfcWallStandardCase
+7	2	1	1	6855=IfcSlab
+7	2	3	1	16909=IfcSlab
+7	3	1	3	599=IfcColumn	7594=IfcBeam	6855=IfcSlab
+7	3	2	2	599=IfcColumn	7594=IfcBeam
+7	3	3	5	599=IfcColumn	53689=IfcWallStandardCase	53755=IfcWallStandardCase	23808=IfcBeam	16909=IfcSlab
+7	3	4	2	53689=IfcWallStandardCase	53755=IfcWallStandardCase
+7	3	5	2	53689=IfcWallStandardCase	53755=IfcWallStandardCase
+7	4	1	1	6855=IfcSlab
+7	4	3	2	53755=IfcWallStandardCase	16909=IfcSlab
+7	4	4	1	53755=IfcWallStandardCase
+7	4	5	1	53755=IfcWallStandardCase
+7	5	1	1	6855=IfcSlab
+7	5	2	1	396393=IfcSlab
+7	5	3	3	50597=IfcWallStandardCase	53755=IfcWallStandardCase	16909=IfcSlab
+7	5	4	2	50597=IfcWallStandardCase	53755=IfcWallStandardCase
+7	5	5	2	50597=IfcWallStandardCase	53755=IfcWallStandardCase
+7	6	1	2	5120=IfcBeam	6855=IfcSlab
+7	6	2	3	5120=IfcBeam	2067188=IfcWallStandardCase	396393=IfcSlab
+7	6	3	7	50465=IfcWallStandardCase	50498=IfcWallStandardCase	50531=IfcWallStandardCase	23346=IfcBeam	16909=IfcSlab	127603=IfcWallStandardCase	2067188=IfcWallStandardCase
+7	6	4	5	50465=IfcWallStandardCase	50498=IfcWallStandardCase	50531=IfcWallStandardCase	82940=IfcBuildingElementProxy	127603=IfcWallStandardCase
+7	6	5	4	50465=IfcWallStandardCase	50498=IfcWallStandardCase	50531=IfcWallStandardCase	127603=IfcWallStandardCase
+7	7	1	1	6855=IfcSlab
+7	7	2	4	45407=IfcSlab	2067078=IfcWallStandardCase	2067133=IfcWallStandardCase	396393=IfcSlab
+7	7	3	8	50465=IfcWallStandardCase	50498=IfcWallStandardCase	50663=IfcWallStandardCase	45645=IfcSlab	16909=IfcSlab	127603=IfcWallStandardCase	2067078=IfcWallStandardCase	2067133=IfcWallStandardCase
+7	7	4	6	50465=IfcWallStandardCase	50498=IfcWallStandardCase	50663=IfcWallStandardCase	82940=IfcBuildingElementProxy	47007=IfcSlab	127603=IfcWallStandardCase
+7	7	5	5	50465=IfcWallStandardCase	50498=IfcWallStandardCase	50663=IfcWallStandardCase	47239=IfcSlab	127603=IfcWallStandardCase
+7	8	1	2	9106=IfcWall	6855=IfcSlab
+7	8	2	4	9106=IfcWall	2067045=IfcWallStandardCase	2067078=IfcWallStandardCase	396393=IfcSlab
+7	8	3	7	9106=IfcWall	52567=IfcWallStandardCase	22761=IfcWall	52989=IfcWallStandardCase	16909=IfcSlab	2067045=IfcWallStandardCase	2067078=IfcWallStandardCase
+7	8	4	4	52567=IfcWallStandardCase	22761=IfcWall	52989=IfcWallStandardCase	47007=IfcSlab
+7	8	5	4	52567=IfcWallStandardCase	22761=IfcWall	52989=IfcWallStandardCase	47239=IfcSlab
+8	1	1	2	6855=IfcSlab	13373=IfcWallStandardCase
+8	1	2	1	13373=IfcWallStandardCase
+8	1	3	3	21446=IfcWallStandardCase	13373=IfcWallStandardCase	16909=IfcSlab
+8	1	4	1	21446=IfcWallStandardCase
+8	1	5	1	21446=IfcWallStandardCase
+8	2	1	1	6855=IfcSlab
+8	2	3	1	16909=IfcSlab
+8	3	1	3	599=IfcColumn	7594=IfcBeam	6855=IfcSlab
+8	3	2	2	599=IfcColumn	7594=IfcBeam
+8	3	3	4	599=IfcColumn	53689=IfcWallStandardCase	23808=IfcBeam	16909=IfcSlab
+8	3	4	1	53689=IfcWallStandardCase
+8	3	5	1	53689=IfcWallStandardCase
+8	4	1	1	6855=IfcSlab
+8	4	3	1	16909=IfcSlab
+8	5	1	1	6855=IfcSlab
+8	5	2	1	396393=IfcSlab
+8	5	3	4	50597=IfcWallStandardCase	50630=IfcWallStandardCase	16909=IfcSlab	127636=IfcWallStandardCase
+8	5	4	3	50597=IfcWallStandardCase	50630=IfcWallStandardCase	127636=IfcWallStandardCase
+8	5	5	3	50597=IfcWallStandardCase	50630=IfcWallStandardCase	127636=IfcWallStandardCase
+8	6	1	2	5120=IfcBeam	6855=IfcSlab
+8	6	2	3	5120=IfcBeam	2067188=IfcWallStandardCase	396393=IfcSlab
+8	6	3	6	50531=IfcWallStandardCase	50630=IfcWallStandardCase	23346=IfcBeam	16909=IfcSlab	17217=IfcColumn	2067188=IfcWallStandardCase
+8	6	4	3	50531=IfcWallStandardCase	50630=IfcWallStandardCase	17217=IfcColumn
+8	6	5	3	50531=IfcWallStandardCase	50630=IfcWallStandardCase	17217=IfcColumn
+8	7	1	1	6855=IfcSlab
+8	7	2	6	44617=IfcStairFlight	44843=IfcStairFlight	45407=IfcSlab	2067133=IfcWallStandardCase	2091208=IfcRailing	396393=IfcSlab
+8	7	3	10	50663=IfcWallStandardCase	44368=IfcSlab	44843=IfcStairFlight	45065=IfcStairFlight	45287=IfcStairFlight	45645=IfcSlab	45997=IfcStairFlight	16909=IfcSlab	2067133=IfcWallStandardCase	2091208=IfcRailing
+8	7	4	7	50663=IfcWallStandardCase	45997=IfcStairFlight	46253=IfcStairFlight	46509=IfcStairFlight	47007=IfcSlab	2091208=IfcRailing	2097983=IfcRailing
+8	7	5	5	50663=IfcWallStandardCase	46509=IfcStairFlight	46891=IfcStairFlight	47239=IfcSlab	2097983=IfcRailing
+8	7	6	1	2097983=IfcRailing
+8	8	1	2	9106=IfcWall	6855=IfcSlab
+8	8	2	3	9106=IfcWall	2067045=IfcWallStandardCase	396393=IfcSlab
+8	8	3	6	9106=IfcWall	52567=IfcWallStandardCase	22761=IfcWall	44368=IfcSlab	16909=IfcSlab	2067045=IfcWallStandardCase
+8	8	4	4	52567=IfcWallStandardCase	22761=IfcWall	46253=IfcStairFlight	47007=IfcSlab
+8	8	5	4	52567=IfcWallStandardCase	22761=IfcWall	46891=IfcStairFlight	47239=IfcSlab
+9	1	1	2	6855=IfcSlab	13373=IfcWallStandardCase
+9	1	2	1	13373=IfcWallStandardCase
+9	1	3	5	21446=IfcWallStandardCase	13373=IfcWallStandardCase	53722=IfcWallStandardCase	24144=IfcBeam	16909=IfcSlab
+9	1	4	2	21446=IfcWallStandardCase	53722=IfcWallStandardCase
+9	1	5	2	21446=IfcWallStandardCase	53722=IfcWallStandardCase
+9	2	1	1	6855=IfcSlab
+9	2	3	3	53722=IfcWallStandardCase	24144=IfcBeam	16909=IfcSlab
+9	2	4	1	53722=IfcWallStandardCase
+9	2	5	1	53722=IfcWallStandardCase
+9	3	1	2	7594=IfcBeam	6855=IfcSlab
+9	3	2	1	7594=IfcBeam
+9	3	3	6	53689=IfcWallStandardCase	53722=IfcWallStandardCase	23808=IfcBeam	24144=IfcBeam	24250=IfcBeam	16909=IfcSlab
+9	3	4	2	53689=IfcWallStandardCase	53722=IfcWallStandardCase
+9	3	5	2	53689=IfcWallStandardCase	53722=IfcWallStandardCase
+9	4	1	1	6855=IfcSlab
+9	4	3	3	24215=IfcBeam	24250=IfcBeam	16909=IfcSlab
+9	5	1	1	6855=IfcSlab
+9	5	2	1	396393=IfcSlab
+9	5	3	4	24215=IfcBeam	24250=IfcBeam	16909=IfcSlab	127636=IfcWallStandardCase
+9	5	4	1	127636=IfcWallStandardCase
+9	5	5	1	127636=IfcWallStandardCase
+9	6	1	2	5120=IfcBeam	6855=IfcSlab
+9	6	2	4	5120=IfcBeam	2067012=IfcWallStandardCase	2067188=IfcWallStandardCase	396393=IfcSlab
+9	6	3	5	23346=IfcBeam	24250=IfcBeam	16909=IfcSlab	2067012=IfcWallStandardCase	2067188=IfcWallStandardCase
+9	7	1	1	6855=IfcSlab
+9	7	2	3	2067012=IfcWallStandardCase	2067133=IfcWallStandardCase	396393=IfcSlab
+9	7	3	11	50663=IfcWallStandardCase	52633=IfcWallStandardCase	44368=IfcSlab	44843=IfcStairFlight	45065=IfcStairFlight	45523=IfcSlab	45997=IfcStairFlight	16909=IfcSlab	2067012=IfcWallStandardCase	2067133=IfcWallStandardCase	2091208=IfcRailing
+9	7	4	8	50663=IfcWallStandardCase	52633=IfcWallStandardCase	45997=IfcStairFlight	46253=IfcStairFlight	46509=IfcStairFlight	47123=IfcSlab	127571=IfcBuildingElementProxy	2097983=IfcRailing
+9	7	5	5	50663=IfcWallStandardCase	52633=IfcWallStandardCase	46891=IfcStairFlight	47341=IfcSlab	2097983=IfcRailing
+9	7	6	2	47341=IfcSlab	2097983=IfcRailing
+9	8	1	2	9106=IfcWall	6855=IfcSlab
+9	8	2	5	9106=IfcWall	2066979=IfcWallStandardCase	2067012=IfcWallStandardCase	2067045=IfcWallStandardCase	396393=IfcSlab
+9	8	3	10	9106=IfcWall	50212=IfcWallStandardCase	52567=IfcWallStandardCase	52633=IfcWallStandardCase	22761=IfcWall	44368=IfcSlab	16909=IfcSlab	2066979=IfcWallStandardCase	2067012=IfcWallStandardCase	2067045=IfcWallStandardCase
+9	8	4	6	50212=IfcWallStandardCase	52567=IfcWallStandardCase	52633=IfcWallStandardCase	22761=IfcWall	46253=IfcStairFlight	47123=IfcSlab
+9	8	5	6	50212=IfcWallStandardCase	52567=IfcWallStandardCase	52633=IfcWallStandardCase	22761=IfcWall	46891=IfcStairFlight	47341=IfcSlab
+9	8	6	1	47341=IfcSlab
+10	1	1	2	6855=IfcSlab	13373=IfcWallStandardCase
+10	1	2	1	13373=IfcWallStandardCase
+10	1	3	3	21446=IfcWallStandardCase	13373=IfcWallStandardCase	16909=IfcSlab
+10	1	4	1	21446=IfcWallStandardCase
+10	1	5	1	21446=IfcWallStandardCase
+10	2	1	1	6855=IfcSlab
+10	2	3	1	16909=IfcSlab
+10	3	1	3	686=IfcColumn	7594=IfcBeam	6855=IfcSlab
+10	3	2	2	686=IfcColumn	7594=IfcBeam
+10	3	3	4	686=IfcColumn	23808=IfcBeam	24285=IfcBeam	16909=IfcSlab
+10	4	1	1	6855=IfcSlab
+10	4	3	2	24215=IfcBeam	24285=IfcBeam
+10	5	1	1	6855=IfcSlab
+10	5	2	1	396393=IfcSlab
+10	5	3	4	24215=IfcBeam	24285=IfcBeam	16909=IfcSlab	127636=IfcWallStandardCase
+10	5	4	1	127636=IfcWallStandardCase
+10	5	5	1	127636=IfcWallStandardCase
+10	6	1	2	5120=IfcBeam	6855=IfcSlab
+10	6	2	4	5120=IfcBeam	396393=IfcSlab	398782=IfcWallStandardCase	398815=IfcWallStandardCase
+10	6	3	6	23346=IfcBeam	24285=IfcBeam	16909=IfcSlab	17293=IfcColumn	398782=IfcWallStandardCase	398815=IfcWallStandardCase
+10	6	4	1	17293=IfcColumn
+10	6	5	1	17293=IfcColumn
+10	7	1	1	6855=IfcSlab
+10	7	2	3	2067133=IfcWallStandardCase	396393=IfcSlab	398815=IfcWallStandardCase
+10	7	3	8	50267=IfcWallStandardCase	50333=IfcWallStandardCase	50663=IfcWallStandardCase	51352=IfcWallStandardCase	16909=IfcSlab	2067133=IfcWallStandardCase	2080687=IfcBuildingElementProxy	398815=IfcWallStandardCase
+10	7	4	5	50267=IfcWallStandardCase	50333=IfcWallStandardCase	50663=IfcWallStandardCase	51352=IfcWallStandardCase	127571=IfcBuildingElementProxy
+10	7	5	4	50267=IfcWallStandardCase	50333=IfcWallStandardCase	50663=IfcWallStandardCase	51352=IfcWallStandardCase
+10	8	1	2	9106=IfcWall	6855=IfcSlab
+10	8	2	5	9106=IfcWall	2066979=IfcWallStandardCase	396393=IfcSlab	398815=IfcWallStandardCase	398914=IfcWallStandardCase
+10	8	3	9	9106=IfcWall	50212=IfcWallStandardCase	50267=IfcWallStandardCase	50333=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2066979=IfcWallStandardCase	398815=IfcWallStandardCase	398914=IfcWallStandardCase
+10	8	4	4	50212=IfcWallStandardCase	50267=IfcWallStandardCase	50333=IfcWallStandardCase	22761=IfcWall
+10	8	5	4	50212=IfcWallStandardCase	50267=IfcWallStandardCase	50333=IfcWallStandardCase	22761=IfcWall
+11	1	1	2	6855=IfcSlab	13373=IfcWallStandardCase
+11	1	2	1	13373=IfcWallStandardCase
+11	1	3	4	21446=IfcWallStandardCase	52131=IfcWallStandardCase	13373=IfcWallStandardCase	16909=IfcSlab
+11	1	4	2	21446=IfcWallStandardCase	52131=IfcWallStandardCase
+11	1	5	2	21446=IfcWallStandardCase	52131=IfcWallStandardCase
+11	2	1	1	6855=IfcSlab
+11	2	3	2	52131=IfcWallStandardCase	16909=IfcSlab
+11	2	4	1	52131=IfcWallStandardCase
+11	2	5	1	52131=IfcWallStandardCase
+11	3	1	2	7594=IfcBeam	6855=IfcSlab
+11	3	2	1	7594=IfcBeam
+11	3	3	4	52131=IfcWallStandardCase	23808=IfcBeam	24285=IfcBeam	16909=IfcSlab
+11	3	4	1	52131=IfcWallStandardCase
+11	3	5	1	52131=IfcWallStandardCase
+11	4	1	1	6855=IfcSlab
+11	4	3	3	52131=IfcWallStandardCase	24285=IfcBeam	16909=IfcSlab
+11	4	4	1	52131=IfcWallStandardCase
+11	4	5	1	52131=IfcWallStandardCase
+11	5	1	1	6855=IfcSlab
+11	5	2	1	396393=IfcSlab
+11	5	3	4	52131=IfcWallStandardCase	24285=IfcBeam	16909=IfcSlab	127636=IfcWallStandardCase
+11	5	4	2	52131=IfcWallStandardCase	127636=IfcWallStandardCase
+11	5	5	2	52131=IfcWallStandardCase	127636=IfcWallStandardCase
+11	6	1	2	5120=IfcBeam	6855=IfcSlab
+11	6	2	4	5120=IfcBeam	2066649=IfcWallStandardCase	396393=IfcSlab	398782=IfcWallStandardCase
+11	6	3	6	23346=IfcBeam	24285=IfcBeam	16909=IfcSlab	2066649=IfcWallStandardCase	2067587=IfcBuildingElementProxy	398782=IfcWallStandardCase
+11	7	1	1	6855=IfcSlab
+11	7	2	2	396393=IfcSlab	398881=IfcWallStandardCase
+11	7	3	3	51352=IfcWallStandardCase	16909=IfcSlab	398881=IfcWallStandardCase
+11	7	4	1	51352=IfcWallStandardCase
+11	7	5	1	51352=IfcWallStandardCase
+11	8	1	2	9106=IfcWall	6855=IfcSlab
+11	8	2	4	9106=IfcWall	396393=IfcSlab	398881=IfcWallStandardCase	398914=IfcWallStandardCase
+11	8	3	6	9106=IfcWall	50212=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	398881=IfcWallStandardCase	398914=IfcWallStandardCase
+11	8	4	2	50212=IfcWallStandardCase	22761=IfcWall
+11	8	5	2	50212=IfcWallStandardCase	22761=IfcWall
+12	1	1	3	6855=IfcSlab	13373=IfcWallStandardCase	13437=IfcWallStandardCase
+12	1	2	2	13373=IfcWallStandardCase	13437=IfcWallStandardCase
+12	1	3	6	51046=IfcWallStandardCase	21446=IfcWallStandardCase	21522=IfcWallStandardCase	13373=IfcWallStandardCase	13437=IfcWallStandardCase	16909=IfcSlab
+12	1	4	3	51046=IfcWallStandardCase	21446=IfcWallStandardCase	21522=IfcWallStandardCase
+12	1	5	3	51046=IfcWallStandardCase	21446=IfcWallStandardCase	21522=IfcWallStandardCase
+12	2	1	1	6855=IfcSlab
+12	2	3	3	51004=IfcWallStandardCase	51046=IfcWallStandardCase	16909=IfcSlab
+12	2	4	2	51004=IfcWallStandardCase	51046=IfcWallStandardCase
+12	2	5	2	51004=IfcWallStandardCase	51046=IfcWallStandardCase
+12	3	1	4	773=IfcColumn	7594=IfcBeam	7675=IfcBeam	6855=IfcSlab
+12	3	2	3	773=IfcColumn	7594=IfcBeam	7675=IfcBeam
+12	3	3	5	773=IfcColumn	23808=IfcBeam	24322=IfcBeam	16909=IfcSlab	17331=IfcColumn
+12	3	4	1	17331=IfcColumn
+12	3	5	1	17331=IfcColumn
+12	4	1	1	6855=IfcSlab
+12	4	3	1	16909=IfcSlab
+12	5	1	1	6855=IfcSlab
+12	5	2	1	396393=IfcSlab
+12	5	3	1	16909=IfcSlab
+12	6	1	2	5120=IfcBeam	6855=IfcSlab
+12	6	2	3	5120=IfcBeam	2066649=IfcWallStandardCase	396393=IfcSlab
+12	6	3	4	23346=IfcBeam	16909=IfcSlab	17369=IfcColumn	2066649=IfcWallStandardCase
+12	6	4	1	17369=IfcColumn
+12	6	5	1	17369=IfcColumn
+12	7	1	1	6855=IfcSlab
+12	7	2	1	396393=IfcSlab
+12	7	3	3	51319=IfcWallStandardCase	51352=IfcWallStandardCase	16909=IfcSlab
+12	7	4	3	51319=IfcWallStandardCase	51352=IfcWallStandardCase	111473=IfcBuildingElementProxy
+12	7	5	2	51319=IfcWallStandardCase	51352=IfcWallStandardCase
+12	8	1	2	9106=IfcWall	6855=IfcSlab
+12	8	2	3	9106=IfcWall	2066836=IfcWallStandardCase	396393=IfcSlab
+12	8	3	6	9106=IfcWall	50212=IfcWallStandardCase	51319=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2066836=IfcWallStandardCase
+12	8	4	3	50212=IfcWallStandardCase	51319=IfcWallStandardCase	22761=IfcWall
+12	8	5	3	50212=IfcWallStandardCase	51319=IfcWallStandardCase	22761=IfcWall
+13	1	1	2	6855=IfcSlab	13437=IfcWallStandardCase
+13	1	2	1	13437=IfcWallStandardCase
+13	1	3	3	21522=IfcWallStandardCase	13437=IfcWallStandardCase	16909=IfcSlab
+13	1	4	1	21522=IfcWallStandardCase
+13	1	5	1	21522=IfcWallStandardCase
+13	2	1	1	6855=IfcSlab
+13	2	3	2	51004=IfcWallStandardCase	16909=IfcSlab
+13	2	4	1	51004=IfcWallStandardCase
+13	2	5	1	51004=IfcWallStandardCase
+13	3	1	2	7675=IfcBeam	6855=IfcSlab
+13	3	2	1	7675=IfcBeam
+13	3	3	2	24322=IfcBeam	16909=IfcSlab
+13	4	1	1	6855=IfcSlab
+13	4	3	1	16909=IfcSlab
+13	5	1	1	6855=IfcSlab
+13	5	2	1	396393=IfcSlab
+13	5	3	1	16909=IfcSlab
+13	6	1	2	5120=IfcBeam	6855=IfcSlab
+13	6	2	4	5120=IfcBeam	2066649=IfcWallStandardCase	2066924=IfcWallStandardCase	396393=IfcSlab
+13	6	3	4	23346=IfcBeam	16909=IfcSlab	2066649=IfcWallStandardCase	2066924=IfcWallStandardCase
+13	7	1	1	6855=IfcSlab
+13	7	2	2	2066924=IfcWallStandardCase	396393=IfcSlab
+13	7	3	4	51385=IfcWallStandardCase	51418=IfcWallStandardCase	16909=IfcSlab	2066924=IfcWallStandardCase
+13	7	4	3	51385=IfcWallStandardCase	51418=IfcWallStandardCase	111513=IfcBuildingElementProxy
+13	7	5	2	51385=IfcWallStandardCase	51418=IfcWallStandardCase
+13	8	1	2	9106=IfcWall	6855=IfcSlab
+13	8	2	4	9106=IfcWall	2066836=IfcWallStandardCase	2066924=IfcWallStandardCase	396393=IfcSlab
+13	8	3	7	9106=IfcWall	50212=IfcWallStandardCase	51385=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2066836=IfcWallStandardCase	2066924=IfcWallStandardCase
+13	8	4	3	50212=IfcWallStandardCase	51385=IfcWallStandardCase	22761=IfcWall
+13	8	5	3	50212=IfcWallStandardCase	51385=IfcWallStandardCase	22761=IfcWall
+14	1	1	3	6855=IfcSlab	13437=IfcWallStandardCase	13533=IfcWallStandardCase
+14	1	2	2	13437=IfcWallStandardCase	13533=IfcWallStandardCase
+14	1	3	8	21522=IfcWallStandardCase	51592=IfcWallStandardCase	21635=IfcWallStandardCase	53029=IfcWallStandardCase	13437=IfcWallStandardCase	13533=IfcWallStandardCase	16909=IfcSlab	49774=IfcWallStandardCase
+14	1	4	5	21522=IfcWallStandardCase	51592=IfcWallStandardCase	21635=IfcWallStandardCase	53029=IfcWallStandardCase	49774=IfcWallStandardCase
+14	1	5	5	21522=IfcWallStandardCase	51592=IfcWallStandardCase	21635=IfcWallStandardCase	53029=IfcWallStandardCase	49774=IfcWallStandardCase
+14	2	1	1	6855=IfcSlab
+14	2	3	3	51004=IfcWallStandardCase	16909=IfcSlab	49774=IfcWallStandardCase
+14	2	4	2	51004=IfcWallStandardCase	49774=IfcWallStandardCase
+14	2	5	2	51004=IfcWallStandardCase	49774=IfcWallStandardCase
+14	3	1	2	7675=IfcBeam	6855=IfcSlab
+14	3	2	1	7675=IfcBeam
+14	3	3	2	24322=IfcBeam	16909=IfcSlab
+14	4	1	1	6855=IfcSlab
+14	4	3	1	16909=IfcSlab
+14	5	1	1	6855=IfcSlab
+14	5	2	1	396393=IfcSlab
+14	5	3	1	16909=IfcSlab
+14	6	1	2	5120=IfcBeam	6855=IfcSlab
+14	6	2	4	5120=IfcBeam	2066649=IfcWallStandardCase	2066869=IfcWallStandardCase	396393=IfcSlab
+14	6	3	5	23346=IfcBeam	16909=IfcSlab	2066649=IfcWallStandardCase	2066869=IfcWallStandardCase	2080567=IfcBuildingElementProxy
+14	7	1	1	6855=IfcSlab
+14	7	2	2	2066869=IfcWallStandardCase	396393=IfcSlab
+14	7	3	5	50146=IfcWallStandardCase	51418=IfcWallStandardCase	16909=IfcSlab	49728=IfcWallStandardCase	2066869=IfcWallStandardCase
+14	7	4	3	50146=IfcWallStandardCase	51418=IfcWallStandardCase	49728=IfcWallStandardCase
+14	7	5	3	50146=IfcWallStandardCase	51418=IfcWallStandardCase	49728=IfcWallStandardCase
+14	8	1	2	9106=IfcWall	6855=IfcSlab
+14	8	2	4	9106=IfcWall	2066836=IfcWallStandardCase	2066869=IfcWallStandardCase	396393=IfcSlab
+14	8	3	7	9106=IfcWall	50146=IfcWallStandardCase	50212=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2066836=IfcWallStandardCase	2066869=IfcWallStandardCase
+14	8	4	3	50146=IfcWallStandardCase	50212=IfcWallStandardCase	22761=IfcWall
+14	8	5	3	50146=IfcWallStandardCase	50212=IfcWallStandardCase	22761=IfcWall
+15	1	1	2	6855=IfcSlab	13533=IfcWallStandardCase
+15	1	2	1	13533=IfcWallStandardCase
+15	1	3	4	21635=IfcWallStandardCase	53029=IfcWallStandardCase	13533=IfcWallStandardCase	16909=IfcSlab
+15	1	4	2	21635=IfcWallStandardCase	53029=IfcWallStandardCase
+15	1	5	2	21635=IfcWallStandardCase	53029=IfcWallStandardCase
+15	2	1	1	6855=IfcSlab
+15	2	3	1	16909=IfcSlab
+15	3	1	3	7675=IfcBeam	7751=IfcBeam	6855=IfcSlab
+15	3	2	2	7675=IfcBeam	7751=IfcBeam
+15	3	3	4	24322=IfcBeam	24445=IfcBeam	24480=IfcBeam	16909=IfcSlab
+15	4	1	1	6855=IfcSlab
+15	4	3	1	16909=IfcSlab
+15	5	1	1	6855=IfcSlab
+15	5	2	1	396393=IfcSlab
+15	5	3	1	16909=IfcSlab
+15	6	1	2	5120=IfcBeam	6855=IfcSlab
+15	6	2	3	5120=IfcBeam	2066649=IfcWallStandardCase	396393=IfcSlab
+15	6	3	4	23346=IfcBeam	16909=IfcSlab	17445=IfcColumn	2066649=IfcWallStandardCase
+15	6	4	1	17445=IfcColumn
+15	6	5	1	17445=IfcColumn
+15	7	1	1	6855=IfcSlab
+15	7	2	1	396393=IfcSlab
+15	7	3	3	16909=IfcSlab	49695=IfcWallStandardCase	49728=IfcWallStandardCase
+15	7	4	2	49695=IfcWallStandardCase	49728=IfcWallStandardCase
+15	7	5	2	49695=IfcWallStandardCase	49728=IfcWallStandardCase
+15	8	1	2	9106=IfcWall	6855=IfcSlab
+15	8	2	3	9106=IfcWall	2066836=IfcWallStandardCase	396393=IfcSlab
+15	8	3	6	9106=IfcWall	50212=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	49695=IfcWallStandardCase	2066836=IfcWallStandardCase
+15	8	4	3	50212=IfcWallStandardCase	22761=IfcWall	49695=IfcWallStandardCase
+15	8	5	3	50212=IfcWallStandardCase	22761=IfcWall	49695=IfcWallStandardCase
+16	1	1	2	6855=IfcSlab	13533=IfcWallStandardCase
+16	1	2	1	13533=IfcWallStandardCase
+16	1	3	4	21635=IfcWallStandardCase	53029=IfcWallStandardCase	13533=IfcWallStandardCase	16909=IfcSlab
+16	1	4	2	21635=IfcWallStandardCase	53029=IfcWallStandardCase
+16	1	5	2	21635=IfcWallStandardCase	53029=IfcWallStandardCase
+16	2	1	1	6855=IfcSlab
+16	2	3	1	16909=IfcSlab
+16	3	1	2	7751=IfcBeam	6855=IfcSlab
+16	3	2	1	7751=IfcBeam
+16	3	3	2	24480=IfcBeam	16909=IfcSlab
+16	4	1	1	6855=IfcSlab
+16	4	3	1	16909=IfcSlab
+16	5	1	1	6855=IfcSlab
+16	5	2	1	396393=IfcSlab
+16	5	3	1	16909=IfcSlab
+16	6	1	2	5120=IfcBeam	6855=IfcSlab
+16	6	2	4	5120=IfcBeam	2066649=IfcWallStandardCase	2066803=IfcWallStandardCase	396393=IfcSlab
+16	6	3	5	23346=IfcBeam	16909=IfcSlab	2066649=IfcWallStandardCase	2066803=IfcWallStandardCase	2067627=IfcBuildingElementProxy
+16	7	1	1	6855=IfcSlab
+16	7	2	3	2066770=IfcWallStandardCase	2066803=IfcWallStandardCase	396393=IfcSlab
+16	7	3	4	16909=IfcSlab	2066770=IfcWallStandardCase	2066803=IfcWallStandardCase	2080647=IfcBuildingElementProxy
+16	8	1	2	9106=IfcWall	6855=IfcSlab
+16	8	2	5	9106=IfcWall	2066770=IfcWallStandardCase	2066803=IfcWallStandardCase	2066836=IfcWallStandardCase	396393=IfcSlab
+16	8	3	10	9106=IfcWall	50212=IfcWallStandardCase	51955=IfcWallStandardCase	52296=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2066770=IfcWallStandardCase	2066803=IfcWallStandardCase	2066836=IfcWallStandardCase	2080647=IfcBuildingElementProxy
+16	8	4	5	50212=IfcWallStandardCase	51955=IfcWallStandardCase	52296=IfcWallStandardCase	22761=IfcWall	115345=IfcBuildingElementProxy
+16	8	5	4	50212=IfcWallStandardCase	51955=IfcWallStandardCase	52296=IfcWallStandardCase	22761=IfcWall
+17	1	1	2	6855=IfcSlab	13533=IfcWallStandardCase
+17	1	2	1	13533=IfcWallStandardCase
+17	1	3	6	21635=IfcWallStandardCase	51922=IfcWallStandardCase	52164=IfcWallStandardCase	53029=IfcWallStandardCase	13533=IfcWallStandardCase	16909=IfcSlab
+17	1	4	5	21635=IfcWallStandardCase	51922=IfcWallStandardCase	52164=IfcWallStandardCase	53029=IfcWallStandardCase	115305=IfcBuildingElementProxy
+17	1	5	4	21635=IfcWallStandardCase	51922=IfcWallStandardCase	52164=IfcWallStandardCase	53029=IfcWallStandardCase
+17	2	1	1	6855=IfcSlab
+17	2	3	2	51922=IfcWallStandardCase	16909=IfcSlab
+17	2	4	2	51922=IfcWallStandardCase	115305=IfcBuildingElementProxy
+17	2	5	1	51922=IfcWallStandardCase
+17	3	1	4	947=IfcColumn	7751=IfcBeam	7831=IfcBeam	6855=IfcSlab
+17	3	2	3	947=IfcColumn	7751=IfcBeam	7831=IfcBeam
+17	3	3	4	947=IfcColumn	24480=IfcBeam	24603=IfcBeam	16909=IfcSlab
+17	4	1	1	6855=IfcSlab
+17	4	3	1	16909=IfcSlab
+17	5	1	1	6855=IfcSlab
+17	5	2	1	396393=IfcSlab
+17	5	3	1	16909=IfcSlab
+17	6	1	2	5120=IfcBeam	6855=IfcSlab
+17	6	2	3	5120=IfcBeam	2066649=IfcWallStandardCase	396393=IfcSlab
+17	6	3	4	23346=IfcBeam	16909=IfcSlab	17521=IfcColumn	2066649=IfcWallStandardCase
+17	6	4	1	17521=IfcColumn
+17	6	5	1	17521=IfcColumn
+17	7	1	1	6855=IfcSlab
+17	7	2	3	2066737=IfcWallStandardCase	2066770=IfcWallStandardCase	396393=IfcSlab
+17	7	3	4	16909=IfcSlab	2066737=IfcWallStandardCase	2066770=IfcWallStandardCase	2080647=IfcBuildingElementProxy
+17	8	1	2	9106=IfcWall	6855=IfcSlab
+17	8	2	5	9106=IfcWall	2066682=IfcWallStandardCase	2066737=IfcWallStandardCase	2066770=IfcWallStandardCase	396393=IfcSlab
+17	8	3	10	50014=IfcWallStandardCase	9106=IfcWall	51955=IfcWallStandardCase	52263=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2066682=IfcWallStandardCase	2066737=IfcWallStandardCase	2066770=IfcWallStandardCase	2080647=IfcBuildingElementProxy
+17	8	4	5	50014=IfcWallStandardCase	51955=IfcWallStandardCase	52263=IfcWallStandardCase	22761=IfcWall	115345=IfcBuildingElementProxy
+17	8	5	4	50014=IfcWallStandardCase	51955=IfcWallStandardCase	52263=IfcWallStandardCase	22761=IfcWall
+18	1	1	2	6855=IfcSlab	13533=IfcWallStandardCase
+18	1	2	1	13533=IfcWallStandardCase
+18	1	3	4	21635=IfcWallStandardCase	52164=IfcWallStandardCase	13533=IfcWallStandardCase	16909=IfcSlab
+18	1	4	2	21635=IfcWallStandardCase	52164=IfcWallStandardCase
+18	1	5	2	21635=IfcWallStandardCase	52164=IfcWallStandardCase
+18	2	1	1	6855=IfcSlab
+18	2	3	1	16909=IfcSlab
+18	3	1	3	947=IfcColumn	7831=IfcBeam	6855=IfcSlab
+18	3	2	2	947=IfcColumn	7831=IfcBeam
+18	3	3	4	947=IfcColumn	24603=IfcBeam	24640=IfcBeam	16909=IfcSlab
+18	4	1	1	6855=IfcSlab
+18	4	3	1	16909=IfcSlab
+18	5	1	1	6855=IfcSlab
+18	5	2	1	396393=IfcSlab
+18	5	3	1	16909=IfcSlab
+18	6	1	2	5120=IfcBeam	6855=IfcSlab
+18	6	2	3	5120=IfcBeam	2066649=IfcWallStandardCase	396393=IfcSlab
+18	6	3	4	23346=IfcBeam	16909=IfcSlab	2066649=IfcWallStandardCase	2067667=IfcBuildingElementProxy
+18	7	1	1	6855=IfcSlab
+18	7	2	1	396393=IfcSlab
+18	7	3	1	16909=IfcSlab
+18	8	1	2	9106=IfcWall	6855=IfcSlab
+18	8	2	3	9106=IfcWall	2066682=IfcWallStandardCase	396393=IfcSlab
+18	8	3	5	50014=IfcWallStandardCase	9106=IfcWall	22761=IfcWall	16909=IfcSlab	2066682=IfcWallStandardCase
+18	8	4	2	50014=IfcWallStandardCase	22761=IfcWall
+18	8	5	2	50014=IfcWallStandardCase	22761=IfcWall
+19	1	1	2	6855=IfcSlab	13533=IfcWallStandardCase
+19	1	2	1	13533=IfcWallStandardCase
+19	1	3	4	21635=IfcWallStandardCase	52164=IfcWallStandardCase	13533=IfcWallStandardCase	16909=IfcSlab
+19	1	4	2	21635=IfcWallStandardCase	52164=IfcWallStandardCase
+19	1	5	2	21635=IfcWallStandardCase	52164=IfcWallStandardCase
+19	2	1	1	6855=IfcSlab
+19	2	3	1	16909=IfcSlab
+19	3	1	2	7831=IfcBeam	6855=IfcSlab
+19	3	2	1	7831=IfcBeam
+19	3	3	2	24640=IfcBeam	16909=IfcSlab
+19	4	1	1	6855=IfcSlab
+19	4	3	1	16909=IfcSlab
+19	5	1	1	6855=IfcSlab
+19	5	2	1	396393=IfcSlab
+19	5	3	1	16909=IfcSlab
+19	6	1	2	5120=IfcBeam	6855=IfcSlab
+19	6	2	5	5120=IfcBeam	2066583=IfcWallStandardCase	2066616=IfcWallStandardCase	2066649=IfcWallStandardCase	396393=IfcSlab
+19	6	3	6	23346=IfcBeam	16909=IfcSlab	2066583=IfcWallStandardCase	2066616=IfcWallStandardCase	2066649=IfcWallStandardCase	2067667=IfcBuildingElementProxy
+19	7	1	1	6855=IfcSlab
+19	7	2	2	2066616=IfcWallStandardCase	396393=IfcSlab
+19	7	3	3	16909=IfcSlab	2066616=IfcWallStandardCase	2080527=IfcBuildingElementProxy
+19	8	1	2	9106=IfcWall	6855=IfcSlab
+19	8	2	4	9106=IfcWall	2066616=IfcWallStandardCase	2066682=IfcWallStandardCase	396393=IfcSlab
+19	8	3	7	50014=IfcWallStandardCase	9106=IfcWall	22761=IfcWall	16909=IfcSlab	2066616=IfcWallStandardCase	2066682=IfcWallStandardCase	2080527=IfcBuildingElementProxy
+19	8	4	2	50014=IfcWallStandardCase	22761=IfcWall
+19	8	5	2	50014=IfcWallStandardCase	22761=IfcWall
+20	1	1	2	6855=IfcSlab	13533=IfcWallStandardCase
+20	1	2	1	13533=IfcWallStandardCase
+20	1	3	4	21635=IfcWallStandardCase	52164=IfcWallStandardCase	13533=IfcWallStandardCase	16909=IfcSlab
+20	1	4	2	21635=IfcWallStandardCase	52164=IfcWallStandardCase
+20	1	5	2	21635=IfcWallStandardCase	52164=IfcWallStandardCase
+20	2	1	1	6855=IfcSlab
+20	2	3	1	16909=IfcSlab
+20	3	1	4	1034=IfcColumn	7831=IfcBeam	6855=IfcSlab	7911=IfcBeam
+20	3	2	3	1034=IfcColumn	7831=IfcBeam	7911=IfcBeam
+20	3	3	6	1034=IfcColumn	24640=IfcBeam	24773=IfcBeam	24897=IfcBeam	16909=IfcSlab	17559=IfcColumn
+20	3	4	1	17559=IfcColumn
+20	3	5	1	17559=IfcColumn
+20	4	1	1	6855=IfcSlab
+20	4	3	1	16909=IfcSlab
+20	5	1	1	6855=IfcSlab
+20	5	2	1	396393=IfcSlab
+20	5	3	1	16909=IfcSlab
+20	6	1	3	1083=IfcColumn	5120=IfcBeam	6855=IfcSlab
+20	6	2	6	1083=IfcColumn	5120=IfcBeam	2066451=IfcWallStandardCase	2066583=IfcWallStandardCase	2066649=IfcWallStandardCase	396393=IfcSlab
+20	6	3	7	1083=IfcColumn	23346=IfcBeam	16909=IfcSlab	17597=IfcColumn	2066451=IfcWallStandardCase	2066583=IfcWallStandardCase	2066649=IfcWallStandardCase
+20	6	4	1	17597=IfcColumn
+20	6	5	1	17597=IfcColumn
+20	7	1	1	6855=IfcSlab
+20	7	2	4	2066451=IfcWallStandardCase	2066484=IfcWallStandardCase	2066550=IfcWallStandardCase	396393=IfcSlab
+20	7	3	7	50179=IfcWallStandardCase	16909=IfcSlab	49530=IfcWallStandardCase	49563=IfcWallStandardCase	2066451=IfcWallStandardCase	2066484=IfcWallStandardCase	2066550=IfcWallStandardCase
+20	7	4	3	50179=IfcWallStandardCase	49530=IfcWallStandardCase	49563=IfcWallStandardCase
+20	7	5	3	50179=IfcWallStandardCase	49530=IfcWallStandardCase	49563=IfcWallStandardCase
+20	8	1	2	9106=IfcWall	6855=IfcSlab
+20	8	2	4	9106=IfcWall	2066550=IfcWallStandardCase	2066682=IfcWallStandardCase	396393=IfcSlab
+20	8	3	8	50014=IfcWallStandardCase	9106=IfcWall	50179=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	49563=IfcWallStandardCase	2066550=IfcWallStandardCase	2066682=IfcWallStandardCase
+20	8	4	4	50014=IfcWallStandardCase	50179=IfcWallStandardCase	22761=IfcWall	49563=IfcWallStandardCase
+20	8	5	4	50014=IfcWallStandardCase	50179=IfcWallStandardCase	22761=IfcWall	49563=IfcWallStandardCase
+21	1	1	2	6855=IfcSlab	13533=IfcWallStandardCase
+21	1	2	1	13533=IfcWallStandardCase
+21	1	3	4	21635=IfcWallStandardCase	52164=IfcWallStandardCase	13533=IfcWallStandardCase	16909=IfcSlab
+21	1	4	2	21635=IfcWallStandardCase	52164=IfcWallStandardCase
+21	1	5	2	21635=IfcWallStandardCase	52164=IfcWallStandardCase
+21	2	1	1	6855=IfcSlab
+21	2	3	1	16909=IfcSlab
+21	3	1	2	6855=IfcSlab	7911=IfcBeam
+21	3	2	1	7911=IfcBeam
+21	3	3	2	24897=IfcBeam	16909=IfcSlab
+21	4	1	1	6855=IfcSlab
+21	4	3	1	16909=IfcSlab
+21	5	1	1	6855=IfcSlab
+21	5	2	1	396393=IfcSlab
+21	5	3	1	16909=IfcSlab
+21	6	1	2	5120=IfcBeam	6855=IfcSlab
+21	6	2	2	5120=IfcBeam	396393=IfcSlab
+21	6	3	2	23346=IfcBeam	16909=IfcSlab
+21	7	1	1	6855=IfcSlab
+21	7	2	3	2066484=IfcWallStandardCase	2066517=IfcWallStandardCase	396393=IfcSlab
+21	7	3	4	16909=IfcSlab	49530=IfcWallStandardCase	2066484=IfcWallStandardCase	2066517=IfcWallStandardCase
+21	7	4	1	49530=IfcWallStandardCase
+21	7	5	1	49530=IfcWallStandardCase
+21	8	1	2	9106=IfcWall	6855=IfcSlab
+21	8	2	3	9106=IfcWall	2066517=IfcWallStandardCase	396393=IfcSlab
+21	8	3	5	50014=IfcWallStandardCase	9106=IfcWall	22761=IfcWall	16909=IfcSlab	2066517=IfcWallStandardCase
+21	8	4	2	50014=IfcWallStandardCase	22761=IfcWall
+21	8	5	2	50014=IfcWallStandardCase	22761=IfcWall
+22	1	1	2	6855=IfcSlab	13533=IfcWallStandardCase
+22	1	2	1	13533=IfcWallStandardCase
+22	1	3	4	21635=IfcWallStandardCase	52164=IfcWallStandardCase	13533=IfcWallStandardCase	16909=IfcSlab
+22	1	4	2	21635=IfcWallStandardCase	52164=IfcWallStandardCase
+22	1	5	2	21635=IfcWallStandardCase	52164=IfcWallStandardCase
+22	2	1	1	6855=IfcSlab
+22	2	3	1	16909=IfcSlab
+22	3	1	4	8035=IfcBeam	1170=IfcColumn	6855=IfcSlab	7911=IfcBeam
+22	3	2	3	8035=IfcBeam	1170=IfcColumn	7911=IfcBeam
+22	3	3	5	1170=IfcColumn	24897=IfcBeam	24980=IfcBeam	16909=IfcSlab	17673=IfcColumn
+22	3	4	1	17673=IfcColumn
+22	3	5	1	17673=IfcColumn
+22	4	1	1	6855=IfcSlab
+22	4	3	1	16909=IfcSlab
+22	5	1	1	6855=IfcSlab
+22	5	2	3	2066220=IfcWallStandardCase	2066352=IfcWallStandardCase	396393=IfcSlab
+22	5	3	3	16909=IfcSlab	2066220=IfcWallStandardCase	2066352=IfcWallStandardCase
+22	6	1	3	5120=IfcBeam	1132=IfcColumn	6855=IfcSlab
+22	6	2	6	5120=IfcBeam	1132=IfcColumn	2066220=IfcWallStandardCase	2066319=IfcWallStandardCase	2066352=IfcWallStandardCase	396393=IfcSlab
+22	6	3	7	1132=IfcColumn	23346=IfcBeam	16909=IfcSlab	17635=IfcColumn	2066220=IfcWallStandardCase	2066319=IfcWallStandardCase	2066352=IfcWallStandardCase
+22	6	4	1	17635=IfcColumn
+22	6	5	1	17635=IfcColumn
+22	7	1	1	6855=IfcSlab
+22	7	2	3	2066187=IfcWallStandardCase	2066319=IfcWallStandardCase	396393=IfcSlab
+22	7	3	5	52956=IfcWallStandardCase	16909=IfcSlab	49948=IfcWallStandardCase	2066187=IfcWallStandardCase	2066319=IfcWallStandardCase
+22	7	4	2	52956=IfcWallStandardCase	49948=IfcWallStandardCase
+22	7	5	2	52956=IfcWallStandardCase	49948=IfcWallStandardCase
+22	8	1	2	9106=IfcWall	6855=IfcSlab
+22	8	2	4	9106=IfcWall	2066286=IfcWallStandardCase	2066319=IfcWallStandardCase	396393=IfcSlab
+22	8	3	8	50014=IfcWallStandardCase	9106=IfcWall	52699=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	49948=IfcWallStandardCase	2066286=IfcWallStandardCase	2066319=IfcWallStandardCase
+22	8	4	4	50014=IfcWallStandardCase	52699=IfcWallStandardCase	22761=IfcWall	49948=IfcWallStandardCase
+22	8	5	4	50014=IfcWallStandardCase	52699=IfcWallStandardCase	22761=IfcWall	49948=IfcWallStandardCase
+23	1	1	2	6855=IfcSlab	13533=IfcWallStandardCase
+23	1	2	1	13533=IfcWallStandardCase
+23	1	3	4	21635=IfcWallStandardCase	52164=IfcWallStandardCase	13533=IfcWallStandardCase	16909=IfcSlab
+23	1	4	2	21635=IfcWallStandardCase	52164=IfcWallStandardCase
+23	1	5	2	21635=IfcWallStandardCase	52164=IfcWallStandardCase
+23	2	1	1	6855=IfcSlab
+23	2	3	1	16909=IfcSlab
+23	3	1	3	8035=IfcBeam	1170=IfcColumn	6855=IfcSlab
+23	3	2	2	8035=IfcBeam	1170=IfcColumn
+23	3	3	5	1170=IfcColumn	24980=IfcBeam	25098=IfcBeam	16909=IfcSlab	17673=IfcColumn
+23	3	4	1	17673=IfcColumn
+23	3	5	1	17673=IfcColumn
+23	4	1	1	6855=IfcSlab
+23	4	3	1	16909=IfcSlab
+23	5	1	1	6855=IfcSlab
+23	5	2	2	2066220=IfcWallStandardCase	396393=IfcSlab
+23	5	3	2	16909=IfcSlab	2066220=IfcWallStandardCase
+23	6	1	3	5120=IfcBeam	1132=IfcColumn	6855=IfcSlab
+23	6	2	4	5120=IfcBeam	1132=IfcColumn	2066220=IfcWallStandardCase	396393=IfcSlab
+23	6	3	5	1132=IfcColumn	23346=IfcBeam	16909=IfcSlab	17635=IfcColumn	2066220=IfcWallStandardCase
+23	6	4	1	17635=IfcColumn
+23	6	5	1	17635=IfcColumn
+23	7	1	1	6855=IfcSlab
+23	7	2	2	2066187=IfcWallStandardCase	396393=IfcSlab
+23	7	3	3	52956=IfcWallStandardCase	16909=IfcSlab	2066187=IfcWallStandardCase
+23	7	4	1	52956=IfcWallStandardCase
+23	7	5	1	52956=IfcWallStandardCase
+23	8	1	2	9106=IfcWall	6855=IfcSlab
+23	8	2	3	9106=IfcWall	2066286=IfcWallStandardCase	396393=IfcSlab
+23	8	3	5	9106=IfcWall	52699=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2066286=IfcWallStandardCase
+23	8	4	2	52699=IfcWallStandardCase	22761=IfcWall
+23	8	5	2	52699=IfcWallStandardCase	22761=IfcWall
+24	1	1	3	8274=IfcBeam	6855=IfcSlab	13533=IfcWallStandardCase
+24	1	2	1	13533=IfcWallStandardCase
+24	1	3	7	50971=IfcWallStandardCase	51079=IfcWallStandardCase	21635=IfcWallStandardCase	13533=IfcWallStandardCase	25181=IfcBeam	16909=IfcSlab	49662=IfcWallStandardCase
+24	1	4	4	50971=IfcWallStandardCase	51079=IfcWallStandardCase	21635=IfcWallStandardCase	49662=IfcWallStandardCase
+24	1	5	4	50971=IfcWallStandardCase	51079=IfcWallStandardCase	21635=IfcWallStandardCase	49662=IfcWallStandardCase
+24	2	1	2	8274=IfcBeam	6855=IfcSlab
+24	2	3	2	25181=IfcBeam	16909=IfcSlab
+24	3	1	6	8035=IfcBeam	8203=IfcBeam	8239=IfcBeam	1257=IfcColumn	8274=IfcBeam	6855=IfcSlab
+24	3	2	3	8035=IfcBeam	8239=IfcBeam	1257=IfcColumn
+24	3	3	6	1257=IfcColumn	25098=IfcBeam	25145=IfcBeam	25181=IfcBeam	16909=IfcSlab	17749=IfcColumn
+24	3	4	1	17749=IfcColumn
+24	3	5	1	17749=IfcColumn
+24	4	1	2	8203=IfcBeam	6855=IfcSlab
+24	4	3	2	25145=IfcBeam	16909=IfcSlab
+24	5	1	1	6855=IfcSlab
+24	5	2	2	2066220=IfcWallStandardCase	396393=IfcSlab
+24	5	3	2	16909=IfcSlab	2066220=IfcWallStandardCase
+24	6	1	2	5120=IfcBeam	6855=IfcSlab
+24	6	2	3	5120=IfcBeam	2066220=IfcWallStandardCase	396393=IfcSlab
+24	6	3	3	23346=IfcBeam	16909=IfcSlab	2066220=IfcWallStandardCase
+24	7	1	1	6855=IfcSlab
+24	7	2	3	2066187=IfcWallStandardCase	2066253=IfcWallStandardCase	396393=IfcSlab
+24	7	3	6	51286=IfcWallStandardCase	52956=IfcWallStandardCase	53821=IfcWallStandardCase	16909=IfcSlab	2066187=IfcWallStandardCase	2066253=IfcWallStandardCase
+24	7	4	4	51286=IfcWallStandardCase	52956=IfcWallStandardCase	53821=IfcWallStandardCase	121816=IfcBuildingElementProxy
+24	7	5	3	51286=IfcWallStandardCase	52956=IfcWallStandardCase	53821=IfcWallStandardCase
+24	8	1	2	9106=IfcWall	6855=IfcSlab
+24	8	2	5	9106=IfcWall	2066022=IfcWallStandardCase	2066253=IfcWallStandardCase	2066286=IfcWallStandardCase	396393=IfcSlab
+24	8	3	9	9106=IfcWall	50366=IfcWallStandardCase	51286=IfcWallStandardCase	52699=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2066022=IfcWallStandardCase	2066253=IfcWallStandardCase	2066286=IfcWallStandardCase
+24	8	4	4	50366=IfcWallStandardCase	51286=IfcWallStandardCase	52699=IfcWallStandardCase	22761=IfcWall
+24	8	5	4	50366=IfcWallStandardCase	51286=IfcWallStandardCase	52699=IfcWallStandardCase	22761=IfcWall
+25	1	1	4	8274=IfcBeam	6855=IfcSlab	13533=IfcWallStandardCase	13597=IfcWallStandardCase
+25	1	2	2	13533=IfcWallStandardCase	13597=IfcWallStandardCase
+25	1	3	7	20692=IfcSlab	50971=IfcWallStandardCase	21635=IfcWallStandardCase	13533=IfcWallStandardCase	13597=IfcWallStandardCase	25181=IfcBeam	16909=IfcSlab
+25	1	4	3	50971=IfcWallStandardCase	21635=IfcWallStandardCase	92576=IfcBuildingElementProxy
+25	1	5	2	50971=IfcWallStandardCase	21635=IfcWallStandardCase
+25	1	6	1	21635=IfcWallStandardCase
+25	2	1	2	8274=IfcBeam	6855=IfcSlab
+25	2	3	2	20692=IfcSlab	25181=IfcBeam
+25	3	1	5	8203=IfcBeam	8239=IfcBeam	1257=IfcColumn	8274=IfcBeam	6855=IfcSlab
+25	3	2	2	8239=IfcBeam	1257=IfcColumn
+25	3	3	5	1257=IfcColumn	20692=IfcSlab	25145=IfcBeam	25181=IfcBeam	17749=IfcColumn
+25	3	4	1	17749=IfcColumn
+25	3	5	1	17749=IfcColumn
+25	4	1	2	8203=IfcBeam	6855=IfcSlab
+25	4	3	3	20692=IfcSlab	25145=IfcBeam	16909=IfcSlab
+25	5	1	2	8203=IfcBeam	6855=IfcSlab
+25	5	2	3	2066154=IfcWallStandardCase	2066220=IfcWallStandardCase	396393=IfcSlab
+25	5	3	5	20692=IfcSlab	25145=IfcBeam	16909=IfcSlab	2066154=IfcWallStandardCase	2066220=IfcWallStandardCase
+25	6	1	5	5120=IfcBeam	8203=IfcBeam	1219=IfcColumn	8405=IfcBeam	6855=IfcSlab
+25	6	2	6	5120=IfcBeam	1219=IfcColumn	2066055=IfcWallStandardCase	2066154=IfcWallStandardCase	2066220=IfcWallStandardCase	396393=IfcSlab
+25	6	3	9	1219=IfcColumn	20692=IfcSlab	23346=IfcBeam	25145=IfcBeam	16909=IfcSlab	2066055=IfcWallStandardCase	2066154=IfcWallStandardCase	2066220=IfcWallStandardCase	2067707=IfcBuildingElementProxy
+25	7	1	2	8405=IfcBeam	6855=IfcSlab
+25	7	2	3	2066154=IfcWallStandardCase	2066187=IfcWallStandardCase	396393=IfcSlab
+25	7	3	8	50399=IfcWallStandardCase	50432=IfcWallStandardCase	52534=IfcWallStandardCase	52666=IfcWallStandardCase	53821=IfcWallStandardCase	16909=IfcSlab	2066154=IfcWallStandardCase	2066187=IfcWallStandardCase
+25	7	4	6	50399=IfcWallStandardCase	50432=IfcWallStandardCase	52534=IfcWallStandardCase	52666=IfcWallStandardCase	53821=IfcWallStandardCase	121816=IfcBuildingElementProxy
+25	7	5	5	50399=IfcWallStandardCase	50432=IfcWallStandardCase	52534=IfcWallStandardCase	52666=IfcWallStandardCase	53821=IfcWallStandardCase
+25	8	1	3	9106=IfcWall	8405=IfcBeam	6855=IfcSlab
+25	8	2	3	9106=IfcWall	2066022=IfcWallStandardCase	396393=IfcSlab
+25	8	3	7	9106=IfcWall	50366=IfcWallStandardCase	50399=IfcWallStandardCase	52666=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2066022=IfcWallStandardCase
+25	8	4	4	50366=IfcWallStandardCase	50399=IfcWallStandardCase	52666=IfcWallStandardCase	22761=IfcWall
+25	8	5	4	50366=IfcWallStandardCase	50399=IfcWallStandardCase	52666=IfcWallStandardCase	22761=IfcWall
+26	1	1	2	6855=IfcSlab	13597=IfcWallStandardCase
+26	1	2	1	13597=IfcWallStandardCase
+26	1	3	6	20692=IfcSlab	50971=IfcWallStandardCase	51121=IfcWallStandardCase	21635=IfcWallStandardCase	21678=IfcWallStandardCase	13597=IfcWallStandardCase
+26	1	4	5	50971=IfcWallStandardCase	51121=IfcWallStandardCase	21635=IfcWallStandardCase	21678=IfcWallStandardCase	92576=IfcBuildingElementProxy
+26	1	5	4	50971=IfcWallStandardCase	51121=IfcWallStandardCase	21635=IfcWallStandardCase	21678=IfcWallStandardCase
+26	1	6	3	21635=IfcWallStandardCase	21678=IfcWallStandardCase	28861=IfcWallStandardCase
+26	2	1	1	6855=IfcSlab
+26	2	3	1	20692=IfcSlab
+26	3	1	1	6855=IfcSlab
+26	3	3	1	20692=IfcSlab
+26	4	1	1	6855=IfcSlab
+26	4	3	1	20692=IfcSlab
+26	5	1	1	6855=IfcSlab
+26	5	2	1	396393=IfcSlab
+26	5	3	1	20692=IfcSlab
+26	6	1	2	5120=IfcBeam	6855=IfcSlab
+26	6	2	6	5120=IfcBeam	2065989=IfcWallStandardCase	2066055=IfcWallStandardCase	2066088=IfcWallStandardCase	2066121=IfcWallStandardCase	396393=IfcSlab
+26	6	3	8	20692=IfcSlab	23346=IfcBeam	16909=IfcSlab	2065989=IfcWallStandardCase	2066055=IfcWallStandardCase	2066088=IfcWallStandardCase	2066121=IfcWallStandardCase	2067707=IfcBuildingElementProxy
+26	7	1	1	6855=IfcSlab
+26	7	2	2	2065989=IfcWallStandardCase	396393=IfcSlab
+26	7	3	2	16909=IfcSlab	2065989=IfcWallStandardCase
+26	8	1	2	9106=IfcWall	6855=IfcSlab
+26	8	2	5	9106=IfcWall	2065956=IfcWallStandardCase	2065989=IfcWallStandardCase	2066022=IfcWallStandardCase	396393=IfcSlab
+26	8	3	7	9106=IfcWall	50366=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2065956=IfcWallStandardCase	2065989=IfcWallStandardCase	2066022=IfcWallStandardCase
+26	8	4	2	50366=IfcWallStandardCase	22761=IfcWall
+26	8	5	2	50366=IfcWallStandardCase	22761=IfcWall
+27	1	1	2	6855=IfcSlab	13597=IfcWallStandardCase
+27	1	2	1	13597=IfcWallStandardCase
+27	1	3	4	20692=IfcSlab	51121=IfcWallStandardCase	21678=IfcWallStandardCase	13597=IfcWallStandardCase
+27	1	4	2	51121=IfcWallStandardCase	21678=IfcWallStandardCase
+27	1	5	2	51121=IfcWallStandardCase	21678=IfcWallStandardCase
+27	1	6	2	21678=IfcWallStandardCase	28861=IfcWallStandardCase
+27	2	1	1	6855=IfcSlab
+27	2	3	1	20692=IfcSlab
+27	3	1	1	6855=IfcSlab
+27	3	3	1	20692=IfcSlab
+27	4	1	1	6855=IfcSlab
+27	4	3	1	20692=IfcSlab
+27	5	1	1	6855=IfcSlab
+27	5	2	1	396393=IfcSlab
+27	5	3	1	20692=IfcSlab
+27	6	1	3	5120=IfcBeam	1306=IfcColumn	6855=IfcSlab
+27	6	2	4	5120=IfcBeam	1306=IfcColumn	2066055=IfcWallStandardCase	396393=IfcSlab
+27	6	3	7	1306=IfcColumn	20692=IfcSlab	23346=IfcBeam	16909=IfcSlab	17787=IfcColumn	2066055=IfcWallStandardCase	2080247=IfcBuildingElementProxy
+27	6	4	1	17787=IfcColumn
+27	6	5	1	17787=IfcColumn
+27	7	1	1	6855=IfcSlab
+27	7	2	1	396393=IfcSlab
+27	7	3	1	16909=IfcSlab
+27	8	1	2	9106=IfcWall	6855=IfcSlab
+27	8	2	3	9106=IfcWall	2065956=IfcWallStandardCase	396393=IfcSlab
+27	8	3	5	9106=IfcWall	50366=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2065956=IfcWallStandardCase
+27	8	4	2	50366=IfcWallStandardCase	22761=IfcWall
+27	8	5	2	50366=IfcWallStandardCase	22761=IfcWall
+28	1	1	3	6855=IfcSlab	13597=IfcWallStandardCase	13755=IfcWall
+28	1	2	2	13597=IfcWallStandardCase	13755=IfcWall
+28	1	3	6	20692=IfcSlab	51121=IfcWallStandardCase	21678=IfcWallStandardCase	52435=IfcWallStandardCase	13597=IfcWallStandardCase	13755=IfcWall
+28	1	4	3	51121=IfcWallStandardCase	21678=IfcWallStandardCase	52435=IfcWallStandardCase
+28	1	5	3	51121=IfcWallStandardCase	21678=IfcWallStandardCase	52435=IfcWallStandardCase
+28	1	6	2	21678=IfcWallStandardCase	28861=IfcWallStandardCase
+28	2	1	1	6855=IfcSlab
+28	2	3	3	20692=IfcSlab	51121=IfcWallStandardCase	52435=IfcWallStandardCase
+28	2	4	2	51121=IfcWallStandardCase	52435=IfcWallStandardCase
+28	2	5	2	51121=IfcWallStandardCase	52435=IfcWallStandardCase
+28	3	1	1	6855=IfcSlab
+28	3	3	1	20692=IfcSlab
+28	4	1	1	6855=IfcSlab
+28	4	3	1	20692=IfcSlab
+28	5	1	1	6855=IfcSlab
+28	5	2	1	396393=IfcSlab
+28	5	3	1	20692=IfcSlab
+28	6	1	3	5120=IfcBeam	1306=IfcColumn	6855=IfcSlab
+28	6	2	8	5120=IfcBeam	1306=IfcColumn	2065864=IfcWallStandardCase	2065923=IfcWallStandardCase	2066055=IfcWallStandardCase	2066385=IfcWallStandardCase	2066418=IfcWallStandardCase	396393=IfcSlab
+28	6	3	11	1306=IfcColumn	20692=IfcSlab	23346=IfcBeam	16909=IfcSlab	17787=IfcColumn	2065831=IfcWallStandardCase	2065864=IfcWallStandardCase	2065923=IfcWallStandardCase	2066055=IfcWallStandardCase	2066385=IfcWallStandardCase	2066418=IfcWallStandardCase
+28	6	4	1	17787=IfcColumn
+28	6	5	1	17787=IfcColumn
+28	7	1	1	6855=IfcSlab
+28	7	2	2	2065831=IfcWallStandardCase	396393=IfcSlab
+28	7	3	2	16909=IfcSlab	2065831=IfcWallStandardCase
+28	8	1	2	9106=IfcWall	6855=IfcSlab
+28	8	2	5	9106=IfcWall	2065712=IfcWallStandardCase	2065831=IfcWallStandardCase	2065956=IfcWallStandardCase	396393=IfcSlab
+28	8	3	7	9106=IfcWall	50366=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2065712=IfcWallStandardCase	2065831=IfcWallStandardCase	2065956=IfcWallStandardCase
+28	8	4	2	50366=IfcWallStandardCase	22761=IfcWall
+28	8	5	2	50366=IfcWallStandardCase	22761=IfcWall
+29	1	1	2	6855=IfcSlab	13755=IfcWall
+29	1	2	1	13755=IfcWall
+29	1	3	3	20692=IfcSlab	52435=IfcWallStandardCase	13755=IfcWall
+29	1	4	1	52435=IfcWallStandardCase
+29	1	5	1	52435=IfcWallStandardCase
+29	2	1	1	6855=IfcSlab
+29	2	3	2	20692=IfcSlab	52435=IfcWallStandardCase
+29	2	4	1	52435=IfcWallStandardCase
+29	2	5	1	52435=IfcWallStandardCase
+29	3	1	1	6855=IfcSlab
+29	3	3	1	20692=IfcSlab
+29	4	1	1	6855=IfcSlab
+29	4	3	1	20692=IfcSlab
+29	5	1	1	6855=IfcSlab
+29	5	2	1	396393=IfcSlab
+29	5	3	1	20692=IfcSlab
+29	6	1	2	5120=IfcBeam	6855=IfcSlab
+29	6	2	3	5120=IfcBeam	2065923=IfcWallStandardCase	396393=IfcSlab
+29	6	3	4	20692=IfcSlab	23346=IfcBeam	16909=IfcSlab	2065923=IfcWallStandardCase
+29	7	1	1	6855=IfcSlab
+29	7	2	1	396393=IfcSlab
+29	7	3	1	16909=IfcSlab
+29	8	1	2	9106=IfcWall	6855=IfcSlab
+29	8	2	3	9106=IfcWall	2065712=IfcWallStandardCase	396393=IfcSlab
+29	8	3	5	9106=IfcWall	50366=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2065712=IfcWallStandardCase
+29	8	4	2	50366=IfcWallStandardCase	22761=IfcWall
+29	8	5	2	50366=IfcWallStandardCase	22761=IfcWall
+30	1	1	2	6855=IfcSlab	13755=IfcWall
+30	1	2	1	13755=IfcWall
+30	1	3	5	20692=IfcSlab	51484=IfcWallStandardCase	52435=IfcWallStandardCase	13755=IfcWall	48967=IfcWallStandardCase
+30	1	4	3	51484=IfcWallStandardCase	52435=IfcWallStandardCase	48967=IfcWallStandardCase
+30	1	5	3	51484=IfcWallStandardCase	52435=IfcWallStandardCase	48967=IfcWallStandardCase
+30	2	1	1	6855=IfcSlab
+30	2	3	4	20692=IfcSlab	51484=IfcWallStandardCase	52435=IfcWallStandardCase	48967=IfcWallStandardCase
+30	2	4	3	51484=IfcWallStandardCase	52435=IfcWallStandardCase	48967=IfcWallStandardCase
+30	2	5	3	51484=IfcWallStandardCase	52435=IfcWallStandardCase	48967=IfcWallStandardCase
+30	3	1	1	6855=IfcSlab
+30	3	3	3	20692=IfcSlab	51484=IfcWallStandardCase	48967=IfcWallStandardCase
+30	3	4	2	51484=IfcWallStandardCase	48967=IfcWallStandardCase
+30	3	5	2	51484=IfcWallStandardCase	48967=IfcWallStandardCase
+30	4	1	1	6855=IfcSlab
+30	4	3	4	20692=IfcSlab	51484=IfcWallStandardCase	51517=IfcWallStandardCase	48967=IfcWallStandardCase
+30	4	4	3	51484=IfcWallStandardCase	51517=IfcWallStandardCase	48967=IfcWallStandardCase
+30	4	5	3	51484=IfcWallStandardCase	51517=IfcWallStandardCase	48967=IfcWallStandardCase
+30	5	1	1	6855=IfcSlab
+30	5	2	1	396393=IfcSlab
+30	5	3	3	20692=IfcSlab	51484=IfcWallStandardCase	48967=IfcWallStandardCase
+30	5	4	2	51484=IfcWallStandardCase	48967=IfcWallStandardCase
+30	5	5	2	51484=IfcWallStandardCase	48967=IfcWallStandardCase
+30	6	1	3	5120=IfcBeam	1356=IfcColumn	6855=IfcSlab
+30	6	2	4	5120=IfcBeam	1356=IfcColumn	2065923=IfcWallStandardCase	396393=IfcSlab
+30	6	3	7	1356=IfcColumn	20692=IfcSlab	50927=IfcWallStandardCase	51484=IfcWallStandardCase	23346=IfcBeam	16909=IfcSlab	2065923=IfcWallStandardCase
+30	6	4	2	50927=IfcWallStandardCase	51484=IfcWallStandardCase
+30	6	5	2	50927=IfcWallStandardCase	51484=IfcWallStandardCase
+30	7	1	1	6855=IfcSlab
+30	7	2	1	396393=IfcSlab
+30	7	3	1	16909=IfcSlab
+30	8	1	2	9106=IfcWall	6855=IfcSlab
+30	8	2	3	9106=IfcWall	2065712=IfcWallStandardCase	396393=IfcSlab
+30	8	3	5	9106=IfcWall	50366=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2065712=IfcWallStandardCase
+30	8	4	2	50366=IfcWallStandardCase	22761=IfcWall
+30	8	5	2	50366=IfcWallStandardCase	22761=IfcWall
+31	1	1	2	6855=IfcSlab	13755=IfcWall
+31	1	2	1	13755=IfcWall
+31	1	3	2	20692=IfcSlab	13755=IfcWall
+31	2	1	1	6855=IfcSlab
+31	2	3	1	20692=IfcSlab
+31	3	1	1	6855=IfcSlab
+31	3	3	1	20692=IfcSlab
+31	4	1	1	6855=IfcSlab
+31	4	3	2	20692=IfcSlab	51517=IfcWallStandardCase
+31	4	4	1	51517=IfcWallStandardCase
+31	4	5	1	51517=IfcWallStandardCase
+31	5	1	1	6855=IfcSlab
+31	5	2	1	396393=IfcSlab
+31	5	3	1	20692=IfcSlab
+31	6	1	2	5120=IfcBeam	6855=IfcSlab
+31	6	2	3	5120=IfcBeam	2065923=IfcWallStandardCase	396393=IfcSlab
+31	6	3	5	20692=IfcSlab	50927=IfcWallStandardCase	23346=IfcBeam	16909=IfcSlab	2065923=IfcWallStandardCase
+31	6	4	1	50927=IfcWallStandardCase
+31	6	5	1	50927=IfcWallStandardCase
+31	7	1	1	6855=IfcSlab
+31	7	2	1	396393=IfcSlab
+31	7	3	1	16909=IfcSlab
+31	8	1	2	9106=IfcWall	6855=IfcSlab
+31	8	2	3	9106=IfcWall	2065712=IfcWallStandardCase	396393=IfcSlab
+31	8	3	5	9106=IfcWall	50366=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2065712=IfcWallStandardCase
+31	8	4	2	50366=IfcWallStandardCase	22761=IfcWall
+31	8	5	2	50366=IfcWallStandardCase	22761=IfcWall
+32	1	1	2	6855=IfcSlab	13755=IfcWall
+32	1	2	1	13755=IfcWall
+32	1	3	2	20692=IfcSlab	13755=IfcWall
+32	2	1	1	6855=IfcSlab
+32	2	3	1	20692=IfcSlab
+32	3	1	1	6855=IfcSlab
+32	3	3	1	20692=IfcSlab
+32	4	1	1	6855=IfcSlab
+32	4	3	3	20692=IfcSlab	51517=IfcWallStandardCase	48879=IfcWallStandardCase
+32	4	4	2	51517=IfcWallStandardCase	48879=IfcWallStandardCase
+32	4	5	2	51517=IfcWallStandardCase	48879=IfcWallStandardCase
+32	5	1	1	6855=IfcSlab
+32	5	2	1	396393=IfcSlab
+32	5	3	4	20692=IfcSlab	51724=IfcWallStandardCase	48879=IfcWallStandardCase	49000=IfcWallStandardCase
+32	5	4	3	51724=IfcWallStandardCase	48879=IfcWallStandardCase	49000=IfcWallStandardCase
+32	5	5	3	51724=IfcWallStandardCase	48879=IfcWallStandardCase	49000=IfcWallStandardCase
+32	6	1	3	5120=IfcBeam	1405=IfcColumn	6855=IfcSlab
+32	6	2	4	5120=IfcBeam	1405=IfcColumn	2065923=IfcWallStandardCase	396393=IfcSlab
+32	6	3	8	1405=IfcColumn	20692=IfcSlab	50927=IfcWallStandardCase	23346=IfcBeam	16909=IfcSlab	17863=IfcColumn	49000=IfcWallStandardCase	2065923=IfcWallStandardCase
+32	6	4	3	50927=IfcWallStandardCase	17863=IfcColumn	49000=IfcWallStandardCase
+32	6	5	3	50927=IfcWallStandardCase	17863=IfcColumn	49000=IfcWallStandardCase
+32	7	1	1	6855=IfcSlab
+32	7	2	1	396393=IfcSlab
+32	7	3	1	16909=IfcSlab
+32	8	1	2	9106=IfcWall	6855=IfcSlab
+32	8	2	3	9106=IfcWall	2065712=IfcWallStandardCase	396393=IfcSlab
+32	8	3	5	9106=IfcWall	50366=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2065712=IfcWallStandardCase
+32	8	4	2	50366=IfcWallStandardCase	22761=IfcWall
+32	8	5	2	50366=IfcWallStandardCase	22761=IfcWall
+33	1	1	2	6855=IfcSlab	13755=IfcWall
+33	1	2	1	13755=IfcWall
+33	1	3	2	20692=IfcSlab	13755=IfcWall
+33	2	1	1	6855=IfcSlab
+33	2	3	1	20692=IfcSlab
+33	3	1	1	6855=IfcSlab
+33	3	3	1	20692=IfcSlab
+33	4	1	1	6855=IfcSlab
+33	4	3	1	20692=IfcSlab
+33	5	1	1	6855=IfcSlab
+33	5	2	3	2065756=IfcWallStandardCase	2065798=IfcWallStandardCase	396393=IfcSlab
+33	5	3	5	20692=IfcSlab	51724=IfcWallStandardCase	51757=IfcWallStandardCase	2065756=IfcWallStandardCase	2065798=IfcWallStandardCase
+33	5	4	2	51724=IfcWallStandardCase	51757=IfcWallStandardCase
+33	5	5	2	51724=IfcWallStandardCase	51757=IfcWallStandardCase
+33	6	1	3	5120=IfcBeam	1405=IfcColumn	6855=IfcSlab
+33	6	2	5	5120=IfcBeam	1405=IfcColumn	2065798=IfcWallStandardCase	2065923=IfcWallStandardCase	396393=IfcSlab
+33	6	3	9	1405=IfcColumn	20692=IfcSlab	50927=IfcWallStandardCase	51757=IfcWallStandardCase	23346=IfcBeam	16909=IfcSlab	17863=IfcColumn	2065798=IfcWallStandardCase	2065923=IfcWallStandardCase
+33	6	4	4	50927=IfcWallStandardCase	51757=IfcWallStandardCase	17863=IfcColumn	114919=IfcBuildingElementProxy
+33	6	5	3	50927=IfcWallStandardCase	51757=IfcWallStandardCase	17863=IfcColumn
+33	7	1	1	6855=IfcSlab
+33	7	2	1	396393=IfcSlab
+33	7	3	4	51823=IfcWallStandardCase	51856=IfcWallStandardCase	51889=IfcWallStandardCase	16909=IfcSlab
+33	7	4	3	51823=IfcWallStandardCase	51856=IfcWallStandardCase	51889=IfcWallStandardCase
+33	7	5	3	51823=IfcWallStandardCase	51856=IfcWallStandardCase	51889=IfcWallStandardCase
+33	8	1	2	9106=IfcWall	6855=IfcSlab
+33	8	2	3	9106=IfcWall	2065712=IfcWallStandardCase	396393=IfcSlab
+33	8	3	8	9106=IfcWall	50366=IfcWallStandardCase	51790=IfcWallStandardCase	51823=IfcWallStandardCase	51856=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2065712=IfcWallStandardCase
+33	8	4	5	50366=IfcWallStandardCase	51790=IfcWallStandardCase	51823=IfcWallStandardCase	51856=IfcWallStandardCase	22761=IfcWall
+33	8	5	5	50366=IfcWallStandardCase	51790=IfcWallStandardCase	51823=IfcWallStandardCase	51856=IfcWallStandardCase	22761=IfcWall
+34	1	1	2	6855=IfcSlab	13755=IfcWall
+34	1	2	1	13755=IfcWall
+34	1	3	2	20692=IfcSlab	13755=IfcWall
+34	2	1	1	6855=IfcSlab
+34	2	3	1	20692=IfcSlab
+34	3	1	1	6855=IfcSlab
+34	3	3	1	20692=IfcSlab
+34	4	1	1	6855=IfcSlab
+34	4	3	1	20692=IfcSlab
+34	5	1	1	6855=IfcSlab
+34	5	2	2	2065756=IfcWallStandardCase	396393=IfcSlab
+34	5	3	2	20692=IfcSlab	2065756=IfcWallStandardCase
+34	6	1	2	5120=IfcBeam	6855=IfcSlab
+34	6	2	2	5120=IfcBeam	396393=IfcSlab
+34	6	3	4	20692=IfcSlab	50927=IfcWallStandardCase	23346=IfcBeam	16909=IfcSlab
+34	6	4	1	50927=IfcWallStandardCase
+34	6	5	1	50927=IfcWallStandardCase
+34	7	1	1	6855=IfcSlab
+34	7	2	1	396393=IfcSlab
+34	7	3	1	16909=IfcSlab
+34	8	1	2	9106=IfcWall	6855=IfcSlab
+34	8	2	3	9106=IfcWall	2065712=IfcWallStandardCase	396393=IfcSlab
+34	8	3	5	9106=IfcWall	51790=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2065712=IfcWallStandardCase
+34	8	4	2	51790=IfcWallStandardCase	22761=IfcWall
+34	8	5	2	51790=IfcWallStandardCase	22761=IfcWall
+35	1	1	3	8440=IfcBeam	6855=IfcSlab	13755=IfcWall
+35	1	2	1	13755=IfcWall
+35	1	3	4	20692=IfcSlab	13755=IfcWall	25216=IfcBeam	16909=IfcSlab
+35	2	1	2	8440=IfcBeam	6855=IfcSlab
+35	2	3	3	20692=IfcSlab	25216=IfcBeam	16909=IfcSlab
+35	3	1	3	8440=IfcBeam	10688=IfcBeam	6855=IfcSlab
+35	3	2	1	10688=IfcBeam
+35	3	3	5	20692=IfcSlab	25216=IfcBeam	26009=IfcBeam	16909=IfcSlab	17939=IfcColumn
+35	3	4	1	17939=IfcColumn
+35	3	5	1	17939=IfcColumn
+35	3	6	1	38643=IfcColumn
+35	4	1	2	8440=IfcBeam	6855=IfcSlab
+35	4	3	3	20692=IfcSlab	25216=IfcBeam	16909=IfcSlab
+35	5	1	2	8440=IfcBeam	6855=IfcSlab
+35	5	2	2	2065756=IfcWallStandardCase	396393=IfcSlab
+35	5	3	4	20692=IfcSlab	25216=IfcBeam	16909=IfcSlab	2065756=IfcWallStandardCase
+35	6	1	5	5120=IfcBeam	5361=IfcBeam	8440=IfcBeam	1454=IfcColumn	6855=IfcSlab
+35	6	2	4	5120=IfcBeam	5361=IfcBeam	1454=IfcColumn	396393=IfcSlab
+35	6	3	7	1454=IfcColumn	20692=IfcSlab	50927=IfcWallStandardCase	23346=IfcBeam	25216=IfcBeam	25544=IfcBeam	16909=IfcSlab
+35	6	4	1	50927=IfcWallStandardCase
+35	6	5	1	50927=IfcWallStandardCase
+35	6	6	1	38605=IfcColumn
+35	7	1	2	8440=IfcBeam	6855=IfcSlab
+35	7	2	1	396393=IfcSlab
+35	7	3	1	16909=IfcSlab
+35	8	1	3	9106=IfcWall	8440=IfcBeam	6855=IfcSlab
+35	8	2	3	9106=IfcWall	2065712=IfcWallStandardCase	396393=IfcSlab
+35	8	3	5	9106=IfcWall	51790=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2065712=IfcWallStandardCase
+35	8	4	2	51790=IfcWallStandardCase	22761=IfcWall
+35	8	5	2	51790=IfcWallStandardCase	22761=IfcWall
+36	1	1	2	6855=IfcSlab	13755=IfcWall
+36	1	2	1	13755=IfcWall
+36	1	3	2	13755=IfcWall	16909=IfcSlab
+36	2	1	1	6855=IfcSlab
+36	2	3	1	16909=IfcSlab
+36	3	1	2	10688=IfcBeam	6855=IfcSlab
+36	3	2	1	10688=IfcBeam
+36	3	3	2	26009=IfcBeam	16909=IfcSlab
+36	4	1	1	6855=IfcSlab
+36	4	3	1	16909=IfcSlab
+36	5	1	1	6855=IfcSlab
+36	5	2	2	2065756=IfcWallStandardCase	396393=IfcSlab
+36	5	3	2	16909=IfcSlab	2065756=IfcWallStandardCase
+36	6	1	2	5361=IfcBeam	6855=IfcSlab
+36	6	2	3	5361=IfcBeam	2065756=IfcWallStandardCase	396393=IfcSlab
+36	6	3	4	50927=IfcWallStandardCase	25544=IfcBeam	16909=IfcSlab	2065756=IfcWallStandardCase
+36	6	4	1	50927=IfcWallStandardCase
+36	6	5	1	50927=IfcWallStandardCase
+36	7	1	1	6855=IfcSlab
+36	7	2	1	396393=IfcSlab
+36	7	3	1	16909=IfcSlab
+36	8	1	2	9106=IfcWall	6855=IfcSlab
+36	8	2	3	9106=IfcWall	2065712=IfcWallStandardCase	396393=IfcSlab
+36	8	3	5	9106=IfcWall	51790=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2065712=IfcWallStandardCase
+36	8	4	2	51790=IfcWallStandardCase	22761=IfcWall
+36	8	5	2	51790=IfcWallStandardCase	22761=IfcWall
+37	1	1	2	6855=IfcSlab	13755=IfcWall
+37	1	2	1	13755=IfcWall
+37	1	3	2	13755=IfcWall	16909=IfcSlab
+37	2	1	1	6855=IfcSlab
+37	2	3	1	16909=IfcSlab
+37	3	1	2	10688=IfcBeam	6855=IfcSlab
+37	3	2	1	10688=IfcBeam
+37	3	3	2	26009=IfcBeam	16909=IfcSlab
+37	4	1	1	6855=IfcSlab
+37	4	3	1	16909=IfcSlab
+37	5	1	1	6855=IfcSlab
+37	5	3	3	51187=IfcWallStandardCase	51451=IfcWallStandardCase	16909=IfcSlab
+37	5	4	2	51187=IfcWallStandardCase	51451=IfcWallStandardCase
+37	5	5	2	51187=IfcWallStandardCase	51451=IfcWallStandardCase
+37	6	1	2	5361=IfcBeam	6855=IfcSlab
+37	6	2	3	5361=IfcBeam	2065756=IfcWallStandardCase	396393=IfcSlab
+37	6	3	6	50927=IfcWallStandardCase	51451=IfcWallStandardCase	25544=IfcBeam	16909=IfcSlab	131878=IfcWallStandardCase	2065756=IfcWallStandardCase
+37	6	4	4	50927=IfcWallStandardCase	51451=IfcWallStandardCase	111553=IfcBuildingElementProxy	131878=IfcWallStandardCase
+37	6	5	3	50927=IfcWallStandardCase	51451=IfcWallStandardCase	131878=IfcWallStandardCase
+37	7	1	1	6855=IfcSlab
+37	7	2	1	396393=IfcSlab
+37	7	3	1	16909=IfcSlab
+37	8	1	2	9106=IfcWall	6855=IfcSlab
+37	8	2	3	9106=IfcWall	2065712=IfcWallStandardCase	396393=IfcSlab
+37	8	3	5	9106=IfcWall	51790=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2065712=IfcWallStandardCase
+37	8	4	2	51790=IfcWallStandardCase	22761=IfcWall
+37	8	5	2	51790=IfcWallStandardCase	22761=IfcWall
+38	1	1	2	6855=IfcSlab	13755=IfcWall
+38	1	2	1	13755=IfcWall
+38	1	3	4	52468=IfcWallStandardCase	53590=IfcWallStandardCase	13755=IfcWall	16909=IfcSlab
+38	1	4	2	52468=IfcWallStandardCase	53590=IfcWallStandardCase
+38	1	5	2	52468=IfcWallStandardCase	53590=IfcWallStandardCase
+38	2	1	1	6855=IfcSlab
+38	2	3	2	52468=IfcWallStandardCase	16909=IfcSlab
+38	2	4	1	52468=IfcWallStandardCase
+38	2	5	1	52468=IfcWallStandardCase
+38	3	1	4	1581=IfcColumn	10605=IfcBeam	10688=IfcBeam	6855=IfcSlab
+38	3	2	3	1581=IfcColumn	10605=IfcBeam	10688=IfcBeam
+38	3	3	6	1581=IfcColumn	52468=IfcWallStandardCase	53062=IfcWallStandardCase	26009=IfcBeam	26088=IfcBeam	16909=IfcSlab
+38	3	4	2	52468=IfcWallStandardCase	53062=IfcWallStandardCase
+38	3	5	4	52468=IfcWallStandardCase	53062=IfcWallStandardCase	43461=IfcBeam	38719=IfcColumn
+38	3	6	1	43461=IfcBeam
+38	4	1	1	6855=IfcSlab
+38	4	3	2	53062=IfcWallStandardCase	16909=IfcSlab
+38	4	4	1	53062=IfcWallStandardCase
+38	4	5	2	53062=IfcWallStandardCase	43461=IfcBeam
+38	4	6	1	43461=IfcBeam
+38	5	1	1	6855=IfcSlab
+38	5	3	3	51187=IfcWallStandardCase	53062=IfcWallStandardCase	16909=IfcSlab
+38	5	4	2	51187=IfcWallStandardCase	53062=IfcWallStandardCase
+38	5	5	3	51187=IfcWallStandardCase	53062=IfcWallStandardCase	43461=IfcBeam
+38	5	6	1	43461=IfcBeam
+38	6	1	4	5361=IfcBeam	5452=IfcBeam	1542=IfcColumn	6855=IfcSlab
+38	6	2	5	5361=IfcBeam	5452=IfcBeam	1542=IfcColumn	2065756=IfcWallStandardCase	396393=IfcSlab
+38	6	3	8	1542=IfcColumn	25544=IfcBeam	25579=IfcBeam	25655=IfcBeam	16909=IfcSlab	17977=IfcColumn	131878=IfcWallStandardCase	2065756=IfcWallStandardCase
+38	6	4	3	17977=IfcColumn	121736=IfcBuildingElementProxy	131878=IfcWallStandardCase
+38	6	5	4	43461=IfcBeam	17977=IfcColumn	38681=IfcColumn	131878=IfcWallStandardCase
+38	6	6	1	43461=IfcBeam
+38	7	1	1	6855=IfcSlab
+38	7	2	1	396393=IfcSlab
+38	7	3	1	16909=IfcSlab
+38	8	1	2	9106=IfcWall	6855=IfcSlab
+38	8	2	3	9106=IfcWall	2065712=IfcWallStandardCase	396393=IfcSlab
+38	8	3	5	9106=IfcWall	51790=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2065712=IfcWallStandardCase
+38	8	4	2	51790=IfcWallStandardCase	22761=IfcWall
+38	8	5	2	51790=IfcWallStandardCase	22761=IfcWall
+39	1	1	2	6855=IfcSlab	13755=IfcWall
+39	1	2	1	13755=IfcWall
+39	1	3	3	53590=IfcWallStandardCase	13755=IfcWall	16909=IfcSlab
+39	1	4	1	53590=IfcWallStandardCase
+39	1	5	1	53590=IfcWallStandardCase
+39	2	1	1	6855=IfcSlab
+39	2	3	1	16909=IfcSlab
+39	3	1	2	10605=IfcBeam	6855=IfcSlab
+39	3	2	1	10605=IfcBeam
+39	3	3	2	26088=IfcBeam	16909=IfcSlab
+39	4	1	2	10605=IfcBeam	6855=IfcSlab
+39	4	2	1	10605=IfcBeam
+39	4	3	4	51220=IfcWallStandardCase	53095=IfcWallStandardCase	26088=IfcBeam	16909=IfcSlab
+39	4	4	3	51220=IfcWallStandardCase	53095=IfcWallStandardCase	111433=IfcBuildingElementProxy
+39	4	5	2	51220=IfcWallStandardCase	53095=IfcWallStandardCase
+39	5	1	1	6855=IfcSlab
+39	5	3	4	51187=IfcWallStandardCase	53095=IfcWallStandardCase	16909=IfcSlab	131845=IfcWallStandardCase
+39	5	4	4	51187=IfcWallStandardCase	53095=IfcWallStandardCase	111393=IfcBuildingElementProxy	131845=IfcWallStandardCase
+39	5	5	3	51187=IfcWallStandardCase	53095=IfcWallStandardCase	131845=IfcWallStandardCase
+39	6	1	2	5452=IfcBeam	6855=IfcSlab
+39	6	2	4	5452=IfcBeam	2065679=IfcWallStandardCase	2065756=IfcWallStandardCase	396393=IfcSlab
+39	6	3	6	25655=IfcBeam	16909=IfcSlab	49207=IfcWallStandardCase	131878=IfcWallStandardCase	2065679=IfcWallStandardCase	2065756=IfcWallStandardCase
+39	6	4	4	105100=IfcBuildingElementProxy	49207=IfcWallStandardCase	121736=IfcBuildingElementProxy	131878=IfcWallStandardCase
+39	6	5	2	49207=IfcWallStandardCase	131878=IfcWallStandardCase
+39	7	1	1	6855=IfcSlab
+39	7	2	2	2065679=IfcWallStandardCase	396393=IfcSlab
+39	7	3	2	16909=IfcSlab	2065679=IfcWallStandardCase
+39	8	1	2	9106=IfcWall	6855=IfcSlab
+39	8	2	4	9106=IfcWall	2065679=IfcWallStandardCase	2065712=IfcWallStandardCase	396393=IfcSlab
+39	8	3	6	9106=IfcWall	51790=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	2065679=IfcWallStandardCase	2065712=IfcWallStandardCase
+39	8	4	2	51790=IfcWallStandardCase	22761=IfcWall
+39	8	5	2	51790=IfcWallStandardCase	22761=IfcWall
+40	1	1	2	6855=IfcSlab	13755=IfcWall
+40	1	2	1	13755=IfcWall
+40	1	3	4	51154=IfcWallStandardCase	53590=IfcWallStandardCase	13755=IfcWall	16909=IfcSlab
+40	1	4	2	51154=IfcWallStandardCase	53590=IfcWallStandardCase
+40	1	5	2	51154=IfcWallStandardCase	53590=IfcWallStandardCase
+40	2	1	1	6855=IfcSlab
+40	2	3	2	51154=IfcWallStandardCase	16909=IfcSlab
+40	2	4	1	51154=IfcWallStandardCase
+40	2	5	1	51154=IfcWallStandardCase
+40	3	1	3	10568=IfcBeam	10605=IfcBeam	6855=IfcSlab
+40	3	2	2	10568=IfcBeam	10605=IfcBeam
+40	3	3	3	51154=IfcWallStandardCase	26088=IfcBeam	16909=IfcSlab
+40	3	4	1	51154=IfcWallStandardCase
+40	3	5	1	51154=IfcWallStandardCase
+40	4	1	4	10568=IfcBeam	10605=IfcBeam	1619=IfcColumn	6855=IfcSlab
+40	4	2	3	10568=IfcBeam	10605=IfcBeam	1619=IfcColumn
+40	4	3	6	1619=IfcColumn	51154=IfcWallStandardCase	51220=IfcWallStandardCase	26088=IfcBeam	26171=IfcBeam	16909=IfcSlab
+40	4	4	3	51154=IfcWallStandardCase	51220=IfcWallStandardCase	111433=IfcBuildingElementProxy
+40	4	5	4	51154=IfcWallStandardCase	51220=IfcWallStandardCase	43497=IfcBeam	38757=IfcColumn
+40	4	6	1	43497=IfcBeam
+40	5	1	1	6855=IfcSlab
+40	5	3	2	51154=IfcWallStandardCase	16909=IfcSlab
+40	5	4	2	51154=IfcWallStandardCase	105140=IfcBuildingElementProxy
+40	5	5	2	51154=IfcWallStandardCase	43497=IfcBeam
+40	5	6	1	43497=IfcBeam
+40	6	1	3	5452=IfcBeam	5702=IfcBeam	6855=IfcSlab
+40	6	2	2	5452=IfcBeam	5702=IfcBeam
+40	6	3	5	51154=IfcWallStandardCase	25655=IfcBeam	25800=IfcBeam	16909=IfcSlab	49207=IfcWallStandardCase
+40	6	4	4	51154=IfcWallStandardCase	105100=IfcBuildingElementProxy	105140=IfcBuildingElementProxy	49207=IfcWallStandardCase
+40	6	5	3	51154=IfcWallStandardCase	43497=IfcBeam	49207=IfcWallStandardCase
+40	6	6	1	43497=IfcBeam
+40	7	1	1	6855=IfcSlab
+40	7	3	1	16909=IfcSlab
+40	8	1	2	9106=IfcWall	6855=IfcSlab
+40	8	2	1	9106=IfcWall
+40	8	3	4	9106=IfcWall	51790=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab
+40	8	4	2	51790=IfcWallStandardCase	22761=IfcWall
+40	8	5	2	51790=IfcWallStandardCase	22761=IfcWall
+41	1	1	2	6855=IfcSlab	13755=IfcWall
+41	1	2	1	13755=IfcWall
+41	1	3	2	13755=IfcWall	16909=IfcSlab
+41	2	1	1	6855=IfcSlab
+41	2	3	1	16909=IfcSlab
+41	3	1	3	10437=IfcBeam	10568=IfcBeam	6855=IfcSlab
+41	3	2	2	10437=IfcBeam	10568=IfcBeam
+41	3	3	2	26208=IfcBeam	16909=IfcSlab
+41	4	1	4	10437=IfcBeam	10568=IfcBeam	1619=IfcColumn	6855=IfcSlab
+41	4	2	3	10437=IfcBeam	10568=IfcBeam	1619=IfcColumn
+41	4	3	4	1619=IfcColumn	26171=IfcBeam	26208=IfcBeam	16909=IfcSlab
+41	4	5	2	43497=IfcBeam	38757=IfcColumn
+41	4	6	1	43497=IfcBeam
+41	5	1	1	6855=IfcSlab
+41	5	3	1	16909=IfcSlab
+41	5	5	1	43497=IfcBeam
+41	5	6	1	43497=IfcBeam
+41	6	1	3	5538=IfcBeam	5702=IfcBeam	6855=IfcSlab
+41	6	2	2	5538=IfcBeam	5702=IfcBeam
+41	6	3	4	25800=IfcBeam	25837=IfcBeam	16909=IfcSlab	49207=IfcWallStandardCase
+41	6	4	1	49207=IfcWallStandardCase
+41	6	5	2	43497=IfcBeam	49207=IfcWallStandardCase
+41	6	6	1	43497=IfcBeam
+41	7	1	1	6855=IfcSlab
+41	7	3	1	16909=IfcSlab
+41	8	1	2	9106=IfcWall	6855=IfcSlab
+41	8	2	1	9106=IfcWall
+41	8	3	4	9106=IfcWall	51790=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab
+41	8	4	2	51790=IfcWallStandardCase	22761=IfcWall
+41	8	5	2	51790=IfcWallStandardCase	22761=IfcWall
+42	1	1	2	6855=IfcSlab	13755=IfcWall
+42	1	2	1	13755=IfcWall
+42	1	3	2	13755=IfcWall	16909=IfcSlab
+42	2	1	1	6855=IfcSlab
+42	2	3	1	16909=IfcSlab
+42	3	1	1	6855=IfcSlab
+42	3	3	1	16909=IfcSlab
+42	4	1	2	10437=IfcBeam	6855=IfcSlab
+42	4	2	1	10437=IfcBeam
+42	4	3	2	26208=IfcBeam	16909=IfcSlab
+42	5	1	1	6855=IfcSlab
+42	5	3	1	16909=IfcSlab
+42	6	1	2	5538=IfcBeam	6855=IfcSlab
+42	6	2	1	5538=IfcBeam
+42	6	3	3	25837=IfcBeam	16909=IfcSlab	49207=IfcWallStandardCase
+42	6	4	1	49207=IfcWallStandardCase
+42	6	5	1	49207=IfcWallStandardCase
+42	7	1	1	6855=IfcSlab
+42	7	3	1	16909=IfcSlab
+42	8	1	2	9106=IfcWall	6855=IfcSlab
+42	8	2	1	9106=IfcWall
+42	8	3	4	9106=IfcWall	51790=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab
+42	8	4	2	51790=IfcWallStandardCase	22761=IfcWall
+42	8	5	2	51790=IfcWallStandardCase	22761=IfcWall
+43	1	1	2	6855=IfcSlab	13755=IfcWall
+43	1	2	1	13755=IfcWall
+43	1	3	4	20620=IfcSlab	13755=IfcWall	26437=IfcBeam	16909=IfcSlab
+43	2	1	1	6855=IfcSlab
+43	2	3	3	20620=IfcSlab	26437=IfcBeam	16909=IfcSlab
+43	3	1	1	6855=IfcSlab
+43	3	3	3	20620=IfcSlab	26437=IfcBeam	16909=IfcSlab
+43	4	1	4	10158=IfcBeam	10304=IfcBeam	10437=IfcBeam	6855=IfcSlab
+43	4	2	3	10158=IfcBeam	10304=IfcBeam	10437=IfcBeam
+43	4	3	6	20620=IfcSlab	26208=IfcBeam	26243=IfcBeam	26280=IfcBeam	26437=IfcBeam	16909=IfcSlab
+43	4	5	1	38957=IfcColumn
+43	5	1	1	6855=IfcSlab
+43	5	3	3	20620=IfcSlab	26437=IfcBeam	16909=IfcSlab
+43	6	1	4	5538=IfcBeam	1789=IfcColumn	5854=IfcBeam	6855=IfcSlab
+43	6	2	3	5538=IfcBeam	1789=IfcColumn	5854=IfcBeam
+43	6	3	9	20620=IfcSlab	1789=IfcColumn	25837=IfcBeam	25974=IfcBeam	26402=IfcBeam	26437=IfcBeam	16909=IfcSlab	18215=IfcColumn	49207=IfcWallStandardCase
+43	6	4	2	18215=IfcColumn	49207=IfcWallStandardCase
+43	6	5	3	18215=IfcColumn	38919=IfcColumn	49207=IfcWallStandardCase
+43	6	6	2	18215=IfcColumn	38919=IfcColumn
+43	7	1	1	6855=IfcSlab
+43	7	3	3	20620=IfcSlab	26437=IfcBeam	16909=IfcSlab
+43	8	1	2	9106=IfcWall	6855=IfcSlab
+43	8	2	1	9106=IfcWall
+43	8	3	6	9106=IfcWall	20620=IfcSlab	51790=IfcWallStandardCase	22761=IfcWall	26437=IfcBeam	16909=IfcSlab
+43	8	4	2	51790=IfcWallStandardCase	22761=IfcWall
+43	8	5	2	51790=IfcWallStandardCase	22761=IfcWall
+43	8	6	1	22761=IfcWall
+44	1	1	2	6855=IfcSlab	13755=IfcWall
+44	1	2	1	13755=IfcWall
+44	1	3	3	20620=IfcSlab	53557=IfcWallStandardCase	13755=IfcWall
+44	1	4	1	53557=IfcWallStandardCase
+44	1	5	1	53557=IfcWallStandardCase
+44	2	1	1	6855=IfcSlab
+44	2	3	3	20620=IfcSlab	53425=IfcWallStandardCase	53557=IfcWallStandardCase
+44	2	4	2	53425=IfcWallStandardCase	53557=IfcWallStandardCase
+44	2	5	2	53425=IfcWallStandardCase	53557=IfcWallStandardCase
+44	3	1	1	6855=IfcSlab
+44	3	3	1	20620=IfcSlab
+44	4	1	2	10158=IfcBeam	6855=IfcSlab
+44	4	2	1	10158=IfcBeam
+44	4	3	2	20620=IfcSlab	26280=IfcBeam
+44	5	1	2	10158=IfcBeam	6855=IfcSlab
+44	5	2	1	10158=IfcBeam
+44	5	3	5	20620=IfcSlab	53128=IfcWallStandardCase	26280=IfcBeam	26402=IfcBeam	49066=IfcWallStandardCase
+44	5	4	2	53128=IfcWallStandardCase	49066=IfcWallStandardCase
+44	5	5	2	53128=IfcWallStandardCase	49066=IfcWallStandardCase
+44	6	1	1	6855=IfcSlab
+44	6	3	4	20620=IfcSlab	53128=IfcWallStandardCase	26402=IfcBeam	49207=IfcWallStandardCase
+44	6	4	2	53128=IfcWallStandardCase	49207=IfcWallStandardCase
+44	6	5	2	53128=IfcWallStandardCase	49207=IfcWallStandardCase
+44	7	1	1	6855=IfcSlab
+44	7	3	1	20620=IfcSlab
+44	8	1	2	9106=IfcWall	6855=IfcSlab
+44	8	2	1	9106=IfcWall
+44	8	3	4	9106=IfcWall	20620=IfcSlab	51790=IfcWallStandardCase	22761=IfcWall
+44	8	4	2	51790=IfcWallStandardCase	22761=IfcWall
+44	8	5	2	51790=IfcWallStandardCase	22761=IfcWall
+44	8	6	1	22761=IfcWall
+45	1	1	2	6855=IfcSlab	13755=IfcWall
+45	1	2	1	13755=IfcWall
+45	1	3	2	20620=IfcSlab	13755=IfcWall
+45	2	1	1	6855=IfcSlab
+45	2	3	2	20620=IfcSlab	53425=IfcWallStandardCase
+45	2	4	1	53425=IfcWallStandardCase
+45	2	5	1	53425=IfcWallStandardCase
+45	3	1	1	6855=IfcSlab
+45	3	3	1	20620=IfcSlab
+45	4	1	4	10158=IfcBeam	6855=IfcSlab	1865=IfcColumn	9998=IfcBeam
+45	4	2	3	10158=IfcBeam	1865=IfcColumn	9998=IfcBeam
+45	4	3	5	20620=IfcSlab	1865=IfcColumn	25507=IfcBeam	26280=IfcBeam	18291=IfcColumn
+45	4	4	1	18291=IfcColumn
+45	4	5	2	18291=IfcColumn	38995=IfcColumn
+45	4	6	2	18291=IfcColumn	38995=IfcColumn
+45	5	1	4	10158=IfcBeam	6855=IfcSlab	1865=IfcColumn	9998=IfcBeam
+45	5	2	3	10158=IfcBeam	1865=IfcColumn	9998=IfcBeam
+45	5	3	9	20620=IfcSlab	1865=IfcColumn	52798=IfcWallStandardCase	52831=IfcWallStandardCase	25507=IfcBeam	26280=IfcBeam	26402=IfcBeam	18291=IfcColumn	49066=IfcWallStandardCase
+45	5	4	4	52798=IfcWallStandardCase	52831=IfcWallStandardCase	18291=IfcColumn	49066=IfcWallStandardCase
+45	5	5	5	52798=IfcWallStandardCase	52831=IfcWallStandardCase	18291=IfcColumn	38995=IfcColumn	49066=IfcWallStandardCase
+45	5	6	2	18291=IfcColumn	38995=IfcColumn
+45	6	1	1	6855=IfcSlab
+45	6	3	2	20620=IfcSlab	49207=IfcWallStandardCase
+45	6	4	1	49207=IfcWallStandardCase
+45	6	5	1	49207=IfcWallStandardCase
+45	7	1	1	6855=IfcSlab
+45	7	3	1	20620=IfcSlab
+45	8	1	2	9106=IfcWall	6855=IfcSlab
+45	8	2	1	9106=IfcWall
+45	8	3	4	9106=IfcWall	20620=IfcSlab	51790=IfcWallStandardCase	22761=IfcWall
+45	8	4	2	51790=IfcWallStandardCase	22761=IfcWall
+45	8	5	2	51790=IfcWallStandardCase	22761=IfcWall
+45	8	6	1	22761=IfcWall
+46	1	1	2	6855=IfcSlab	13755=IfcWall
+46	1	2	1	13755=IfcWall
+46	1	3	2	20620=IfcSlab	13755=IfcWall
+46	2	1	1	6855=IfcSlab
+46	2	3	2	20620=IfcSlab	53425=IfcWallStandardCase
+46	2	4	1	53425=IfcWallStandardCase
+46	2	5	1	53425=IfcWallStandardCase
+46	3	1	1	6855=IfcSlab
+46	3	3	1	20620=IfcSlab
+46	4	1	7	6855=IfcSlab	1865=IfcColumn	9948=IfcBeam	9998=IfcBeam	396729=IfcStairFlight	2127637=IfcRailing	2128794=IfcRailing
+46	4	2	5	1865=IfcColumn	9948=IfcBeam	9998=IfcBeam	2127637=IfcRailing	2128794=IfcRailing
+46	4	3	5	20620=IfcSlab	1865=IfcColumn	53293=IfcWallStandardCase	25507=IfcBeam	18291=IfcColumn
+46	4	4	2	53293=IfcWallStandardCase	18291=IfcColumn
+46	4	5	3	53293=IfcWallStandardCase	18291=IfcColumn	38995=IfcColumn
+46	4	6	2	18291=IfcColumn	38995=IfcColumn
+46	5	1	4	6855=IfcSlab	1865=IfcColumn	9948=IfcBeam	9998=IfcBeam
+46	5	2	3	1865=IfcColumn	9948=IfcBeam	9998=IfcBeam
+46	5	3	7	20620=IfcSlab	1865=IfcColumn	52765=IfcWallStandardCase	52831=IfcWallStandardCase	53293=IfcWallStandardCase	25507=IfcBeam	18291=IfcColumn
+46	5	4	4	52765=IfcWallStandardCase	52831=IfcWallStandardCase	53293=IfcWallStandardCase	18291=IfcColumn
+46	5	5	5	52765=IfcWallStandardCase	52831=IfcWallStandardCase	53293=IfcWallStandardCase	18291=IfcColumn	38995=IfcColumn
+46	5	6	2	18291=IfcColumn	38995=IfcColumn
+46	6	1	1	6855=IfcSlab
+46	6	3	3	20620=IfcSlab	52765=IfcWallStandardCase	49207=IfcWallStandardCase
+46	6	4	2	52765=IfcWallStandardCase	49207=IfcWallStandardCase
+46	6	5	2	52765=IfcWallStandardCase	49207=IfcWallStandardCase
+46	7	1	1	6855=IfcSlab
+46	7	3	1	20620=IfcSlab
+46	8	1	2	9106=IfcWall	6855=IfcSlab
+46	8	2	1	9106=IfcWall
+46	8	3	6	9106=IfcWall	20620=IfcSlab	51790=IfcWallStandardCase	52395=IfcWallStandardCase	22761=IfcWall	48813=IfcWallStandardCase
+46	8	4	4	51790=IfcWallStandardCase	52395=IfcWallStandardCase	22761=IfcWall	48813=IfcWallStandardCase
+46	8	5	4	51790=IfcWallStandardCase	52395=IfcWallStandardCase	22761=IfcWall	48813=IfcWallStandardCase
+46	8	6	1	22761=IfcWall
+47	1	1	2	6855=IfcSlab	13755=IfcWall
+47	1	2	1	13755=IfcWall
+47	1	3	2	20620=IfcSlab	13755=IfcWall
+47	2	1	1	6855=IfcSlab
+47	2	3	2	20620=IfcSlab	53425=IfcWallStandardCase
+47	2	4	1	53425=IfcWallStandardCase
+47	2	5	1	53425=IfcWallStandardCase
+47	3	1	1	6855=IfcSlab
+47	3	2	2	395825=IfcSlab	2144987=IfcRailing
+47	3	3	1	20620=IfcSlab
+47	4	1	3	6855=IfcSlab	9948=IfcBeam	396729=IfcStairFlight
+47	4	2	7	9948=IfcBeam	395825=IfcSlab	396729=IfcStairFlight	2127637=IfcRailing	2128794=IfcRailing	2144987=IfcRailing	2147544=IfcRailing
+47	4	3	3	20620=IfcSlab	53293=IfcWallStandardCase	25507=IfcBeam
+47	4	4	1	53293=IfcWallStandardCase
+47	4	5	1	53293=IfcWallStandardCase
+47	5	1	2	6855=IfcSlab	9948=IfcBeam
+47	5	2	1	9948=IfcBeam
+47	5	3	3	20620=IfcSlab	53293=IfcWallStandardCase	25507=IfcBeam
+47	5	4	1	53293=IfcWallStandardCase
+47	5	5	1	53293=IfcWallStandardCase
+47	6	1	1	6855=IfcSlab
+47	6	3	2	20620=IfcSlab	49207=IfcWallStandardCase
+47	6	4	1	49207=IfcWallStandardCase
+47	6	5	1	49207=IfcWallStandardCase
+47	7	1	1	6855=IfcSlab
+47	7	3	1	20620=IfcSlab
+47	8	1	2	9106=IfcWall	6855=IfcSlab
+47	8	2	1	9106=IfcWall
+47	8	3	4	9106=IfcWall	20620=IfcSlab	52395=IfcWallStandardCase	22761=IfcWall
+47	8	4	2	52395=IfcWallStandardCase	22761=IfcWall
+47	8	5	2	52395=IfcWallStandardCase	22761=IfcWall
+47	8	6	1	22761=IfcWall
+48	1	1	2	6855=IfcSlab	13755=IfcWall
+48	1	2	1	13755=IfcWall
+48	1	3	3	20620=IfcSlab	13755=IfcWall	49033=IfcWallStandardCase
+48	1	4	1	49033=IfcWallStandardCase
+48	1	5	1	49033=IfcWallStandardCase
+48	2	1	1	6855=IfcSlab
+48	2	3	3	20620=IfcSlab	53425=IfcWallStandardCase	49033=IfcWallStandardCase
+48	2	4	2	53425=IfcWallStandardCase	49033=IfcWallStandardCase
+48	2	5	2	53425=IfcWallStandardCase	49033=IfcWallStandardCase
+48	3	1	2	6855=IfcSlab	396778=IfcWallStandardCase
+48	3	2	4	2065600=IfcWallStandardCase	395825=IfcSlab	396778=IfcWallStandardCase	2144987=IfcRailing
+48	3	3	5	20620=IfcSlab	53458=IfcWallStandardCase	49033=IfcWallStandardCase	2065600=IfcWallStandardCase	396778=IfcWallStandardCase
+48	3	4	2	53458=IfcWallStandardCase	49033=IfcWallStandardCase
+48	3	5	2	53458=IfcWallStandardCase	49033=IfcWallStandardCase
+48	4	1	4	6855=IfcSlab	1914=IfcColumn	9948=IfcBeam	396778=IfcWallStandardCase
+48	4	2	5	1914=IfcColumn	9948=IfcBeam	395825=IfcSlab	396778=IfcWallStandardCase	2147544=IfcRailing
+48	4	3	7	20620=IfcSlab	1914=IfcColumn	53293=IfcWallStandardCase	25507=IfcBeam	18329=IfcColumn	49033=IfcWallStandardCase	396778=IfcWallStandardCase
+48	4	4	3	53293=IfcWallStandardCase	18329=IfcColumn	49033=IfcWallStandardCase
+48	4	5	3	53293=IfcWallStandardCase	18329=IfcColumn	49033=IfcWallStandardCase
+48	4	6	1	18329=IfcColumn
+48	5	1	4	6855=IfcSlab	1914=IfcColumn	9948=IfcBeam	396778=IfcWallStandardCase
+48	5	2	6	1914=IfcColumn	9948=IfcBeam	2065072=IfcWallStandardCase	395825=IfcSlab	396778=IfcWallStandardCase	2147544=IfcRailing
+48	5	3	7	20620=IfcSlab	1914=IfcColumn	53293=IfcWallStandardCase	25507=IfcBeam	18329=IfcColumn	2065072=IfcWallStandardCase	396778=IfcWallStandardCase
+48	5	4	2	53293=IfcWallStandardCase	18329=IfcColumn
+48	5	5	2	53293=IfcWallStandardCase	18329=IfcColumn
+48	5	6	1	18329=IfcColumn
+48	6	1	1	6855=IfcSlab
+48	6	3	2	20620=IfcSlab	49207=IfcWallStandardCase
+48	6	4	1	49207=IfcWallStandardCase
+48	6	5	1	49207=IfcWallStandardCase
+48	7	1	1	6855=IfcSlab
+48	7	3	1	20620=IfcSlab
+48	8	1	2	9106=IfcWall	6855=IfcSlab
+48	8	2	1	9106=IfcWall
+48	8	3	4	9106=IfcWall	20620=IfcSlab	52395=IfcWallStandardCase	22761=IfcWall
+48	8	4	2	52395=IfcWallStandardCase	22761=IfcWall
+48	8	5	2	52395=IfcWallStandardCase	22761=IfcWall
+48	8	6	1	22761=IfcWall
+49	1	1	2	6855=IfcSlab	13755=IfcWall
+49	1	2	1	13755=IfcWall
+49	1	3	3	20620=IfcSlab	13755=IfcWall	49464=IfcWallStandardCase
+49	1	4	1	49464=IfcWallStandardCase
+49	1	5	1	49464=IfcWallStandardCase
+49	2	1	1	6855=IfcSlab
+49	2	3	2	20620=IfcSlab	49464=IfcWallStandardCase
+49	2	4	1	49464=IfcWallStandardCase
+49	2	5	1	49464=IfcWallStandardCase
+49	3	1	1	6855=IfcSlab
+49	3	2	5	2065534=IfcWallStandardCase	2065567=IfcWallStandardCase	2065600=IfcWallStandardCase	395825=IfcSlab	2144987=IfcRailing
+49	3	3	8	20620=IfcSlab	53623=IfcWallStandardCase	49464=IfcWallStandardCase	49807=IfcWallStandardCase	2065534=IfcWallStandardCase	2065567=IfcWallStandardCase	2065600=IfcWallStandardCase	2084030=IfcBuildingElementProxy
+49	3	4	3	53623=IfcWallStandardCase	49464=IfcWallStandardCase	49807=IfcWallStandardCase
+49	3	5	3	53623=IfcWallStandardCase	49464=IfcWallStandardCase	49807=IfcWallStandardCase
+49	4	1	2	6855=IfcSlab	9948=IfcBeam
+49	4	2	7	9948=IfcBeam	2065435=IfcWallStandardCase	2065468=IfcWallStandardCase	2065501=IfcWallStandardCase	2065534=IfcWallStandardCase	395825=IfcSlab	396844=IfcWallStandardCase
+49	4	3	9	20620=IfcSlab	53293=IfcWallStandardCase	25507=IfcBeam	49464=IfcWallStandardCase	2065435=IfcWallStandardCase	2065468=IfcWallStandardCase	2065501=IfcWallStandardCase	2065534=IfcWallStandardCase	396844=IfcWallStandardCase
+49	4	4	2	53293=IfcWallStandardCase	49464=IfcWallStandardCase
+49	4	5	2	53293=IfcWallStandardCase	49464=IfcWallStandardCase
+49	5	1	2	6855=IfcSlab	9948=IfcBeam
+49	5	2	4	9948=IfcBeam	2065072=IfcWallStandardCase	395825=IfcSlab	396844=IfcWallStandardCase
+49	5	3	6	20620=IfcSlab	53293=IfcWallStandardCase	25507=IfcBeam	49464=IfcWallStandardCase	2065072=IfcWallStandardCase	396844=IfcWallStandardCase
+49	5	4	2	53293=IfcWallStandardCase	49464=IfcWallStandardCase
+49	5	5	2	53293=IfcWallStandardCase	49464=IfcWallStandardCase
+49	6	1	1	6855=IfcSlab
+49	6	3	3	20620=IfcSlab	49207=IfcWallStandardCase	49464=IfcWallStandardCase
+49	6	4	2	49207=IfcWallStandardCase	49464=IfcWallStandardCase
+49	6	5	2	49207=IfcWallStandardCase	49464=IfcWallStandardCase
+49	7	1	1	6855=IfcSlab
+49	7	3	1	20620=IfcSlab
+49	8	1	2	9106=IfcWall	6855=IfcSlab
+49	8	2	1	9106=IfcWall
+49	8	3	4	9106=IfcWall	20620=IfcSlab	52395=IfcWallStandardCase	22761=IfcWall
+49	8	4	2	52395=IfcWallStandardCase	22761=IfcWall
+49	8	5	2	52395=IfcWallStandardCase	22761=IfcWall
+49	8	6	1	22761=IfcWall
+50	1	1	2	6855=IfcSlab	13755=IfcWall
+50	1	2	1	13755=IfcWall
+50	1	3	2	20620=IfcSlab	13755=IfcWall
+50	2	1	1	6855=IfcSlab
+50	2	3	1	20620=IfcSlab
+50	3	1	1	6855=IfcSlab
+50	3	2	6	2065105=IfcWallStandardCase	2065567=IfcWallStandardCase	2065633=IfcWallStandardCase	395825=IfcSlab	398716=IfcWallStandardCase	2144987=IfcRailing
+50	3	3	8	20620=IfcSlab	53392=IfcWallStandardCase	53623=IfcWallStandardCase	2065105=IfcWallStandardCase	2065567=IfcWallStandardCase	2065633=IfcWallStandardCase	2084070=IfcBuildingElementProxy	398716=IfcWallStandardCase
+50	3	4	2	53392=IfcWallStandardCase	53623=IfcWallStandardCase
+50	3	5	2	53392=IfcWallStandardCase	53623=IfcWallStandardCase
+50	4	1	2	6855=IfcSlab	9948=IfcBeam
+50	4	2	5	9948=IfcBeam	2065435=IfcWallStandardCase	395825=IfcSlab	396844=IfcWallStandardCase	398716=IfcWallStandardCase
+50	4	3	6	20620=IfcSlab	53392=IfcWallStandardCase	25507=IfcBeam	2065435=IfcWallStandardCase	396844=IfcWallStandardCase	398716=IfcWallStandardCase
+50	4	4	1	53392=IfcWallStandardCase
+50	4	5	1	53392=IfcWallStandardCase
+50	5	1	5	6855=IfcSlab	9948=IfcBeam	397961=IfcStairFlight	2130030=IfcRailing	2131346=IfcRailing
+50	5	2	8	9948=IfcBeam	2065072=IfcWallStandardCase	395825=IfcSlab	396844=IfcWallStandardCase	397961=IfcStairFlight	398716=IfcWallStandardCase	2130030=IfcRailing	2131346=IfcRailing
+50	5	3	6	20620=IfcSlab	53392=IfcWallStandardCase	25507=IfcBeam	2065072=IfcWallStandardCase	396844=IfcWallStandardCase	398716=IfcWallStandardCase
+50	5	4	1	53392=IfcWallStandardCase
+50	5	5	1	53392=IfcWallStandardCase
+50	6	1	1	6855=IfcSlab
+50	6	3	3	20620=IfcSlab	53392=IfcWallStandardCase	49207=IfcWallStandardCase
+50	6	4	2	53392=IfcWallStandardCase	49207=IfcWallStandardCase
+50	6	5	2	53392=IfcWallStandardCase	49207=IfcWallStandardCase
+50	7	1	1	6855=IfcSlab
+50	7	3	1	20620=IfcSlab
+50	8	1	2	9106=IfcWall	6855=IfcSlab
+50	8	2	1	9106=IfcWall
+50	8	3	4	9106=IfcWall	20620=IfcSlab	52395=IfcWallStandardCase	22761=IfcWall
+50	8	4	2	52395=IfcWallStandardCase	22761=IfcWall
+50	8	5	2	52395=IfcWallStandardCase	22761=IfcWall
+50	8	6	1	22761=IfcWall
+51	1	1	2	6855=IfcSlab	13755=IfcWall
+51	1	2	1	13755=IfcWall
+51	1	3	2	20620=IfcSlab	13755=IfcWall
+51	2	1	1	6855=IfcSlab
+51	2	3	1	20620=IfcSlab
+51	3	1	1	6855=IfcSlab
+51	3	2	4	2065105=IfcWallStandardCase	395825=IfcSlab	396877=IfcWallStandardCase	2144987=IfcRailing
+51	3	3	5	20620=IfcSlab	2065105=IfcWallStandardCase	2084110=IfcBuildingElementProxy	2084150=IfcBuildingElementProxy	396877=IfcWallStandardCase
+51	4	1	3	6855=IfcSlab	9861=IfcBeam	9948=IfcBeam
+51	4	2	3	9948=IfcBeam	395825=IfcSlab	396877=IfcWallStandardCase
+51	4	3	3	20620=IfcSlab	25507=IfcBeam	396877=IfcWallStandardCase
+51	5	1	3	6855=IfcSlab	9861=IfcBeam	9948=IfcBeam
+51	5	2	9	9948=IfcBeam	2065072=IfcWallStandardCase	395825=IfcSlab	396877=IfcWallStandardCase	397961=IfcStairFlight	2130030=IfcRailing	2131346=IfcRailing	2150298=IfcRailing	2150370=IfcRailing
+51	5	3	4	20620=IfcSlab	25507=IfcBeam	2065072=IfcWallStandardCase	396877=IfcWallStandardCase
+51	6	1	1	6855=IfcSlab
+51	6	3	2	20620=IfcSlab	49207=IfcWallStandardCase
+51	6	4	1	49207=IfcWallStandardCase
+51	6	5	1	49207=IfcWallStandardCase
+51	7	1	1	6855=IfcSlab
+51	7	3	1	20620=IfcSlab
+51	8	1	2	9106=IfcWall	6855=IfcSlab
+51	8	2	1	9106=IfcWall
+51	8	3	4	9106=IfcWall	20620=IfcSlab	52395=IfcWallStandardCase	22761=IfcWall
+51	8	4	2	52395=IfcWallStandardCase	22761=IfcWall
+51	8	5	2	52395=IfcWallStandardCase	22761=IfcWall
+51	8	6	1	22761=IfcWall
+52	1	1	2	6855=IfcSlab	13755=IfcWall
+52	1	2	1	13755=IfcWall
+52	1	3	3	20620=IfcSlab	53359=IfcWallStandardCase	13755=IfcWall
+52	1	4	1	53359=IfcWallStandardCase
+52	1	5	1	53359=IfcWallStandardCase
+52	2	1	1	6855=IfcSlab
+52	2	3	2	20620=IfcSlab	53359=IfcWallStandardCase
+52	2	4	2	53359=IfcWallStandardCase	122176=IfcBuildingElementProxy
+52	2	5	1	53359=IfcWallStandardCase
+52	3	1	1	6855=IfcSlab
+52	3	2	3	2065105=IfcWallStandardCase	395825=IfcSlab	2144987=IfcRailing
+52	3	3	5	20620=IfcSlab	53161=IfcWallStandardCase	53359=IfcWallStandardCase	2065105=IfcWallStandardCase	2084150=IfcBuildingElementProxy
+52	3	4	3	53161=IfcWallStandardCase	53359=IfcWallStandardCase	122176=IfcBuildingElementProxy
+52	3	5	2	53161=IfcWallStandardCase	53359=IfcWallStandardCase
+52	4	1	2	6855=IfcSlab	9861=IfcBeam
+52	4	2	1	395825=IfcSlab
+52	4	3	2	20620=IfcSlab	25507=IfcBeam
+52	5	1	2	6855=IfcSlab	9861=IfcBeam
+52	5	2	3	2065072=IfcWallStandardCase	395825=IfcSlab	2150298=IfcRailing
+52	5	3	3	20620=IfcSlab	25507=IfcBeam	2065072=IfcWallStandardCase
+52	6	1	1	6855=IfcSlab
+52	6	3	2	20620=IfcSlab	49207=IfcWallStandardCase
+52	6	4	1	49207=IfcWallStandardCase
+52	6	5	1	49207=IfcWallStandardCase
+52	7	1	1	6855=IfcSlab
+52	7	3	1	20620=IfcSlab
+52	8	1	2	9106=IfcWall	6855=IfcSlab
+52	8	2	1	9106=IfcWall
+52	8	3	4	9106=IfcWall	20620=IfcSlab	52395=IfcWallStandardCase	22761=IfcWall
+52	8	4	2	52395=IfcWallStandardCase	22761=IfcWall
+52	8	5	2	52395=IfcWallStandardCase	22761=IfcWall
+52	8	6	1	22761=IfcWall
+53	1	1	2	6855=IfcSlab	13755=IfcWall
+53	1	2	1	13755=IfcWall
+53	1	3	2	20620=IfcSlab	13755=IfcWall
+53	2	1	1	6855=IfcSlab
+53	2	3	1	20620=IfcSlab
+53	3	1	1	6855=IfcSlab
+53	3	2	3	2065105=IfcWallStandardCase	395825=IfcSlab	2144987=IfcRailing
+53	3	3	4	20620=IfcSlab	52501=IfcWallStandardCase	53161=IfcWallStandardCase	2065105=IfcWallStandardCase
+53	3	4	2	52501=IfcWallStandardCase	53161=IfcWallStandardCase
+53	3	5	2	52501=IfcWallStandardCase	53161=IfcWallStandardCase
+53	4	1	3	6855=IfcSlab	9861=IfcBeam	9913=IfcBeam
+53	4	2	2	9913=IfcBeam	395825=IfcSlab
+53	4	3	4	20620=IfcSlab	52501=IfcWallStandardCase	25507=IfcBeam	18405=IfcColumn
+53	4	4	3	52501=IfcWallStandardCase	18405=IfcColumn	122216=IfcBuildingElementProxy
+53	4	5	2	52501=IfcWallStandardCase	18405=IfcColumn
+53	4	6	1	18405=IfcColumn
+53	5	1	3	6855=IfcSlab	9861=IfcBeam	9913=IfcBeam
+53	5	2	4	9913=IfcBeam	2065072=IfcWallStandardCase	395825=IfcSlab	2150298=IfcRailing
+53	5	3	5	20620=IfcSlab	52501=IfcWallStandardCase	25507=IfcBeam	18405=IfcColumn	2065072=IfcWallStandardCase
+53	5	4	2	52501=IfcWallStandardCase	18405=IfcColumn
+53	5	5	2	52501=IfcWallStandardCase	18405=IfcColumn
+53	5	6	1	18405=IfcColumn
+53	6	1	1	6855=IfcSlab
+53	6	3	3	20620=IfcSlab	52501=IfcWallStandardCase	49207=IfcWallStandardCase
+53	6	4	3	52501=IfcWallStandardCase	49207=IfcWallStandardCase	127677=IfcBuildingElementProxy
+53	6	5	2	52501=IfcWallStandardCase	49207=IfcWallStandardCase
+53	7	1	1	6855=IfcSlab
+53	7	3	1	20620=IfcSlab
+53	8	1	2	9106=IfcWall	6855=IfcSlab
+53	8	2	1	9106=IfcWall
+53	8	3	4	9106=IfcWall	20620=IfcSlab	52395=IfcWallStandardCase	22761=IfcWall
+53	8	4	2	52395=IfcWallStandardCase	22761=IfcWall
+53	8	5	2	52395=IfcWallStandardCase	22761=IfcWall
+53	8	6	1	22761=IfcWall
+54	1	1	2	6855=IfcSlab	13755=IfcWall
+54	1	2	1	13755=IfcWall
+54	1	3	2	20620=IfcSlab	13755=IfcWall
+54	2	1	1	6855=IfcSlab
+54	2	3	1	20620=IfcSlab
+54	3	1	1	6855=IfcSlab
+54	3	2	6	2065105=IfcWallStandardCase	395825=IfcSlab	396976=IfcWallStandardCase	2144987=IfcRailing	1463918=IfcBuildingElementProxy	1619127=IfcBuildingElementProxy
+54	3	3	7	20620=IfcSlab	53161=IfcWallStandardCase	127709=IfcWallStandardCase	2065105=IfcWallStandardCase	396976=IfcWallStandardCase	1463918=IfcBuildingElementProxy	1619127=IfcBuildingElementProxy
+54	3	4	2	53161=IfcWallStandardCase	127709=IfcWallStandardCase
+54	3	5	2	53161=IfcWallStandardCase	127709=IfcWallStandardCase
+54	4	1	2	6855=IfcSlab	9913=IfcBeam
+54	4	2	10	9913=IfcBeam	47584=IfcStairFlight	47810=IfcStairFlight	2084518=IfcBuildingElementProxy	395825=IfcSlab	396811=IfcWallStandardCase	396943=IfcWallStandardCase	396976=IfcWallStandardCase	2104654=IfcRailing	1619127=IfcBuildingElementProxy
+54	4	3	20	20620=IfcSlab	53326=IfcWallStandardCase	25507=IfcBeam	47810=IfcStairFlight	48032=IfcStairFlight	48254=IfcStairFlight	18405=IfcColumn	48490=IfcSlab	48725=IfcSlab	49431=IfcWallStandardCase	127709=IfcWallStandardCase	131977=IfcWallStandardCase	2084190=IfcBuildingElementProxy	2084518=IfcBuildingElementProxy	396811=IfcWallStandardCase	396943=IfcWallStandardCase	396976=IfcWallStandardCase	2104654=IfcRailing	2106045=IfcRailing	1619127=IfcBuildingElementProxy
+54	4	4	8	53326=IfcWallStandardCase	18405=IfcColumn	49431=IfcWallStandardCase	122416=IfcBuildingElementProxy	127709=IfcWallStandardCase	131977=IfcWallStandardCase	2104654=IfcRailing	2106045=IfcRailing
+54	4	5	5	53326=IfcWallStandardCase	18405=IfcColumn	49431=IfcWallStandardCase	127709=IfcWallStandardCase	131977=IfcWallStandardCase
+54	4	6	1	18405=IfcColumn
+54	5	1	2	6855=IfcSlab	9913=IfcBeam
+54	5	2	7	9913=IfcBeam	2063308=IfcBuildingElementProxy	2084518=IfcBuildingElementProxy	395825=IfcSlab	396976=IfcWallStandardCase	2150298=IfcRailing	1908100=IfcBuildingElementProxy
+54	5	3	8	20620=IfcSlab	25507=IfcBeam	18405=IfcColumn	132043=IfcWallStandardCase	2063308=IfcBuildingElementProxy	2084518=IfcBuildingElementProxy	396976=IfcWallStandardCase	1908100=IfcBuildingElementProxy
+54	5	4	2	18405=IfcColumn	132043=IfcWallStandardCase
+54	5	5	2	18405=IfcColumn	132043=IfcWallStandardCase
+54	5	6	1	18405=IfcColumn
+54	6	1	1	6855=IfcSlab
+54	6	2	3	2063308=IfcBuildingElementProxy	395825=IfcSlab	1908100=IfcBuildingElementProxy
+54	6	3	5	20620=IfcSlab	49207=IfcWallStandardCase	132043=IfcWallStandardCase	2063308=IfcBuildingElementProxy	1908100=IfcBuildingElementProxy
+54	6	4	2	49207=IfcWallStandardCase	132043=IfcWallStandardCase
+54	6	5	2	49207=IfcWallStandardCase	132043=IfcWallStandardCase
+54	7	1	1	6855=IfcSlab
+54	7	3	1	20620=IfcSlab
+54	8	1	2	9106=IfcWall	6855=IfcSlab
+54	8	2	1	9106=IfcWall
+54	8	3	4	9106=IfcWall	20620=IfcSlab	52395=IfcWallStandardCase	22761=IfcWall
+54	8	4	2	52395=IfcWallStandardCase	22761=IfcWall
+54	8	5	2	52395=IfcWallStandardCase	22761=IfcWall
+54	8	6	1	22761=IfcWall
+55	1	1	2	6855=IfcSlab	13755=IfcWall
+55	1	2	1	13755=IfcWall
+55	1	3	2	20620=IfcSlab	13755=IfcWall
+55	2	1	1	6855=IfcSlab
+55	2	2	1	1463918=IfcBuildingElementProxy
+55	2	3	2	20620=IfcSlab	1463918=IfcBuildingElementProxy
+55	3	1	1	6855=IfcSlab
+55	3	2	4	395825=IfcSlab	1175963=IfcBuildingElementProxy	1463918=IfcBuildingElementProxy	1619127=IfcBuildingElementProxy
+55	3	3	9	50080=IfcWallStandardCase	20620=IfcSlab	53161=IfcWallStandardCase	49398=IfcWallStandardCase	131773=IfcWallStandardCase	131812=IfcWallStandardCase	1175963=IfcBuildingElementProxy	1463918=IfcBuildingElementProxy	1619127=IfcBuildingElementProxy
+55	3	4	6	50080=IfcWallStandardCase	53161=IfcWallStandardCase	49398=IfcWallStandardCase	122376=IfcBuildingElementProxy	131773=IfcWallStandardCase	131812=IfcWallStandardCase
+55	3	5	5	50080=IfcWallStandardCase	53161=IfcWallStandardCase	49398=IfcWallStandardCase	131773=IfcWallStandardCase	131812=IfcWallStandardCase
+55	4	1	2	6855=IfcSlab	9913=IfcBeam
+55	4	2	10	9913=IfcBeam	47584=IfcStairFlight	47810=IfcStairFlight	48374=IfcSlab	395825=IfcSlab	396811=IfcWallStandardCase	396910=IfcWallStandardCase	396943=IfcWallStandardCase	2104654=IfcRailing	1619127=IfcBuildingElementProxy
+55	4	3	16	20620=IfcSlab	52732=IfcWallStandardCase	53326=IfcWallStandardCase	25507=IfcBeam	48032=IfcStairFlight	48254=IfcStairFlight	48612=IfcSlab	49398=IfcWallStandardCase	49431=IfcWallStandardCase	131773=IfcWallStandardCase	132010=IfcWallStandardCase	396811=IfcWallStandardCase	396910=IfcWallStandardCase	396943=IfcWallStandardCase	2104654=IfcRailing	1619127=IfcBuildingElementProxy
+55	4	4	7	52732=IfcWallStandardCase	53326=IfcWallStandardCase	49398=IfcWallStandardCase	49431=IfcWallStandardCase	131773=IfcWallStandardCase	132010=IfcWallStandardCase	2104654=IfcRailing
+55	4	5	6	52732=IfcWallStandardCase	53326=IfcWallStandardCase	49398=IfcWallStandardCase	49431=IfcWallStandardCase	131773=IfcWallStandardCase	132010=IfcWallStandardCase
+55	5	1	2	6855=IfcSlab	9913=IfcBeam
+55	5	2	4	9913=IfcBeam	2063308=IfcBuildingElementProxy	395825=IfcSlab	1908100=IfcBuildingElementProxy
+55	5	3	11	20620=IfcSlab	50762=IfcWallStandardCase	50795=IfcWallStandardCase	50828=IfcWallStandardCase	52732=IfcWallStandardCase	52864=IfcWallStandardCase	25507=IfcBeam	132010=IfcWallStandardCase	2063308=IfcBuildingElementProxy	1620509=IfcBuildingElementProxy	1908100=IfcBuildingElementProxy
+55	5	4	8	50762=IfcWallStandardCase	50795=IfcWallStandardCase	50828=IfcWallStandardCase	52732=IfcWallStandardCase	52864=IfcWallStandardCase	53854=IfcWallStandardCase	121936=IfcBuildingElementProxy	132010=IfcWallStandardCase
+55	5	5	7	50762=IfcWallStandardCase	50795=IfcWallStandardCase	50828=IfcWallStandardCase	52732=IfcWallStandardCase	52864=IfcWallStandardCase	53854=IfcWallStandardCase	132010=IfcWallStandardCase
+55	6	1	1	6855=IfcSlab
+55	6	2	4	2063308=IfcBuildingElementProxy	395825=IfcSlab	1620509=IfcBuildingElementProxy	1908100=IfcBuildingElementProxy
+55	6	3	5	20620=IfcSlab	49207=IfcWallStandardCase	2063308=IfcBuildingElementProxy	1620509=IfcBuildingElementProxy	1908100=IfcBuildingElementProxy
+55	6	4	3	53854=IfcWallStandardCase	49207=IfcWallStandardCase	121936=IfcBuildingElementProxy
+55	6	5	2	53854=IfcWallStandardCase	49207=IfcWallStandardCase
+55	7	1	1	6855=IfcSlab
+55	7	3	1	20620=IfcSlab
+55	8	1	2	9106=IfcWall	6855=IfcSlab
+55	8	2	1	9106=IfcWall
+55	8	3	4	9106=IfcWall	20620=IfcSlab	52395=IfcWallStandardCase	22761=IfcWall
+55	8	4	2	52395=IfcWallStandardCase	22761=IfcWall
+55	8	5	2	52395=IfcWallStandardCase	22761=IfcWall
+55	8	6	1	22761=IfcWall
+56	1	1	2	6855=IfcSlab	13755=IfcWall
+56	1	2	1	13755=IfcWall
+56	1	3	2	20620=IfcSlab	13755=IfcWall
+56	2	1	1	6855=IfcSlab
+56	2	3	1	20620=IfcSlab
+56	3	1	1	6855=IfcSlab
+56	3	2	2	395825=IfcSlab	1175963=IfcBuildingElementProxy
+56	3	3	5	50080=IfcWallStandardCase	20620=IfcSlab	53161=IfcWallStandardCase	49981=IfcWallStandardCase	1175963=IfcBuildingElementProxy
+56	3	4	4	50080=IfcWallStandardCase	53161=IfcWallStandardCase	49981=IfcWallStandardCase	121976=IfcBuildingElementProxy
+56	3	5	3	50080=IfcWallStandardCase	53161=IfcWallStandardCase	49981=IfcWallStandardCase
+56	4	1	3	6855=IfcSlab	10865=IfcBeam	9913=IfcBeam
+56	4	2	3	10865=IfcBeam	9913=IfcBeam	395825=IfcSlab
+56	4	3	5	20620=IfcSlab	52732=IfcWallStandardCase	25507=IfcBeam	28057=IfcBeam	49981=IfcWallStandardCase
+56	4	4	2	52732=IfcWallStandardCase	49981=IfcWallStandardCase
+56	4	5	2	52732=IfcWallStandardCase	49981=IfcWallStandardCase
+56	5	1	4	6855=IfcSlab	10865=IfcBeam	9913=IfcBeam	11005=IfcBeam
+56	5	2	5	10865=IfcBeam	9913=IfcBeam	11005=IfcBeam	395825=IfcSlab	1620509=IfcBuildingElementProxy
+56	5	3	8	20620=IfcSlab	52732=IfcWallStandardCase	52864=IfcWallStandardCase	25507=IfcBeam	27920=IfcBeam	28057=IfcBeam	49497=IfcWallStandardCase	1620509=IfcBuildingElementProxy
+56	5	4	5	52732=IfcWallStandardCase	52864=IfcWallStandardCase	53854=IfcWallStandardCase	49497=IfcWallStandardCase	121936=IfcBuildingElementProxy
+56	5	5	4	52732=IfcWallStandardCase	52864=IfcWallStandardCase	53854=IfcWallStandardCase	49497=IfcWallStandardCase
+56	6	1	1	6855=IfcSlab
+56	6	2	2	395825=IfcSlab	1620509=IfcBuildingElementProxy
+56	6	3	3	20620=IfcSlab	49207=IfcWallStandardCase	1620509=IfcBuildingElementProxy
+56	6	4	3	53854=IfcWallStandardCase	49207=IfcWallStandardCase	121936=IfcBuildingElementProxy
+56	6	5	2	53854=IfcWallStandardCase	49207=IfcWallStandardCase
+56	7	1	1	6855=IfcSlab
+56	7	3	1	20620=IfcSlab
+56	8	1	2	9106=IfcWall	6855=IfcSlab
+56	8	2	1	9106=IfcWall
+56	8	3	4	9106=IfcWall	20620=IfcSlab	52395=IfcWallStandardCase	22761=IfcWall
+56	8	4	2	52395=IfcWallStandardCase	22761=IfcWall
+56	8	5	2	52395=IfcWallStandardCase	22761=IfcWall
+56	8	6	1	22761=IfcWall
+57	1	1	2	6855=IfcSlab	13755=IfcWall
+57	1	2	1	13755=IfcWall
+57	1	3	4	20620=IfcSlab	52923=IfcWallStandardCase	53227=IfcWallStandardCase	13755=IfcWall
+57	1	4	2	52923=IfcWallStandardCase	53227=IfcWallStandardCase
+57	1	5	2	52923=IfcWallStandardCase	53227=IfcWallStandardCase
+57	2	1	1	6855=IfcSlab
+57	2	3	4	20620=IfcSlab	52923=IfcWallStandardCase	53227=IfcWallStandardCase	49629=IfcWallStandardCase
+57	2	4	3	52923=IfcWallStandardCase	53227=IfcWallStandardCase	49629=IfcWallStandardCase
+57	2	5	3	52923=IfcWallStandardCase	53227=IfcWallStandardCase	49629=IfcWallStandardCase
+57	3	1	1	6855=IfcSlab
+57	3	2	3	395825=IfcSlab	1175963=IfcBuildingElementProxy	1175983=IfcBuildingElementProxy
+57	3	3	8	50080=IfcWallStandardCase	20620=IfcSlab	52923=IfcWallStandardCase	53161=IfcWallStandardCase	49629=IfcWallStandardCase	131911=IfcWallStandardCase	1175963=IfcBuildingElementProxy	1175983=IfcBuildingElementProxy
+57	3	4	5	50080=IfcWallStandardCase	52923=IfcWallStandardCase	53161=IfcWallStandardCase	49629=IfcWallStandardCase	131911=IfcWallStandardCase
+57	3	5	5	50080=IfcWallStandardCase	52923=IfcWallStandardCase	53161=IfcWallStandardCase	49629=IfcWallStandardCase	131911=IfcWallStandardCase
+57	4	1	3	6855=IfcSlab	10865=IfcBeam	11005=IfcBeam
+57	4	2	3	10865=IfcBeam	11005=IfcBeam	395825=IfcSlab
+57	4	3	5	20620=IfcSlab	28057=IfcBeam	49629=IfcWallStandardCase	131911=IfcWallStandardCase	131944=IfcWallStandardCase
+57	4	4	3	49629=IfcWallStandardCase	131911=IfcWallStandardCase	131944=IfcWallStandardCase
+57	4	5	3	49629=IfcWallStandardCase	131911=IfcWallStandardCase	131944=IfcWallStandardCase
+57	5	1	3	6855=IfcSlab	10865=IfcBeam	11005=IfcBeam
+57	5	2	4	10865=IfcBeam	11005=IfcBeam	395825=IfcSlab	1620509=IfcBuildingElementProxy
+57	5	3	6	20620=IfcSlab	52864=IfcWallStandardCase	27920=IfcBeam	28057=IfcBeam	49629=IfcWallStandardCase	1620509=IfcBuildingElementProxy
+57	5	4	2	52864=IfcWallStandardCase	49629=IfcWallStandardCase
+57	5	5	2	52864=IfcWallStandardCase	49629=IfcWallStandardCase
+57	6	1	1	6855=IfcSlab
+57	6	2	3	395825=IfcSlab	1620509=IfcBuildingElementProxy	1620531=IfcBuildingElementProxy
+57	6	3	4	20620=IfcSlab	49207=IfcWallStandardCase	1620509=IfcBuildingElementProxy	1620531=IfcBuildingElementProxy
+57	6	4	2	49207=IfcWallStandardCase	122016=IfcBuildingElementProxy
+57	6	5	1	49207=IfcWallStandardCase
+57	7	1	1	6855=IfcSlab
+57	7	3	1	20620=IfcSlab
+57	8	1	2	9106=IfcWall	6855=IfcSlab
+57	8	2	1	9106=IfcWall
+57	8	3	4	9106=IfcWall	20620=IfcSlab	52395=IfcWallStandardCase	22761=IfcWall
+57	8	4	2	52395=IfcWallStandardCase	22761=IfcWall
+57	8	5	2	52395=IfcWallStandardCase	22761=IfcWall
+57	8	6	1	22761=IfcWall
+58	1	1	2	6855=IfcSlab	13755=IfcWall
+58	1	2	1	13755=IfcWall
+58	1	3	4	20620=IfcSlab	53227=IfcWallStandardCase	13755=IfcWall	16909=IfcSlab
+58	1	4	1	53227=IfcWallStandardCase
+58	1	5	1	53227=IfcWallStandardCase
+58	2	1	1	6855=IfcSlab
+58	2	3	5	20620=IfcSlab	50729=IfcWallStandardCase	53227=IfcWallStandardCase	16909=IfcSlab	49629=IfcWallStandardCase
+58	2	4	4	50729=IfcWallStandardCase	53227=IfcWallStandardCase	49629=IfcWallStandardCase	131075=IfcBuildingElementProxy
+58	2	5	3	50729=IfcWallStandardCase	53227=IfcWallStandardCase	49629=IfcWallStandardCase
+58	3	1	3	6855=IfcSlab	10865=IfcBeam	11481=IfcBeam
+58	3	2	5	10865=IfcBeam	11481=IfcBeam	395825=IfcSlab	1175983=IfcBuildingElementProxy	1176003=IfcBuildingElementProxy
+58	3	3	8	20620=IfcSlab	53194=IfcWallStandardCase	25299=IfcBeam	16909=IfcSlab	28057=IfcBeam	49629=IfcWallStandardCase	1175983=IfcBuildingElementProxy	1176003=IfcBuildingElementProxy
+58	3	4	2	53194=IfcWallStandardCase	49629=IfcWallStandardCase
+58	3	5	2	53194=IfcWallStandardCase	49629=IfcWallStandardCase
+58	4	1	3	6855=IfcSlab	10865=IfcBeam	11481=IfcBeam
+58	4	2	3	10865=IfcBeam	11481=IfcBeam	395825=IfcSlab
+58	4	3	5	20620=IfcSlab	25299=IfcBeam	16909=IfcSlab	28057=IfcBeam	49629=IfcWallStandardCase
+58	4	4	1	49629=IfcWallStandardCase
+58	4	5	1	49629=IfcWallStandardCase
+58	5	1	4	2110=IfcColumn	6855=IfcSlab	11005=IfcBeam	11288=IfcBeam
+58	5	2	6	2110=IfcColumn	11005=IfcBeam	11288=IfcBeam	395825=IfcSlab	1620531=IfcBuildingElementProxy	1620553=IfcBuildingElementProxy
+58	5	3	11	2110=IfcColumn	20620=IfcSlab	51625=IfcWallStandardCase	16909=IfcSlab	27796=IfcBeam	27920=IfcBeam	18481=IfcColumn	49174=IfcWallStandardCase	49629=IfcWallStandardCase	1620531=IfcBuildingElementProxy	1620553=IfcBuildingElementProxy
+58	5	4	4	51625=IfcWallStandardCase	18481=IfcColumn	49174=IfcWallStandardCase	49629=IfcWallStandardCase
+58	5	5	4	51625=IfcWallStandardCase	18481=IfcColumn	49174=IfcWallStandardCase	49629=IfcWallStandardCase
+58	6	1	1	6855=IfcSlab
+58	6	2	3	395825=IfcSlab	1620531=IfcBuildingElementProxy	1620553=IfcBuildingElementProxy
+58	6	3	6	20620=IfcSlab	16909=IfcSlab	49174=IfcWallStandardCase	49207=IfcWallStandardCase	1620531=IfcBuildingElementProxy	1620553=IfcBuildingElementProxy
+58	6	4	2	49174=IfcWallStandardCase	49207=IfcWallStandardCase
+58	6	5	2	49174=IfcWallStandardCase	49207=IfcWallStandardCase
+58	7	1	1	6855=IfcSlab
+58	7	3	2	20620=IfcSlab	16909=IfcSlab
+58	8	1	2	9106=IfcWall	6855=IfcSlab
+58	8	2	1	9106=IfcWall
+58	8	3	5	9106=IfcWall	20620=IfcSlab	52395=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab
+58	8	4	3	52395=IfcWallStandardCase	22761=IfcWall	121696=IfcBuildingElementProxy
+58	8	5	2	52395=IfcWallStandardCase	22761=IfcWall
+58	8	6	1	22761=IfcWall
+59	1	1	2	6855=IfcSlab	13755=IfcWall
+59	1	2	1	13755=IfcWall
+59	1	3	3	53227=IfcWallStandardCase	13755=IfcWall	16909=IfcSlab
+59	1	4	1	53227=IfcWallStandardCase
+59	1	5	1	53227=IfcWallStandardCase
+59	2	1	1	6855=IfcSlab
+59	2	3	4	50729=IfcWallStandardCase	53227=IfcWallStandardCase	53260=IfcWallStandardCase	16909=IfcSlab
+59	2	4	4	50729=IfcWallStandardCase	53227=IfcWallStandardCase	53260=IfcWallStandardCase	131075=IfcBuildingElementProxy
+59	2	5	3	50729=IfcWallStandardCase	53227=IfcWallStandardCase	53260=IfcWallStandardCase
+59	3	1	2	6855=IfcSlab	11481=IfcBeam
+59	3	2	3	11481=IfcBeam	395825=IfcSlab	1176003=IfcBuildingElementProxy
+59	3	3	5	53194=IfcWallStandardCase	53260=IfcWallStandardCase	25299=IfcBeam	16909=IfcSlab	1176003=IfcBuildingElementProxy
+59	3	4	2	53194=IfcWallStandardCase	53260=IfcWallStandardCase
+59	3	5	2	53194=IfcWallStandardCase	53260=IfcWallStandardCase
+59	4	1	2	6855=IfcSlab	11481=IfcBeam
+59	4	2	2	11481=IfcBeam	395825=IfcSlab
+59	4	3	2	25299=IfcBeam	16909=IfcSlab
+59	5	1	4	2110=IfcColumn	6855=IfcSlab	11138=IfcBeam	11288=IfcBeam
+59	5	2	4	2110=IfcColumn	11138=IfcBeam	11288=IfcBeam	395825=IfcSlab
+59	5	3	5	2110=IfcColumn	16909=IfcSlab	27651=IfcBeam	27796=IfcBeam	18481=IfcColumn
+59	5	4	1	18481=IfcColumn
+59	5	5	1	18481=IfcColumn
+59	6	1	1	6855=IfcSlab
+59	6	2	2	395825=IfcSlab	1620553=IfcBuildingElementProxy
+59	6	3	3	16909=IfcSlab	49207=IfcWallStandardCase	1620553=IfcBuildingElementProxy
+59	6	4	1	49207=IfcWallStandardCase
+59	6	5	1	49207=IfcWallStandardCase
+59	7	1	1	6855=IfcSlab
+59	7	3	1	16909=IfcSlab
+59	8	1	2	9106=IfcWall	6855=IfcSlab
+59	8	2	1	9106=IfcWall
+59	8	3	4	9106=IfcWall	52395=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab
+59	8	4	2	52395=IfcWallStandardCase	22761=IfcWall
+59	8	5	2	52395=IfcWallStandardCase	22761=IfcWall
+60	1	1	2	6855=IfcSlab	13755=IfcWall
+60	1	2	1	13755=IfcWall
+60	1	3	3	53227=IfcWallStandardCase	13755=IfcWall	16909=IfcSlab
+60	1	4	1	53227=IfcWallStandardCase
+60	1	5	1	53227=IfcWallStandardCase
+60	2	1	1	6855=IfcSlab
+60	2	3	4	50729=IfcWallStandardCase	51988=IfcWallStandardCase	53227=IfcWallStandardCase	16909=IfcSlab
+60	2	4	4	50729=IfcWallStandardCase	51988=IfcWallStandardCase	53227=IfcWallStandardCase	121616=IfcBuildingElementProxy
+60	2	5	3	50729=IfcWallStandardCase	51988=IfcWallStandardCase	53227=IfcWallStandardCase
+60	3	1	2	6855=IfcSlab	11481=IfcBeam
+60	3	2	4	11481=IfcBeam	395825=IfcSlab	1176003=IfcBuildingElementProxy	1176023=IfcBuildingElementProxy
+60	3	3	4	25299=IfcBeam	16909=IfcSlab	1176003=IfcBuildingElementProxy	1176023=IfcBuildingElementProxy
+60	4	1	2	6855=IfcSlab	11481=IfcBeam
+60	4	2	2	11481=IfcBeam	395825=IfcSlab
+60	4	3	2	25299=IfcBeam	16909=IfcSlab
+60	5	1	2	6855=IfcSlab	11138=IfcBeam
+60	5	2	2	11138=IfcBeam	395825=IfcSlab
+60	5	3	2	16909=IfcSlab	27651=IfcBeam
+60	6	1	1	6855=IfcSlab
+60	6	2	3	395825=IfcSlab	1620553=IfcBuildingElementProxy	1620575=IfcBuildingElementProxy
+60	6	3	4	16909=IfcSlab	49207=IfcWallStandardCase	1620553=IfcBuildingElementProxy	1620575=IfcBuildingElementProxy
+60	6	4	1	49207=IfcWallStandardCase
+60	6	5	1	49207=IfcWallStandardCase
+60	7	1	1	6855=IfcSlab
+60	7	3	1	16909=IfcSlab
+60	8	1	2	9106=IfcWall	6855=IfcSlab
+60	8	2	1	9106=IfcWall
+60	8	3	5	9106=IfcWall	52054=IfcWallStandardCase	52395=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab
+60	8	4	3	52054=IfcWallStandardCase	52395=IfcWallStandardCase	22761=IfcWall
+60	8	5	3	52054=IfcWallStandardCase	52395=IfcWallStandardCase	22761=IfcWall
+61	1	1	2	6855=IfcSlab	13755=IfcWall
+61	1	2	1	13755=IfcWall
+61	1	3	3	51691=IfcWallStandardCase	13755=IfcWall	16909=IfcSlab
+61	1	4	1	51691=IfcWallStandardCase
+61	1	5	1	51691=IfcWallStandardCase
+61	2	1	1	6855=IfcSlab
+61	2	3	4	50729=IfcWallStandardCase	51691=IfcWallStandardCase	51988=IfcWallStandardCase	16909=IfcSlab
+61	2	4	4	50729=IfcWallStandardCase	51691=IfcWallStandardCase	51988=IfcWallStandardCase	121616=IfcBuildingElementProxy
+61	2	5	3	50729=IfcWallStandardCase	51691=IfcWallStandardCase	51988=IfcWallStandardCase
+61	3	1	3	2257=IfcColumn	6855=IfcSlab	11481=IfcBeam
+61	3	2	5	2257=IfcColumn	11481=IfcBeam	395825=IfcSlab	1176023=IfcBuildingElementProxy	1176043=IfcBuildingElementProxy
+61	3	3	5	2257=IfcColumn	25299=IfcBeam	16909=IfcSlab	1176023=IfcBuildingElementProxy	1176043=IfcBuildingElementProxy
+61	4	1	3	2257=IfcColumn	6855=IfcSlab	11481=IfcBeam
+61	4	2	3	2257=IfcColumn	11481=IfcBeam	395825=IfcSlab
+61	4	3	4	2257=IfcColumn	44329=IfcColumn	25299=IfcBeam	16909=IfcSlab
+61	4	4	1	44329=IfcColumn
+61	4	5	1	44329=IfcColumn
+61	5	1	4	6855=IfcSlab	11138=IfcBeam	11673=IfcBeam	11875=IfcBeam
+61	5	2	4	11138=IfcBeam	11673=IfcBeam	11875=IfcBeam	395825=IfcSlab
+61	5	3	5	44329=IfcColumn	16909=IfcSlab	27446=IfcBeam	27566=IfcBeam	27651=IfcBeam
+61	5	4	1	44329=IfcColumn
+61	5	5	1	44329=IfcColumn
+61	6	1	1	6855=IfcSlab
+61	6	2	3	395825=IfcSlab	1620575=IfcBuildingElementProxy	1620597=IfcBuildingElementProxy
+61	6	3	4	16909=IfcSlab	49207=IfcWallStandardCase	1620575=IfcBuildingElementProxy	1620597=IfcBuildingElementProxy
+61	6	4	1	49207=IfcWallStandardCase
+61	6	5	1	49207=IfcWallStandardCase
+61	7	1	1	6855=IfcSlab
+61	7	3	1	16909=IfcSlab
+61	8	1	3	9106=IfcWall	9171=IfcWallStandardCase	6855=IfcSlab
+61	8	2	2	9106=IfcWall	9171=IfcWallStandardCase
+61	8	3	8	9106=IfcWall	9171=IfcWallStandardCase	20820=IfcWallStandardCase	52054=IfcWallStandardCase	52098=IfcWallStandardCase	22761=IfcWall	16909=IfcSlab	49915=IfcWallStandardCase
+61	8	4	5	20820=IfcWallStandardCase	52054=IfcWallStandardCase	52098=IfcWallStandardCase	22761=IfcWall	49915=IfcWallStandardCase
+61	8	5	5	20820=IfcWallStandardCase	52054=IfcWallStandardCase	52098=IfcWallStandardCase	22761=IfcWall	49915=IfcWallStandardCase
+62	1	1	2	6855=IfcSlab	13755=IfcWall
+62	1	2	1	13755=IfcWall
+62	1	3	3	51691=IfcWallStandardCase	13755=IfcWall	16909=IfcSlab
+62	1	4	1	51691=IfcWallStandardCase
+62	1	5	1	51691=IfcWallStandardCase
+62	2	1	1	6855=IfcSlab
+62	2	3	3	50729=IfcWallStandardCase	51691=IfcWallStandardCase	16909=IfcSlab
+62	2	4	2	50729=IfcWallStandardCase	51691=IfcWallStandardCase
+62	2	5	2	50729=IfcWallStandardCase	51691=IfcWallStandardCase
+62	3	1	2	6855=IfcSlab	11481=IfcBeam
+62	3	2	4	11481=IfcBeam	395825=IfcSlab	1176043=IfcBuildingElementProxy	1176063=IfcBuildingElementProxy
+62	3	3	4	25299=IfcBeam	16909=IfcSlab	1176043=IfcBuildingElementProxy	1176063=IfcBuildingElementProxy
+62	4	1	2	6855=IfcSlab	11481=IfcBeam
+62	4	2	2	11481=IfcBeam	395825=IfcSlab
+62	4	3	2	25299=IfcBeam	16909=IfcSlab
+62	5	1	2	6855=IfcSlab	11875=IfcBeam
+62	5	2	2	11875=IfcBeam	395825=IfcSlab
+62	5	3	2	16909=IfcSlab	27446=IfcBeam
+62	6	1	1	6855=IfcSlab
+62	6	2	3	395825=IfcSlab	1620597=IfcBuildingElementProxy	1620619=IfcBuildingElementProxy
+62	6	3	4	16909=IfcSlab	49207=IfcWallStandardCase	1620597=IfcBuildingElementProxy	1620619=IfcBuildingElementProxy
+62	6	4	1	49207=IfcWallStandardCase
+62	6	5	1	49207=IfcWallStandardCase
+62	7	1	1	6855=IfcSlab
+62	7	3	1	16909=IfcSlab
+62	8	1	2	9171=IfcWallStandardCase	6855=IfcSlab
+62	8	2	1	9171=IfcWallStandardCase
+62	8	3	5	9171=IfcWallStandardCase	20820=IfcWallStandardCase	16909=IfcSlab	49108=IfcWallStandardCase	49915=IfcWallStandardCase
+62	8	4	3	20820=IfcWallStandardCase	49108=IfcWallStandardCase	49915=IfcWallStandardCase
+62	8	5	3	20820=IfcWallStandardCase	49108=IfcWallStandardCase	49915=IfcWallStandardCase
+63	1	1	2	6855=IfcSlab	13755=IfcWall
+63	1	2	1	13755=IfcWall
+63	1	3	3	51691=IfcWallStandardCase	13755=IfcWall	16909=IfcSlab
+63	1	4	1	51691=IfcWallStandardCase
+63	1	5	1	51691=IfcWallStandardCase
+63	2	1	1	6855=IfcSlab
+63	2	3	4	50729=IfcWallStandardCase	51691=IfcWallStandardCase	16909=IfcSlab	49266=IfcWallStandardCase
+63	2	4	3	50729=IfcWallStandardCase	51691=IfcWallStandardCase	49266=IfcWallStandardCase
+63	2	5	3	50729=IfcWallStandardCase	51691=IfcWallStandardCase	49266=IfcWallStandardCase
+63	3	1	3	2355=IfcColumn	6855=IfcSlab	11481=IfcBeam
+63	3	2	5	2355=IfcColumn	11481=IfcBeam	395825=IfcSlab	1176043=IfcBuildingElementProxy	1176063=IfcBuildingElementProxy
+63	3	3	6	2355=IfcColumn	25299=IfcBeam	16909=IfcSlab	49266=IfcWallStandardCase	1176043=IfcBuildingElementProxy	1176063=IfcBuildingElementProxy
+63	3	4	1	49266=IfcWallStandardCase
+63	3	5	1	49266=IfcWallStandardCase
+63	4	1	3	2355=IfcColumn	6855=IfcSlab	11481=IfcBeam
+63	4	2	3	2355=IfcColumn	11481=IfcBeam	395825=IfcSlab
+63	4	3	5	2355=IfcColumn	44291=IfcColumn	25299=IfcBeam	16909=IfcSlab	49266=IfcWallStandardCase
+63	4	4	2	44291=IfcColumn	49266=IfcWallStandardCase
+63	4	5	2	44291=IfcColumn	49266=IfcWallStandardCase
+63	5	1	4	2306=IfcColumn	6855=IfcSlab	11875=IfcBeam	12095=IfcBeam
+63	5	2	4	2306=IfcColumn	11875=IfcBeam	12095=IfcBeam	395825=IfcSlab
+63	5	3	8	2306=IfcColumn	44291=IfcColumn	16909=IfcSlab	27365=IfcBeam	27446=IfcBeam	18633=IfcColumn	49266=IfcWallStandardCase	49299=IfcWallStandardCase
+63	5	4	4	44291=IfcColumn	18633=IfcColumn	49266=IfcWallStandardCase	49299=IfcWallStandardCase
+63	5	5	4	44291=IfcColumn	18633=IfcColumn	49266=IfcWallStandardCase	49299=IfcWallStandardCase
+63	6	1	1	6855=IfcSlab
+63	6	2	3	395825=IfcSlab	1620597=IfcBuildingElementProxy	1620619=IfcBuildingElementProxy
+63	6	3	6	16909=IfcSlab	49207=IfcWallStandardCase	49299=IfcWallStandardCase	132076=IfcWallStandardCase	1620597=IfcBuildingElementProxy	1620619=IfcBuildingElementProxy
+63	6	4	4	66781=IfcBuildingElementProxy	49207=IfcWallStandardCase	49299=IfcWallStandardCase	132076=IfcWallStandardCase
+63	6	5	3	49207=IfcWallStandardCase	49299=IfcWallStandardCase	132076=IfcWallStandardCase
+63	7	1	1	6855=IfcSlab
+63	7	3	1	16909=IfcSlab
+63	8	1	3	9171=IfcWallStandardCase	9275=IfcWallStandardCase	6855=IfcSlab
+63	8	2	2	9171=IfcWallStandardCase	9275=IfcWallStandardCase
+63	8	3	6	9171=IfcWallStandardCase	9275=IfcWallStandardCase	20820=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab	49108=IfcWallStandardCase
+63	8	4	3	20820=IfcWallStandardCase	21355=IfcWall	49108=IfcWallStandardCase
+63	8	5	3	20820=IfcWallStandardCase	21355=IfcWall	49108=IfcWallStandardCase
+64	1	1	2	6855=IfcSlab	13755=IfcWall
+64	1	2	1	13755=IfcWall
+64	1	3	3	51691=IfcWallStandardCase	13755=IfcWall	16909=IfcSlab
+64	1	4	1	51691=IfcWallStandardCase
+64	1	5	1	51691=IfcWallStandardCase
+64	2	1	1	6855=IfcSlab
+64	2	3	6	50729=IfcWallStandardCase	51691=IfcWallStandardCase	16909=IfcSlab	49266=IfcWallStandardCase	49365=IfcWallStandardCase	132109=IfcWallStandardCase
+64	2	4	6	50729=IfcWallStandardCase	51691=IfcWallStandardCase	49266=IfcWallStandardCase	49365=IfcWallStandardCase	115265=IfcBuildingElementProxy	132109=IfcWallStandardCase
+64	2	5	5	50729=IfcWallStandardCase	51691=IfcWallStandardCase	49266=IfcWallStandardCase	49365=IfcWallStandardCase	132109=IfcWallStandardCase
+64	3	1	3	2355=IfcColumn	6855=IfcSlab	11481=IfcBeam
+64	3	2	5	2355=IfcColumn	11481=IfcBeam	395825=IfcSlab	1176063=IfcBuildingElementProxy	1176083=IfcBuildingElementProxy
+64	3	3	7	2355=IfcColumn	25299=IfcBeam	16909=IfcSlab	49266=IfcWallStandardCase	49365=IfcWallStandardCase	1176063=IfcBuildingElementProxy	1176083=IfcBuildingElementProxy
+64	3	4	2	49266=IfcWallStandardCase	49365=IfcWallStandardCase
+64	3	5	2	49266=IfcWallStandardCase	49365=IfcWallStandardCase
+64	4	1	3	2355=IfcColumn	6855=IfcSlab	11481=IfcBeam
+64	4	2	3	2355=IfcColumn	11481=IfcBeam	395825=IfcSlab
+64	4	3	6	2355=IfcColumn	44291=IfcColumn	25299=IfcBeam	16909=IfcSlab	49266=IfcWallStandardCase	49365=IfcWallStandardCase
+64	4	4	5	44291=IfcColumn	49266=IfcWallStandardCase	49365=IfcWallStandardCase	115145=IfcWindow	115185=IfcBuildingElementProxy
+64	4	5	3	44291=IfcColumn	49266=IfcWallStandardCase	49365=IfcWallStandardCase
+64	5	1	4	2306=IfcColumn	6855=IfcSlab	12095=IfcBeam	12224=IfcBeam
+64	5	2	4	2306=IfcColumn	12095=IfcBeam	12224=IfcBeam	395825=IfcSlab
+64	5	3	9	2306=IfcColumn	44291=IfcColumn	16909=IfcSlab	27251=IfcBeam	27365=IfcBeam	18633=IfcColumn	49266=IfcWallStandardCase	49332=IfcWallStandardCase	49365=IfcWallStandardCase
+64	5	4	7	44291=IfcColumn	18633=IfcColumn	49266=IfcWallStandardCase	49332=IfcWallStandardCase	49365=IfcWallStandardCase	115145=IfcWindow	115185=IfcBuildingElementProxy
+64	5	5	5	44291=IfcColumn	18633=IfcColumn	49266=IfcWallStandardCase	49332=IfcWallStandardCase	49365=IfcWallStandardCase
+64	6	1	1	6855=IfcSlab
+64	6	2	3	395825=IfcSlab	1620619=IfcBuildingElementProxy	1620641=IfcBuildingElementProxy
+64	6	3	5	16909=IfcSlab	49365=IfcWallStandardCase	132076=IfcWallStandardCase	1620619=IfcBuildingElementProxy	1620641=IfcBuildingElementProxy
+64	6	4	3	66781=IfcBuildingElementProxy	49365=IfcWallStandardCase	132076=IfcWallStandardCase
+64	6	5	2	49365=IfcWallStandardCase	132076=IfcWallStandardCase
+64	7	1	1	6855=IfcSlab
+64	7	3	1	16909=IfcSlab
+64	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+64	8	2	1	9275=IfcWallStandardCase
+64	8	3	5	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab	49108=IfcWallStandardCase	49141=IfcWallStandardCase
+64	8	4	3	21355=IfcWall	49108=IfcWallStandardCase	49141=IfcWallStandardCase
+64	8	5	3	21355=IfcWall	49108=IfcWallStandardCase	49141=IfcWallStandardCase
+65	1	1	2	6855=IfcSlab	13755=IfcWall
+65	1	2	1	13755=IfcWall
+65	1	3	4	51658=IfcWallStandardCase	51691=IfcWallStandardCase	13755=IfcWall	16909=IfcSlab
+65	1	4	2	51658=IfcWallStandardCase	51691=IfcWallStandardCase
+65	1	5	2	51658=IfcWallStandardCase	51691=IfcWallStandardCase
+65	2	1	1	6855=IfcSlab
+65	2	3	4	51658=IfcWallStandardCase	51691=IfcWallStandardCase	16909=IfcSlab	132109=IfcWallStandardCase
+65	2	4	3	51658=IfcWallStandardCase	51691=IfcWallStandardCase	132109=IfcWallStandardCase
+65	2	5	3	51658=IfcWallStandardCase	51691=IfcWallStandardCase	132109=IfcWallStandardCase
+65	3	1	2	6855=IfcSlab	11481=IfcBeam
+65	3	2	4	11481=IfcBeam	395825=IfcSlab	1176083=IfcBuildingElementProxy	1176103=IfcBuildingElementProxy
+65	3	3	4	25299=IfcBeam	16909=IfcSlab	1176083=IfcBuildingElementProxy	1176103=IfcBuildingElementProxy
+65	4	1	2	6855=IfcSlab	11481=IfcBeam
+65	4	2	2	11481=IfcBeam	395825=IfcSlab
+65	4	3	2	25299=IfcBeam	16909=IfcSlab
+65	5	1	2	6855=IfcSlab	12224=IfcBeam
+65	5	2	2	12224=IfcBeam	395825=IfcSlab
+65	5	3	2	16909=IfcSlab	27251=IfcBeam
+65	6	1	1	6855=IfcSlab
+65	6	2	3	395825=IfcSlab	1620641=IfcBuildingElementProxy	1620663=IfcBuildingElementProxy
+65	6	3	3	16909=IfcSlab	1620641=IfcBuildingElementProxy	1620663=IfcBuildingElementProxy
+65	7	1	1	6855=IfcSlab
+65	7	3	1	16909=IfcSlab
+65	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+65	8	2	1	9275=IfcWallStandardCase
+65	8	3	3	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab
+65	8	4	1	21355=IfcWall
+65	8	5	1	21355=IfcWall
+66	1	1	2	6855=IfcSlab	13755=IfcWall
+66	1	2	1	13755=IfcWall
+66	1	3	4	51658=IfcWallStandardCase	13755=IfcWall	16909=IfcSlab	48918=IfcWallStandardCase
+66	1	4	2	51658=IfcWallStandardCase	48918=IfcWallStandardCase
+66	1	5	2	51658=IfcWallStandardCase	48918=IfcWallStandardCase
+66	2	1	1	6855=IfcSlab
+66	2	3	4	51658=IfcWallStandardCase	16909=IfcSlab	48918=IfcWallStandardCase	132109=IfcWallStandardCase
+66	2	4	4	51658=IfcWallStandardCase	48918=IfcWallStandardCase	79655=IfcBuildingElementProxy	132109=IfcWallStandardCase
+66	2	5	3	51658=IfcWallStandardCase	48918=IfcWallStandardCase	132109=IfcWallStandardCase
+66	3	1	3	2453=IfcColumn	6855=IfcSlab	11481=IfcBeam
+66	3	2	4	2453=IfcColumn	11481=IfcBeam	395825=IfcSlab	1176103=IfcBuildingElementProxy
+66	3	3	4	2453=IfcColumn	25299=IfcBeam	16909=IfcSlab	1176103=IfcBuildingElementProxy
+66	4	1	3	2453=IfcColumn	6855=IfcSlab	11481=IfcBeam
+66	4	2	3	2453=IfcColumn	11481=IfcBeam	395825=IfcSlab
+66	4	3	4	2453=IfcColumn	44253=IfcColumn	25299=IfcBeam	16909=IfcSlab
+66	4	4	1	44253=IfcColumn
+66	4	5	1	44253=IfcColumn
+66	5	1	4	2404=IfcColumn	6855=IfcSlab	12224=IfcBeam	12372=IfcBeam
+66	5	2	4	2404=IfcColumn	12224=IfcBeam	12372=IfcBeam	395825=IfcSlab
+66	5	3	6	2404=IfcColumn	44253=IfcColumn	25455=IfcBeam	16909=IfcSlab	27251=IfcBeam	18709=IfcColumn
+66	5	4	2	44253=IfcColumn	18709=IfcColumn
+66	5	5	2	44253=IfcColumn	18709=IfcColumn
+66	6	1	1	6855=IfcSlab
+66	6	2	2	395825=IfcSlab	1620663=IfcBuildingElementProxy
+66	6	3	2	16909=IfcSlab	1620663=IfcBuildingElementProxy
+66	7	1	1	6855=IfcSlab
+66	7	3	1	16909=IfcSlab
+66	8	1	3	4153=IfcColumn	9275=IfcWallStandardCase	6855=IfcSlab
+66	8	2	2	4153=IfcColumn	9275=IfcWallStandardCase
+66	8	3	5	4153=IfcColumn	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab	19847=IfcColumn
+66	8	4	2	21355=IfcWall	19847=IfcColumn
+66	8	5	2	21355=IfcWall	19847=IfcColumn
+67	1	1	2	6855=IfcSlab	13755=IfcWall
+67	1	2	1	13755=IfcWall
+67	1	3	2	13755=IfcWall	16909=IfcSlab
+67	2	1	1	6855=IfcSlab
+67	2	3	1	16909=IfcSlab
+67	3	1	2	6855=IfcSlab	11481=IfcBeam
+67	3	2	4	11481=IfcBeam	395825=IfcSlab	1176103=IfcBuildingElementProxy	1176123=IfcBuildingElementProxy
+67	3	3	4	25299=IfcBeam	16909=IfcSlab	1176103=IfcBuildingElementProxy	1176123=IfcBuildingElementProxy
+67	4	1	2	6855=IfcSlab	11481=IfcBeam
+67	4	2	2	11481=IfcBeam	395825=IfcSlab
+67	4	3	2	25299=IfcBeam	16909=IfcSlab
+67	5	1	2	6855=IfcSlab	12372=IfcBeam
+67	5	2	2	12372=IfcBeam	395825=IfcSlab
+67	5	3	2	25455=IfcBeam	16909=IfcSlab
+67	6	1	1	6855=IfcSlab
+67	6	2	3	2063330=IfcBuildingElementProxy	395825=IfcSlab	1620663=IfcBuildingElementProxy
+67	6	3	3	16909=IfcSlab	2063330=IfcBuildingElementProxy	1620663=IfcBuildingElementProxy
+67	7	1	1	6855=IfcSlab
+67	7	3	1	16909=IfcSlab
+67	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+67	8	2	1	9275=IfcWallStandardCase
+67	8	3	3	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab
+67	8	4	1	21355=IfcWall
+67	8	5	1	21355=IfcWall
+68	1	1	2	6855=IfcSlab	13755=IfcWall
+68	1	2	1	13755=IfcWall
+68	1	3	2	13755=IfcWall	16909=IfcSlab
+68	2	1	1	6855=IfcSlab
+68	2	3	1	16909=IfcSlab
+68	3	1	2	6855=IfcSlab	11481=IfcBeam
+68	3	2	4	11481=IfcBeam	395825=IfcSlab	1176123=IfcBuildingElementProxy	1176143=IfcBuildingElementProxy
+68	3	3	4	25299=IfcBeam	16909=IfcSlab	1176123=IfcBuildingElementProxy	1176143=IfcBuildingElementProxy
+68	4	1	2	6855=IfcSlab	11481=IfcBeam
+68	4	2	7	11481=IfcBeam	132669=IfcStairFlight	395825=IfcSlab	397099=IfcWallStandardCase	397168=IfcWallStandardCase	2109173=IfcRailing	2112301=IfcRailing
+68	4	3	4	25299=IfcBeam	16909=IfcSlab	2109173=IfcRailing	2112301=IfcRailing
+68	5	1	2	6855=IfcSlab	12372=IfcBeam
+68	5	2	2	12372=IfcBeam	395825=IfcSlab
+68	5	3	2	25455=IfcBeam	16909=IfcSlab
+68	6	1	1	6855=IfcSlab
+68	6	2	3	2063330=IfcBuildingElementProxy	787468=IfcBuildingElementProxy	395825=IfcSlab
+68	6	3	3	16909=IfcSlab	2063330=IfcBuildingElementProxy	787468=IfcBuildingElementProxy
+68	7	1	1	6855=IfcSlab
+68	7	3	1	16909=IfcSlab
+68	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+68	8	2	1	9275=IfcWallStandardCase
+68	8	3	3	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab
+68	8	4	1	21355=IfcWall
+68	8	5	1	21355=IfcWall
+69	1	1	2	6855=IfcSlab	13755=IfcWall
+69	1	2	1	13755=IfcWall
+69	1	3	3	13755=IfcWall	16909=IfcSlab	122973=IfcWallStandardCase
+69	1	4	1	122973=IfcWallStandardCase
+69	1	5	1	122973=IfcWallStandardCase
+69	2	1	1	6855=IfcSlab
+69	2	3	2	16909=IfcSlab	122973=IfcWallStandardCase
+69	2	4	1	122973=IfcWallStandardCase
+69	2	5	1	122973=IfcWallStandardCase
+69	3	1	2	6855=IfcSlab	11481=IfcBeam
+69	3	2	3	11481=IfcBeam	395825=IfcSlab	1176143=IfcBuildingElementProxy
+69	3	3	4	25299=IfcBeam	16909=IfcSlab	18823=IfcColumn	1176143=IfcBuildingElementProxy
+69	3	4	1	18823=IfcColumn
+69	3	5	1	18823=IfcColumn
+69	4	1	2	6855=IfcSlab	11481=IfcBeam
+69	4	2	7	11481=IfcBeam	132669=IfcStairFlight	395825=IfcSlab	397099=IfcWallStandardCase	397168=IfcWallStandardCase	2109173=IfcRailing	2112301=IfcRailing
+69	4	3	10	44215=IfcColumn	25299=IfcBeam	16909=IfcSlab	18823=IfcColumn	132669=IfcStairFlight	397099=IfcWallStandardCase	2109173=IfcRailing	2112301=IfcRailing	2119172=IfcRailing	2119421=IfcRailing
+69	4	4	4	44215=IfcColumn	18823=IfcColumn	2119172=IfcRailing	2119421=IfcRailing
+69	4	5	2	44215=IfcColumn	18823=IfcColumn
+69	5	1	2	6855=IfcSlab	12372=IfcBeam
+69	5	2	3	12372=IfcBeam	395825=IfcSlab	397050=IfcWallStandardCase
+69	5	3	5	44215=IfcColumn	25455=IfcBeam	16909=IfcSlab	2119421=IfcRailing	2119736=IfcRailing
+69	5	4	3	44215=IfcColumn	2119421=IfcRailing	2119736=IfcRailing
+69	5	5	1	44215=IfcColumn
+69	6	1	1	6855=IfcSlab
+69	6	2	2	787468=IfcBuildingElementProxy	395825=IfcSlab
+69	6	3	2	16909=IfcSlab	787468=IfcBuildingElementProxy
+69	7	1	1	6855=IfcSlab
+69	7	3	1	16909=IfcSlab
+69	8	1	3	4192=IfcColumn	9275=IfcWallStandardCase	6855=IfcSlab
+69	8	2	2	4192=IfcColumn	9275=IfcWallStandardCase
+69	8	3	4	4192=IfcColumn	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab
+69	8	4	1	21355=IfcWall
+69	8	5	1	21355=IfcWall
+70	1	1	2	6855=IfcSlab	13755=IfcWall
+70	1	2	1	13755=IfcWall
+70	1	3	3	13755=IfcWall	16909=IfcSlab	122973=IfcWallStandardCase
+70	1	4	1	122973=IfcWallStandardCase
+70	1	5	1	122973=IfcWallStandardCase
+70	2	1	1	6855=IfcSlab
+70	2	2	1	1176143=IfcBuildingElementProxy
+70	2	3	2	16909=IfcSlab	122973=IfcWallStandardCase
+70	2	4	1	122973=IfcWallStandardCase
+70	2	5	1	122973=IfcWallStandardCase
+70	3	1	2	6855=IfcSlab	11481=IfcBeam
+70	3	2	4	11481=IfcBeam	395825=IfcSlab	1176143=IfcBuildingElementProxy	1176163=IfcBuildingElementProxy
+70	3	3	4	25299=IfcBeam	16909=IfcSlab	1176143=IfcBuildingElementProxy	1176163=IfcBuildingElementProxy
+70	4	1	2	6855=IfcSlab	11481=IfcBeam
+70	4	2	4	11481=IfcBeam	395825=IfcSlab	397099=IfcWallStandardCase	397201=IfcWallStandardCase
+70	4	3	10	25299=IfcBeam	16909=IfcSlab	132669=IfcStairFlight	133149=IfcStairFlight	133183=IfcSlab	397099=IfcWallStandardCase	397201=IfcWallStandardCase	2109173=IfcRailing	2112301=IfcRailing	2119172=IfcRailing
+70	4	4	1	2119172=IfcRailing
+70	5	1	2	6855=IfcSlab	12372=IfcBeam
+70	5	2	4	12372=IfcBeam	395825=IfcSlab	397050=IfcWallStandardCase	397201=IfcWallStandardCase
+70	5	3	5	25455=IfcBeam	16909=IfcSlab	397050=IfcWallStandardCase	397201=IfcWallStandardCase	2119736=IfcRailing
+70	5	4	1	2119736=IfcRailing
+70	6	1	1	6855=IfcSlab
+70	6	2	3	787468=IfcBuildingElementProxy	787489=IfcBuildingElementProxy	395825=IfcSlab
+70	6	3	3	16909=IfcSlab	787468=IfcBuildingElementProxy	787489=IfcBuildingElementProxy
+70	7	1	1	6855=IfcSlab
+70	7	3	1	16909=IfcSlab
+70	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+70	8	2	1	9275=IfcWallStandardCase
+70	8	3	3	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab
+70	8	4	1	21355=IfcWall
+70	8	5	1	21355=IfcWall
+71	1	1	2	6855=IfcSlab	13755=IfcWall
+71	1	2	1	13755=IfcWall
+71	1	3	3	13755=IfcWall	16909=IfcSlab	122973=IfcWallStandardCase
+71	1	4	1	122973=IfcWallStandardCase
+71	1	5	1	122973=IfcWallStandardCase
+71	2	1	1	6855=IfcSlab
+71	2	3	3	16909=IfcSlab	122973=IfcWallStandardCase	2118718=IfcRailing
+71	2	4	2	122973=IfcWallStandardCase	2118718=IfcRailing
+71	2	5	1	122973=IfcWallStandardCase
+71	3	1	3	2649=IfcColumn	6855=IfcSlab	11481=IfcBeam
+71	3	2	5	2649=IfcColumn	11481=IfcBeam	395825=IfcSlab	1176163=IfcBuildingElementProxy	1176183=IfcBuildingElementProxy
+71	3	3	6	2649=IfcColumn	25299=IfcBeam	16909=IfcSlab	2118857=IfcRailing	1176163=IfcBuildingElementProxy	1176183=IfcBuildingElementProxy
+71	3	4	1	2118857=IfcRailing
+71	4	1	3	2649=IfcColumn	6855=IfcSlab	11481=IfcBeam
+71	4	2	4	2649=IfcColumn	11481=IfcBeam	395825=IfcSlab	397099=IfcWallStandardCase
+71	4	3	10	2649=IfcColumn	44177=IfcColumn	25299=IfcBeam	16909=IfcSlab	133149=IfcStairFlight	397099=IfcWallStandardCase	2109173=IfcRailing	2112301=IfcRailing	2118857=IfcRailing	2119172=IfcRailing
+71	4	4	5	44177=IfcColumn	2109173=IfcRailing	2112301=IfcRailing	2118857=IfcRailing	2119172=IfcRailing
+71	4	5	1	44177=IfcColumn
+71	5	1	3	2600=IfcColumn	6855=IfcSlab	12372=IfcBeam
+71	5	2	4	2600=IfcColumn	12372=IfcBeam	395825=IfcSlab	397050=IfcWallStandardCase
+71	5	3	6	2600=IfcColumn	44177=IfcColumn	25455=IfcBeam	16909=IfcSlab	397050=IfcWallStandardCase	2119736=IfcRailing
+71	5	4	2	44177=IfcColumn	2119736=IfcRailing
+71	5	5	1	44177=IfcColumn
+71	6	1	1	6855=IfcSlab
+71	6	2	3	2064928=IfcBuildingElementProxy	787489=IfcBuildingElementProxy	395825=IfcSlab
+71	6	3	3	16909=IfcSlab	2064928=IfcBuildingElementProxy	787489=IfcBuildingElementProxy
+71	7	1	1	6855=IfcSlab
+71	7	3	1	16909=IfcSlab
+71	8	1	3	4230=IfcColumn	9275=IfcWallStandardCase	6855=IfcSlab
+71	8	2	2	4230=IfcColumn	9275=IfcWallStandardCase
+71	8	3	5	4230=IfcColumn	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab	19923=IfcColumn
+71	8	4	2	21355=IfcWall	19923=IfcColumn
+71	8	5	2	21355=IfcWall	19923=IfcColumn
+72	1	1	2	6855=IfcSlab	13755=IfcWall
+72	1	2	1	13755=IfcWall
+72	1	3	3	13755=IfcWall	16909=IfcSlab	122973=IfcWallStandardCase
+72	1	4	1	122973=IfcWallStandardCase
+72	1	5	1	122973=IfcWallStandardCase
+72	2	1	1	6855=IfcSlab
+72	2	3	2	16909=IfcSlab	122973=IfcWallStandardCase
+72	2	4	1	122973=IfcWallStandardCase
+72	2	5	1	122973=IfcWallStandardCase
+72	3	1	3	2649=IfcColumn	6855=IfcSlab	11481=IfcBeam
+72	3	2	4	2649=IfcColumn	11481=IfcBeam	395825=IfcSlab	1176183=IfcBuildingElementProxy
+72	3	3	4	2649=IfcColumn	25299=IfcBeam	16909=IfcSlab	1176183=IfcBuildingElementProxy
+72	4	1	3	2649=IfcColumn	6855=IfcSlab	11481=IfcBeam
+72	4	2	5	2649=IfcColumn	11481=IfcBeam	395825=IfcSlab	397009=IfcWallStandardCase	397099=IfcWallStandardCase
+72	4	3	7	2649=IfcColumn	44177=IfcColumn	25299=IfcBeam	16909=IfcSlab	28092=IfcBeam	397009=IfcWallStandardCase	397099=IfcWallStandardCase
+72	4	4	1	44177=IfcColumn
+72	4	5	1	44177=IfcColumn
+72	5	1	3	2600=IfcColumn	6855=IfcSlab	12372=IfcBeam
+72	5	2	5	2600=IfcColumn	12372=IfcBeam	395825=IfcSlab	397009=IfcWallStandardCase	397050=IfcWallStandardCase
+72	5	3	8	2600=IfcColumn	44177=IfcColumn	25455=IfcBeam	16909=IfcSlab	28092=IfcBeam	397009=IfcWallStandardCase	397050=IfcWallStandardCase	2122146=IfcRailing
+72	5	4	2	44177=IfcColumn	2122146=IfcRailing
+72	5	5	1	44177=IfcColumn
+72	6	1	1	6855=IfcSlab
+72	6	2	2	2064928=IfcBuildingElementProxy	395825=IfcSlab
+72	6	3	3	16909=IfcSlab	2064928=IfcBuildingElementProxy	2122146=IfcRailing
+72	6	4	1	2122146=IfcRailing
+72	7	1	1	6855=IfcSlab
+72	7	3	1	16909=IfcSlab
+72	8	1	3	4230=IfcColumn	9275=IfcWallStandardCase	6855=IfcSlab
+72	8	2	2	4230=IfcColumn	9275=IfcWallStandardCase
+72	8	3	5	4230=IfcColumn	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab	19923=IfcColumn
+72	8	4	2	21355=IfcWall	19923=IfcColumn
+72	8	5	2	21355=IfcWall	19923=IfcColumn
+73	1	1	2	6855=IfcSlab	13755=IfcWall
+73	1	2	1	13755=IfcWall
+73	1	3	3	13755=IfcWall	16909=IfcSlab	122973=IfcWallStandardCase
+73	1	4	1	122973=IfcWallStandardCase
+73	1	5	1	122973=IfcWallStandardCase
+73	2	1	1	6855=IfcSlab
+73	2	3	2	16909=IfcSlab	122973=IfcWallStandardCase
+73	2	4	1	122973=IfcWallStandardCase
+73	2	5	1	122973=IfcWallStandardCase
+73	3	1	2	6855=IfcSlab	11481=IfcBeam
+73	3	2	4	11481=IfcBeam	395825=IfcSlab	1176183=IfcBuildingElementProxy	1176203=IfcBuildingElementProxy
+73	3	3	4	25299=IfcBeam	16909=IfcSlab	1176183=IfcBuildingElementProxy	1176203=IfcBuildingElementProxy
+73	4	1	2	6855=IfcSlab	11481=IfcBeam
+73	4	2	2	11481=IfcBeam	395825=IfcSlab
+73	4	3	2	25299=IfcBeam	16909=IfcSlab
+73	5	1	2	6855=IfcSlab	12372=IfcBeam
+73	5	2	2	12372=IfcBeam	395825=IfcSlab
+73	5	3	2	25455=IfcBeam	16909=IfcSlab
+73	6	1	1	6855=IfcSlab
+73	6	2	3	2064928=IfcBuildingElementProxy	2064950=IfcBuildingElementProxy	395825=IfcSlab
+73	6	3	4	16909=IfcSlab	2064928=IfcBuildingElementProxy	2064950=IfcBuildingElementProxy	2122146=IfcRailing
+73	6	4	1	2122146=IfcRailing
+73	7	1	1	6855=IfcSlab
+73	7	3	1	16909=IfcSlab
+73	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+73	8	2	1	9275=IfcWallStandardCase
+73	8	3	3	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab
+73	8	4	1	21355=IfcWall
+73	8	5	1	21355=IfcWall
+74	1	1	2	6855=IfcSlab	13755=IfcWall
+74	1	2	1	13755=IfcWall
+74	1	3	3	13755=IfcWall	16909=IfcSlab	122973=IfcWallStandardCase
+74	1	4	1	122973=IfcWallStandardCase
+74	1	5	1	122973=IfcWallStandardCase
+74	2	1	1	6855=IfcSlab
+74	2	3	2	16909=IfcSlab	122973=IfcWallStandardCase
+74	2	4	1	122973=IfcWallStandardCase
+74	2	5	1	122973=IfcWallStandardCase
+74	3	1	3	2747=IfcColumn	6855=IfcSlab	11481=IfcBeam
+74	3	2	5	2747=IfcColumn	11481=IfcBeam	395825=IfcSlab	1176203=IfcBuildingElementProxy	1176223=IfcBuildingElementProxy
+74	3	3	6	2747=IfcColumn	25299=IfcBeam	16909=IfcSlab	18975=IfcColumn	1176203=IfcBuildingElementProxy	1176223=IfcBuildingElementProxy
+74	3	4	1	18975=IfcColumn
+74	3	5	1	18975=IfcColumn
+74	4	1	3	2747=IfcColumn	6855=IfcSlab	11481=IfcBeam
+74	4	2	3	2747=IfcColumn	11481=IfcBeam	395825=IfcSlab
+74	4	3	5	2747=IfcColumn	44139=IfcColumn	25299=IfcBeam	16909=IfcSlab	18975=IfcColumn
+74	4	4	2	44139=IfcColumn	18975=IfcColumn
+74	4	5	2	44139=IfcColumn	18975=IfcColumn
+74	5	1	2	6855=IfcSlab	12372=IfcBeam
+74	5	2	2	12372=IfcBeam	395825=IfcSlab
+74	5	3	4	44139=IfcColumn	25455=IfcBeam	16909=IfcSlab	18937=IfcColumn
+74	5	4	2	44139=IfcColumn	18937=IfcColumn
+74	5	5	2	44139=IfcColumn	18937=IfcColumn
+74	6	1	1	6855=IfcSlab
+74	6	2	3	2064950=IfcBuildingElementProxy	2064972=IfcBuildingElementProxy	395825=IfcSlab
+74	6	3	5	16909=IfcSlab	2064950=IfcBuildingElementProxy	2064972=IfcBuildingElementProxy	2122146=IfcRailing	2126360=IfcRailing
+74	6	4	2	2122146=IfcRailing	2126360=IfcRailing
+74	7	1	1	6855=IfcSlab
+74	7	3	1	16909=IfcSlab
+74	8	1	3	4268=IfcColumn	9275=IfcWallStandardCase	6855=IfcSlab
+74	8	2	2	4268=IfcColumn	9275=IfcWallStandardCase
+74	8	3	5	4268=IfcColumn	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab	19961=IfcColumn
+74	8	4	2	21355=IfcWall	19961=IfcColumn
+74	8	5	2	21355=IfcWall	19961=IfcColumn
+75	1	1	2	6855=IfcSlab	13755=IfcWall
+75	1	2	1	13755=IfcWall
+75	1	3	3	13755=IfcWall	16909=IfcSlab	122973=IfcWallStandardCase
+75	1	4	1	122973=IfcWallStandardCase
+75	1	5	1	122973=IfcWallStandardCase
+75	2	1	1	6855=IfcSlab
+75	2	3	2	16909=IfcSlab	122973=IfcWallStandardCase
+75	2	4	1	122973=IfcWallStandardCase
+75	2	5	1	122973=IfcWallStandardCase
+75	3	1	2	6855=IfcSlab	11481=IfcBeam
+75	3	2	3	11481=IfcBeam	395825=IfcSlab	1176223=IfcBuildingElementProxy
+75	3	3	3	25299=IfcBeam	16909=IfcSlab	1176223=IfcBuildingElementProxy
+75	4	1	2	6855=IfcSlab	11481=IfcBeam
+75	4	2	2	11481=IfcBeam	395825=IfcSlab
+75	4	3	2	25299=IfcBeam	16909=IfcSlab
+75	5	1	2	6855=IfcSlab	12372=IfcBeam
+75	5	2	2	12372=IfcBeam	395825=IfcSlab
+75	5	3	2	25455=IfcBeam	16909=IfcSlab
+75	6	1	1	6855=IfcSlab
+75	6	2	2	2064972=IfcBuildingElementProxy	395825=IfcSlab
+75	6	3	4	16909=IfcSlab	2064972=IfcBuildingElementProxy	2125980=IfcRailing	2126360=IfcRailing
+75	6	4	2	2125980=IfcRailing	2126360=IfcRailing
+75	7	1	1	6855=IfcSlab
+75	7	2	1	2064972=IfcBuildingElementProxy
+75	7	3	2	16909=IfcSlab	2064972=IfcBuildingElementProxy
+75	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+75	8	2	1	9275=IfcWallStandardCase
+75	8	3	3	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab
+75	8	4	1	21355=IfcWall
+75	8	5	1	21355=IfcWall
+76	1	1	2	6855=IfcSlab	13755=IfcWall
+76	1	2	1	13755=IfcWall
+76	1	3	3	13755=IfcWall	16909=IfcSlab	122973=IfcWallStandardCase
+76	1	4	1	122973=IfcWallStandardCase
+76	1	5	1	122973=IfcWallStandardCase
+76	2	1	1	6855=IfcSlab
+76	2	3	2	16909=IfcSlab	122973=IfcWallStandardCase
+76	2	4	1	122973=IfcWallStandardCase
+76	2	5	1	122973=IfcWallStandardCase
+76	3	1	2	6855=IfcSlab	11481=IfcBeam
+76	3	2	4	11481=IfcBeam	395825=IfcSlab	1176223=IfcBuildingElementProxy	1176243=IfcBuildingElementProxy
+76	3	3	4	25299=IfcBeam	16909=IfcSlab	1176223=IfcBuildingElementProxy	1176243=IfcBuildingElementProxy
+76	4	1	2	6855=IfcSlab	11481=IfcBeam
+76	4	2	2	11481=IfcBeam	395825=IfcSlab
+76	4	3	2	25299=IfcBeam	16909=IfcSlab
+76	5	1	2	6855=IfcSlab	12372=IfcBeam
+76	5	2	2	12372=IfcBeam	395825=IfcSlab
+76	5	3	2	25455=IfcBeam	16909=IfcSlab
+76	6	1	1	6855=IfcSlab
+76	6	2	3	2064972=IfcBuildingElementProxy	2064994=IfcBuildingElementProxy	395825=IfcSlab
+76	6	3	5	16909=IfcSlab	2064972=IfcBuildingElementProxy	2064994=IfcBuildingElementProxy	2125980=IfcRailing	2126117=IfcRailing
+76	6	4	2	2125980=IfcRailing	2126117=IfcRailing
+76	7	1	1	6855=IfcSlab
+76	7	2	2	2064972=IfcBuildingElementProxy	2064994=IfcBuildingElementProxy
+76	7	3	3	16909=IfcSlab	2064972=IfcBuildingElementProxy	2064994=IfcBuildingElementProxy
+76	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+76	8	2	1	9275=IfcWallStandardCase
+76	8	3	3	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab
+76	8	4	1	21355=IfcWall
+76	8	5	1	21355=IfcWall
+77	1	1	2	6855=IfcSlab	13755=IfcWall
+77	1	2	1	13755=IfcWall
+77	1	3	3	13755=IfcWall	16909=IfcSlab	122973=IfcWallStandardCase
+77	1	4	1	122973=IfcWallStandardCase
+77	1	5	1	122973=IfcWallStandardCase
+77	2	1	1	6855=IfcSlab
+77	2	3	2	16909=IfcSlab	122973=IfcWallStandardCase
+77	2	4	1	122973=IfcWallStandardCase
+77	2	5	1	122973=IfcWallStandardCase
+77	3	1	3	2796=IfcColumn	6855=IfcSlab	11481=IfcBeam
+77	3	2	5	2796=IfcColumn	11481=IfcBeam	395825=IfcSlab	1176243=IfcBuildingElementProxy	1176263=IfcBuildingElementProxy
+77	3	3	5	2796=IfcColumn	25299=IfcBeam	16909=IfcSlab	1176243=IfcBuildingElementProxy	1176263=IfcBuildingElementProxy
+77	4	1	5	2796=IfcColumn	6855=IfcSlab	11481=IfcBeam	316800=IfcWallStandardCase	316908=IfcWallStandardCase
+77	4	2	5	2796=IfcColumn	11481=IfcBeam	316800=IfcWallStandardCase	316908=IfcWallStandardCase	395825=IfcSlab
+77	4	3	6	2796=IfcColumn	44101=IfcColumn	25299=IfcBeam	16909=IfcSlab	316800=IfcWallStandardCase	316908=IfcWallStandardCase
+77	4	4	3	44101=IfcColumn	316800=IfcWallStandardCase	316908=IfcWallStandardCase
+77	4	5	3	44101=IfcColumn	316800=IfcWallStandardCase	316908=IfcWallStandardCase
+77	5	1	4	6855=IfcSlab	12372=IfcBeam	316800=IfcWallStandardCase	316840=IfcWallStandardCase
+77	5	2	4	12372=IfcBeam	316800=IfcWallStandardCase	316840=IfcWallStandardCase	395825=IfcSlab
+77	5	3	6	44101=IfcColumn	25455=IfcBeam	16909=IfcSlab	19051=IfcColumn	316800=IfcWallStandardCase	316840=IfcWallStandardCase
+77	5	4	4	44101=IfcColumn	19051=IfcColumn	316800=IfcWallStandardCase	316840=IfcWallStandardCase
+77	5	5	4	44101=IfcColumn	19051=IfcColumn	316800=IfcWallStandardCase	316840=IfcWallStandardCase
+77	6	1	1	6855=IfcSlab
+77	6	2	3	2064994=IfcBuildingElementProxy	2065016=IfcBuildingElementProxy	395825=IfcSlab
+77	6	3	3	16909=IfcSlab	2064994=IfcBuildingElementProxy	2065016=IfcBuildingElementProxy
+77	7	1	1	6855=IfcSlab
+77	7	2	2	2064994=IfcBuildingElementProxy	2065016=IfcBuildingElementProxy
+77	7	3	2	16909=IfcSlab	2065016=IfcBuildingElementProxy
+77	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+77	8	2	1	9275=IfcWallStandardCase
+77	8	3	3	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab
+77	8	4	1	21355=IfcWall
+77	8	5	1	21355=IfcWall
+78	1	1	2	6855=IfcSlab	13755=IfcWall
+78	1	2	1	13755=IfcWall
+78	1	3	3	13755=IfcWall	16909=IfcSlab	122973=IfcWallStandardCase
+78	1	4	1	122973=IfcWallStandardCase
+78	1	5	1	122973=IfcWallStandardCase
+78	2	1	1	6855=IfcSlab
+78	2	3	2	16909=IfcSlab	122973=IfcWallStandardCase
+78	2	4	1	122973=IfcWallStandardCase
+78	2	5	1	122973=IfcWallStandardCase
+78	3	1	2	6855=IfcSlab	11481=IfcBeam
+78	3	2	4	11481=IfcBeam	395825=IfcSlab	1176263=IfcBuildingElementProxy	1176283=IfcBuildingElementProxy
+78	3	3	3	25299=IfcBeam	16909=IfcSlab	1176263=IfcBuildingElementProxy
+78	4	1	4	6855=IfcSlab	11481=IfcBeam	316874=IfcWallStandardCase	316908=IfcWallStandardCase
+78	4	2	4	11481=IfcBeam	316874=IfcWallStandardCase	316908=IfcWallStandardCase	395825=IfcSlab
+78	4	3	4	25299=IfcBeam	16909=IfcSlab	316874=IfcWallStandardCase	316908=IfcWallStandardCase
+78	4	4	2	316874=IfcWallStandardCase	316908=IfcWallStandardCase
+78	4	5	2	316874=IfcWallStandardCase	316908=IfcWallStandardCase
+78	5	1	4	6855=IfcSlab	12372=IfcBeam	316840=IfcWallStandardCase	316874=IfcWallStandardCase
+78	5	2	4	12372=IfcBeam	316840=IfcWallStandardCase	316874=IfcWallStandardCase	395825=IfcSlab
+78	5	3	4	25455=IfcBeam	16909=IfcSlab	316840=IfcWallStandardCase	316874=IfcWallStandardCase
+78	5	4	2	316840=IfcWallStandardCase	316874=IfcWallStandardCase
+78	5	5	2	316840=IfcWallStandardCase	316874=IfcWallStandardCase
+78	6	1	1	6855=IfcSlab
+78	6	2	3	2065016=IfcBuildingElementProxy	2065038=IfcBuildingElementProxy	395825=IfcSlab
+78	6	3	4	16909=IfcSlab	2065016=IfcBuildingElementProxy	2125574=IfcRailing	2126223=IfcRailing
+78	6	4	2	2125574=IfcRailing	2126223=IfcRailing
+78	7	1	1	6855=IfcSlab
+78	7	2	1	2065016=IfcBuildingElementProxy
+78	7	3	2	16909=IfcSlab	2065016=IfcBuildingElementProxy
+78	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+78	8	2	1	9275=IfcWallStandardCase
+78	8	3	3	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab
+78	8	4	1	21355=IfcWall
+78	8	5	1	21355=IfcWall
+79	1	1	2	6855=IfcSlab	13755=IfcWall
+79	1	2	1	13755=IfcWall
+79	1	3	3	13755=IfcWall	16909=IfcSlab	122973=IfcWallStandardCase
+79	1	4	1	122973=IfcWallStandardCase
+79	1	5	1	122973=IfcWallStandardCase
+79	2	1	1	6855=IfcSlab
+79	2	3	2	16909=IfcSlab	122973=IfcWallStandardCase
+79	2	4	1	122973=IfcWallStandardCase
+79	2	5	1	122973=IfcWallStandardCase
+79	3	1	2	6855=IfcSlab	11481=IfcBeam
+79	3	2	4	11481=IfcBeam	395825=IfcSlab	1176263=IfcBuildingElementProxy	1176283=IfcBuildingElementProxy
+79	3	3	4	25299=IfcBeam	16909=IfcSlab	1176263=IfcBuildingElementProxy	1176283=IfcBuildingElementProxy
+79	4	1	2	6855=IfcSlab	11481=IfcBeam
+79	4	2	2	11481=IfcBeam	395825=IfcSlab
+79	4	3	2	25299=IfcBeam	16909=IfcSlab
+79	5	1	2	6855=IfcSlab	12372=IfcBeam
+79	5	2	2	12372=IfcBeam	395825=IfcSlab
+79	5	3	2	25455=IfcBeam	16909=IfcSlab
+79	6	1	1	6855=IfcSlab
+79	6	2	3	2065016=IfcBuildingElementProxy	2065038=IfcBuildingElementProxy	395825=IfcSlab
+79	6	3	4	16909=IfcSlab	2065016=IfcBuildingElementProxy	2065038=IfcBuildingElementProxy	2126223=IfcRailing
+79	6	4	1	2126223=IfcRailing
+79	7	1	1	6855=IfcSlab
+79	7	2	1	2065038=IfcBuildingElementProxy
+79	7	3	2	16909=IfcSlab	2065038=IfcBuildingElementProxy
+79	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+79	8	2	1	9275=IfcWallStandardCase
+79	8	3	3	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab
+79	8	4	1	21355=IfcWall
+79	8	5	1	21355=IfcWall
+80	1	1	2	6855=IfcSlab	13755=IfcWall
+80	1	2	1	13755=IfcWall
+80	1	3	3	13755=IfcWall	16909=IfcSlab	122973=IfcWallStandardCase
+80	1	4	1	122973=IfcWallStandardCase
+80	1	5	1	122973=IfcWallStandardCase
+80	2	1	1	6855=IfcSlab
+80	2	3	2	16909=IfcSlab	122973=IfcWallStandardCase
+80	2	4	1	122973=IfcWallStandardCase
+80	2	5	1	122973=IfcWallStandardCase
+80	3	1	2	6855=IfcSlab	11481=IfcBeam
+80	3	2	4	11481=IfcBeam	395825=IfcSlab	1176283=IfcBuildingElementProxy	1176303=IfcBuildingElementProxy
+80	3	3	4	25299=IfcBeam	16909=IfcSlab	1176283=IfcBuildingElementProxy	1176303=IfcBuildingElementProxy
+80	4	1	2	6855=IfcSlab	11481=IfcBeam
+80	4	2	2	11481=IfcBeam	395825=IfcSlab
+80	4	3	3	44063=IfcColumn	25299=IfcBeam	16909=IfcSlab
+80	4	4	1	44063=IfcColumn
+80	4	5	1	44063=IfcColumn
+80	5	1	2	6855=IfcSlab	12372=IfcBeam
+80	5	2	2	12372=IfcBeam	395825=IfcSlab
+80	5	3	4	44063=IfcColumn	25455=IfcBeam	16909=IfcSlab	19089=IfcColumn
+80	5	4	2	44063=IfcColumn	19089=IfcColumn
+80	5	5	2	44063=IfcColumn	19089=IfcColumn
+80	6	1	1	6855=IfcSlab
+80	6	2	3	2063352=IfcBuildingElementProxy	2065038=IfcBuildingElementProxy	395825=IfcSlab
+80	6	3	5	16909=IfcSlab	2063352=IfcBuildingElementProxy	2065038=IfcBuildingElementProxy	2125435=IfcRailing	2126499=IfcRailing
+80	6	4	2	2125435=IfcRailing	2126499=IfcRailing
+80	7	1	1	6855=IfcSlab
+80	7	2	2	2063352=IfcBuildingElementProxy	2065038=IfcBuildingElementProxy
+80	7	3	3	16909=IfcSlab	2063352=IfcBuildingElementProxy	2065038=IfcBuildingElementProxy
+80	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+80	8	2	1	9275=IfcWallStandardCase
+80	8	3	3	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab
+80	8	4	1	21355=IfcWall
+80	8	5	1	21355=IfcWall
+81	1	1	2	6855=IfcSlab	13755=IfcWall
+81	1	2	1	13755=IfcWall
+81	1	3	3	13755=IfcWall	16909=IfcSlab	122973=IfcWallStandardCase
+81	1	4	1	122973=IfcWallStandardCase
+81	1	5	1	122973=IfcWallStandardCase
+81	2	1	1	6855=IfcSlab
+81	2	3	2	16909=IfcSlab	122973=IfcWallStandardCase
+81	2	4	1	122973=IfcWallStandardCase
+81	2	5	1	122973=IfcWallStandardCase
+81	3	1	2	6855=IfcSlab	11481=IfcBeam
+81	3	2	4	11481=IfcBeam	395825=IfcSlab	1176303=IfcBuildingElementProxy	1176323=IfcBuildingElementProxy
+81	3	3	4	25299=IfcBeam	16909=IfcSlab	1176303=IfcBuildingElementProxy	1176323=IfcBuildingElementProxy
+81	4	1	2	6855=IfcSlab	11481=IfcBeam
+81	4	2	2	11481=IfcBeam	395825=IfcSlab
+81	4	3	2	25299=IfcBeam	16909=IfcSlab
+81	5	1	2	6855=IfcSlab	12372=IfcBeam
+81	5	2	2	12372=IfcBeam	395825=IfcSlab
+81	5	3	2	25455=IfcBeam	16909=IfcSlab
+81	6	1	1	6855=IfcSlab
+81	6	2	3	2063352=IfcBuildingElementProxy	2063372=IfcBuildingElementProxy	395825=IfcSlab
+81	6	3	4	16909=IfcSlab	2063352=IfcBuildingElementProxy	2063372=IfcBuildingElementProxy	2125435=IfcRailing
+81	6	4	1	2125435=IfcRailing
+81	7	1	1	6855=IfcSlab
+81	7	2	2	2063352=IfcBuildingElementProxy	2063372=IfcBuildingElementProxy
+81	7	3	3	16909=IfcSlab	2063352=IfcBuildingElementProxy	2063372=IfcBuildingElementProxy
+81	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+81	8	2	1	9275=IfcWallStandardCase
+81	8	3	3	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab
+81	8	4	1	21355=IfcWall
+81	8	5	1	21355=IfcWall
+82	1	1	2	6855=IfcSlab	13755=IfcWall
+82	1	2	1	13755=IfcWall
+82	1	3	3	13755=IfcWall	16909=IfcSlab	122973=IfcWallStandardCase
+82	1	4	1	122973=IfcWallStandardCase
+82	1	5	1	122973=IfcWallStandardCase
+82	2	1	1	6855=IfcSlab
+82	2	3	2	16909=IfcSlab	122973=IfcWallStandardCase
+82	2	4	1	122973=IfcWallStandardCase
+82	2	5	1	122973=IfcWallStandardCase
+82	3	1	2	6855=IfcSlab	11481=IfcBeam
+82	3	2	4	11481=IfcBeam	395825=IfcSlab	1176303=IfcBuildingElementProxy	1176323=IfcBuildingElementProxy
+82	3	3	5	25299=IfcBeam	16909=IfcSlab	19203=IfcColumn	1176303=IfcBuildingElementProxy	1176323=IfcBuildingElementProxy
+82	3	4	1	19203=IfcColumn
+82	3	5	1	19203=IfcColumn
+82	4	1	2	6855=IfcSlab	11481=IfcBeam
+82	4	2	4	11481=IfcBeam	395825=IfcSlab	397234=IfcWallStandardCase	397324=IfcWallStandardCase
+82	4	3	9	44025=IfcColumn	25299=IfcBeam	16909=IfcSlab	19203=IfcColumn	134259=IfcStairFlight	397234=IfcWallStandardCase	397324=IfcWallStandardCase	2115429=IfcRailing	2118557=IfcRailing
+82	4	4	4	44025=IfcColumn	19203=IfcColumn	2115429=IfcRailing	2118557=IfcRailing
+82	4	5	2	44025=IfcColumn	19203=IfcColumn
+82	5	1	2	6855=IfcSlab	12372=IfcBeam
+82	5	2	4	12372=IfcBeam	395825=IfcSlab	397234=IfcWallStandardCase	397275=IfcWallStandardCase
+82	5	3	6	44025=IfcColumn	25455=IfcBeam	16909=IfcSlab	397234=IfcWallStandardCase	397275=IfcWallStandardCase	2125435=IfcRailing
+82	5	4	2	44025=IfcColumn	2125435=IfcRailing
+82	5	5	1	44025=IfcColumn
+82	6	1	1	6855=IfcSlab
+82	6	2	3	2063352=IfcBuildingElementProxy	2063372=IfcBuildingElementProxy	395825=IfcSlab
+82	6	3	4	16909=IfcSlab	2063352=IfcBuildingElementProxy	2063372=IfcBuildingElementProxy	2125435=IfcRailing
+82	6	4	1	2125435=IfcRailing
+82	7	1	1	6855=IfcSlab
+82	7	2	2	2063352=IfcBuildingElementProxy	2063372=IfcBuildingElementProxy
+82	7	3	3	16909=IfcSlab	2063352=IfcBuildingElementProxy	2063372=IfcBuildingElementProxy
+82	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+82	8	2	1	9275=IfcWallStandardCase
+82	8	3	3	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab
+82	8	4	1	21355=IfcWall
+82	8	5	1	21355=IfcWall
+83	1	1	3	6855=IfcSlab	13755=IfcWall	13818=IfcWallStandardCase
+83	1	2	2	13755=IfcWall	13818=IfcWallStandardCase
+83	1	3	6	21977=IfcWallStandardCase	13755=IfcWall	13818=IfcWallStandardCase	16909=IfcSlab	122834=IfcWallStandardCase	122973=IfcWallStandardCase
+83	1	4	3	21977=IfcWallStandardCase	122834=IfcWallStandardCase	122973=IfcWallStandardCase
+83	1	5	3	21977=IfcWallStandardCase	122834=IfcWallStandardCase	122973=IfcWallStandardCase
+83	2	1	1	6855=IfcSlab
+83	2	3	4	16909=IfcSlab	122834=IfcWallStandardCase	122973=IfcWallStandardCase	2125735=IfcRailing
+83	2	4	3	122834=IfcWallStandardCase	122973=IfcWallStandardCase	2125735=IfcRailing
+83	2	5	2	122834=IfcWallStandardCase	122973=IfcWallStandardCase
+83	3	1	2	6855=IfcSlab	11481=IfcBeam
+83	3	2	4	11481=IfcBeam	395825=IfcSlab	1176323=IfcBuildingElementProxy	1176343=IfcBuildingElementProxy
+83	3	3	6	25299=IfcBeam	16909=IfcSlab	19203=IfcColumn	2125874=IfcRailing	1176323=IfcBuildingElementProxy	1176343=IfcBuildingElementProxy
+83	3	4	2	19203=IfcColumn	2125874=IfcRailing
+83	3	5	1	19203=IfcColumn
+83	4	1	2	6855=IfcSlab	11481=IfcBeam
+83	4	2	3	11481=IfcBeam	395825=IfcSlab	397324=IfcWallStandardCase
+83	4	3	10	44025=IfcColumn	25299=IfcBeam	16909=IfcSlab	19203=IfcColumn	134259=IfcStairFlight	397324=IfcWallStandardCase	2115429=IfcRailing	2118557=IfcRailing	2122461=IfcRailing	2125874=IfcRailing
+83	4	4	6	44025=IfcColumn	19203=IfcColumn	2115429=IfcRailing	2118557=IfcRailing	2122461=IfcRailing	2125874=IfcRailing
+83	4	5	2	44025=IfcColumn	19203=IfcColumn
+83	5	1	2	6855=IfcSlab	12372=IfcBeam
+83	5	2	3	12372=IfcBeam	395825=IfcSlab	397275=IfcWallStandardCase
+83	5	3	5	44025=IfcColumn	25455=IfcBeam	16909=IfcSlab	397275=IfcWallStandardCase	2123025=IfcRailing
+83	5	4	2	44025=IfcColumn	2123025=IfcRailing
+83	5	5	1	44025=IfcColumn
+83	6	1	1	6855=IfcSlab
+83	6	2	3	2063372=IfcBuildingElementProxy	2063392=IfcBuildingElementProxy	395825=IfcSlab
+83	6	3	3	16909=IfcSlab	2063372=IfcBuildingElementProxy	2063392=IfcBuildingElementProxy
+83	7	1	1	6855=IfcSlab
+83	7	2	2	2063372=IfcBuildingElementProxy	2063392=IfcBuildingElementProxy
+83	7	3	3	16909=IfcSlab	2063372=IfcBuildingElementProxy	2063392=IfcBuildingElementProxy
+83	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+83	8	2	1	9275=IfcWallStandardCase
+83	8	3	3	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab
+83	8	4	1	21355=IfcWall
+83	8	5	1	21355=IfcWall
+84	1	1	3	6855=IfcSlab	13818=IfcWallStandardCase	13914=IfcWallStandardCase
+84	1	2	2	13818=IfcWallStandardCase	13914=IfcWallStandardCase
+84	1	3	7	21977=IfcWallStandardCase	22093=IfcWallStandardCase	13818=IfcWallStandardCase	13914=IfcWallStandardCase	16909=IfcSlab	122834=IfcWallStandardCase	123178=IfcWallStandardCase
+84	1	4	4	21977=IfcWallStandardCase	22093=IfcWallStandardCase	122834=IfcWallStandardCase	123178=IfcWallStandardCase
+84	1	5	4	21977=IfcWallStandardCase	22093=IfcWallStandardCase	122834=IfcWallStandardCase	123178=IfcWallStandardCase
+84	2	1	1	6855=IfcSlab
+84	2	3	1	16909=IfcSlab
+84	3	1	2	6855=IfcSlab	11481=IfcBeam
+84	3	2	4	11481=IfcBeam	395825=IfcSlab	1176343=IfcBuildingElementProxy	1176363=IfcBuildingElementProxy
+84	3	3	4	25299=IfcBeam	16909=IfcSlab	1176343=IfcBuildingElementProxy	1176363=IfcBuildingElementProxy
+84	4	1	2	6855=IfcSlab	11481=IfcBeam
+84	4	2	4	11481=IfcBeam	395825=IfcSlab	397324=IfcWallStandardCase	397426=IfcWallStandardCase
+84	4	3	10	25299=IfcBeam	16909=IfcSlab	133779=IfcStairFlight	134259=IfcStairFlight	134295=IfcSlab	397324=IfcWallStandardCase	397426=IfcWallStandardCase	2115429=IfcRailing	2118557=IfcRailing	2122461=IfcRailing
+84	4	4	1	2122461=IfcRailing
+84	5	1	2	6855=IfcSlab	12372=IfcBeam
+84	5	2	4	12372=IfcBeam	395825=IfcSlab	397275=IfcWallStandardCase	397426=IfcWallStandardCase
+84	5	3	5	25455=IfcBeam	16909=IfcSlab	397275=IfcWallStandardCase	397426=IfcWallStandardCase	2123025=IfcRailing
+84	5	4	1	2123025=IfcRailing
+84	6	1	1	6855=IfcSlab
+84	6	2	3	2063392=IfcBuildingElementProxy	2063412=IfcBuildingElementProxy	395825=IfcSlab
+84	6	3	3	16909=IfcSlab	2063392=IfcBuildingElementProxy	2063412=IfcBuildingElementProxy
+84	7	1	1	6855=IfcSlab
+84	7	2	2	2063392=IfcBuildingElementProxy	2063412=IfcBuildingElementProxy
+84	7	3	3	16909=IfcSlab	2063392=IfcBuildingElementProxy	2063412=IfcBuildingElementProxy
+84	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+84	8	2	1	9275=IfcWallStandardCase
+84	8	3	3	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab
+84	8	4	1	21355=IfcWall
+84	8	5	1	21355=IfcWall
+85	1	1	2	6855=IfcSlab	13914=IfcWallStandardCase
+85	1	2	1	13914=IfcWallStandardCase
+85	1	3	4	22093=IfcWallStandardCase	13914=IfcWallStandardCase	16909=IfcSlab	123178=IfcWallStandardCase
+85	1	4	2	22093=IfcWallStandardCase	123178=IfcWallStandardCase
+85	1	5	2	22093=IfcWallStandardCase	123178=IfcWallStandardCase
+85	2	1	1	6855=IfcSlab
+85	2	3	1	16909=IfcSlab
+85	3	1	3	3139=IfcColumn	6855=IfcSlab	11481=IfcBeam
+85	3	2	5	3139=IfcColumn	11481=IfcBeam	395825=IfcSlab	1176343=IfcBuildingElementProxy	1176363=IfcBuildingElementProxy
+85	3	3	5	3139=IfcColumn	25299=IfcBeam	16909=IfcSlab	1176343=IfcBuildingElementProxy	1176363=IfcBuildingElementProxy
+85	4	1	3	3139=IfcColumn	6855=IfcSlab	11481=IfcBeam
+85	4	2	8	3139=IfcColumn	11481=IfcBeam	133779=IfcStairFlight	395825=IfcSlab	397324=IfcWallStandardCase	397393=IfcWallStandardCase	2115429=IfcRailing	2118557=IfcRailing
+85	4	3	10	3139=IfcColumn	43986=IfcColumn	25299=IfcBeam	16909=IfcSlab	133779=IfcStairFlight	397324=IfcWallStandardCase	2115429=IfcRailing	2118557=IfcRailing	2122461=IfcRailing	2122710=IfcRailing
+85	4	4	3	43986=IfcColumn	2122461=IfcRailing	2122710=IfcRailing
+85	4	5	1	43986=IfcColumn
+85	5	1	3	3090=IfcColumn	6855=IfcSlab	12372=IfcBeam
+85	5	2	4	3090=IfcColumn	12372=IfcBeam	395825=IfcSlab	397275=IfcWallStandardCase
+85	5	3	6	3090=IfcColumn	43986=IfcColumn	25455=IfcBeam	16909=IfcSlab	2122710=IfcRailing	2123025=IfcRailing
+85	5	4	3	43986=IfcColumn	2122710=IfcRailing	2123025=IfcRailing
+85	5	5	1	43986=IfcColumn
+85	6	1	1	6855=IfcSlab
+85	6	2	3	2063392=IfcBuildingElementProxy	2063412=IfcBuildingElementProxy	395825=IfcSlab
+85	6	3	3	16909=IfcSlab	2063392=IfcBuildingElementProxy	2063412=IfcBuildingElementProxy
+85	7	1	1	6855=IfcSlab
+85	7	2	2	2063392=IfcBuildingElementProxy	2063412=IfcBuildingElementProxy
+85	7	3	3	16909=IfcSlab	2063392=IfcBuildingElementProxy	2063412=IfcBuildingElementProxy
+85	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+85	8	2	1	9275=IfcWallStandardCase
+85	8	3	3	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab
+85	8	4	1	21355=IfcWall
+85	8	5	1	21355=IfcWall
+86	1	1	2	6855=IfcSlab	13914=IfcWallStandardCase
+86	1	2	1	13914=IfcWallStandardCase
+86	1	3	4	22093=IfcWallStandardCase	13914=IfcWallStandardCase	16909=IfcSlab	123178=IfcWallStandardCase
+86	1	4	2	22093=IfcWallStandardCase	123178=IfcWallStandardCase
+86	1	5	2	22093=IfcWallStandardCase	123178=IfcWallStandardCase
+86	2	1	1	6855=IfcSlab
+86	2	3	1	16909=IfcSlab
+86	3	1	2	6855=IfcSlab	11481=IfcBeam
+86	3	2	4	11481=IfcBeam	395825=IfcSlab	1176363=IfcBuildingElementProxy	1176383=IfcBuildingElementProxy
+86	3	3	4	25299=IfcBeam	16909=IfcSlab	1176363=IfcBuildingElementProxy	1176383=IfcBuildingElementProxy
+86	4	1	2	6855=IfcSlab	11481=IfcBeam
+86	4	2	7	11481=IfcBeam	133779=IfcStairFlight	395825=IfcSlab	397324=IfcWallStandardCase	397393=IfcWallStandardCase	2115429=IfcRailing	2118557=IfcRailing
+86	4	3	2	25299=IfcBeam	16909=IfcSlab
+86	5	1	2	6855=IfcSlab	12372=IfcBeam
+86	5	2	2	12372=IfcBeam	395825=IfcSlab
+86	5	3	2	25455=IfcBeam	16909=IfcSlab
+86	6	1	1	6855=IfcSlab
+86	6	2	3	2063412=IfcBuildingElementProxy	2063432=IfcBuildingElementProxy	395825=IfcSlab
+86	6	3	3	16909=IfcSlab	2063412=IfcBuildingElementProxy	2063432=IfcBuildingElementProxy
+86	7	1	1	6855=IfcSlab
+86	7	2	2	2063412=IfcBuildingElementProxy	2063432=IfcBuildingElementProxy
+86	7	3	3	16909=IfcSlab	2063412=IfcBuildingElementProxy	2063432=IfcBuildingElementProxy
+86	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+86	8	2	1	9275=IfcWallStandardCase
+86	8	3	3	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab
+86	8	4	1	21355=IfcWall
+86	8	5	1	21355=IfcWall
+87	1	1	2	6855=IfcSlab	13914=IfcWallStandardCase
+87	1	2	1	13914=IfcWallStandardCase
+87	1	3	3	22093=IfcWallStandardCase	13914=IfcWallStandardCase	16909=IfcSlab
+87	1	4	1	22093=IfcWallStandardCase
+87	1	5	1	22093=IfcWallStandardCase
+87	2	1	1	6855=IfcSlab
+87	2	3	1	16909=IfcSlab
+87	3	1	2	6855=IfcSlab	11481=IfcBeam
+87	3	2	4	11481=IfcBeam	395825=IfcSlab	1176383=IfcBuildingElementProxy	1176403=IfcBuildingElementProxy
+87	3	3	4	25299=IfcBeam	16909=IfcSlab	1176383=IfcBuildingElementProxy	1176403=IfcBuildingElementProxy
+87	4	1	2	6855=IfcSlab	11481=IfcBeam
+87	4	2	2	11481=IfcBeam	395825=IfcSlab
+87	4	3	2	25299=IfcBeam	16909=IfcSlab
+87	5	1	2	6855=IfcSlab	12372=IfcBeam
+87	5	2	2	12372=IfcBeam	395825=IfcSlab
+87	5	3	2	25455=IfcBeam	16909=IfcSlab
+87	6	1	1	6855=IfcSlab
+87	6	2	3	2063432=IfcBuildingElementProxy	2063452=IfcBuildingElementProxy	395825=IfcSlab
+87	6	3	3	16909=IfcSlab	2063432=IfcBuildingElementProxy	2063452=IfcBuildingElementProxy
+87	7	1	1	6855=IfcSlab
+87	7	2	3	2063432=IfcBuildingElementProxy	2063452=IfcBuildingElementProxy	395825=IfcSlab
+87	7	3	3	16909=IfcSlab	2063432=IfcBuildingElementProxy	2063452=IfcBuildingElementProxy
+87	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+87	8	2	1	9275=IfcWallStandardCase
+87	8	3	3	9275=IfcWallStandardCase	21355=IfcWall	16909=IfcSlab
+87	8	4	1	21355=IfcWall
+87	8	5	1	21355=IfcWall
+88	1	1	2	6855=IfcSlab	13914=IfcWallStandardCase
+88	1	2	1	13914=IfcWallStandardCase
+88	1	3	4	20415=IfcSlab	22093=IfcWallStandardCase	13914=IfcWallStandardCase	16909=IfcSlab
+88	1	4	1	22093=IfcWallStandardCase
+88	1	5	1	22093=IfcWallStandardCase
+88	2	1	1	6855=IfcSlab
+88	2	3	2	20415=IfcSlab	16909=IfcSlab
+88	3	1	4	3537=IfcColumn	6855=IfcSlab	11481=IfcBeam	12742=IfcBeam
+88	3	2	5	3537=IfcColumn	11481=IfcBeam	12742=IfcBeam	395825=IfcSlab	1176403=IfcBuildingElementProxy
+88	3	3	7	20415=IfcSlab	3537=IfcColumn	25299=IfcBeam	26529=IfcBeam	16909=IfcSlab	19543=IfcColumn	1176403=IfcBuildingElementProxy
+88	3	4	1	19543=IfcColumn
+88	3	5	1	19543=IfcColumn
+88	4	1	4	3537=IfcColumn	6855=IfcSlab	11481=IfcBeam	12742=IfcBeam
+88	4	2	4	3537=IfcColumn	11481=IfcBeam	12742=IfcBeam	395825=IfcSlab
+88	4	3	6	20415=IfcSlab	3537=IfcColumn	25299=IfcBeam	26529=IfcBeam	16909=IfcSlab	19543=IfcColumn
+88	4	4	1	19543=IfcColumn
+88	4	5	1	19543=IfcColumn
+88	5	1	4	3338=IfcColumn	6855=IfcSlab	12372=IfcBeam	12552=IfcBeam
+88	5	2	4	3338=IfcColumn	12372=IfcBeam	12552=IfcBeam	395825=IfcSlab
+88	5	3	6	3338=IfcColumn	20415=IfcSlab	25455=IfcBeam	26605=IfcBeam	16909=IfcSlab	19407=IfcColumn
+88	5	4	1	19407=IfcColumn
+88	5	5	1	19407=IfcColumn
+88	6	1	1	6855=IfcSlab
+88	6	2	2	2063452=IfcBuildingElementProxy	395825=IfcSlab
+88	6	3	3	20415=IfcSlab	16909=IfcSlab	2063452=IfcBuildingElementProxy
+88	7	1	1	6855=IfcSlab
+88	7	2	2	2063452=IfcBuildingElementProxy	395825=IfcSlab
+88	7	3	3	20415=IfcSlab	16909=IfcSlab	2063452=IfcBuildingElementProxy
+88	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+88	8	2	1	9275=IfcWallStandardCase
+88	8	3	4	9275=IfcWallStandardCase	20415=IfcSlab	21355=IfcWall	16909=IfcSlab
+88	8	4	1	21355=IfcWall
+88	8	5	1	21355=IfcWall
+88	8	6	1	21355=IfcWall
+89	1	1	2	6855=IfcSlab	13914=IfcWallStandardCase
+89	1	2	1	13914=IfcWallStandardCase
+89	1	3	4	20415=IfcSlab	22093=IfcWallStandardCase	13914=IfcWallStandardCase	122726=IfcWallStandardCase
+89	1	4	2	22093=IfcWallStandardCase	122726=IfcWallStandardCase
+89	1	5	2	22093=IfcWallStandardCase	122726=IfcWallStandardCase
+89	2	1	1	6855=IfcSlab
+89	2	3	1	20415=IfcSlab
+89	3	1	1	6855=IfcSlab
+89	3	2	2	395825=IfcSlab	1176403=IfcBuildingElementProxy
+89	3	3	2	20415=IfcSlab	1176403=IfcBuildingElementProxy
+89	4	1	2	6855=IfcSlab	12742=IfcBeam
+89	4	2	2	12742=IfcBeam	395825=IfcSlab
+89	4	3	2	20415=IfcSlab	26529=IfcBeam
+89	5	1	2	6855=IfcSlab	12552=IfcBeam
+89	5	2	2	12552=IfcBeam	395825=IfcSlab
+89	5	3	2	20415=IfcSlab	26605=IfcBeam
+89	6	1	1	6855=IfcSlab
+89	6	2	3	2063452=IfcBuildingElementProxy	2063472=IfcBuildingElementProxy	395825=IfcSlab
+89	6	3	3	20415=IfcSlab	2063452=IfcBuildingElementProxy	2063472=IfcBuildingElementProxy
+89	7	1	1	6855=IfcSlab
+89	7	2	3	2063452=IfcBuildingElementProxy	2063472=IfcBuildingElementProxy	395825=IfcSlab
+89	7	3	3	20415=IfcSlab	2063452=IfcBuildingElementProxy	2063472=IfcBuildingElementProxy
+89	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+89	8	2	1	9275=IfcWallStandardCase
+89	8	3	2	9275=IfcWallStandardCase	20415=IfcSlab
+90	1	1	2	6855=IfcSlab	13914=IfcWallStandardCase
+90	1	2	1	13914=IfcWallStandardCase
+90	1	3	5	20415=IfcSlab	22093=IfcWallStandardCase	13914=IfcWallStandardCase	122726=IfcWallStandardCase	123105=IfcWallStandardCase
+90	1	4	3	22093=IfcWallStandardCase	122726=IfcWallStandardCase	123105=IfcWallStandardCase
+90	1	5	3	22093=IfcWallStandardCase	122726=IfcWallStandardCase	123105=IfcWallStandardCase
+90	2	1	1	6855=IfcSlab
+90	2	3	3	20415=IfcSlab	122594=IfcWallStandardCase	123310=IfcWallStandardCase
+90	2	4	3	122594=IfcWallStandardCase	123310=IfcWallStandardCase	127087=IfcBuildingElementProxy
+90	2	5	2	122594=IfcWallStandardCase	123310=IfcWallStandardCase
+90	3	1	1	6855=IfcSlab
+90	3	2	2	395825=IfcSlab	1176443=IfcBuildingElementProxy
+90	3	3	3	20415=IfcSlab	122594=IfcWallStandardCase	1176443=IfcBuildingElementProxy
+90	3	4	1	122594=IfcWallStandardCase
+90	3	5	1	122594=IfcWallStandardCase
+90	4	1	2	6855=IfcSlab	12742=IfcBeam
+90	4	2	2	12742=IfcBeam	395825=IfcSlab
+90	4	3	6	20415=IfcSlab	26529=IfcBeam	26605=IfcBeam	26640=IfcBeam	122594=IfcWallStandardCase	122933=IfcWallStandardCase
+90	4	4	3	122594=IfcWallStandardCase	122933=IfcWallStandardCase	127167=IfcBuildingElementProxy
+90	4	5	3	42326=IfcBeam	122594=IfcWallStandardCase	122933=IfcWallStandardCase
+90	4	6	1	42326=IfcBeam
+90	5	1	3	6855=IfcSlab	12552=IfcBeam	12742=IfcBeam
+90	5	2	3	12552=IfcBeam	12742=IfcBeam	395825=IfcSlab
+90	5	3	6	20415=IfcSlab	26529=IfcBeam	26605=IfcBeam	26640=IfcBeam	122594=IfcWallStandardCase	122933=IfcWallStandardCase
+90	5	4	3	122594=IfcWallStandardCase	122933=IfcWallStandardCase	127167=IfcBuildingElementProxy
+90	5	5	3	42326=IfcBeam	122594=IfcWallStandardCase	122933=IfcWallStandardCase
+90	5	6	1	42326=IfcBeam
+90	6	1	1	6855=IfcSlab
+90	6	2	3	2063472=IfcBuildingElementProxy	2063492=IfcBuildingElementProxy	395825=IfcSlab
+90	6	3	5	20415=IfcSlab	122594=IfcWallStandardCase	123211=IfcWallStandardCase	2063472=IfcBuildingElementProxy	2063492=IfcBuildingElementProxy
+90	6	4	2	122594=IfcWallStandardCase	123211=IfcWallStandardCase
+90	6	5	2	122594=IfcWallStandardCase	123211=IfcWallStandardCase
+90	7	1	1	6855=IfcSlab
+90	7	2	3	2063472=IfcBuildingElementProxy	2063492=IfcBuildingElementProxy	395825=IfcSlab
+90	7	3	5	20415=IfcSlab	122594=IfcWallStandardCase	122867=IfcWallStandardCase	2063472=IfcBuildingElementProxy	2063492=IfcBuildingElementProxy
+90	7	4	2	122594=IfcWallStandardCase	122867=IfcWallStandardCase
+90	7	5	2	122594=IfcWallStandardCase	122867=IfcWallStandardCase
+90	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+90	8	2	1	9275=IfcWallStandardCase
+90	8	3	4	9275=IfcWallStandardCase	20415=IfcSlab	122594=IfcWallStandardCase	122900=IfcWallStandardCase
+90	8	4	2	122594=IfcWallStandardCase	122900=IfcWallStandardCase
+90	8	5	2	122594=IfcWallStandardCase	122900=IfcWallStandardCase
+91	1	1	2	6855=IfcSlab	13914=IfcWallStandardCase
+91	1	2	1	13914=IfcWallStandardCase
+91	1	3	6	20415=IfcSlab	22093=IfcWallStandardCase	13914=IfcWallStandardCase	122726=IfcWallStandardCase	122759=IfcWallStandardCase	122792=IfcWallStandardCase
+91	1	4	4	22093=IfcWallStandardCase	122726=IfcWallStandardCase	122759=IfcWallStandardCase	122792=IfcWallStandardCase
+91	1	5	4	22093=IfcWallStandardCase	122726=IfcWallStandardCase	122759=IfcWallStandardCase	122792=IfcWallStandardCase
+91	2	1	1	6855=IfcSlab
+91	2	3	3	20415=IfcSlab	122792=IfcWallStandardCase	123310=IfcWallStandardCase
+91	2	4	3	122792=IfcWallStandardCase	123310=IfcWallStandardCase	127087=IfcBuildingElementProxy
+91	2	5	2	122792=IfcWallStandardCase	123310=IfcWallStandardCase
+91	3	1	1	6855=IfcSlab
+91	3	2	2	395825=IfcSlab	1176443=IfcBuildingElementProxy
+91	3	3	4	20415=IfcSlab	122792=IfcWallStandardCase	123277=IfcWallStandardCase	1176443=IfcBuildingElementProxy
+91	3	4	2	122792=IfcWallStandardCase	123277=IfcWallStandardCase
+91	3	5	2	122792=IfcWallStandardCase	123277=IfcWallStandardCase
+91	4	1	4	3586=IfcColumn	6855=IfcSlab	12742=IfcBeam	12960=IfcBeam
+91	4	2	4	3586=IfcColumn	12742=IfcBeam	12960=IfcBeam	395825=IfcSlab
+91	4	3	13	20415=IfcSlab	3586=IfcColumn	26529=IfcBeam	26640=IfcBeam	19581=IfcColumn	122528=IfcWallStandardCase	122561=IfcWallStandardCase	122693=IfcWallStandardCase	122792=IfcWallStandardCase	122933=IfcWallStandardCase	123006=IfcWallStandardCase	123039=IfcWallStandardCase	131107=IfcWallStandardCase
+91	4	4	10	19581=IfcColumn	122528=IfcWallStandardCase	122561=IfcWallStandardCase	122693=IfcWallStandardCase	122792=IfcWallStandardCase	122933=IfcWallStandardCase	123006=IfcWallStandardCase	123039=IfcWallStandardCase	127167=IfcBuildingElementProxy	131107=IfcWallStandardCase
+91	4	5	10	42326=IfcBeam	19581=IfcColumn	122528=IfcWallStandardCase	122561=IfcWallStandardCase	122693=IfcWallStandardCase	122792=IfcWallStandardCase	122933=IfcWallStandardCase	123006=IfcWallStandardCase	123039=IfcWallStandardCase	131107=IfcWallStandardCase
+91	4	6	1	42326=IfcBeam
+91	5	1	5	3586=IfcColumn	6855=IfcSlab	12552=IfcBeam	12742=IfcBeam	12960=IfcBeam
+91	5	2	5	3586=IfcColumn	12552=IfcBeam	12742=IfcBeam	12960=IfcBeam	395825=IfcSlab
+91	5	3	11	20415=IfcSlab	3586=IfcColumn	26605=IfcBeam	26640=IfcBeam	19581=IfcColumn	122627=IfcWallStandardCase	122660=IfcWallStandardCase	122792=IfcWallStandardCase	122933=IfcWallStandardCase	123039=IfcWallStandardCase	131107=IfcWallStandardCase
+91	5	4	8	19581=IfcColumn	122627=IfcWallStandardCase	122660=IfcWallStandardCase	122792=IfcWallStandardCase	122933=IfcWallStandardCase	123039=IfcWallStandardCase	127167=IfcBuildingElementProxy	131107=IfcWallStandardCase
+91	5	5	8	42326=IfcBeam	19581=IfcColumn	122627=IfcWallStandardCase	122660=IfcWallStandardCase	122792=IfcWallStandardCase	122933=IfcWallStandardCase	123039=IfcWallStandardCase	131107=IfcWallStandardCase
+91	5	6	1	42326=IfcBeam
+91	6	1	1	6855=IfcSlab
+91	6	2	2	2063492=IfcBuildingElementProxy	395825=IfcSlab
+91	6	3	4	20415=IfcSlab	122792=IfcWallStandardCase	123211=IfcWallStandardCase	2063492=IfcBuildingElementProxy
+91	6	4	2	122792=IfcWallStandardCase	123211=IfcWallStandardCase
+91	6	5	2	122792=IfcWallStandardCase	123211=IfcWallStandardCase
+91	7	1	1	6855=IfcSlab
+91	7	2	2	2063492=IfcBuildingElementProxy	395825=IfcSlab
+91	7	3	4	20415=IfcSlab	122792=IfcWallStandardCase	122867=IfcWallStandardCase	2063492=IfcBuildingElementProxy
+91	7	4	3	122792=IfcWallStandardCase	122867=IfcWallStandardCase	127367=IfcBuildingElementProxy
+91	7	5	2	122792=IfcWallStandardCase	122867=IfcWallStandardCase
+91	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+91	8	2	1	9275=IfcWallStandardCase
+91	8	3	3	9275=IfcWallStandardCase	20415=IfcSlab	122900=IfcWallStandardCase
+91	8	4	1	122900=IfcWallStandardCase
+91	8	5	1	122900=IfcWallStandardCase
+92	1	1	2	6855=IfcSlab	13914=IfcWallStandardCase
+92	1	2	1	13914=IfcWallStandardCase
+92	1	3	3	20415=IfcSlab	22093=IfcWallStandardCase	13914=IfcWallStandardCase
+92	1	4	1	22093=IfcWallStandardCase
+92	1	5	1	22093=IfcWallStandardCase
+92	2	1	1	6855=IfcSlab
+92	2	3	1	20415=IfcSlab
+92	3	1	1	6855=IfcSlab
+92	3	2	3	395825=IfcSlab	1176443=IfcBuildingElementProxy	1176463=IfcBuildingElementProxy
+92	3	3	5	20415=IfcSlab	123072=IfcWallStandardCase	123277=IfcWallStandardCase	1176443=IfcBuildingElementProxy	1176463=IfcBuildingElementProxy
+92	3	4	3	123072=IfcWallStandardCase	123277=IfcWallStandardCase	127491=IfcBuildingElementProxy
+92	3	5	2	123072=IfcWallStandardCase	123277=IfcWallStandardCase
+92	4	1	2	6855=IfcSlab	12960=IfcBeam
+92	4	2	2	12960=IfcBeam	395825=IfcSlab
+92	4	3	4	20415=IfcSlab	26640=IfcBeam	123072=IfcWallStandardCase	131107=IfcWallStandardCase
+92	4	4	2	123072=IfcWallStandardCase	131107=IfcWallStandardCase
+92	4	5	3	42326=IfcBeam	123072=IfcWallStandardCase	131107=IfcWallStandardCase
+92	4	6	1	42326=IfcBeam
+92	5	1	2	6855=IfcSlab	12960=IfcBeam
+92	5	2	2	12960=IfcBeam	395825=IfcSlab
+92	5	3	4	20415=IfcSlab	26640=IfcBeam	123072=IfcWallStandardCase	131107=IfcWallStandardCase
+92	5	4	2	123072=IfcWallStandardCase	131107=IfcWallStandardCase
+92	5	5	3	42326=IfcBeam	123072=IfcWallStandardCase	131107=IfcWallStandardCase
+92	5	6	1	42326=IfcBeam
+92	6	1	1	6855=IfcSlab
+92	6	2	2	2063492=IfcBuildingElementProxy	395825=IfcSlab
+92	6	3	3	20415=IfcSlab	123072=IfcWallStandardCase	2063492=IfcBuildingElementProxy
+92	6	4	1	123072=IfcWallStandardCase
+92	6	5	1	123072=IfcWallStandardCase
+92	7	1	1	6855=IfcSlab
+92	7	2	2	2063492=IfcBuildingElementProxy	395825=IfcSlab
+92	7	3	4	20415=IfcSlab	122867=IfcWallStandardCase	123072=IfcWallStandardCase	2063492=IfcBuildingElementProxy
+92	7	4	3	122867=IfcWallStandardCase	123072=IfcWallStandardCase	123722=IfcBuildingElementProxy
+92	7	5	2	122867=IfcWallStandardCase	123072=IfcWallStandardCase
+92	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+92	8	2	1	9275=IfcWallStandardCase
+92	8	3	3	9275=IfcWallStandardCase	20415=IfcSlab	122900=IfcWallStandardCase
+92	8	4	1	122900=IfcWallStandardCase
+92	8	5	1	122900=IfcWallStandardCase
+93	1	1	2	6855=IfcSlab	13914=IfcWallStandardCase
+93	1	2	1	13914=IfcWallStandardCase
+93	1	3	4	20415=IfcSlab	22093=IfcWallStandardCase	13914=IfcWallStandardCase	123138=IfcWallStandardCase
+93	1	4	3	22093=IfcWallStandardCase	123138=IfcWallStandardCase	127047=IfcBuildingElementProxy
+93	1	5	2	22093=IfcWallStandardCase	123138=IfcWallStandardCase
+93	2	1	1	6855=IfcSlab
+93	2	3	3	20415=IfcSlab	123138=IfcWallStandardCase	123244=IfcWallStandardCase
+93	2	4	2	123138=IfcWallStandardCase	123244=IfcWallStandardCase
+93	2	5	2	123138=IfcWallStandardCase	123244=IfcWallStandardCase
+93	3	1	1	6855=IfcSlab
+93	3	2	3	395825=IfcSlab	1176463=IfcBuildingElementProxy	1176483=IfcBuildingElementProxy
+93	3	3	3	20415=IfcSlab	1176463=IfcBuildingElementProxy	1176483=IfcBuildingElementProxy
+93	4	1	2	6855=IfcSlab	12960=IfcBeam
+93	4	2	2	12960=IfcBeam	395825=IfcSlab
+93	4	3	3	20415=IfcSlab	26640=IfcBeam	19619=IfcColumn
+93	4	4	1	19619=IfcColumn
+93	4	5	2	42326=IfcBeam	19619=IfcColumn
+93	4	6	1	42326=IfcBeam
+93	5	1	2	6855=IfcSlab	12960=IfcBeam
+93	5	2	2	12960=IfcBeam	395825=IfcSlab
+93	5	3	3	20415=IfcSlab	26640=IfcBeam	19619=IfcColumn
+93	5	4	1	19619=IfcColumn
+93	5	5	2	42326=IfcBeam	19619=IfcColumn
+93	5	6	1	42326=IfcBeam
+93	6	1	1	6855=IfcSlab
+93	6	2	2	2063532=IfcBuildingElementProxy	395825=IfcSlab
+93	6	3	2	20415=IfcSlab	2063532=IfcBuildingElementProxy
+93	7	1	1	6855=IfcSlab
+93	7	2	2	2063532=IfcBuildingElementProxy	395825=IfcSlab
+93	7	3	3	20415=IfcSlab	122867=IfcWallStandardCase	2063532=IfcBuildingElementProxy
+93	7	4	1	122867=IfcWallStandardCase
+93	7	5	1	122867=IfcWallStandardCase
+93	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+93	8	2	1	9275=IfcWallStandardCase
+93	8	3	3	9275=IfcWallStandardCase	20415=IfcSlab	122900=IfcWallStandardCase
+93	8	4	1	122900=IfcWallStandardCase
+93	8	5	1	122900=IfcWallStandardCase
+94	1	1	2	6855=IfcSlab	13914=IfcWallStandardCase
+94	1	2	1	13914=IfcWallStandardCase
+94	1	3	4	20415=IfcSlab	22093=IfcWallStandardCase	13914=IfcWallStandardCase	131642=IfcWallStandardCase
+94	1	4	2	22093=IfcWallStandardCase	131642=IfcWallStandardCase
+94	1	5	2	22093=IfcWallStandardCase	131642=IfcWallStandardCase
+94	2	1	1	6855=IfcSlab
+94	2	3	3	20415=IfcSlab	123244=IfcWallStandardCase	131642=IfcWallStandardCase
+94	2	4	2	123244=IfcWallStandardCase	131642=IfcWallStandardCase
+94	2	5	2	123244=IfcWallStandardCase	131642=IfcWallStandardCase
+94	3	1	1	6855=IfcSlab
+94	3	2	2	395825=IfcSlab	1176483=IfcBuildingElementProxy
+94	3	3	2	20415=IfcSlab	1176483=IfcBuildingElementProxy
+94	4	1	2	6855=IfcSlab	12960=IfcBeam
+94	4	2	2	12960=IfcBeam	395825=IfcSlab
+94	4	3	3	20415=IfcSlab	26640=IfcBeam	19619=IfcColumn
+94	4	4	1	19619=IfcColumn
+94	4	5	2	42326=IfcBeam	19619=IfcColumn
+94	4	6	1	42326=IfcBeam
+94	5	1	2	6855=IfcSlab	12960=IfcBeam
+94	5	2	2	12960=IfcBeam	395825=IfcSlab
+94	5	3	3	20415=IfcSlab	26640=IfcBeam	19619=IfcColumn
+94	5	4	1	19619=IfcColumn
+94	5	5	2	42326=IfcBeam	19619=IfcColumn
+94	5	6	1	42326=IfcBeam
+94	6	1	1	6855=IfcSlab
+94	6	2	2	2063532=IfcBuildingElementProxy	395825=IfcSlab
+94	6	3	2	20415=IfcSlab	2063532=IfcBuildingElementProxy
+94	7	1	1	6855=IfcSlab
+94	7	2	2	2063532=IfcBuildingElementProxy	395825=IfcSlab
+94	7	3	3	20415=IfcSlab	122867=IfcWallStandardCase	2063532=IfcBuildingElementProxy
+94	7	4	1	122867=IfcWallStandardCase
+94	7	5	1	122867=IfcWallStandardCase
+94	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+94	8	2	1	9275=IfcWallStandardCase
+94	8	3	3	9275=IfcWallStandardCase	20415=IfcSlab	122900=IfcWallStandardCase
+94	8	4	1	122900=IfcWallStandardCase
+94	8	5	1	122900=IfcWallStandardCase
+95	1	1	2	6855=IfcSlab	13914=IfcWallStandardCase
+95	1	2	1	13914=IfcWallStandardCase
+95	1	3	4	20415=IfcSlab	22093=IfcWallStandardCase	13914=IfcWallStandardCase	131642=IfcWallStandardCase
+95	1	4	2	22093=IfcWallStandardCase	131642=IfcWallStandardCase
+95	1	5	2	22093=IfcWallStandardCase	131642=IfcWallStandardCase
+95	2	1	1	6855=IfcSlab
+95	2	3	3	20415=IfcSlab	123244=IfcWallStandardCase	131642=IfcWallStandardCase
+95	2	4	2	123244=IfcWallStandardCase	131642=IfcWallStandardCase
+95	2	5	2	123244=IfcWallStandardCase	131642=IfcWallStandardCase
+95	3	1	1	6855=IfcSlab
+95	3	2	5	395825=IfcSlab	397525=IfcWallStandardCase	397591=IfcWallStandardCase	1176483=IfcBuildingElementProxy	1619148=IfcBuildingElementProxy
+95	3	3	7	20415=IfcSlab	123343=IfcWallStandardCase	131173=IfcWallStandardCase	397525=IfcWallStandardCase	397591=IfcWallStandardCase	1176483=IfcBuildingElementProxy	1619148=IfcBuildingElementProxy
+95	3	4	2	123343=IfcWallStandardCase	131173=IfcWallStandardCase
+95	3	5	2	123343=IfcWallStandardCase	131173=IfcWallStandardCase
+95	4	1	2	6855=IfcSlab	12960=IfcBeam
+95	4	2	4	12960=IfcBeam	395825=IfcSlab	397525=IfcWallStandardCase	397591=IfcWallStandardCase
+95	4	3	5	20415=IfcSlab	26640=IfcBeam	123343=IfcWallStandardCase	397525=IfcWallStandardCase	397591=IfcWallStandardCase
+95	4	4	1	123343=IfcWallStandardCase
+95	4	5	2	42326=IfcBeam	123343=IfcWallStandardCase
+95	4	6	1	42326=IfcBeam
+95	5	1	2	6855=IfcSlab	12960=IfcBeam
+95	5	2	3	12960=IfcBeam	395825=IfcSlab	397525=IfcWallStandardCase
+95	5	3	5	20415=IfcSlab	26640=IfcBeam	123343=IfcWallStandardCase	131140=IfcWallStandardCase	397525=IfcWallStandardCase
+95	5	4	2	123343=IfcWallStandardCase	131140=IfcWallStandardCase
+95	5	5	3	42326=IfcBeam	123343=IfcWallStandardCase	131140=IfcWallStandardCase
+95	5	6	1	42326=IfcBeam
+95	6	1	1	6855=IfcSlab
+95	6	2	5	2063532=IfcBuildingElementProxy	2063552=IfcBuildingElementProxy	395825=IfcSlab	397525=IfcWallStandardCase	397558=IfcWallStandardCase
+95	6	3	6	20415=IfcSlab	123343=IfcWallStandardCase	2063532=IfcBuildingElementProxy	2063552=IfcBuildingElementProxy	397525=IfcWallStandardCase	397558=IfcWallStandardCase
+95	6	4	1	123343=IfcWallStandardCase
+95	6	5	1	123343=IfcWallStandardCase
+95	7	1	1	6855=IfcSlab
+95	7	2	3	2063532=IfcBuildingElementProxy	2063552=IfcBuildingElementProxy	395825=IfcSlab
+95	7	3	5	20415=IfcSlab	122867=IfcWallStandardCase	123343=IfcWallStandardCase	2063532=IfcBuildingElementProxy	2063552=IfcBuildingElementProxy
+95	7	4	2	122867=IfcWallStandardCase	123343=IfcWallStandardCase
+95	7	5	2	122867=IfcWallStandardCase	123343=IfcWallStandardCase
+95	8	1	2	9275=IfcWallStandardCase	6855=IfcSlab
+95	8	2	1	9275=IfcWallStandardCase
+95	8	3	3	9275=IfcWallStandardCase	20415=IfcSlab	122900=IfcWallStandardCase
+95	8	4	1	122900=IfcWallStandardCase
+95	8	5	1	122900=IfcWallStandardCase
+96	1	1	5	9390=IfcSlab	9826=IfcWallStandardCase	6855=IfcSlab	13106=IfcBeam	13914=IfcWallStandardCase
+96	1	2	2	9826=IfcWallStandardCase	13914=IfcWallStandardCase
+96	1	3	9	20415=IfcSlab	9826=IfcWallStandardCase	22093=IfcWallStandardCase	22184=IfcWallStandardCase	22506=IfcWallStandardCase	13914=IfcWallStandardCase	26675=IfcBeam	26874=IfcBeam	131239=IfcWallStandardCase
+96	1	4	5	22093=IfcWallStandardCase	22184=IfcWallStandardCase	22506=IfcWallStandardCase	26675=IfcBeam	131239=IfcWallStandardCase
+96	1	5	6	22093=IfcWallStandardCase	22184=IfcWallStandardCase	42362=IfcBeam	42415=IfcBeam	22506=IfcWallStandardCase	131239=IfcWallStandardCase
+96	1	6	2	42362=IfcBeam	42415=IfcBeam
+96	2	1	3	9390=IfcSlab	6855=IfcSlab	13106=IfcBeam
+96	2	2	1	1619148=IfcBuildingElementProxy
+96	2	3	4	20415=IfcSlab	26675=IfcBeam	131239=IfcWallStandardCase	131338=IfcWallStandardCase
+96	2	4	3	26675=IfcBeam	131239=IfcWallStandardCase	131338=IfcWallStandardCase
+96	2	5	3	42362=IfcBeam	131239=IfcWallStandardCase	131338=IfcWallStandardCase
+96	2	6	1	42362=IfcBeam
+96	3	1	3	9390=IfcSlab	6855=IfcSlab	13106=IfcBeam
+96	3	2	4	395825=IfcSlab	397591=IfcWallStandardCase	1619148=IfcBuildingElementProxy	1619168=IfcBuildingElementProxy
+96	3	3	8	20415=IfcSlab	26675=IfcBeam	131173=IfcWallStandardCase	131239=IfcWallStandardCase	2084310=IfcBuildingElementProxy	397591=IfcWallStandardCase	1619148=IfcBuildingElementProxy	1619168=IfcBuildingElementProxy
+96	3	4	3	26675=IfcBeam	131173=IfcWallStandardCase	131239=IfcWallStandardCase
+96	3	5	3	42362=IfcBeam	131173=IfcWallStandardCase	131239=IfcWallStandardCase
+96	3	6	1	42362=IfcBeam
+96	4	1	6	9390=IfcSlab	3684=IfcColumn	6855=IfcSlab	12960=IfcBeam	13106=IfcBeam	13280=IfcBeam
+96	4	2	7	3684=IfcColumn	12960=IfcBeam	2065138=IfcWallStandardCase	2065171=IfcWallStandardCase	2065204=IfcWallStandardCase	395825=IfcSlab	397591=IfcWallStandardCase
+96	4	3	13	20415=IfcSlab	3684=IfcColumn	26640=IfcBeam	26675=IfcBeam	19657=IfcColumn	131239=IfcWallStandardCase	131272=IfcWallStandardCase	131305=IfcWallStandardCase	2065138=IfcWallStandardCase	2065171=IfcWallStandardCase	2065204=IfcWallStandardCase	2084310=IfcBuildingElementProxy	397591=IfcWallStandardCase
+96	4	4	5	26675=IfcBeam	19657=IfcColumn	131239=IfcWallStandardCase	131272=IfcWallStandardCase	131305=IfcWallStandardCase
+96	4	5	6	42326=IfcBeam	42362=IfcBeam	19657=IfcColumn	131239=IfcWallStandardCase	131272=IfcWallStandardCase	131305=IfcWallStandardCase
+96	4	6	2	42326=IfcBeam	42362=IfcBeam
+96	5	1	6	9390=IfcSlab	3684=IfcColumn	6855=IfcSlab	12960=IfcBeam	13106=IfcBeam	13280=IfcBeam
+96	5	2	4	3684=IfcColumn	12960=IfcBeam	395825=IfcSlab	397492=IfcWallStandardCase
+96	5	3	9	20415=IfcSlab	3684=IfcColumn	26640=IfcBeam	26675=IfcBeam	26711=IfcBeam	19657=IfcColumn	131140=IfcWallStandardCase	131239=IfcWallStandardCase	397492=IfcWallStandardCase
+96	5	4	4	26675=IfcBeam	19657=IfcColumn	131140=IfcWallStandardCase	131239=IfcWallStandardCase
+96	5	5	5	42326=IfcBeam	42362=IfcBeam	19657=IfcColumn	131140=IfcWallStandardCase	131239=IfcWallStandardCase
+96	5	6	2	42326=IfcBeam	42362=IfcBeam
+96	6	1	3	9390=IfcSlab	6855=IfcSlab	13106=IfcBeam
+96	6	2	5	2063552=IfcBuildingElementProxy	2063572=IfcBuildingElementProxy	395825=IfcSlab	397492=IfcWallStandardCase	397558=IfcWallStandardCase
+96	6	3	10	20415=IfcSlab	26675=IfcBeam	26711=IfcBeam	131206=IfcWallStandardCase	131239=IfcWallStandardCase	2063552=IfcBuildingElementProxy	2063572=IfcBuildingElementProxy	2084350=IfcBuildingElementProxy	397492=IfcWallStandardCase	397558=IfcWallStandardCase
+96	6	4	3	26675=IfcBeam	131206=IfcWallStandardCase	131239=IfcWallStandardCase
+96	6	5	3	42362=IfcBeam	131206=IfcWallStandardCase	131239=IfcWallStandardCase
+96	6	6	1	42362=IfcBeam
+96	7	1	3	9390=IfcSlab	6855=IfcSlab	13106=IfcBeam
+96	7	2	3	2063552=IfcBuildingElementProxy	2063572=IfcBuildingElementProxy	395825=IfcSlab
+96	7	3	7	20415=IfcSlab	26675=IfcBeam	122867=IfcWallStandardCase	123551=IfcWallStandardCase	131239=IfcWallStandardCase	2063552=IfcBuildingElementProxy	2063572=IfcBuildingElementProxy
+96	7	4	4	26675=IfcBeam	122867=IfcWallStandardCase	123551=IfcWallStandardCase	131239=IfcWallStandardCase
+96	7	5	4	42362=IfcBeam	122867=IfcWallStandardCase	123551=IfcWallStandardCase	131239=IfcWallStandardCase
+96	7	6	1	42362=IfcBeam
+96	8	1	6	9275=IfcWallStandardCase	9328=IfcWallStandardCase	9390=IfcSlab	6855=IfcSlab	13106=IfcBeam	13967=IfcWallStandardCase
+96	8	2	3	9275=IfcWallStandardCase	9328=IfcWallStandardCase	13967=IfcWallStandardCase
+96	8	3	11	9275=IfcWallStandardCase	9328=IfcWallStandardCase	20415=IfcSlab	22270=IfcWallStandardCase	22381=IfcWallStandardCase	13967=IfcWallStandardCase	26675=IfcBeam	27039=IfcBeam	122900=IfcWallStandardCase	131437=IfcWallStandardCase	131470=IfcWallStandardCase
+96	8	4	7	22270=IfcWallStandardCase	22381=IfcWallStandardCase	26675=IfcBeam	122900=IfcWallStandardCase	123551=IfcWallStandardCase	131437=IfcWallStandardCase	131470=IfcWallStandardCase
+96	8	5	8	22270=IfcWallStandardCase	42362=IfcBeam	22381=IfcWallStandardCase	42468=IfcBeam	122900=IfcWallStandardCase	123551=IfcWallStandardCase	131437=IfcWallStandardCase	131470=IfcWallStandardCase
+96	8	6	2	42362=IfcBeam	42468=IfcBeam
+96	9	1	2	9328=IfcWallStandardCase	9390=IfcSlab
+96	9	2	1	9328=IfcWallStandardCase
+96	9	3	4	9328=IfcWallStandardCase	22270=IfcWallStandardCase	22381=IfcWallStandardCase	27039=IfcBeam
+96	9	4	2	22270=IfcWallStandardCase	22381=IfcWallStandardCase
+96	9	5	3	22270=IfcWallStandardCase	22381=IfcWallStandardCase	42468=IfcBeam
+96	9	6	1	42468=IfcBeam
+97	1	1	1	9390=IfcSlab
+97	1	3	4	20415=IfcSlab	22184=IfcWallStandardCase	26874=IfcBeam	123389=IfcWallStandardCase
+97	1	4	2	22184=IfcWallStandardCase	123389=IfcWallStandardCase
+97	1	5	3	22184=IfcWallStandardCase	42415=IfcBeam	123389=IfcWallStandardCase
+97	1	6	1	42415=IfcBeam
+97	2	1	1	9390=IfcSlab
+97	2	3	4	20415=IfcSlab	123389=IfcWallStandardCase	131338=IfcWallStandardCase	2084408=IfcBuildingElementProxy
+97	2	4	3	123389=IfcWallStandardCase	123682=IfcBuildingElementProxy	131338=IfcWallStandardCase
+97	2	5	2	123389=IfcWallStandardCase	131338=IfcWallStandardCase
+97	3	1	1	9390=IfcSlab
+97	3	2	4	2084408=IfcBuildingElementProxy	395825=IfcSlab	397591=IfcWallStandardCase	1619168=IfcBuildingElementProxy
+97	3	3	5	20415=IfcSlab	123389=IfcWallStandardCase	2084408=IfcBuildingElementProxy	397591=IfcWallStandardCase	1619168=IfcBuildingElementProxy
+97	3	4	2	123389=IfcWallStandardCase	123682=IfcBuildingElementProxy
+97	3	5	1	123389=IfcWallStandardCase
+97	4	1	2	9390=IfcSlab	13280=IfcBeam
+97	4	2	4	2065237=IfcWallStandardCase	2065303=IfcWallStandardCase	395825=IfcSlab	397591=IfcWallStandardCase
+97	4	3	8	20415=IfcSlab	26640=IfcBeam	123389=IfcWallStandardCase	123601=IfcWallStandardCase	131609=IfcWallStandardCase	2065237=IfcWallStandardCase	2065303=IfcWallStandardCase	397591=IfcWallStandardCase
+97	4	4	4	123389=IfcWallStandardCase	123601=IfcWallStandardCase	127411=IfcBuildingElementProxy	131609=IfcWallStandardCase
+97	4	5	4	42326=IfcBeam	123389=IfcWallStandardCase	123601=IfcWallStandardCase	131609=IfcWallStandardCase
+97	4	6	1	42326=IfcBeam
+97	5	1	2	9390=IfcSlab	13280=IfcBeam
+97	5	2	4	2065237=IfcWallStandardCase	2065303=IfcWallStandardCase	395825=IfcSlab	397459=IfcWallStandardCase
+97	5	3	10	20415=IfcSlab	26640=IfcBeam	26711=IfcBeam	123601=IfcWallStandardCase	131529=IfcWallStandardCase	131569=IfcWallStandardCase	131609=IfcWallStandardCase	2065237=IfcWallStandardCase	2065303=IfcWallStandardCase	397459=IfcWallStandardCase
+97	5	4	4	123601=IfcWallStandardCase	131529=IfcWallStandardCase	131569=IfcWallStandardCase	131609=IfcWallStandardCase
+97	5	5	5	42326=IfcBeam	123601=IfcWallStandardCase	131529=IfcWallStandardCase	131569=IfcWallStandardCase	131609=IfcWallStandardCase
+97	5	6	1	42326=IfcBeam
+97	6	1	1	9390=IfcSlab
+97	6	2	4	2063572=IfcBuildingElementProxy	395825=IfcSlab	397459=IfcWallStandardCase	397558=IfcWallStandardCase
+97	6	3	9	20415=IfcSlab	26711=IfcBeam	123485=IfcWallStandardCase	131206=IfcWallStandardCase	131529=IfcWallStandardCase	2063572=IfcBuildingElementProxy	2084350=IfcBuildingElementProxy	397459=IfcWallStandardCase	397558=IfcWallStandardCase
+97	6	4	4	123485=IfcWallStandardCase	131206=IfcWallStandardCase	131529=IfcWallStandardCase	131701=IfcBuildingElementProxy
+97	6	5	3	123485=IfcWallStandardCase	131206=IfcWallStandardCase	131529=IfcWallStandardCase
+97	7	1	1	9390=IfcSlab
+97	7	2	2	2063572=IfcBuildingElementProxy	395825=IfcSlab
+97	7	3	2	20415=IfcSlab	2063572=IfcBuildingElementProxy
+97	8	1	2	9328=IfcWallStandardCase	9390=IfcSlab
+97	8	2	1	9328=IfcWallStandardCase
+97	8	3	5	9328=IfcWallStandardCase	20415=IfcSlab	22381=IfcWallStandardCase	27039=IfcBeam	131437=IfcWallStandardCase
+97	8	4	2	22381=IfcWallStandardCase	131437=IfcWallStandardCase
+97	8	5	3	22381=IfcWallStandardCase	42468=IfcBeam	131437=IfcWallStandardCase
+97	8	6	1	42468=IfcBeam
+97	9	1	2	9328=IfcWallStandardCase	9390=IfcSlab
+97	9	2	1	9328=IfcWallStandardCase
+97	9	3	3	9328=IfcWallStandardCase	22381=IfcWallStandardCase	27039=IfcBeam
+97	9	4	1	22381=IfcWallStandardCase
+97	9	5	2	22381=IfcWallStandardCase	42468=IfcBeam
+97	9	6	1	42468=IfcBeam
+98	1	1	1	9390=IfcSlab
+98	1	3	4	20415=IfcSlab	22184=IfcWallStandardCase	26874=IfcBeam	27213=IfcBeam
+98	1	4	2	22184=IfcWallStandardCase	27213=IfcBeam
+98	1	5	3	22184=IfcWallStandardCase	42415=IfcBeam	42539=IfcBeam
+98	1	6	2	42415=IfcBeam	42539=IfcBeam
+98	2	1	1	9390=IfcSlab
+98	2	2	1	2084408=IfcBuildingElementProxy
+98	2	3	3	20415=IfcSlab	27213=IfcBeam	2084408=IfcBuildingElementProxy
+98	2	4	1	27213=IfcBeam
+98	2	5	1	42539=IfcBeam
+98	2	6	1	42539=IfcBeam
+98	3	1	1	9390=IfcSlab
+98	3	2	7	2084408=IfcBuildingElementProxy	2084430=IfcBuildingElementProxy	2084452=IfcBuildingElementProxy	395825=IfcSlab	397591=IfcWallStandardCase	1619168=IfcBuildingElementProxy	1620486=IfcBuildingElementProxy
+98	3	3	8	20415=IfcSlab	27213=IfcBeam	2084408=IfcBuildingElementProxy	2084430=IfcBuildingElementProxy	2084452=IfcBuildingElementProxy	397591=IfcWallStandardCase	1619168=IfcBuildingElementProxy	1620486=IfcBuildingElementProxy
+98	3	4	1	27213=IfcBeam
+98	3	5	1	42539=IfcBeam
+98	3	6	1	42539=IfcBeam
+98	4	1	3	9390=IfcSlab	3733=IfcColumn	13280=IfcBeam
+98	4	2	6	3733=IfcColumn	2065303=IfcWallStandardCase	2065336=IfcWallStandardCase	2065369=IfcWallStandardCase	395825=IfcSlab	397591=IfcWallStandardCase
+98	4	3	8	20415=IfcSlab	3733=IfcColumn	26640=IfcBeam	27213=IfcBeam	2065303=IfcWallStandardCase	2065336=IfcWallStandardCase	2065369=IfcWallStandardCase	397591=IfcWallStandardCase
+98	4	4	1	27213=IfcBeam
+98	4	5	2	42326=IfcBeam	42539=IfcBeam
+98	4	6	2	42326=IfcBeam	42539=IfcBeam
+98	5	1	3	9390=IfcSlab	3733=IfcColumn	13280=IfcBeam
+98	5	2	3	3733=IfcColumn	2065303=IfcWallStandardCase	395825=IfcSlab
+98	5	3	8	20415=IfcSlab	3733=IfcColumn	26640=IfcBeam	26711=IfcBeam	27213=IfcBeam	123601=IfcWallStandardCase	131569=IfcWallStandardCase	2065303=IfcWallStandardCase
+98	5	4	3	27213=IfcBeam	123601=IfcWallStandardCase	131569=IfcWallStandardCase
+98	5	5	4	42326=IfcBeam	42539=IfcBeam	123601=IfcWallStandardCase	131569=IfcWallStandardCase
+98	5	6	2	42326=IfcBeam	42539=IfcBeam
+98	6	1	1	9390=IfcSlab
+98	6	2	7	2063572=IfcBuildingElementProxy	2064886=IfcBuildingElementProxy	2064906=IfcBuildingElementProxy	2084368=IfcBuildingElementProxy	2084388=IfcBuildingElementProxy	395825=IfcSlab	397558=IfcWallStandardCase
+98	6	3	12	20415=IfcSlab	26711=IfcBeam	27213=IfcBeam	123485=IfcWallStandardCase	123601=IfcWallStandardCase	131404=IfcWallStandardCase	2063572=IfcBuildingElementProxy	2064886=IfcBuildingElementProxy	2064906=IfcBuildingElementProxy	2084368=IfcBuildingElementProxy	2084388=IfcBuildingElementProxy	397558=IfcWallStandardCase
+98	6	4	5	27213=IfcBeam	123485=IfcWallStandardCase	123601=IfcWallStandardCase	131404=IfcWallStandardCase	131701=IfcBuildingElementProxy
+98	6	5	4	42539=IfcBeam	123485=IfcWallStandardCase	123601=IfcWallStandardCase	131404=IfcWallStandardCase
+98	6	6	1	42539=IfcBeam
+98	7	1	1	9390=IfcSlab
+98	7	2	3	2063572=IfcBuildingElementProxy	2064906=IfcBuildingElementProxy	395825=IfcSlab
+98	7	3	5	20415=IfcSlab	27213=IfcBeam	131404=IfcWallStandardCase	2063572=IfcBuildingElementProxy	2064906=IfcBuildingElementProxy
+98	7	4	2	27213=IfcBeam	131404=IfcWallStandardCase
+98	7	5	2	42539=IfcBeam	131404=IfcWallStandardCase
+98	7	6	1	42539=IfcBeam
+98	8	1	2	9328=IfcWallStandardCase	9390=IfcSlab
+98	8	2	1	9328=IfcWallStandardCase
+98	8	3	7	9328=IfcWallStandardCase	20415=IfcSlab	22381=IfcWallStandardCase	27039=IfcBeam	27213=IfcBeam	131404=IfcWallStandardCase	131437=IfcWallStandardCase
+98	8	4	4	22381=IfcWallStandardCase	27213=IfcBeam	131404=IfcWallStandardCase	131437=IfcWallStandardCase
+98	8	5	5	22381=IfcWallStandardCase	42468=IfcBeam	42539=IfcBeam	131404=IfcWallStandardCase	131437=IfcWallStandardCase
+98	8	6	2	42468=IfcBeam	42539=IfcBeam
+98	9	1	2	9328=IfcWallStandardCase	9390=IfcSlab
+98	9	2	1	9328=IfcWallStandardCase
+98	9	3	4	9328=IfcWallStandardCase	22381=IfcWallStandardCase	27039=IfcBeam	27213=IfcBeam
+98	9	4	2	22381=IfcWallStandardCase	27213=IfcBeam
+98	9	5	3	22381=IfcWallStandardCase	42468=IfcBeam	42539=IfcBeam
+98	9	6	2	42468=IfcBeam	42539=IfcBeam
+99	1	1	1	9390=IfcSlab
+99	1	3	5	20415=IfcSlab	22184=IfcWallStandardCase	26874=IfcBeam	27213=IfcBeam	123452=IfcWallStandardCase
+99	1	4	3	22184=IfcWallStandardCase	27213=IfcBeam	123452=IfcWallStandardCase
+99	1	5	4	22184=IfcWallStandardCase	42415=IfcBeam	42539=IfcBeam	123452=IfcWallStandardCase
+99	1	6	2	42415=IfcBeam	42539=IfcBeam
+99	2	1	1	9390=IfcSlab
+99	2	3	4	20415=IfcSlab	27213=IfcBeam	123452=IfcWallStandardCase	123518=IfcWallStandardCase
+99	2	4	3	27213=IfcBeam	123452=IfcWallStandardCase	123518=IfcWallStandardCase
+99	2	5	3	42539=IfcBeam	123452=IfcWallStandardCase	123518=IfcWallStandardCase
+99	2	6	1	42539=IfcBeam
+99	3	1	2	9390=IfcSlab	398667=IfcStairFlight
+99	3	2	9	2084408=IfcBuildingElementProxy	2084474=IfcBuildingElementProxy	2084496=IfcBuildingElementProxy	395825=IfcSlab	398667=IfcStairFlight	2134749=IfcRailing	2135915=IfcRailing	2152890=IfcRailing	1620486=IfcBuildingElementProxy
+99	3	3	6	20415=IfcSlab	27213=IfcBeam	123518=IfcWallStandardCase	131371=IfcWallStandardCase	2084474=IfcBuildingElementProxy	1620486=IfcBuildingElementProxy
+99	3	4	3	27213=IfcBeam	123518=IfcWallStandardCase	131371=IfcWallStandardCase
+99	3	5	3	42539=IfcBeam	123518=IfcWallStandardCase	131371=IfcWallStandardCase
+99	3	6	1	42539=IfcBeam
+99	4	1	3	9390=IfcSlab	3733=IfcColumn	13280=IfcBeam
+99	4	2	5	3733=IfcColumn	2065270=IfcWallStandardCase	2065369=IfcWallStandardCase	2084496=IfcBuildingElementProxy	395825=IfcSlab
+99	4	3	7	20415=IfcSlab	3733=IfcColumn	26640=IfcBeam	27213=IfcBeam	2065270=IfcWallStandardCase	2065369=IfcWallStandardCase	2084496=IfcBuildingElementProxy
+99	4	4	1	27213=IfcBeam
+99	4	5	2	42326=IfcBeam	42539=IfcBeam
+99	4	6	2	42326=IfcBeam	42539=IfcBeam
+99	5	1	3	9390=IfcSlab	3733=IfcColumn	13280=IfcBeam
+99	5	2	4	3733=IfcColumn	2065402=IfcWallStandardCase	395825=IfcSlab	397624=IfcWallStandardCase
+99	5	3	7	20415=IfcSlab	3733=IfcColumn	26640=IfcBeam	26711=IfcBeam	27213=IfcBeam	2065402=IfcWallStandardCase	397624=IfcWallStandardCase
+99	5	4	1	27213=IfcBeam
+99	5	5	2	42326=IfcBeam	42539=IfcBeam
+99	5	6	2	42326=IfcBeam	42539=IfcBeam
+99	6	1	2	9390=IfcSlab	398314=IfcStairFlight
+99	6	2	8	2064906=IfcBuildingElementProxy	395825=IfcSlab	397558=IfcWallStandardCase	397624=IfcWallStandardCase	398314=IfcStairFlight	2132497=IfcRailing	2133648=IfcRailing	2152994=IfcRailing
+99	6	3	8	20415=IfcSlab	26711=IfcBeam	27213=IfcBeam	123485=IfcWallStandardCase	131404=IfcWallStandardCase	2064906=IfcBuildingElementProxy	397558=IfcWallStandardCase	397624=IfcWallStandardCase
+99	6	4	3	27213=IfcBeam	123485=IfcWallStandardCase	131404=IfcWallStandardCase
+99	6	5	3	42539=IfcBeam	123485=IfcWallStandardCase	131404=IfcWallStandardCase
+99	6	6	1	42539=IfcBeam
+99	7	1	1	9390=IfcSlab
+99	7	2	1	395825=IfcSlab
+99	7	3	4	20415=IfcSlab	27213=IfcBeam	131404=IfcWallStandardCase	2064906=IfcBuildingElementProxy
+99	7	4	2	27213=IfcBeam	131404=IfcWallStandardCase
+99	7	5	2	42539=IfcBeam	131404=IfcWallStandardCase
+99	7	6	1	42539=IfcBeam
+99	8	1	2	9328=IfcWallStandardCase	9390=IfcSlab
+99	8	2	1	9328=IfcWallStandardCase
+99	8	3	6	9328=IfcWallStandardCase	20415=IfcSlab	22381=IfcWallStandardCase	27039=IfcBeam	27213=IfcBeam	131404=IfcWallStandardCase
+99	8	4	3	22381=IfcWallStandardCase	27213=IfcBeam	131404=IfcWallStandardCase
+99	8	5	4	22381=IfcWallStandardCase	42468=IfcBeam	42539=IfcBeam	131404=IfcWallStandardCase
+99	8	6	2	42468=IfcBeam	42539=IfcBeam
+99	9	1	2	9328=IfcWallStandardCase	9390=IfcSlab
+99	9	2	1	9328=IfcWallStandardCase
+99	9	3	4	9328=IfcWallStandardCase	22381=IfcWallStandardCase	27039=IfcBeam	27213=IfcBeam
+99	9	4	2	22381=IfcWallStandardCase	27213=IfcBeam
+99	9	5	3	22381=IfcWallStandardCase	42468=IfcBeam	42539=IfcBeam
+99	9	6	2	42468=IfcBeam	42539=IfcBeam
+100	1	1	2	9390=IfcSlab	9743=IfcWall
+100	1	2	1	9743=IfcWall
+100	1	3	5	20415=IfcSlab	9743=IfcWall	22184=IfcWallStandardCase	26874=IfcBeam	27074=IfcBeam
+100	1	4	3	22184=IfcWallStandardCase	22455=IfcWall	27074=IfcBeam
+100	1	5	4	22184=IfcWallStandardCase	42415=IfcBeam	22455=IfcWall	42503=IfcBeam
+100	1	6	2	42415=IfcBeam	42503=IfcBeam
+100	2	1	2	9390=IfcSlab	9743=IfcWall
+100	2	2	1	9743=IfcWall
+100	2	3	3	20415=IfcSlab	9743=IfcWall	27074=IfcBeam
+100	2	4	2	22455=IfcWall	27074=IfcBeam
+100	2	5	2	22455=IfcWall	42503=IfcBeam
+100	2	6	1	42503=IfcBeam
+100	3	1	6	4115=IfcColumn	9390=IfcSlab	9743=IfcWall	398667=IfcStairFlight	2134749=IfcRailing	2135915=IfcRailing
+100	3	2	6	4115=IfcColumn	9743=IfcWall	395825=IfcSlab	2134749=IfcRailing	2135915=IfcRailing	2152890=IfcRailing
+100	3	3	5	4115=IfcColumn	20415=IfcSlab	9743=IfcWall	27074=IfcBeam	131371=IfcWallStandardCase
+100	3	4	3	22455=IfcWall	27074=IfcBeam	131371=IfcWallStandardCase
+100	3	5	3	22455=IfcWall	42503=IfcBeam	131371=IfcWallStandardCase
+100	3	6	1	42503=IfcBeam
+100	4	1	5	4115=IfcColumn	9390=IfcSlab	9743=IfcWall	3988=IfcColumn	13280=IfcBeam
+100	4	2	4	4115=IfcColumn	9743=IfcWall	3988=IfcColumn	395825=IfcSlab
+100	4	3	7	4115=IfcColumn	20415=IfcSlab	9743=IfcWall	3988=IfcColumn	26640=IfcBeam	27074=IfcBeam	19771=IfcColumn
+100	4	4	3	22455=IfcWall	27074=IfcBeam	19771=IfcColumn
+100	4	5	4	42326=IfcBeam	22455=IfcWall	42503=IfcBeam	19771=IfcColumn
+100	4	6	2	42326=IfcBeam	42503=IfcBeam
+100	5	1	4	9390=IfcSlab	9743=IfcWall	3988=IfcColumn	13280=IfcBeam
+100	5	2	4	9743=IfcWall	3988=IfcColumn	2065402=IfcWallStandardCase	395825=IfcSlab
+100	5	3	7	20415=IfcSlab	9743=IfcWall	3988=IfcColumn	26640=IfcBeam	27074=IfcBeam	19771=IfcColumn	2065402=IfcWallStandardCase
+100	5	4	3	22455=IfcWall	27074=IfcBeam	19771=IfcColumn
+100	5	5	4	42326=IfcBeam	22455=IfcWall	42503=IfcBeam	19771=IfcColumn
+100	5	6	2	42326=IfcBeam	42503=IfcBeam
+100	6	1	6	9390=IfcSlab	9743=IfcWall	3860=IfcColumn	398314=IfcStairFlight	2132497=IfcRailing	2133648=IfcRailing
+100	6	2	6	9743=IfcWall	3860=IfcColumn	395825=IfcSlab	2132497=IfcRailing	2133648=IfcRailing	2152994=IfcRailing
+100	6	3	5	20415=IfcSlab	9743=IfcWall	3860=IfcColumn	27074=IfcBeam	19733=IfcColumn
+100	6	4	3	22455=IfcWall	27074=IfcBeam	19733=IfcColumn
+100	6	5	3	22455=IfcWall	42503=IfcBeam	19733=IfcColumn
+100	6	6	1	42503=IfcBeam
+100	7	1	2	9390=IfcSlab	9743=IfcWall
+100	7	2	1	9743=IfcWall
+100	7	3	3	20415=IfcSlab	9743=IfcWall	27074=IfcBeam
+100	7	4	2	22455=IfcWall	27074=IfcBeam
+100	7	5	2	22455=IfcWall	42503=IfcBeam
+100	7	6	1	42503=IfcBeam
+100	8	1	3	9328=IfcWallStandardCase	9390=IfcSlab	9743=IfcWall
+100	8	2	2	9328=IfcWallStandardCase	9743=IfcWall
+100	8	3	6	9328=IfcWallStandardCase	20415=IfcSlab	9743=IfcWall	22381=IfcWallStandardCase	27039=IfcBeam	27074=IfcBeam
+100	8	4	3	22381=IfcWallStandardCase	22455=IfcWall	27074=IfcBeam
+100	8	5	4	22381=IfcWallStandardCase	22455=IfcWall	42468=IfcBeam	42503=IfcBeam
+100	8	6	2	42468=IfcBeam	42503=IfcBeam
+100	9	1	2	9328=IfcWallStandardCase	9390=IfcSlab
+100	9	2	1	9328=IfcWallStandardCase
+100	9	3	4	9328=IfcWallStandardCase	22381=IfcWallStandardCase	27039=IfcBeam	27074=IfcBeam
+100	9	4	2	22381=IfcWallStandardCase	27074=IfcBeam
+100	9	5	2	22381=IfcWallStandardCase	42468=IfcBeam
+100	9	6	1	42468=IfcBeam
+101	1	3	1	26874=IfcBeam
+#	Voxel Record End
