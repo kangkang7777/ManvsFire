@@ -24,12 +24,17 @@ $(function () {
     var exitConnectionMap = [];
     var guidPosArr = [];
     var finishTagMap = [];
+
+
+//json部分 另包括下列参数所有的函数（onmessage等）不再另标注
     var mapWorker, loadSmokeWorker;
+    var acoPathFindingWorker =  new Worker("js/ACOPathFindingWorker.js"); //创建子线程ACOPathFindingWorker.js为蚁群寻路算法
     var workerLoadVsg=new Worker("js/loadBlockVsg.js");
     var workerDout=new Worker("js/loadMergedFile.js");
-    var acoPathFindingWorker =  new Worker("js/ACOPathFindingWorker.js"); //创建子线程ACOPathFindingWorker.js为蚁群寻路算法
     var workerLoadModel=new Worker("js/loadModel.js");
     var workerLoadSmokeAndPath=new Worker("js/loadSmokeJsonWorker.js");
+//json
+
     var currentBlcokName = "TJSub_Vis";
     var pathArr,pathMap;
     var antCountMap,iterationCountMap,antTotalCount,iterationTotalCount;
@@ -46,7 +51,7 @@ $(function () {
     var targetPositionArr = [];
     var control;
     var isEdit = false;
-    
+    //fds起火点坐标控制
     var smokeTexture,smokeLogoTexture;
     var Logo1Material,Logo2Material,Logo3Material,Logo4Material,Logo5Material;
     var Logo1Mesh,Logo2Mesh,Logo3Mesh,Logo4Mesh,Logo5Mesh;
@@ -120,8 +125,6 @@ $(function () {
     }
 //endregion
     init();
-
-
 
     function init() {
 //region 基础场景设置
@@ -745,6 +748,7 @@ $(function () {
 //endregion
     }
 
+    //region部分参数初始化
     var step=0;
     var step1=0;
 
@@ -915,7 +919,9 @@ $(function () {
 
         }
     }
+    //endregion
 
+    //region人群部分
     //创建动作列表
     var idleAction, walkAction, runAction;//一共三个动作，站立、行走、低头跑
     var actions;//设立动作数组
@@ -1391,29 +1397,66 @@ $(function () {
         } );
     }
 
+    //设置人群的位置
+    function createRandomPos(meshNum) {
+        var blendMeshPosIndexArr = ["470&22@19","524&11@19","491&40@19","564&33@9","459&30@9"];
+        for(var i=0; i<meshNum; i++)
+        {
+            var x,y,z;
+            var maxX1 = 556;
+            var minX1 = 400;
+            var maxZ1 = 42;
+            var minZ1 = 11;
+            var maxX2 = 586;
+            var minX2 = 334;
+            var maxZ2 = 31;
+            var minZ2 = 16;
+            if(Math.random() > 0.5)
+            {
+                x = Math.floor(Math.random()*(maxX1-minX1+1)+minX1);
+                z= Math.floor(Math.random()*(maxZ1-minZ1+1)+minZ1);
+                y=19;
+            }
+            else
+            {
+                x = Math.floor(Math.random()*(maxX2-minX2+1)+minX2);
+                z= Math.floor(Math.random()*(maxZ2-minZ2+1)+minZ2);
+                y=9;
+            }
 
-    function copyArray(arr){
-        var result = [];
-        for(var i = 0; i < arr.length; i++){
-            result.push(arr[i]);
+            var index1 = x + "&" + z + "@"+y;
+            // while(mapInfoMap[index1]==0){
+            //     var cubeGeometry=new THREE.CubeGeometry(0.5);
+            //     var cubeMaterial=new THREE.MeshPhongMaterial({color:0xff0000});
+            //     var cubeMesh=new THREE.Mesh(cubeGeometry,cubeMaterial);
+            //     var newCubeMesh=cubeMesh.clone();
+            //     newCubeMesh.position.set(x,y,z);
+            //     scene.add(newCubeMesh);
+            // }
+            while(blendMeshPosIndexArr.indexOf(index1)!=-1 || mapInfoMap[index1]==0 )
+            {
+                if(Math.random() > 0.5)
+                {
+                    x = Math.floor(Math.random()*(maxX1-minX1+1)+minX1);
+                    z= Math.floor(Math.random()*(maxZ1-minZ1+1)+minZ1);
+                    y=19;
+                }
+                else
+                {
+                    x = Math.floor(Math.random()*(maxX2-minX2+1)+minX2);
+                    z= Math.floor(Math.random()*(maxZ2-minZ2+1)+minZ2);
+                    y=9;
+                }
+
+                index1 = x + "&" + z + "@"+y;
+            }
+            blendMeshPosIndexArr.push(index1);
+            blendMeshPosArr.push(new THREE.Vector3(x,y,z));
+            //createPositionCube();
         }
-        return result;
     }
 
-    //生成随机数
-    function generateRandomNum(minNum,maxNum){
-        switch(arguments.length){
-            case 1:
-                return parseInt(Math.random()*minNum+1,10);
-                break;
-            case 2:
-                return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10);
-                break;
-            default:
-                return 0;
-                break;
-        }
-    }
+
 
     //LeaderFollower算法
     function initFollowerAndLeader(mesh) {
@@ -1594,65 +1637,9 @@ $(function () {
         action.setEffectiveWeight( weight );
     }
 
-    //设置人群的位置
-    function createRandomPos(meshNum) {
-        var blendMeshPosIndexArr = ["470&22@19","524&11@19","491&40@19","564&33@9","459&30@9"];
-        for(var i=0; i<meshNum; i++)
-        {
-            var x,y,z;
-            var maxX1 = 556;
-            var minX1 = 400;
-            var maxZ1 = 42;
-            var minZ1 = 11;
-            var maxX2 = 586;
-            var minX2 = 334;
-            var maxZ2 = 31;
-            var minZ2 = 16;
-            if(Math.random() > 0.5)
-            {
-                x = Math.floor(Math.random()*(maxX1-minX1+1)+minX1);
-                z= Math.floor(Math.random()*(maxZ1-minZ1+1)+minZ1);
-                y=19;
-            }
-            else
-            {
-                x = Math.floor(Math.random()*(maxX2-minX2+1)+minX2);
-                z= Math.floor(Math.random()*(maxZ2-minZ2+1)+minZ2);
-                y=9;
-            }
+    //endregion
 
-            var index1 = x + "&" + z + "@"+y;
-            // while(mapInfoMap[index1]==0){
-            //     var cubeGeometry=new THREE.CubeGeometry(0.5);
-            //     var cubeMaterial=new THREE.MeshPhongMaterial({color:0xff0000});
-            //     var cubeMesh=new THREE.Mesh(cubeGeometry,cubeMaterial);
-            //     var newCubeMesh=cubeMesh.clone();
-            //     newCubeMesh.position.set(x,y,z);
-            //     scene.add(newCubeMesh);
-            // }
-            while(blendMeshPosIndexArr.indexOf(index1)!=-1 || mapInfoMap[index1]==0 )
-            {
-                if(Math.random() > 0.5)
-                {
-                    x = Math.floor(Math.random()*(maxX1-minX1+1)+minX1);
-                    z= Math.floor(Math.random()*(maxZ1-minZ1+1)+minZ1);
-                    y=19;
-                }
-                else
-                {
-                    x = Math.floor(Math.random()*(maxX2-minX2+1)+minX2);
-                    z= Math.floor(Math.random()*(maxZ2-minZ2+1)+minZ2);
-                    y=9;
-                }
-
-                index1 = x + "&" + z + "@"+y;
-            }
-            blendMeshPosIndexArr.push(index1);
-            blendMeshPosArr.push(new THREE.Vector3(x,y,z));
-            //createPositionCube();
-        }
-    }
-
+    //region 建筑模型&材质添加
     //绘制建筑模型
     function DrawModel()
     {
@@ -1936,7 +1923,7 @@ $(function () {
     }
 
     //添加材质 艾子豪
-
+    //region 注：此处材质为建筑材质，且准确的说是导入材质 下面的函数才是添加
     var texture1 = THREE.ImageUtils.loadTexture( './assets/textures/texture1.jpg' );
     //var texture1 = THREE.ImageUtils.loadTexture( '/assets/textures/timg.jpg' );
     var maxAnisotropy = renderer.getMaxAnisotropy();
@@ -2028,10 +2015,12 @@ $(function () {
     texture11.repeat.set( 0.5, 0.5 );
     var material11 = new THREE.MeshPhongMaterial( { color: 0xffffff, map: texture11,side: THREE.DoubleSide,shininess:5000,opacity:1,transparent:true});
 
-
+    //endregion
     //添加材质 完了 艾子豪
 
-    function createMesh(geom,block,nam) {
+    //针对建筑进行材质添加
+    function createMesh(geom,block,nam)
+    {
         geom.computeFaceNormals();
         if(geom.faces[0]){
             var normal = geom.faces[0].normal;
@@ -2221,7 +2210,9 @@ $(function () {
         mesh.scale.set(1/500,1/500,1/500);
         return mesh;
     }
+    //endregion
 
+    //region 烟雾效果
     /**烟雾渐变效果开始——冯玉山**/
     var iswater=false;
     var ii=0;
@@ -2265,63 +2256,465 @@ $(function () {
         }
     };
     /**烟雾渐变效果结束——冯玉山**/
+    //endregion
 
-    //创建灭火器
-    function createExtinguisher() {
-        let loader = new THREE.ObjectLoader();
-        loader.load('./Model/man/extinguisher.json', function (loadedObject) {
-            for(var i=0;i<extinguishPosition.length;i++){
-                extinguisher = loadedObject.children[0];
-                extinguisher.scale.set(0.2, 0.2, 0.2);
-                var extinguisherClone=extinguisher.clone();
-                let texture = THREE.ImageUtils.loadTexture('./Model/man/extinguisher.png');
-                texture.anisotropy = renderer.getMaxAnisotropy();
-                texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-                texture.repeat.set(1, 1);
-                extinguisherClone.material=new THREE.MeshPhongMaterial();
-                extinguisherClone.material.map = texture;
-                extinguisherClone.position.set(extinguishPosition[i][0],extinguishPosition[i][1],extinguishPosition[i][2]);
-                // extinguisher.geometry.computeVertexNormals();
-                // extinguisher.geometry.computeFaceNormals();
-                scene.add(extinguisherClone);//将模型加入场景
-                extinguisherArr.push(extinguisherClone);
-            }
-
-        });
-
-    }
-
-    //与消防员有关的灭火器
-    function createExtinguisherAndFireMan() {
-        let loader = new THREE.ObjectLoader();
-        loader.load('./Model/man/extinguisher.json', function (loadedObject) {
-
-            extinguisherAndFireMan = loadedObject.children[0];
-            extinguisherAndFireMan.scale.set(0.2, 0.2, 0.2);
-            let texture = THREE.ImageUtils.loadTexture('./Model/man/extinguisher.png');
-            texture.anisotropy = renderer.getMaxAnisotropy();
-            texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-            texture.repeat.set(1, 1);
-            extinguisherAndFireMan.material=new THREE.MeshPhongMaterial();
-            extinguisherAndFireMan.material.map = texture;
-            extinguisherAndFireMan.position.set(359,18.5,6.5);
-            // extinguisher.geometry.computeVertexNormals();
-            // extinguisher.geometry.computeFaceNormals();
-            scene.add(extinguisherAndFireMan);//将模型加入场景
-
-        });
-
-    }
-
+    //region定义函数
+    //鼠标移动操作
     function onDocumentMouseMove(event){
         event.preventDefault();
         mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
         mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
     }
 
-    createExtinguisher();
-    createExtinguisherAndFireMan();
+    //生成随机数
+    function generateRandomNum(minNum,maxNum){
+        switch(arguments.length){
+            case 1:
+                return parseInt(Math.random()*minNum+1,10);
+                break;
+            case 2:
+                return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10);
+                break;
+            default:
+                return 0;
+                break;
+        }
+    }
+    //数组复制
+    function copyArray(arr){
+        var result = [];
+        for(var i = 0; i < arr.length; i++){
+            result.push(arr[i]);
+        }
+        return result;
+    }
+    //窗口设置
+    function onWindowResize() {
+        SCREEN_WIDTH = window.innerWidth;
+        SCREEN_HEIGHT = window.innerHeight;
+        aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
 
+        renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+        camera.aspect = aspect;
+        camera.updateProjectionMatrix();
+
+        cameraPerspective.aspect=aspect;
+        cameraPerspective.updateProjectionMatrix();
+
+        cameraOrtho.left = - frustumSize * aspect / 2;
+        cameraOrtho.right = frustumSize * aspect / 2;
+        cameraOrtho.top = frustumSize / 2;
+        cameraOrtho.bottom = - frustumSize / 2;
+        cameraOrtho.updateProjectionMatrix();
+    }
+    //endregion
+
+    //region路径部分
+    //生成寻路网格
+
+    var postCount = 0;
+    var recieveCount = 0;
+    var finishPathNum = 0;
+
+    function getRandomColor(){
+        return  '#' +
+            (function(color){
+                return (color +=  '0123456789abcdef'[Math.floor(Math.random()*16)])
+                && (color.length == 6) ?  color : arguments.callee(color);
+            })('');
+    }
+
+    function createNav() {
+        let loader = new THREE.OBJLoader();
+        // load a resource
+        loader.load(
+            // resource URL
+            'Model/nav.obj',
+            // called when resource is loaded
+            function (object) {
+                let g;
+                g = new THREE.Geometry().fromBufferGeometry(object.children[0].geometry);
+                pathfinder = new THREE.Pathfinding();
+                // Create level.
+                pathfinder.setZoneData('level1', THREE.Pathfinding.createZone(g));
+
+            },
+            // called when loading is in progresses
+            function (xhr) {
+
+                console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+
+            },
+            // called when loading has errors
+            function (error) {
+
+                console.log('An error happened');
+
+            }
+        );
+    }
+
+    function startACOPathFinding(startPosition,targetPositionArr,currentFloor,tag)
+    {
+        /***
+         * 向子线程发送信息
+         * 信息体包括：startPosition寻路的出发点
+         *           targetPositionArr寻路的目的地数组
+         *           mapInfoMap地图信息
+         *           currentFloor所处的层数（场景包含2层）
+         *           tag寻路的角色的tag
+         */
+        var workerMessage = [];
+        workerMessage.push(startPosition);
+        workerMessage.push(targetPositionArr);
+        workerMessage.push(mapInfoMap);
+        workerMessage.push(currentFloor);
+        workerMessage.push(tag);
+        postCount++;
+        //发送子线程请求
+        acoPathFindingWorker.postMessage(workerMessage);
+    }
+
+    acoPathFindingWorker.onmessage=function(event)
+    {
+        recieveCount++;
+        // console.log(recieveCount+"/"+postCount);
+        /***
+         * 接受子线程处理好的数据
+         * 数据包括：pathTag寻路的角色的tag
+         *          pathArr当前线程找到的路径
+         *          resultBool寻路结果
+         *          floor寻路所在的层数
+         *          startPosition寻路的出发点（便于迭代）
+         *          targetPositionArr寻路的目的地数组
+         */
+        var pathTag = event.data.pathTag;
+        //!finishTagMap[pathTag] && recieveCount<=postCount
+        if(true)
+        {
+            if(!pathArr[pathTag])
+            {
+                pathArr[pathTag] = [];
+            }
+            if(event.data.resultBool != -1)
+            {
+                var path = event.data.pathArr;
+//            console.log("find path:" + path.length);
+                pathArr[pathTag].push(path);
+            }
+            else
+            {
+                if(event.data.floor == 19)
+                {
+//                console.log("dead!");
+                }
+            }
+            if(!antCountMap[pathTag])
+            {
+                antCountMap[pathTag]=0;
+            }
+            antCountMap[pathTag]++;
+//            console.log("antCountMap[pathTag]:"+antCountMap[pathTag]);
+            if(antCountMap[pathTag]==antTotalCount)
+            {
+                antCountMap[pathTag]=0;
+                if(pathArr[pathTag].length>0)
+                {
+                    var shortestPath = pathArr[pathTag][0];
+                    var shortesLength = 10000;
+                    for(var i=0; i<pathArr[pathTag].length;i++)
+                    {
+                        //比较路径长度
+                        var tempLength = getPathLength(pathArr[pathTag][i]);
+                        if(tempLength<shortesLength)
+                        {
+                            shortestPath = pathArr[pathTag][i];
+                            shortesLength = tempLength;
+                        }
+                    }
+                    for(var j=0;j<shortestPath.length;j++)
+                    {
+                        mapInfoMap[shortestPath[j]] = 1*mapInfoMap[shortestPath[j]] + 5;
+                    }
+
+                    if(!iterationCountMap[pathTag])
+                    {
+                        iterationCountMap[pathTag]=0;
+                    }
+                    iterationCountMap[pathTag]++;
+//                    console.log(pathTag + "count is:" +iterationCountMap[pathTag]);
+                    if(iterationCountMap[pathTag]!=iterationTotalCount)
+                    {
+//                        console.log("继续迭代");
+                        for(var acoCount=0;acoCount<antTotalCount;acoCount++)
+                        {
+                            startACOPathFinding(event.data.startPosition,event.data.targetPositionArr,event.data.floor,pathTag);
+                        }
+                    }
+                    else
+                    {
+                        iterationCountMap[pathTag]=0;
+                        console.log("find best path:" + shortestPath);
+                        console.log("best path length:" + shortesLength);
+
+                        if(!pathMap[pathTag]) pathMap[pathTag]=[];
+                        pathMap[pathTag].push(shortestPath);
+                        pathArr[pathTag] = [];
+                        if(event.data.floor==9)
+                        {
+                            console.log("第一层迭代完成");
+                            var startPosition = exitConnectionMap[shortestPath[shortestPath.length-1]][exitConnectionMap[shortestPath[shortestPath.length-1]].length-1];
+                            var targetPositionArr = [];
+                            for(var j=0;j<exitInfoMap[2].length;j++) {
+                                targetPositionArr.push(new THREE.Vector3(exitInfoMap[2][j][1], 19, exitInfoMap[2][j][3]));
+                            }
+                            console.log(startPosition);
+                            console.log(targetPositionArr);
+                            for(var acoCount=0;acoCount<antTotalCount;acoCount++)
+                            {
+                                console.log("迭代第二层");
+                                startACOPathFinding(startPosition,targetPositionArr,19,pathTag);
+                            }
+                        }
+                        if(event.data.floor==19)
+                        {
+                            console.log("第二层迭代完成");
+                            var runPath = [];
+                            for(var j=0; j<pathMap[pathTag].length; j++)
+                            {
+                                for(var i=0; i<pathMap[pathTag][j].length; i++)
+                                {
+                                    runPath.push(pathMap[pathTag][j][i]);
+                                    if(exitConnectionMap[pathMap[pathTag][j][i]])
+                                    {
+                                        for(var n=1; n<exitConnectionMap[pathMap[pathTag][j][i]].length-1;n++)
+                                        {
+                                            runPath.push(exitConnectionMap[pathMap[pathTag][j][i]][n]);
+                                        }
+                                    }
+                                }
+                            }
+                            finishTagMap[pathTag] = true;
+                            console.log("找到一条路径，当前耗时："+ clock.getElapsedTime());
+                            drawPath(runPath);
+                        }
+                    }
+                }
+                else
+                {
+                    console.log("20 只蚂蚁全死了"+event.data.floor);
+                    for(var acoCount=0;acoCount<antTotalCount;acoCount++)
+                    {
+                        startACOPathFinding(event.data.startPosition,event.data.targetPositionArr,event.data.floor,pathTag);
+                    }
+                }
+            }
+        }
+
+    }
+
+    function getPathLength(pathArr) {
+        var pathLength = 0;
+        for(var i=0;i<pathArr.length-1;i++)
+        {
+            var pos1 = calculatePositionByIndex(pathArr[i]);
+            var pos2 = calculatePositionByIndex(pathArr[i+1]);
+            pathLength += Math.abs(pos2.x-pos1.x)+Math.abs(pos2.y-pos1.y)+Math.abs(pos2.z-pos1.z);
+        }
+        return pathLength;
+    }
+
+    function calculatePositionByIndex(index){
+        var pos1=index.indexOf("&");
+        var pos2=index.indexOf("@");
+        var x=index.substring(0,pos1);
+        var z=index.substring(pos1+1,pos2);
+        var y=index.substring(pos2+1,index.length);
+        return new THREE.Vector3(x,y,z);
+    }
+
+    function drawPath(path)
+    {
+        console.log(path);
+        var geometryLine = new THREE.Geometry();
+        for(var i=0; i<path.length; i++)
+        {
+            var pos1=path[i].indexOf("&");
+            var pos2=path[i].indexOf("@");
+            var x=path[i].substring(0,pos1);
+            var z=path[i].substring(pos1+1,pos2);
+            var y=path[i].substring(pos2+1,path[i].length);
+            geometryLine.vertices[ i ] = new THREE.Vector3( x, y, z );
+        }
+        var lineColor = getRandomColor();
+        var object = new THREE.Line( geometryLine, new THREE.LineDashedMaterial( { color: lineColor, dashSize: 5, linewidth: 5,gapSize: 5 } ) );
+        scene.add(object);
+        humanInfoMap[path[0]]=0;
+        pathControlMap[path[0]].humanPosMap = humanInfoMap;
+        pathControlMap[path[0]].waypoints = path;
+        pathControlMap[path[0]].jumpPoint = new THREE.Vector3(3,0,0);
+        finishPathNum++;
+    }
+    //开始寻路
+    function startPathFinding()
+    {
+        // translateMap();
+        clock.getElapsedTime();
+        if(isCalculateLeader){
+            for(var b=0; b<leaderMeshArr.length; b++)
+            {
+                var startPosition = new THREE.Vector3(leaderMeshArr[b].position.x,leaderMeshArr[b].position.y,leaderMeshArr[b].position.z);//开始寻路的起始点为Leader的起始坐标
+                var tag = startPosition.x + "&" + startPosition.z + "@" + startPosition.y;
+                var targetPositionArr = [];//终点坐标位置
+
+                if(startPosition.y>=10)
+                {
+                    if(!isUseBufferPath){
+                        for(var j=0;j<exitInfoMap[2].length;j++) {
+                            targetPositionArr.push(new THREE.Vector3(exitInfoMap[2][j][1], exitInfoMap[2][j][2], exitInfoMap[2][j][3]));
+                        }
+                        finishTagMap[tag] = false;
+                        for(var acoCount=0;acoCount<antTotalCount;acoCount++)
+                        {
+                            startACOPathFinding(startPosition,targetPositionArr,leaderMeshArr[b].position.y,tag);
+                        }
+                    }
+                }
+                else
+                {
+                    for(var j=0;j<exitInfoMap[1].length;j++)
+                    {
+                        targetPositionArr.push(new THREE.Vector3(exitInfoMap[1][j][1],exitInfoMap[1][j][2],exitInfoMap[1][j][3]));
+                        if(exitInfoMap[1][j][0]==2)
+                        {
+                            var index = exitInfoMap[1][j][1] + "&" + exitInfoMap[1][j][3] + "@" + exitInfoMap[1][j][2];
+                            if(exitInfoMap[1][j][1]==exitInfoMap[1][j][4])
+                            {
+                                var distance = exitInfoMap[1][j][6] - exitInfoMap[1][j][3];
+                                var connectionArr = [];
+                                var step = distance/Math.abs(distance);
+                                var upDelta = 10/Math.abs(distance);
+                                for(var count=0; count<Math.abs(distance);count++)
+                                {
+                                    var nextPos = exitInfoMap[1][j][3] + count*step;
+                                    var nextUp = exitInfoMap[1][j][2] + count*upDelta;
+                                    connectionArr.push(exitInfoMap[1][j][1] + "&" + nextPos + "@" + nextUp);
+                                }
+                                // connectionArr.push(new THREE.Vector3(exitInfoMap[1][j][4],exitInfoMap[1][j][5],exitInfoMap[1][j][6]));
+                                connectionArr.push(exitInfoMap[1][j][4]+ "&" +exitInfoMap[1][j][6]+ "@" +exitInfoMap[1][j][5]);
+                                exitConnectionMap[index] = connectionArr;
+                            }
+                            if(exitInfoMap[1][j][3]==exitInfoMap[1][j][6])
+                            {
+                                var distance = exitInfoMap[1][j][4] - exitInfoMap[1][j][1];
+                                var connectionArr = [];
+                                var step = distance/Math.abs(distance);
+                                var upDelta = 10/Math.abs(distance);
+                                for(var count=0; count<Math.abs(distance);count++)
+                                {
+                                    var nextPos = exitInfoMap[1][j][1] + count*step;
+                                    var nextUp = exitInfoMap[1][j][2] + count*upDelta;
+                                    connectionArr.push(nextPos + "&" + exitInfoMap[1][j][3] + "@" + nextUp);
+                                }
+                                // connectionArr.push(new THREE.Vector3(exitInfoMap[1][j][4],exitInfoMap[1][j][5],exitInfoMap[1][j][6]));
+                                connectionArr.push(exitInfoMap[1][j][4]+ "&" +exitInfoMap[1][j][6]+ "@" +exitInfoMap[1][j][5]);
+                                exitConnectionMap[index] = connectionArr;
+                            }
+                        }
+                    }
+
+                    if(!isUseBufferPath){
+                        finishTagMap[tag] = false;
+                        for(var acoCount=0;acoCount<antTotalCount;acoCount++)
+                        {
+                            startACOPathFinding(startPosition,targetPositionArr,leaderMeshArr[b].position.y,tag);
+                        }
+                    }
+                }
+            }
+        }else{
+            for(var b=0; b<blendMeshArr.length; b++)
+            {
+                var startPosition = new THREE.Vector3(blendMeshArr[b].position.x,blendMeshArr[b].position.y,blendMeshArr[b].position.z);//开始寻路的起始点为Leader的起始坐标
+                var tag = startPosition.x + "&" + startPosition.z + "@" + startPosition.y;
+                var targetPositionArr = [];//终点坐标位置
+
+                if(startPosition.y>=10)
+                {
+                    if(!isUseBufferPath){
+                        for(var j=0;j<exitInfoMap[2].length;j++) {
+                            targetPositionArr.push(new THREE.Vector3(exitInfoMap[2][j][1], exitInfoMap[2][j][2], exitInfoMap[2][j][3]));
+                        }
+                        finishTagMap[tag] = false;
+                        for(var acoCount=0;acoCount<antTotalCount;acoCount++)
+                        {
+                            startACOPathFinding(startPosition,targetPositionArr,blendMeshArr[b].position.y,tag);
+                        }
+                    }
+                }
+                else
+                {
+                    for(var j=0;j<exitInfoMap[1].length;j++)
+                    {
+                        targetPositionArr.push(new THREE.Vector3(exitInfoMap[1][j][1],exitInfoMap[1][j][2],exitInfoMap[1][j][3]));
+                        if(exitInfoMap[1][j][0]==2)
+                        {
+                            var index = exitInfoMap[1][j][1] + "&" + exitInfoMap[1][j][3] + "@" + exitInfoMap[1][j][2];
+                            if(exitInfoMap[1][j][1]==exitInfoMap[1][j][4])
+                            {
+                                var distance = exitInfoMap[1][j][6] - exitInfoMap[1][j][3];
+                                var connectionArr = [];
+                                var step = distance/Math.abs(distance);
+                                var upDelta = 10/Math.abs(distance);
+                                for(var count=0; count<Math.abs(distance);count++)
+                                {
+                                    var nextPos = exitInfoMap[1][j][3] + count*step;
+                                    var nextUp = exitInfoMap[1][j][2] + count*upDelta;
+                                    connectionArr.push(exitInfoMap[1][j][1] + "&" + nextPos + "@" + nextUp);
+                                }
+                                // connectionArr.push(new THREE.Vector3(exitInfoMap[1][j][4],exitInfoMap[1][j][5],exitInfoMap[1][j][6]));
+                                connectionArr.push(exitInfoMap[1][j][4]+ "&" +exitInfoMap[1][j][6]+ "@" +exitInfoMap[1][j][5]);
+                                exitConnectionMap[index] = connectionArr;
+                            }
+                            if(exitInfoMap[1][j][3]==exitInfoMap[1][j][6])
+                            {
+                                var distance = exitInfoMap[1][j][4] - exitInfoMap[1][j][1];
+                                var connectionArr = [];
+                                var step = distance/Math.abs(distance);
+                                var upDelta = 10/Math.abs(distance);
+                                for(var count=0; count<Math.abs(distance);count++)
+                                {
+                                    var nextPos = exitInfoMap[1][j][1] + count*step;
+                                    var nextUp = exitInfoMap[1][j][2] + count*upDelta;
+                                    connectionArr.push(nextPos + "&" + exitInfoMap[1][j][3] + "@" + nextUp);
+                                }
+                                // connectionArr.push(new THREE.Vector3(exitInfoMap[1][j][4],exitInfoMap[1][j][5],exitInfoMap[1][j][6]));
+                                connectionArr.push(exitInfoMap[1][j][4]+ "&" +exitInfoMap[1][j][6]+ "@" +exitInfoMap[1][j][5]);
+                                exitConnectionMap[index] = connectionArr;
+                            }
+                        }
+                    }
+
+                    if(!isUseBufferPath){
+                        finishTagMap[tag] = false;
+                        for(var acoCount=0;acoCount<antTotalCount;acoCount++)
+                        {
+                            startACOPathFinding(startPosition,targetPositionArr,blendMeshArr[b].position.y,tag);
+                        }
+                    }
+                }
+            }
+        }
+
+        if(isUseBufferPath){
+            for(var i=0; i<staticPathArr.length;i++){
+                drawPath(staticPathArr[i]);
+            }
+        }
+    }
+    //endregion
+
+    //region 消防员&灭火部分
     function extinguisherChange(){
         if(cubeFireman){
             if(cubeFireman.position.x<359){
@@ -2333,7 +2726,6 @@ $(function () {
     var roangle=0;
     var isfiremanclick=false;
     let currentEscapeTime = 0;
-
 
     function animate() {
         if(isposition)
@@ -2382,26 +2774,6 @@ $(function () {
         TWEEN.update();
 
         requestAnimationFrame(animate);
-
-        //卡通烟雾 艾子豪
-
-        // for (var i = 0; i < smokeBallPuffs.length; i++) {
-        //     if (smokeBallPuffs[i] >= 16 )
-        //         smokeBallPuffs[i] = 1;
-        //     else
-        //         smokeBallPuffs[i]++;
-        //     smokeBallArr.children[i].position.setX( positionBallMesh.position.x );
-        //     smokeBallArr.children[i].position.setZ( positionBallMesh.position.z );
-        //     smokeBallArr.children[i].position.setY( smokeBallPuffs[i] );
-        //     smokeBallArr.children[i].scale.setScalar(
-        //         Math.sin(smokeBallPuffs[i] / 250.0 * (Math.PI))
-        //     );
-        //     smokeBallArr.children[i].rotateX(Math.sin(smokeBallPuffs[i] / 25000.0));
-        //     smokeBallArr.children[i].rotateY(Math.sin(smokeBallPuffs[i] / 25000.0));
-        //     smokeBallArr.children[i].rotateZ(Math.sin(smokeBallPuffs[i] / 25000.0));
-        // }
-
-        //卡通烟雾完了 艾子豪
 
         stats.begin();
 
@@ -2676,36 +3048,56 @@ $(function () {
         }
     }
 
-    //生成寻路网格
-    function createNav() {
-        let loader = new THREE.OBJLoader();
-        // load a resource
-        loader.load(
-            // resource URL
-            'Model/nav.obj',
-            // called when resource is loaded
-            function (object) {
-                let g;
-                g = new THREE.Geometry().fromBufferGeometry(object.children[0].geometry);
-                pathfinder = new THREE.Pathfinding();
-                // Create level.
-                pathfinder.setZoneData('level1', THREE.Pathfinding.createZone(g));
+    createExtinguisher();
+    createExtinguisherAndFireMan();
 
-            },
-            // called when loading is in progresses
-            function (xhr) {
-
-                console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-
-            },
-            // called when loading has errors
-            function (error) {
-
-                console.log('An error happened');
-
+    //创建灭火器
+    function createExtinguisher() {
+        let loader = new THREE.ObjectLoader();
+        loader.load('./Model/man/extinguisher.json', function (loadedObject) {
+            for(var i=0;i<extinguishPosition.length;i++){
+                extinguisher = loadedObject.children[0];
+                extinguisher.scale.set(0.2, 0.2, 0.2);
+                var extinguisherClone=extinguisher.clone();
+                let texture = THREE.ImageUtils.loadTexture('./Model/man/extinguisher.png');
+                texture.anisotropy = renderer.getMaxAnisotropy();
+                texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                texture.repeat.set(1, 1);
+                extinguisherClone.material=new THREE.MeshPhongMaterial();
+                extinguisherClone.material.map = texture;
+                extinguisherClone.position.set(extinguishPosition[i][0],extinguishPosition[i][1],extinguishPosition[i][2]);
+                // extinguisher.geometry.computeVertexNormals();
+                // extinguisher.geometry.computeFaceNormals();
+                scene.add(extinguisherClone);//将模型加入场景
+                extinguisherArr.push(extinguisherClone);
             }
-        );
+
+        });
+
     }
+
+    //与消防员有关的灭火器
+    function createExtinguisherAndFireMan() {
+        let loader = new THREE.ObjectLoader();
+        loader.load('./Model/man/extinguisher.json', function (loadedObject) {
+
+            extinguisherAndFireMan = loadedObject.children[0];
+            extinguisherAndFireMan.scale.set(0.2, 0.2, 0.2);
+            let texture = THREE.ImageUtils.loadTexture('./Model/man/extinguisher.png');
+            texture.anisotropy = renderer.getMaxAnisotropy();
+            texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+            texture.repeat.set(1, 1);
+            extinguisherAndFireMan.material=new THREE.MeshPhongMaterial();
+            extinguisherAndFireMan.material.map = texture;
+            extinguisherAndFireMan.position.set(359,18.5,6.5);
+            // extinguisher.geometry.computeVertexNormals();
+            // extinguisher.geometry.computeFaceNormals();
+            scene.add(extinguisherAndFireMan);//将模型加入场景
+
+        });
+
+    }
+
     //生成消防员
     function createFireman() {
         if (isCreateFireman && !isCreateFiremanCompleted && isStartRun && clock.getElapsedTime() > 5) {
@@ -2820,405 +3212,11 @@ $(function () {
         }
     }
 
-    var postCount = 0;
-    var recieveCount = 0;
+//endregion
 
-    function startACOPathFinding(startPosition,targetPositionArr,currentFloor,tag)
-    {
-        /***
-         * 向子线程发送信息
-         * 信息体包括：startPosition寻路的出发点
-         *           targetPositionArr寻路的目的地数组
-         *           mapInfoMap地图信息
-         *           currentFloor所处的层数（场景包含2层）
-         *           tag寻路的角色的tag
-         */
-        var workerMessage = [];
-        workerMessage.push(startPosition);
-        workerMessage.push(targetPositionArr);
-        workerMessage.push(mapInfoMap);
-        workerMessage.push(currentFloor);
-        workerMessage.push(tag);
-        postCount++;
-        //发送子线程请求
-        acoPathFindingWorker.postMessage(workerMessage);
-    }
-
-    acoPathFindingWorker.onmessage=function(event)
-    {
-        recieveCount++;
-        // console.log(recieveCount+"/"+postCount);
-        /***
-         * 接受子线程处理好的数据
-         * 数据包括：pathTag寻路的角色的tag
-         *          pathArr当前线程找到的路径
-         *          resultBool寻路结果
-         *          floor寻路所在的层数
-         *          startPosition寻路的出发点（便于迭代）
-         *          targetPositionArr寻路的目的地数组
-         */
-        var pathTag = event.data.pathTag;
-        //!finishTagMap[pathTag] && recieveCount<=postCount
-        if(true)
-        {
-            if(!pathArr[pathTag])
-            {
-                pathArr[pathTag] = [];
-            }
-            if(event.data.resultBool != -1)
-            {
-                var path = event.data.pathArr;
-//            console.log("find path:" + path.length);
-                pathArr[pathTag].push(path);
-            }
-            else
-            {
-                if(event.data.floor == 19)
-                {
-//                console.log("dead!");
-                }
-            }
-            if(!antCountMap[pathTag])
-            {
-                antCountMap[pathTag]=0;
-            }
-            antCountMap[pathTag]++;
-//            console.log("antCountMap[pathTag]:"+antCountMap[pathTag]);
-            if(antCountMap[pathTag]==antTotalCount)
-            {
-                antCountMap[pathTag]=0;
-                if(pathArr[pathTag].length>0)
-                {
-                    var shortestPath = pathArr[pathTag][0];
-                    var shortesLength = 10000;
-                    for(var i=0; i<pathArr[pathTag].length;i++)
-                    {
-                        //比较路径长度
-                        var tempLength = getPathLength(pathArr[pathTag][i]);
-                        if(tempLength<shortesLength)
-                        {
-                            shortestPath = pathArr[pathTag][i];
-                            shortesLength = tempLength;
-                        }
-                    }
-                    for(var j=0;j<shortestPath.length;j++)
-                    {
-                        mapInfoMap[shortestPath[j]] = 1*mapInfoMap[shortestPath[j]] + 5;
-                    }
-
-                    if(!iterationCountMap[pathTag])
-                    {
-                        iterationCountMap[pathTag]=0;
-                    }
-                    iterationCountMap[pathTag]++;
-//                    console.log(pathTag + "count is:" +iterationCountMap[pathTag]);
-                    if(iterationCountMap[pathTag]!=iterationTotalCount)
-                    {
-//                        console.log("继续迭代");
-                        for(var acoCount=0;acoCount<antTotalCount;acoCount++)
-                        {
-                            startACOPathFinding(event.data.startPosition,event.data.targetPositionArr,event.data.floor,pathTag);
-                        }
-                    }
-                    else
-                    {
-                        iterationCountMap[pathTag]=0;
-                        console.log("find best path:" + shortestPath);
-                        console.log("best path length:" + shortesLength);
-
-                        if(!pathMap[pathTag]) pathMap[pathTag]=[];
-                        pathMap[pathTag].push(shortestPath);
-                        pathArr[pathTag] = [];
-                        if(event.data.floor==9)
-                        {
-                            console.log("第一层迭代完成");
-                            var startPosition = exitConnectionMap[shortestPath[shortestPath.length-1]][exitConnectionMap[shortestPath[shortestPath.length-1]].length-1];
-                            var targetPositionArr = [];
-                            for(var j=0;j<exitInfoMap[2].length;j++) {
-                                targetPositionArr.push(new THREE.Vector3(exitInfoMap[2][j][1], 19, exitInfoMap[2][j][3]));
-                            }
-                            console.log(startPosition);
-                            console.log(targetPositionArr);
-                            for(var acoCount=0;acoCount<antTotalCount;acoCount++)
-                            {
-                                console.log("迭代第二层");
-                                startACOPathFinding(startPosition,targetPositionArr,19,pathTag);
-                            }
-                        }
-                        if(event.data.floor==19)
-                        {
-                            console.log("第二层迭代完成");
-                            var runPath = [];
-                            for(var j=0; j<pathMap[pathTag].length; j++)
-                            {
-                                for(var i=0; i<pathMap[pathTag][j].length; i++)
-                                {
-                                    runPath.push(pathMap[pathTag][j][i]);
-                                    if(exitConnectionMap[pathMap[pathTag][j][i]])
-                                    {
-                                        for(var n=1; n<exitConnectionMap[pathMap[pathTag][j][i]].length-1;n++)
-                                        {
-                                            runPath.push(exitConnectionMap[pathMap[pathTag][j][i]][n]);
-                                        }
-                                    }
-                                }
-                            }
-                            finishTagMap[pathTag] = true;
-                            console.log("找到一条路径，当前耗时："+ clock.getElapsedTime());
-                            drawPath(runPath);
-                        }
-                    }
-                }
-                else
-                {
-                    console.log("20 只蚂蚁全死了"+event.data.floor);
-                    for(var acoCount=0;acoCount<antTotalCount;acoCount++)
-                    {
-                        startACOPathFinding(event.data.startPosition,event.data.targetPositionArr,event.data.floor,pathTag);
-                    }
-                }
-            }
-        }
-
-    }
-
-    function getPathLength(pathArr) {
-        var pathLength = 0;
-        for(var i=0;i<pathArr.length-1;i++)
-        {
-            var pos1 = calculatePositionByIndex(pathArr[i]);
-            var pos2 = calculatePositionByIndex(pathArr[i+1]);
-            pathLength += Math.abs(pos2.x-pos1.x)+Math.abs(pos2.y-pos1.y)+Math.abs(pos2.z-pos1.z);
-        }
-        return pathLength;
-    }
-
-    function calculatePositionByIndex(index){
-        var pos1=index.indexOf("&");
-        var pos2=index.indexOf("@");
-        var x=index.substring(0,pos1);
-        var z=index.substring(pos1+1,pos2);
-        var y=index.substring(pos2+1,index.length);
-        return new THREE.Vector3(x,y,z);
-    }
-
-    var finishPathNum = 0;
-    function drawPath(path)
-    {
-        console.log(path);
-        var geometryLine = new THREE.Geometry();
-        for(var i=0; i<path.length; i++)
-        {
-            var pos1=path[i].indexOf("&");
-            var pos2=path[i].indexOf("@");
-            var x=path[i].substring(0,pos1);
-            var z=path[i].substring(pos1+1,pos2);
-            var y=path[i].substring(pos2+1,path[i].length);
-            geometryLine.vertices[ i ] = new THREE.Vector3( x, y, z );
-        }
-        var lineColor = getRandomColor();
-        var object = new THREE.Line( geometryLine, new THREE.LineDashedMaterial( { color: lineColor, dashSize: 5, linewidth: 5,gapSize: 5 } ) );
-        scene.add(object);
-        humanInfoMap[path[0]]=0;
-        pathControlMap[path[0]].humanPosMap = humanInfoMap;
-        pathControlMap[path[0]].waypoints = path;
-        pathControlMap[path[0]].jumpPoint = new THREE.Vector3(3,0,0);
-        finishPathNum++;
-    }
-
-    function getRandomColor(){
-        return  '#' +
-            (function(color){
-                return (color +=  '0123456789abcdef'[Math.floor(Math.random()*16)])
-                && (color.length == 6) ?  color : arguments.callee(color);
-            })('');
-    }
-
-    function onWindowResize() {
-        SCREEN_WIDTH = window.innerWidth;
-        SCREEN_HEIGHT = window.innerHeight;
-        aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
-
-        renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-        camera.aspect = aspect;
-        camera.updateProjectionMatrix();
-
-        cameraPerspective.aspect=aspect;
-        cameraPerspective.updateProjectionMatrix();
-
-        cameraOrtho.left = - frustumSize * aspect / 2;
-        cameraOrtho.right = frustumSize * aspect / 2;
-        cameraOrtho.top = frustumSize / 2;
-        cameraOrtho.bottom = - frustumSize / 2;
-        cameraOrtho.updateProjectionMatrix();
-    }
-
-    //开始寻路
-    function startPathFinding()
-    {
-        // translateMap();
-        clock.getElapsedTime();
-        if(isCalculateLeader){
-            for(var b=0; b<leaderMeshArr.length; b++)
-            {
-                var startPosition = new THREE.Vector3(leaderMeshArr[b].position.x,leaderMeshArr[b].position.y,leaderMeshArr[b].position.z);//开始寻路的起始点为Leader的起始坐标
-                var tag = startPosition.x + "&" + startPosition.z + "@" + startPosition.y;
-                var targetPositionArr = [];//终点坐标位置
-
-                if(startPosition.y>=10)
-                {
-                    if(!isUseBufferPath){
-                        for(var j=0;j<exitInfoMap[2].length;j++) {
-                            targetPositionArr.push(new THREE.Vector3(exitInfoMap[2][j][1], exitInfoMap[2][j][2], exitInfoMap[2][j][3]));
-                        }
-                        finishTagMap[tag] = false;
-                        for(var acoCount=0;acoCount<antTotalCount;acoCount++)
-                        {
-                            startACOPathFinding(startPosition,targetPositionArr,leaderMeshArr[b].position.y,tag);
-                        }
-                    }
-                }
-                else
-                {
-                    for(var j=0;j<exitInfoMap[1].length;j++)
-                    {
-                        targetPositionArr.push(new THREE.Vector3(exitInfoMap[1][j][1],exitInfoMap[1][j][2],exitInfoMap[1][j][3]));
-                        if(exitInfoMap[1][j][0]==2)
-                        {
-                            var index = exitInfoMap[1][j][1] + "&" + exitInfoMap[1][j][3] + "@" + exitInfoMap[1][j][2];
-                            if(exitInfoMap[1][j][1]==exitInfoMap[1][j][4])
-                            {
-                                var distance = exitInfoMap[1][j][6] - exitInfoMap[1][j][3];
-                                var connectionArr = [];
-                                var step = distance/Math.abs(distance);
-                                var upDelta = 10/Math.abs(distance);
-                                for(var count=0; count<Math.abs(distance);count++)
-                                {
-                                    var nextPos = exitInfoMap[1][j][3] + count*step;
-                                    var nextUp = exitInfoMap[1][j][2] + count*upDelta;
-                                    connectionArr.push(exitInfoMap[1][j][1] + "&" + nextPos + "@" + nextUp);
-                                }
-                                // connectionArr.push(new THREE.Vector3(exitInfoMap[1][j][4],exitInfoMap[1][j][5],exitInfoMap[1][j][6]));
-                                connectionArr.push(exitInfoMap[1][j][4]+ "&" +exitInfoMap[1][j][6]+ "@" +exitInfoMap[1][j][5]);
-                                exitConnectionMap[index] = connectionArr;
-                            }
-                            if(exitInfoMap[1][j][3]==exitInfoMap[1][j][6])
-                            {
-                                var distance = exitInfoMap[1][j][4] - exitInfoMap[1][j][1];
-                                var connectionArr = [];
-                                var step = distance/Math.abs(distance);
-                                var upDelta = 10/Math.abs(distance);
-                                for(var count=0; count<Math.abs(distance);count++)
-                                {
-                                    var nextPos = exitInfoMap[1][j][1] + count*step;
-                                    var nextUp = exitInfoMap[1][j][2] + count*upDelta;
-                                    connectionArr.push(nextPos + "&" + exitInfoMap[1][j][3] + "@" + nextUp);
-                                }
-                                // connectionArr.push(new THREE.Vector3(exitInfoMap[1][j][4],exitInfoMap[1][j][5],exitInfoMap[1][j][6]));
-                                connectionArr.push(exitInfoMap[1][j][4]+ "&" +exitInfoMap[1][j][6]+ "@" +exitInfoMap[1][j][5]);
-                                exitConnectionMap[index] = connectionArr;
-                            }
-                        }
-                    }
-
-                    if(!isUseBufferPath){
-                        finishTagMap[tag] = false;
-                        for(var acoCount=0;acoCount<antTotalCount;acoCount++)
-                        {
-                            startACOPathFinding(startPosition,targetPositionArr,leaderMeshArr[b].position.y,tag);
-                        }
-                    }
-                }
-            }
-        }else{
-            for(var b=0; b<blendMeshArr.length; b++)
-            {
-                var startPosition = new THREE.Vector3(blendMeshArr[b].position.x,blendMeshArr[b].position.y,blendMeshArr[b].position.z);//开始寻路的起始点为Leader的起始坐标
-                var tag = startPosition.x + "&" + startPosition.z + "@" + startPosition.y;
-                var targetPositionArr = [];//终点坐标位置
-
-                if(startPosition.y>=10)
-                {
-                    if(!isUseBufferPath){
-                        for(var j=0;j<exitInfoMap[2].length;j++) {
-                            targetPositionArr.push(new THREE.Vector3(exitInfoMap[2][j][1], exitInfoMap[2][j][2], exitInfoMap[2][j][3]));
-                        }
-                        finishTagMap[tag] = false;
-                        for(var acoCount=0;acoCount<antTotalCount;acoCount++)
-                        {
-                            startACOPathFinding(startPosition,targetPositionArr,blendMeshArr[b].position.y,tag);
-                        }
-                    }
-                }
-                else
-                {
-                    for(var j=0;j<exitInfoMap[1].length;j++)
-                    {
-                        targetPositionArr.push(new THREE.Vector3(exitInfoMap[1][j][1],exitInfoMap[1][j][2],exitInfoMap[1][j][3]));
-                        if(exitInfoMap[1][j][0]==2)
-                        {
-                            var index = exitInfoMap[1][j][1] + "&" + exitInfoMap[1][j][3] + "@" + exitInfoMap[1][j][2];
-                            if(exitInfoMap[1][j][1]==exitInfoMap[1][j][4])
-                            {
-                                var distance = exitInfoMap[1][j][6] - exitInfoMap[1][j][3];
-                                var connectionArr = [];
-                                var step = distance/Math.abs(distance);
-                                var upDelta = 10/Math.abs(distance);
-                                for(var count=0; count<Math.abs(distance);count++)
-                                {
-                                    var nextPos = exitInfoMap[1][j][3] + count*step;
-                                    var nextUp = exitInfoMap[1][j][2] + count*upDelta;
-                                    connectionArr.push(exitInfoMap[1][j][1] + "&" + nextPos + "@" + nextUp);
-                                }
-                                // connectionArr.push(new THREE.Vector3(exitInfoMap[1][j][4],exitInfoMap[1][j][5],exitInfoMap[1][j][6]));
-                                connectionArr.push(exitInfoMap[1][j][4]+ "&" +exitInfoMap[1][j][6]+ "@" +exitInfoMap[1][j][5]);
-                                exitConnectionMap[index] = connectionArr;
-                            }
-                            if(exitInfoMap[1][j][3]==exitInfoMap[1][j][6])
-                            {
-                                var distance = exitInfoMap[1][j][4] - exitInfoMap[1][j][1];
-                                var connectionArr = [];
-                                var step = distance/Math.abs(distance);
-                                var upDelta = 10/Math.abs(distance);
-                                for(var count=0; count<Math.abs(distance);count++)
-                                {
-                                    var nextPos = exitInfoMap[1][j][1] + count*step;
-                                    var nextUp = exitInfoMap[1][j][2] + count*upDelta;
-                                    connectionArr.push(nextPos + "&" + exitInfoMap[1][j][3] + "@" + nextUp);
-                                }
-                                // connectionArr.push(new THREE.Vector3(exitInfoMap[1][j][4],exitInfoMap[1][j][5],exitInfoMap[1][j][6]));
-                                connectionArr.push(exitInfoMap[1][j][4]+ "&" +exitInfoMap[1][j][6]+ "@" +exitInfoMap[1][j][5]);
-                                exitConnectionMap[index] = connectionArr;
-                            }
-                        }
-                    }
-
-                    if(!isUseBufferPath){
-                        finishTagMap[tag] = false;
-                        for(var acoCount=0;acoCount<antTotalCount;acoCount++)
-                        {
-                            startACOPathFinding(startPosition,targetPositionArr,blendMeshArr[b].position.y,tag);
-                        }
-                    }
-                }
-            }
-        }
-
-        if(isUseBufferPath){
-            for(var i=0; i<staticPathArr.length;i++){
-                drawPath(staticPathArr[i]);
-            }
-        }
-    }
-
+    //region 交互部分
     var currentFloor = "floor1";
     var whetherrotate=false;
-    // var system ={};
-    // var p = navigator.platform;
-    // system.win = p.indexOf("Win") == 0;
-    // system.mac = p.indexOf("Mac") == 0;
-    // system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
-
     let MOBILE = navigator.userAgent.indexOf('Mobile') != -1;
 
     $('.controller button').on('click',function(e){
@@ -3370,7 +3368,6 @@ $(function () {
                     document.getElementById("toNo4").style.display = "none";
                     document.getElementById("toNo5").style.display = "none";
                 }
-                //smokeBallMaterial.visible=true;//卡通烟雾显现 艾子豪
                 Logo1Material.visible=true;
                 Logo2Material.visible=true;
                 Logo3Material.visible=true;
@@ -3427,7 +3424,6 @@ $(function () {
                     document.getElementById("forward").style.display="inline-block";
                     document.getElementById("back").style.display="inline-block";
                 }
-                //smokeBallMaterial.visible=false;//卡通烟雾显现 艾子豪
                 Logo1Material.visible=false;
                 Logo2Material.visible=false;
                 Logo3Material.visible=false;
@@ -3883,4 +3879,5 @@ $(function () {
         document.getElementById("cancelFollow").style.display="none";
         document.getElementById("allowFollow").style.display="none";
     }
+    //endregion
 })
