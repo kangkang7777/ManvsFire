@@ -1,23 +1,12 @@
-/**
- * Created by yonghaohu on 29/09/2018.
- * 优化了数据的下载来源，优化了整体框架
- * 更新了人群逃生的算法，将了leader的位置扩散成一个区域，让人群找区域中的点进行逃生
- * 同时将人群逃生时的leader从特殊的leader扩散成人群中的其他人
- * 修改了地铁站的模型，增加了一个出口
- */
-
 $(function () {
-    var smokeNumber=0;
+//region 变量声明
     var defaultMeshNum = 100;
     var meshTotalCount = 100;   //场景中的总人数
-    var isUseClone = true;     //是否使用Clone
     var isACO = true;  //是否进行默认的蚁群算法
     var isUseBufferPath = true;  //是否直接从内存里面读取路径数据
     var isCalculateLeader = true;  //是否针对leader做寻路，默认是对人群做寻路
-    // var modelURL = "Model/man/newman.json";
     var modelURL = "Model/manSimple.json";
-    var modelURLLOD = "Model/manSimple4.json";
-    //var leaderURL = "Model/man/marine_anims_coreleader.json";
+    var modelUrlLod = "Model/manSimple4.json";
     var userBookNumber=0;
 
     var stats;
@@ -30,7 +19,6 @@ $(function () {
     var SCREEN_WIDTH = window.innerWidth;
     var SCREEN_HEIGHT = window.innerHeight;
     var aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
-    var lables;
     var mapInfoMap;
     var exitInfoMap;
     var exitConnectionMap = [];
@@ -48,7 +36,7 @@ $(function () {
     var pathControlMap={},isFinishLoadCharactor, blendMeshArr = [],meshLoadCount;
     var blendMeshPosArr = [];
     var mixerArr = [];
-    var gui,isFrameStepping,timeToStep;
+    var isFrameStepping,timeToStep;
     var isStartRun,isStartSmoke;
     var humanInfoMap=[];
     var blendMeshArr = [];
@@ -58,32 +46,25 @@ $(function () {
     var targetPositionArr = [];
     var control;
     var isEdit = false;
-
-    //FDS起火点坐标控制 艾子豪
+    
     var smokeTexture,smokeLogoTexture;
-    var Logo1Geometry,Logo2Geometry,Logo3Geometry,Logo4Geometry,Logo5Geometry;
     var Logo1Material,Logo2Material,Logo3Material,Logo4Material,Logo5Material;
     var Logo1Mesh,Logo2Mesh,Logo3Mesh,Logo4Mesh,Logo5Mesh;
     var raycasterLogo;
     var logoObject;
     var logoArr=[];
-    //FDS起火点坐标制完了 艾子豪
 
     var fireManager;
-
-    //灭火器部分
-    var extinguisher;
+    
     var raycasterExtinguish;
     var extinguishPosition=[[490, 19, 11],[491, 19, 11]];
     var extinguisherArr=[];
-    //灭火器部分完了
     var mouse=new THREE.Vector2();
     var extinguisherControl;
     var extinguisherObject;
     var objectHigh;
     var extinguisherAndFireMan;
     var cubeFireman;
-    ////////////////////////////////////////////////
     var smokeFunction;
     var smokeBody;
     var smokeScene;
@@ -94,21 +75,17 @@ $(function () {
     var laserBallGeometry, laserBallMaterial,laserBallMesh;
     var Te1Geometry, Te1Material, Te1Mesh;
     var Te2Geometry, Te2Material, Te2Mesh;
-    //卡通烟雾 艾子豪
-    // var smokeBallGeometry,smokeBallMaterial,smokeBallMesh;
-    // var smokeArr,smokeBall,smokeBallArr=new THREE.Group(),smokeBallFunction,smokeBallPuffs;
-    //卡通烟雾完了 艾子豪
+
     var smokeArr;
     var count2=0;
     var smokeSceneArr=new Array();
     var globalPlane;
-    var globalPlane1;
     var clock;
     var ii=0;
     var Te1=new Array();
     var Te2=new Array();
     var step2;
-    ////////////////////////////////////////////////
+
     var desireVelocity = 4;//预期寻路速度
     var isCreateFireman = true;//创建消防员
     var isCreateFiremanCompleted = false;//是否创建成功消防员
@@ -116,25 +93,20 @@ $(function () {
     var pathfinder;//导航网格管理
     var redBallGeometry,redBallMaterial,redBallMesh;
     var rX=59,rY=8.5,rZ=23;//104,8,20
-    //var rX=104,rY=8,rZ=23;//104,8,20
     var waterBody;
     var logoBody;
     var extinguisher,extinguisherClone,extinguisherWithFireMan;
-    /////////////////////////////////////////////////
+
     //灭火部分
     var waterTexture = new THREE.TextureLoader().load('textures/water.png');
-    ///////////////////////////////////////////////////
-    //水的部分
-    /////////////////////////////////////////////////////
     var waterArr;
-    //var logoArr;
+
 
     var smokeDataA,smokeDataB,smokeDataC,smokeData,staticPathArr,smokeDataM,smokeDataF,smokeDataE;
 
     workerLoadSmokeAndPath.postMessage("../SmokeData/tjsub.json");
 
     workerLoadSmokeAndPath.onmessage = function (event) {
-        // console.log(event.data);
         smokeDataA = event.data.smokeDataA;
         smokeDataB = event.data.smokeDataB;
         smokeDataC = event.data.smokeDataC;
@@ -146,22 +118,17 @@ $(function () {
 
         animate();
     }
-
+//endregion
     init();
 
 
 
     function init() {
-
+//region 基础场景设置
         camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 2000000  );
-        // var camFrontPoint = new THREE.Mesh(new THREE.CubeGeometry(5,5,5),new THREE.MeshBasicMaterial({color:0xff0000}));
-        // camFrontPoint.position.set(0,0,-10);
-        // camera.add(camFrontPoint);
         camera.position.set(639,160,106);
         cameraOrtho = new THREE.OrthographicCamera(frustumSize * aspect / - 2, frustumSize * aspect / 2, frustumSize / 2, frustumSize / - 2, 0, 1000);
         cameraPerspective = new THREE.PerspectiveCamera( 50,  aspect, 10, 1000 );
-
-
 
         document.addEventListener('mousemove',onDocumentMouseMove,false);
 
@@ -169,27 +136,15 @@ $(function () {
         scene = new THREE.Scene();
         clock.start();
 
-        // gui = new dat.GUI();
-        // lables = new function(){
-        //     this.cameraX = camera.position.x;
-        //     this.cameraY = camera.position.y;
-        //     this.cameraZ = camera.position.z;
-        // }
-        // gui.add(lables,'cameraX').listen();
-        // gui.add(lables,'cameraY').listen();
-        // gui.add(lables,'cameraZ').listen();
-
         var ambientLight = new THREE.AmbientLight(0xcccccc);
         scene.add(ambientLight);
 
         var directionalLight_1 = new THREE.DirectionalLight(0xffffff,0.2);
-
-        directionalLight_1.position.set(0.3,0.4,0.5)
+        directionalLight_1.position.set(0.3,0.4,0.5);
         scene.add(directionalLight_1);
 
         var directionalLight_2 = new THREE.DirectionalLight(0xffffff,0.2);
-
-        directionalLight_2.position.set(-0.3,-0.4,0.5)
+        directionalLight_2.position.set(-0.3,-0.4,0.5);
         scene.add(directionalLight_2);
 
         mapWorker = new Worker("js/loadTJMap.js");
@@ -244,7 +199,19 @@ $(function () {
         window.addEventListener( 'resize', onWindowResize, false );
         // mapWorker.postMessage(1);
 
-        //烟体位置控制球
+        camControl = new THREE.FirstPersonControls(camera, renderer.domElement);
+        camControl.lookSpeed = 1;
+        camControl.movementSpeed = 2 * 10;
+        camControl.noFly = true;
+        camControl.lookVertical = true;
+        camControl.constrainVertical = true;
+        camControl.verticalMin = 1.0;
+        camControl.verticalMax = 2.0;
+        camControl.lon =-138;      //经度
+        camControl.lat =-90;      //纬度
+//endregion
+
+//region 烟体位置控制球
         positionBallGeometry=new THREE.SphereGeometry(2,4,4);
         positionBallMaterial=new THREE.MeshPhongMaterial({color:0x00ff00});
         positionBallMesh=new THREE.Mesh(positionBallGeometry,positionBallMaterial);
@@ -264,26 +231,78 @@ $(function () {
         redBallMesh.position.set(rX,rY,rZ);
         scene.add(redBallMesh);
 
+        // //火焰Logo 艾子豪
+        var Logo1Geometry=new THREE.CylinderGeometry(3,4,1,6,1);
+        Logo1Material=new THREE.MeshLambertMaterial({color:0xff00ff});
+        Logo1Material.transparent=true;
+        Logo1Material.opacity=1;
+        Logo1Mesh=new THREE.Mesh(Logo1Geometry,Logo1Material);
+        Logo1Mesh.position.set(41,5.8,25);
+        Logo1Material.visible=false;
+        logoArr.push(Logo1Mesh);
+        scene.add(Logo1Mesh);
+
+        var Logo2Geometry=new THREE.CylinderGeometry(3,4,1,6,1);
+        Logo2Material=new THREE.MeshLambertMaterial({color:0xff00ff});
+        Logo2Material.transparent=true;
+        Logo2Material.opacity=1;
+        Logo2Mesh=new THREE.Mesh(Logo2Geometry,Logo2Material);
+        Logo2Mesh.position.set(91,5.8,25);
+        Logo2Material.visible=false;
+        logoArr.push(Logo2Mesh);
+        scene.add(Logo2Mesh);
+
+        var Logo3Geometry=new THREE.CylinderGeometry(3,4,1,6,1);
+        Logo3Material=new THREE.MeshLambertMaterial({color:0xff00ff});
+        Logo3Material.transparent=true;
+        Logo3Material.opacity=1;
+        Logo3Mesh=new THREE.Mesh(Logo3Geometry,Logo3Material);
+        Logo3Mesh.position.set(151,5.8,20);
+        Logo3Material.visible=false;
+        logoArr.push(Logo3Mesh);
+        scene.add(Logo3Mesh);
+
+        var Logo4Geometry=new THREE.CylinderGeometry(3,4,1,6,1);
+        Logo4Material=new THREE.MeshLambertMaterial({color:0xff00ff});
+        Logo4Material.transparent=true;
+        Logo4Material.opacity=1;
+        Logo4Mesh=new THREE.Mesh(Logo4Geometry,Logo4Material);
+        Logo4Mesh.position.set(180,5.8,22);
+        Logo4Material.visible=false;
+        logoArr.push(Logo4Mesh);
+        scene.add(Logo4Mesh);
+
+        var Logo5Geometry=new THREE.CylinderGeometry(3,4,1,6,1);
+        Logo5Material=new THREE.MeshLambertMaterial({color:0xff00ff});
+        Logo5Material.transparent=true;
+        Logo5Material.opacity=1;
+        Logo5Mesh=new THREE.Mesh(Logo5Geometry,Logo5Material);
+        Logo5Mesh.position.set(215,5.8,27);
+        Logo5Material.visible=false;
+        logoArr.push(Logo5Mesh);
+        scene.add(Logo5Mesh);
+
         smokeTexture = new THREE.TextureLoader().load('textures/Smoke-Element.png');
         smokeLogoTexture = new THREE.TextureLoader().load('textures/firelogo2.png');
-        // /**
-        //* 火焰部分
-        //*/
-        var fireControll = new FIRE.ControlSheet({
+//endregion
+
+//region 火焰
+        var fireControl = new FIRE.ControlSheet({
             width:1,
             length: 1,
             high: 20
         });
-        fireManager = new FIRE.Manager(fireControll);
+        fireManager = new FIRE.Manager(fireControl);
         fireManager.maxParticlesNum = 6000;
         fireManager.runTimer();
-        //fireManager.position.set(0, 0, 0);
         fireManager.controlSheet.x = positionBallMesh.position.x;
         fireManager.controlSheet.y = positionBallMesh.position.y;
         fireManager.controlSheet.z = positionBallMesh.position.z;
 
         scene.add(fireManager.target);
+//endregion
 
+//region 物体操作工具
         control = new THREE.TransformControls( camera, renderer.domElement );
         control.attach( );
         scene.add( control );
@@ -293,7 +312,9 @@ $(function () {
         extinguisherControl.attach();
         scene.add(extinguisherControl);
         extinguisherControl.visible=false;
+//endregion
 
+//region 修补地图...
         var cube1 = new THREE.Mesh(new THREE.BoxGeometry(17,10,1),new THREE.MeshBasicMaterial({color:0xff0000,transparent:true,opacity:0.5}));
         cube1.position.set(416,22,7);
         var cube2 = new THREE.Mesh(new THREE.BoxGeometry(15,10,1),new THREE.MeshBasicMaterial({color:0xff0000,transparent:true,opacity:0.5}));
@@ -478,8 +499,9 @@ $(function () {
         Te2Material.visible=false;
         scene.add(Te2Mesh);
         Te2.push(Te2Mesh);
+//endregion
 
-        /*消防员灭火喷水*/
+//region 水
         waterArr=new Array();
         var waterCloud;
         var waterType=new function(){
@@ -545,107 +567,10 @@ $(function () {
                 //waterArr[i].scale.setScalar(Math.sin(r1[i] * sNumber / 150.0 * (Math.PI / 2)));
             }
         };
+//endregion
 
-        // //火焰Logo 艾子豪
-        Logo1Geometry=new THREE.CylinderGeometry(3,4,1,6,1);
-        Logo1Material=new THREE.MeshLambertMaterial({color:0xff00ff});
-        Logo1Material.transparent=true;
-        Logo1Material.opacity=1;
-        Logo1Mesh=new THREE.Mesh(Logo1Geometry,Logo1Material);
-        Logo1Mesh.position.set(41,5.8,25);
-        Logo1Material.visible=false;
-        logoArr.push(Logo1Mesh);
-        scene.add(Logo1Mesh);
-
-        Logo2Geometry=new THREE.CylinderGeometry(3,4,1,6,1);
-        Logo2Material=new THREE.MeshLambertMaterial({color:0xff00ff});
-        Logo2Material.transparent=true;
-        Logo2Material.opacity=1;
-        Logo2Mesh=new THREE.Mesh(Logo2Geometry,Logo2Material);
-        Logo2Mesh.position.set(91,5.8,25);
-        Logo2Material.visible=false;
-        logoArr.push(Logo2Mesh);
-        scene.add(Logo2Mesh);
-
-        Logo3Geometry=new THREE.CylinderGeometry(3,4,1,6,1);
-        Logo3Material=new THREE.MeshLambertMaterial({color:0xff00ff});
-        Logo3Material.transparent=true;
-        Logo3Material.opacity=1;
-        Logo3Mesh=new THREE.Mesh(Logo3Geometry,Logo3Material);
-        Logo3Mesh.position.set(151,5.8,20);
-        Logo3Material.visible=false;
-        logoArr.push(Logo3Mesh);
-        scene.add(Logo3Mesh);
-
-        Logo4Geometry=new THREE.CylinderGeometry(3,4,1,6,1);
-        Logo4Material=new THREE.MeshLambertMaterial({color:0xff00ff});
-        Logo4Material.transparent=true;
-        Logo4Material.opacity=1;
-        Logo4Mesh=new THREE.Mesh(Logo4Geometry,Logo4Material);
-        Logo4Mesh.position.set(180,5.8,22);
-        Logo4Material.visible=false;
-        logoArr.push(Logo4Mesh);
-        scene.add(Logo4Mesh);
-
-        Logo5Geometry=new THREE.CylinderGeometry(3,4,1,6,1);
-        Logo5Material=new THREE.MeshLambertMaterial({color:0xff00ff});
-        Logo5Material.transparent=true;
-        Logo5Material.opacity=1;
-        Logo5Mesh=new THREE.Mesh(Logo5Geometry,Logo5Material);
-        Logo5Mesh.position.set(215,5.8,27);
-        Logo5Material.visible=false;
-        logoArr.push(Logo5Mesh);
-        scene.add(Logo5Mesh);
-        // //火焰Logo 艾子豪
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        //缩放倍数
-
-        //卡通烟雾 艾子豪
-        // smokeBallMaterial = new THREE.MeshLambertMaterial({
-        //     color: 0x000000,
-        //     opacity:0.6,
-        //     transparent:true,
-        //     //map:texture,
-        //     depthWrite:false
-        // });
-        // smokeBallMaterial.visible=false;
-        //
-        // smokeBallPuffs = [6,7,8,10,11,12,13,14,15];//创建某个数组，一共12个数字
-        // //在烟雾组中创建12个正十二面体，每个十二面体边长50
-        // for (var i = 0; i < smokeBallPuffs.length; i++){
-        //     smokeBallArr.add(
-        //         new THREE.Mesh(
-        //             new THREE.IcosahedronGeometry(25, 0),
-        //             smokeBallMaterial
-        //             // new THREE.Particle(),
-        //             // material
-        //         )
-        //     );
-        // }
-        //
-        // for (var i=0; i < smokeBallArr.children.length; i++) {
-        //     smokeBallArr.children[i].position.setX(positionBallMesh.position.x);
-        //     smokeBallArr.children[i].position.setZ(positionBallMesh.position.z);//各个烟雾团之间在X轴和Z轴范围内的距离在0-20之间
-        //     smokeBallArr.children[i].rotation.x = Math.random();
-        //
-        // }
-        //
-        //
-        // scene.add(smokeBallArr);
-        //
-        // smokeBall=function(){
-        //
-        // }
-
-        //卡通烟雾完了 艾子豪
-
-        //开始制作烟雾
-        //1.先引入烟雾贴图素材
-        smokeArr=new Array();
+//region 烟雾
+        smokeArr=[];
         //烟雾属性设置
         var cloud,cloud1;
         var smokeType=new function(){
@@ -817,18 +742,7 @@ $(function () {
                 smokeSceneArr[i+24].position.set( i*25+20,25,25 );
             }
         };
-
-        camControl = new THREE.FirstPersonControls(camera, renderer.domElement);
-        camControl.lookSpeed = 1;
-        camControl.movementSpeed = 2 * 10;
-        camControl.noFly = true;
-        camControl.lookVertical = true;
-        camControl.constrainVertical = true;
-        camControl.verticalMin = 1.0;
-        camControl.verticalMax = 2.0;
-        camControl.lon =-138;      //经度
-        camControl.lat =-90;      //纬度
-
+//endregion
     }
 
     var step=0;
@@ -927,30 +841,6 @@ $(function () {
 
         SendMessagetoWorkDforOutsideModel(datNum);
     }
-
-    /**
-     * 根据vsg得到边界值
-     */
-    /* function drawVsgBlock() {
-         var keyMap = {};
-         for(var key in vsgData){
-             var arr = key.split('-');
-             var x = arr[0];
-             var y = arr[1];
-             var z = arr[2];
-             var factor = cashVoxelSize/500;
-             var posX = (x-1)*factor;
-             var posZ = (y-1)*factor;
-             var posY = (z-1)*factor;
-             if((posY<20&&posY>19) || ((posY<10&&posY>9) && posX>320)){
-                 var newKey = Math.round(posX)+'  '+Math.floor(posY)+'  '+Math.round(posZ);
-                 keyMap[newKey] = 1;
-             }
-         }
-         for(var key in keyMap){
-             console.log(key);
-         }
-     }*/
 
     function SendMessagetoWorkDforOutsideModel(datNum)
     {
@@ -1120,22 +1010,22 @@ $(function () {
         //多样性模型 完了 艾子豪
         var promiseLeader = loadModelPromise(modelURL);
 
-        var promiseL1 = loadLowModelPromise(modelURLLOD);
-        var promiseL2 = loadLowModelPromise(modelURLLOD);
-        var promiseL3 = loadLowModelPromise(modelURLLOD);
-        var promiseL4 = loadLowModelPromise(modelURLLOD);
-        var promiseL5 = loadLowModelPromise(modelURLLOD);
-        var promiseL6 = loadLowModelPromise(modelURLLOD);
-        var promiseL7 = loadLowModelPromise(modelURLLOD);
+        var promiseL1 = loadLowModelPromise(modelUrlLod);
+        var promiseL2 = loadLowModelPromise(modelUrlLod);
+        var promiseL3 = loadLowModelPromise(modelUrlLod);
+        var promiseL4 = loadLowModelPromise(modelUrlLod);
+        var promiseL5 = loadLowModelPromise(modelUrlLod);
+        var promiseL6 = loadLowModelPromise(modelUrlLod);
+        var promiseL7 = loadLowModelPromise(modelUrlLod);
         //多样性模型 艾子豪
 
-        var promiseL8 = loadLowModelPromise(modelURLLOD);
-        var promiseL9 = loadLowModelPromise(modelURLLOD);
-        var promiseL10 = loadLowModelPromise(modelURLLOD);
-        var promiseL11 = loadLowModelPromise(modelURLLOD);
-        var promiseL12 = loadLowModelPromise(modelURLLOD);
-        var promiseL13 = loadLowModelPromise(modelURLLOD);
-        var promiseL14 = loadLowModelPromise(modelURLLOD);
+        var promiseL8 = loadLowModelPromise(modelUrlLod);
+        var promiseL9 = loadLowModelPromise(modelUrlLod);
+        var promiseL10 = loadLowModelPromise(modelUrlLod);
+        var promiseL11 = loadLowModelPromise(modelUrlLod);
+        var promiseL12 = loadLowModelPromise(modelUrlLod);
+        var promiseL13 = loadLowModelPromise(modelUrlLod);
+        var promiseL14 = loadLowModelPromise(modelUrlLod);
 
         //多样性模型 完了 艾子豪
         var promiseAll = Promise.all([promise1,promise2,promise3,promise4,promise5,promise6,promise7,promise8,promise9,promise10,promise11,promise12,promise13,promise14]).then((data)=>{
@@ -2482,7 +2372,7 @@ $(function () {
         }
 
         delta = clock.getDelta();
-        step2 += 0.00005
+        step2 += 0.00005;
 
         fireManager.controlSheet.x = positionBallMesh.position.x;
         fireManager.controlSheet.y = positionBallMesh.position.y;
