@@ -6,18 +6,10 @@ var smoke_insert=function(p0,p1,p2,p,smokedatap0,smokedatap1,smokedatap2)
     var newp2=new THREE.Vector2(p1.x-p.x,p1.z-p.z);
     var newp3=new THREE.Vector2(p2.x-p.x,p2.z-p.z);
 
-    //判断在三角形内外
-    var iop1=insideoutside(newp1);
-    var iop2=insideoutside(newp2);
-    var iop3=insideoutside(newp3);
-
-    var io12=where(iop1,iop2);
-    var io23=where(iop2,iop3);
-    var io31=where(iop3,iop1);
-    var io=io12+io23+io31;
+    var is_inside=IsPointInTriangle(newp1,newp2,newp3,p);
     /*在三角形内*/
     var newsmokedata=[];
-    if(io!=0)
+    if(is_inside)
     {
         var Sp1p2p=square(newp,newp2,newp3);//u
         var Sp0p2p=square(newp,newp1,newp3);//v
@@ -39,87 +31,36 @@ var smoke_insert=function(p0,p1,p2,p,smokedatap0,smokedatap1,smokedatap2)
     return newsmokedata;
 }
 
-function insideoutside(ve)
+/**********************************************************************************************************************/
+/*  4.21 谢尚汝 更改  */
+function Cross(v1,v2)
 {
-    var io=[];
-    if(ve.x>=0)
-        io.push("+");
-    else
-        io.push("-");
-    return io;
+    return v1.x * v2.y - v1.y * v2.x;
 }
 
-function where(p1,p2)
+function IsSameSide(p0,p1,p2,p)
 {
-    var io;
-    if(p1[0]==p2[0])
-    {
-       if(p1[0]=="+")
-       {
-           if(p1[1]==p2[1])
-           {
-               io=0;
-           }
-           else
-           {
-               if(p1[1]=="+")
-                   io=-Math.PI/2;
-               else
-                   io=Math.PI/2;
-           }
-       }
-       else
-       {
-           if(p1[1]==p2[1])
-               io=0;
-           else
-           {
-               if(p1[1]=="+")
-                   io=Math.PI/2;
-               else
-                   io=-Math.PI/2;
-           }
-       }
-    }
-    else
-    {
-        if(p1[0]=="+")
-        {
-            if(p1[1]=="+")
-            {
-                if(p2[1]=="+")
-                    io=Math.PI/2;
-                else
-                    io=Math.PI;
-            }
-            else
-            {
-                if(p2[1]=="-")
-                    io=-Math.PI/2;
-                else
-                    io=-Math.PI;
-            }
-        }
-        else
-        {
-            if(p1[1]=="+")
-            {
-                if(p2[1]=="+")
-                    io=-Math.PI/2;
-                else
-                    io=-Math.PI;
-            }
-            else
-            {
-                if(p2[1]=="-")
-                    io=Math.PI/2;
-                else
-                    io=Math.PI;
-            }
-        }
-    }
-    return io;
+
+    var p0p1=new THREE.Vector2(p1.x-p0.x,p1.y-p0.y);
+    var p0p2=new THREE.Vector2(p2.x-p0.x,p2.y-p0.y);
+    var p0p=new THREE.Vector2(p.x-p0.x,p.y-p0.y);
+
+    var f1 = Cross(p0p1, p0p2);
+    var f2 = Cross(p0p1, p0p);
+
+    return f1*f2 >= 0;
 }
+
+
+function IsPointInTriangle(A, B, C, P)
+{
+    return IsSameSide(A, B, C, P) &&
+        IsSameSide(B, C, A, P) &&
+        IsSameSide(C, A, B, P);
+}
+/**********************************************************************************************************************/
+
+
 
 function square(v1,v2,v3)
 {
