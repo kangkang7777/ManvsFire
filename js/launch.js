@@ -11,4 +11,17 @@
     m.start();
     //todo ......
 
+    var number = 100;
+
+    $('createPersonBtn').addEventListener('click',function (evet) {
+        $('createPerson').style.display = 'none';
+        $('Menu').style.display = 'block';
+        $('menu-div').style.display = 'block';
+    });
+
+    $('submitBtn').addEventListener('click',function (evet) {
+        $('menu-div').style.display = 'none';
+        m.addPeople(number);
+    })
+
 }).call(this)
