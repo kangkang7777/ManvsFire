@@ -25,8 +25,9 @@ var mainScene = function(){
     this.active = true;    //暂停
 
     this.underground = new Underground();
-/*todo
+
     this.people = new People();
+/*todo
     this.particles = new Particles();
     this.fireman = new Fireman();
 */
@@ -78,10 +79,25 @@ mainScene.prototype.init = function() {
 
     this.underground.init(this.scene,this.renderer);
 /*todo
-    this.people.init();
     this.particles.init();
     this.fireman.init();
 */
+
+    document.getElementById('escapeDoor1').addEventListener('click',function (evet) {
+        c.position.set(400,80,70);
+        camControlOver.center.set(416,22,7);
+    });
+    document.getElementById('escapeDoor2').addEventListener('click',function (evet) {
+        c.position.set(500,60,53);
+        camControlOver.center.set(554,22,46);
+    });
+    document.getElementById('escapeDoor3').addEventListener('click',function (evet) {
+        c.position.set(540,60,-32);
+        camControlOver.center.set(548,22,6);
+    });
+    document.getElementById('WebGL-output').addEventListener('click',function(event){
+        camControlOver.autoRotate=false;
+    });
 
 }
 
@@ -94,8 +110,9 @@ mainScene.prototype.start = function() {
         if(self.active)requestAnimationFrame(animate);
         self.stats.update();
         self.freeViewControl.update(delta);
+        self.people.update(delta);    //todo 需要判别是否开始
 /*todo
-        self.people.update();
+
         self.particles.update();
         self.fireman.update();
 */
@@ -103,4 +120,8 @@ mainScene.prototype.start = function() {
         //todo self.renderer.clear();    与renderer.autoClear = false 对应 不知道意义何在
     }
     animate();
+}
+
+mainScene.prototype.addPeople = function (number) {
+    this.people.init(number,this.scene,this.renderer);
 }
