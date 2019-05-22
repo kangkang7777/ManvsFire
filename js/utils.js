@@ -76,3 +76,41 @@ Utils.generateWaterFragment = function () {
 
     return canvas;
 }
+Utils.generateRandomNum = function(minNum,maxNum){
+    switch(arguments.length){
+        case 1:
+            return parseInt(Math.random()*minNum+1,10);
+            break;
+        case 2:
+            return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10);
+            break;
+        default:
+            return 0;
+            break;
+    }
+}
+//数组复制
+Utils.copyArray = function(arr){
+    var result = [];
+    for(var i = 0; i < arr.length; i++){
+        result.push(arr[i]);
+    }
+    return result;
+}
+Utils.getClosePoint = function(obj, objArr, maxDis){
+    /**
+     * 在原来的基础上设置一个距离阈值，只有当距离小于这个阈值的时候，才会找到满足最近距离点的index
+     * 否则返回-1
+     */
+    var clostIndex=-1;
+    var dis = maxDis;
+    for(var i =0 ;i<objArr.length; i++ ){
+        if(obj.position.y === objArr[i].position.y){
+            var currentDis = Math.abs(obj.position.x-objArr[i].position.x)+Math.abs(obj.position.z-objArr[i].position.z);                if(currentDis<dis){
+                dis = currentDis;
+                clostIndex = i;
+            }
+        }
+    }
+    return clostIndex;
+}
