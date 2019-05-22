@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>New Demo</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/tongCss.css">
 
 
     <script src="lib/three.js"></script>
@@ -51,10 +53,61 @@
 </div>
 <div id="WebGL-output">
 </div>
-
-
+<div id='createPerson' class="controller" style="display: block">
+    <button  id="createPersonBtn" class="btn btn-default btn-lg" style="width:100px;display:inline-block;margin: 0 5px">创建人群</button>
+    <button  id="escapeDoor1" class="btn btn-default btn-lg" style="width:100px;display:inline-block;margin: 0 5px">逃生门1</button>
+    <button  id="escapeDoor2" class="btn btn-default btn-lg" style="width:100px;display:inline-block;margin: 0 5px">逃生门2</button>
+    <button  id="escapeDoor3" class="btn btn-default btn-lg" style="width:100px;display:inline-block;margin: 0 5px">逃生门3</button>
+</div>
+<div id="Menu" class="controller" style="display: none">
+    <button  id="userBook" class="btn btn-default btn-lg" style="width:140px;display:inline-block;margin: 0 3px">当前使用说明</button>
+    <button  id="userBook2" class="btn btn-default btn-lg" style="width:140px;display:none;margin: 0 3px">当前使用说明</button>
+    <button  id="userBook3" class="btn btn-default btn-lg" style="width:140px;display:none;margin: 0 3px;">灭火器使用书</button>
+    <button  id="shutuserbook3" class="btn btn btn-default btn-lg" style="width:140px;display:none;margin:0 3px;">关闭使用说明</button>
+    <button  id="startRun" class="btn btn-default btn-lg" style="width:140px;display:inline-block;margin: 0 3px">开始模拟</button>
+    <!--<button  id="follow_leader" class="btn btn btn-default btn-lg" style="width:140px;display:inline-block;margin: 0 3px">跟随逃生者</button>-->
+    <!--<button  id="cancel_follow_leader" class="btn btn btn-default btn-lg" style="width:140px;display:inline-block;margin: 0 3px">取消跟随逃生者</button>-->
+    <button  id="transformSmoke" class="btn btn-default btn-lg" style="width:140px;display:inline-block;margin: 0 3px">编辑烟雾</button>
+    <button  id="floor1" class="btn btn-default btn-lg" style="width:140px;display:inline-block;margin: 0 3px">地下一层</button>
+    <button  id="floor2" class="btn btn-default btn-lg" style="width:140px;display:inline-block;margin: 0 3px">地下二层</button>
+    <button  id="toNo1" class="btn btn-default btn-lg" style="width:140px;display:inline-block;margin: 0 3px">1号火灾情景</button>
+    <button  id="toNo2" class="btn btn-default btn-lg" style="width:140px;display:inline-block;margin: 0 3px">2号火灾情景</button>
+    <button  id="toNo3" class="btn btn-default btn-lg" style="width:140px;display:none;margin: 0 3px">3号火灾情景</button>
+    <button  id="toNo4" class="btn btn-default btn-lg" style="width:140px;display:none;margin: 0 3px">4号火灾情景</button>
+    <button  id="toNo5" class="btn btn-default btn-lg" style="width:140px;display:none;margin: 0 3px">5号火灾情景</button>
+    <button  id="fireman" class="btn btn-default btn-lg" style="width:140px;display:none;margin: 0 3px">开始灭火</button>
+    <button  id="cancelFollow" class="btn btn-default btn-lg" style="width:140px;display:none;margin: 0 3px">取消跟随</button>
+    <button  id="allowFollow" class="btn btn-default btn-lg" style="width:140px;display:none;margin: 0 3px">跟随消防员</button>
+    <!--UI界面开始----冯玉山-->
+    <!--<div class="fingureControlBtn" style="z-index: 2">-->
+    <!--<button class="directionButton" style="left: 50px;bottom:100px" id="up"></button>-->
+    <!--<button class="directionButton" style="transform: rotate(90deg); left: 100px;bottom:50px" id="right"></button>-->
+    <!--<button class="directionButton" style="transform: rotate(180deg);left: 50px;bottom:0px " id="down"></button>-->
+    <!--<button class="directionButton" style="transform: rotate(270deg);left:0px;bottom:50px" id="left"></button>-->
+    <!--</div>-->
+    <!--<div class="RightfingureControlBtn" style="z-index: 2">-->
+    <!--<button class="moveBtn" style="bottom:100px;right:0" id="forward"></button>-->
+    <!--<button class="moveBtn" style="transform: rotate(180deg);bottom: 0px;right:0" id="back"></button>-->
+    <!--</div>-->
+    <!--UI界面结束---冯玉山-->
+</div>
+<div id="menu-div" style="display:none; top: 0px;width: 100%;height: 100%;position: absolute;background-color: rgb(94, 94, 94);z-index: 1000;text-align: center">
+    <div style="margin-top:35vh;height: 100%;width: 100%">
+        <h1 style="color: #e5e5e5;margin-bottom: 20px">地下空间逃生模拟</h1>
+        <label style="color: #e5e5e5;margin-left: 0">请设置逃生人数</label>
+        <label style="color: #e5e5e5;margin-left: 0">(手机端建议在100人左右)</label>
+        <label id="totalNum" style="color: #ffff00;margin-left: 0">100</label>
+        <label style="color: #e5e5e5;margin-left: 0">人</label>
+        <button id="addBtn" style="border-radius:0.5em;width: 50px;background-color: #e5e5e5">+</button>
+        <button id="subBtn" style="border-radius:0.5em;width: 50px;background-color: #e5e5e5">-</button>
+        <button id="submitBtn" style="border-radius:0.5em;width: 60px;background-color: #e5e5e5">开始</button>
+    </div>
+</div>
+<script src="js/utils.js"></script>
 <script src="js/mainScene.js"></script>
 <script src="js/Underground.js"></script>
-<script type="text/javascript" src="js/launch.js"></script>
+<script src="js/FollowerControl.js"></script>
+<script src="js/People.js"></script>
+<script src="js/launch.js"></script>
 </body>
 </html>
