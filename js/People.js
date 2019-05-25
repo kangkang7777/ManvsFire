@@ -30,14 +30,14 @@ People.prototype.init = function (number,scene,renderer) {
                 var guidCube = new THREE.Mesh(new THREE.CubeGeometry( 1, 1, 1 ),new THREE.MeshBasicMaterial({color:0xFF0000}));
                 guidCube.position.set(guidPosArr[i].x,guidPosArr[i].y,guidPosArr[i].z);
                 scene.add(guidCube);
-                alert("yes!");
             }
         }).call(this);
  */
         var blendMeshArr = [];
-        var blendMeshLodArr = [];
+        var blendMeshLodArr = [];    //TODO 此为LOD所建模型 建议删去
         var blendMeshPosArr = [];
         var leaderMeshArr = [];
+        var exitConnectionMap = [];    //todo 接下来寻路算法也会用到这个变量
         createRandomPos(number);
         loadBlendMeshWithPromise();
         function loadBlendMeshWithPromise() {
@@ -153,7 +153,7 @@ People.prototype.init = function (number,scene,renderer) {
                         newMeshLod.material.map = texture;
 
                         scene.add(newMesh);
-                        scene.add(newMeshLod);
+                        //scene.add(newMeshLod);
 
                         blendMeshArr.push(newMesh);
                         blendMeshLodArr.push(newMeshLod);
@@ -218,6 +218,7 @@ People.prototype.init = function (number,scene,renderer) {
                                 if(blendMeshArr[i].position.y<18) {
                                     bestIndex = Utils.getClosePoint(blendMeshArr[i],leaderMeshArr,200);
                                 }
+
                                 if(bestIndex!==-1){
                                     getLeaderArr.push(blendMeshArr[i]);
                                     getLeaderLODArr.push(blendMeshLodArr[i]);
@@ -257,31 +258,31 @@ People.prototype.init = function (number,scene,renderer) {
                                         i--;
                                     }
                                 }
-                                console.log('迭代完一批leader: ' + getLeaderArr.length);
+                                alert('修改这里!!!迭代完一批leader: ' + getLeaderArr.length);
                             }
-                            console.log('所有mesh已经找到了mesh_leader');
 
-
+                            self.isLoaded = true;
                         }
 
 
                         //初始动画为站立
                         //////////////////////////////////////////////////////////////////////////////////////////////
                         function activateAllActions(actions) {
+                            function setWeight( action, weight ) {
+                                action.enabled = true;
+                                var num=Math.floor(Math.random()*8+1);
+                                action.setEffectiveTimeScale( num/3 );
+                                action.setEffectiveWeight( weight );
+                            }
                             var num=Math.floor(Math.random()*2+1);
                             switch (num){
                                 case 1:
                                     setWeight( actions[0], 1 );
-                                    // setWeight( actions[1], 0 );
-                                    // setWeight( actions[2], 0 );
                                     break;
                                 case 2:
                                     setWeight( actions[0], 1 );
-                                    // setWeight( actions[1], 0 );
-                                    // setWeight( actions[2], 1 );
                                     break;
                             }
-                            // setWeight( actions[1], 1 );
                             actions.forEach( function ( action ) {
                                 action.play();
                             } );
@@ -360,7 +361,6 @@ People.prototype.init = function (number,scene,renderer) {
             }
         }
     }
-    this.isLoaded = true;
 }
 People.prototype.update = function(delta){
     if(this.isLoaded){
