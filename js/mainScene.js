@@ -27,12 +27,15 @@ var mainScene = function(){
     this.underground = new Underground();
 
     this.people = new People();
-/*todo
-    this.particles = new Particles();
-    this.fireman = new Fireman();
-*/
+
+
+    /*todo
+        this.particles = new Particles();
+        this.fireman = new Fireman();
+    */
 }
-mainScene.prototype.init = function() {
+mainScene.prototype.init = function()
+{
 //region 基础场景
     var  c = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 2000000);
     c.position.set(639,160,106);
@@ -53,6 +56,19 @@ mainScene.prototype.init = function() {
     camControlOver.autoRotate=true;
     this.freeViewControl = camControlOver;
 
+    this.CamControl = new THREE.FirstPersonControls(c, r.domElement);
+    this.lookSpeed = 1;
+    this.CamControl.movementSpeed = 2 * 10;
+    this.CamControl.noFly = true;
+    this.CamControl.lookVertical = true;
+    this.CamControl.constrainVertical = true;
+    this.CamControl.verticalMin = 1.0;
+    this.CamControl.verticalMax = 2.0;
+    this.CamControl.lon =-138;
+    this.CamControl.lat =-90;
+    this.followViewControl = this.CamControl;
+
+/*
     var camControl = new THREE.FirstPersonControls(c, r.domElement);
     camControl.lookSpeed = 1;
     camControl.movementSpeed = 2 * 10;
@@ -64,7 +80,7 @@ mainScene.prototype.init = function() {
     camControl.lon =-138;
     camControl.lat =-90;
     this.followViewControl = camControl;
-
+*/
     var ambientLight = new THREE.AmbientLight(0xcccccc);
     this.scene.add(ambientLight);
 
@@ -107,7 +123,8 @@ mainScene.prototype.start = function() {
     var delta = this.clock.getDelta();
     function animate()
     {
-        if(self.active)requestAnimationFrame(animate);
+        if(self.active)
+            requestAnimationFrame(animate);
         self.stats.update();
         self.freeViewControl.update(delta);
         self.people.update(delta);    //todo 需要判别是否开始
@@ -124,4 +141,11 @@ mainScene.prototype.start = function() {
 
 mainScene.prototype.addPeople = function (number) {
     this.people.init(number,this.scene,this.renderer);
+}
+
+//两个参数为lon lat
+mainScene.prototype.setCamControl = function(lon,lat )
+{
+    this.CamControl.lon = lon;
+    this.CamControl.lat = lat;
 }

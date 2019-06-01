@@ -3,9 +3,11 @@ var People = function () {
     this.isLoaded = false;
     this.people = [];
 }
-People.prototype.init = function (number,scene,renderer) {
+People.prototype.init = function (number,scene,renderer)
+{
     this.number = number;
     var self = this;
+
     var mapWorker = new Worker("js/loadTJMap.js");
     var mapInfoMap;//地图信息
     var exitInfoMap;//出口信息
@@ -19,7 +21,9 @@ People.prototype.init = function (number,scene,renderer) {
         exitInfoMap = event.data.exitInfo;
         guidPosArr = event.data.guidPosArr;
         meshLoadCount = 0;
-/*布吉岛四撒子东西、花花绿绿一片一片的
+//布吉岛四撒子东西、花花绿绿一片一片的
+        //是出口的引导位置，但不知为何用圆形
+/*
         (function drawGuidCube() {
             for(var i=0; i<guidPosArr.length; i++){
                 var guidCircle = new THREE.Mesh(new THREE.CircleGeometry( 18, 32 ),new THREE.MeshBasicMaterial({color:0xFFFFFF*Math.random(),transparent:true,opacity:0.5,side:THREE.DoubleSide}));
@@ -32,7 +36,7 @@ People.prototype.init = function (number,scene,renderer) {
                 scene.add(guidCube);
             }
         }).call(this);
- */
+*/
         var blendMeshArr = [];
         var blendMeshLodArr = [];    //TODO 此为LOD所建模型 建议删去
         var blendMeshPosArr = [];
@@ -110,6 +114,8 @@ People.prototype.init = function (number,scene,renderer) {
             var promiseL12 = loadLowModelPromise(modelUrlLod);
             var promiseL13 = loadLowModelPromise(modelUrlLod);
             var promiseL14 = loadLowModelPromise(modelUrlLod);
+
+
 
             var promiseAll = Promise.all([promise1,promise2,promise3,promise4,promise5,promise6,promise7,promise8,promise9,promise10,promise11,promise12,promise13,promise14]).then((data)=>{
                 var promiseLAll = Promise.all([promiseL1,promiseL2,promiseL3,promiseL4,promiseL5,promiseL6,promiseL7,promiseL8,promiseL9,promiseL10,promiseL11,promiseL12,promiseL13,promiseL14]).then((dataL)=>{
@@ -287,7 +293,9 @@ People.prototype.init = function (number,scene,renderer) {
                                 action.play();
                             } );
                         }
+                        //todo 动作变量 这几个还有很多耦合的代码
                         var actions,idleAction,mixerArr = [];
+
                         for(var i=0; i<blendMeshArr.length;i++) {
                             var meshMixer = new THREE.AnimationMixer( blendMeshArr[i] );
                             idleAction = meshMixer.clipAction( 'idle' );
