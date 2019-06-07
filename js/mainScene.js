@@ -186,20 +186,20 @@ mainScene.prototype.init = function()
     this.fireManager = new FIRE.Manager(fireControl);
     this.fireManager.maxParticlesNum = 6000;
     this.fireManager.runTimer();
-    this.fireManager.controlSheet.x = positionBallMesh.position.x;
-    this.fireManager.controlSheet.y = positionBallMesh.position.y;
-    this.fireManager.controlSheet.z = positionBallMesh.position.z;
+    this.fireManager.controlSheet.x = this.positionBallMesh.position.x;
+    this.fireManager.controlSheet.y = this.positionBallMesh.position.y;
+    this.fireManager.controlSheet.z = this.positionBallMesh.position.z;
 
     this.scene.add(this.fireManager.target);
 //endregion
 
     //region 物体操作工具
-    this.control = new THREE.TransformControls( camera, renderer.domElement );
+    this.control = new THREE.TransformControls( this.camera, this.renderer.domElement );
     this.control.attach( );
     this.scene.add( this.control );
     this.control.visible = false;
 
-    this.extinguisherControl=new THREE.TransformControls(camera,renderer.domElement);
+    this.extinguisherControl=new THREE.TransformControls(this.camera,this.renderer.domElement);
     this.extinguisherControl.attach();
     this.scene.add(this.extinguisherControl);
     this.extinguisherControl.visible=false;
@@ -213,7 +213,7 @@ mainScene.prototype.init = function()
     this.Te1Material=new THREE.MeshLambertMaterial({color:0xff0000});
     this.Te1Material.transparent=true;
     this.Te1Material.opacity=1;
-    var Te1Mesh=new THREE.Mesh(Te1Geometry,Te1Material);
+    var Te1Mesh=new THREE.Mesh(Te1Geometry,this.Te1Material);
     Te1Mesh.position.set(41,15,25);
     this.Te1Material.visible=false;
     this.scene.add(Te1Mesh);
@@ -223,7 +223,7 @@ mainScene.prototype.init = function()
     this.Te2Material=new THREE.MeshLambertMaterial({color:0xff0000});
     this.Te2Material.transparent=true;
     this.Te2Material.opacity=1;
-    var Te2Mesh=new THREE.Mesh(Te2Geometry,Te2Material);
+    var Te2Mesh=new THREE.Mesh(Te2Geometry,this.Te2Material);
     Te2Mesh.position.set(91,15,25);
     this.Te2Material.visible=false;
     this.scene.add(Te2Mesh);
@@ -234,36 +234,19 @@ mainScene.prototype.init = function()
     var waterTexture = new THREE.TextureLoader().load('textures/water.png');
     this.waterArr=new Array();
     var waterCloud;
-    var waterType=new function()
-    {
-        this.size = 2;
-        this.transparent = true;
-        this.opacity = 0;
-        this.color = 0xffffff;
-        this.rotateSystem = true;
-        this.sizeAttenuation = true;
-        this.redraw = function ()
-        {
-            createWaterCloud(waterType.size, waterType.transparent, waterType.opacity, waterType.sizeAttenuation, waterType.color);
-        };
-    }
 
-    for(var i=0;i<7;i++)
+    function waterType(_this)
     {
-        waterType.redraw();
-    }
-
-    function createWaterCloud(size, transparent, opacity, sizeAttenuation, color){
         var geom = new THREE.Geometry();//创建烟雾团
         //创建烟雾素材
         var material = new THREE.PointsMaterial({
-            size: size,
-            transparent: transparent,
-            opacity: opacity,
+            size: 2,
+            transparent: true,
+            opacity: 0,
             map: waterTexture,
-            sizeAttenuation: sizeAttenuation,
+            sizeAttenuation: true,
             depthWrite: false,
-            color: color
+            color: 0xffffff
         });
         var range = 0.3;
         for (var i = 0; i < 5; i++) {
@@ -273,9 +256,16 @@ mainScene.prototype.init = function()
             geom.vertices.push(particle);
         }
         waterCloud = new THREE.Points(geom, material);
-        this.scene.add(waterCloud);
-        this.waterArr.push(waterCloud);
+        _this.scene.add(waterCloud);
+        _this.waterArr.push(waterCloud);
     }
+
+    for(var i=0;i<7;i++)
+    {
+        waterType(this);
+    }
+
+
 
     var waterRX=[0,4.8,12,16.20,24];
     var waterRY=[0,0.2,0.4,0.6,0.8,1.0,1.2];
@@ -311,33 +301,18 @@ mainScene.prototype.init = function()
     this.smokeSceneArr= new Array();
     //烟雾属性设置
     var cloud,cloud1;
-    var smokeType=new function()
+    function smokeType(_this)
     {
-        this.size=25;
-        this.transparent=true;
-        this.opacity=0;
-        this.color=0xffffff;
-        this.rotateSystem=true;
-        this.sizeAttenuation=true;
-        this.redraw=function(){
-            createPointCloud1(smokeType.size,smokeType.transparent,smokeType.opacity,smokeType.sizeAttenuation,smokeType.color);
-        };
-    };
-    for(var i=0;i<62;i++){
-        smokeType.redraw();
-    }
-
-    function createPointCloud1(size,transparent,opacity,sizeAttenuation,color){
         var geom=new THREE.Geometry();//创建烟雾团
         //创建烟雾素材
         var material=new THREE.PointsMaterial({
-            size:size,
-            transparent:transparent,
-            opacity:opacity,
-            map:this.smokeTexture,
-            sizeAttenuation:sizeAttenuation,
+            size:25,
+            transparent:true,
+            opacity:0,
+            map:_this.smokeTexture,
+            sizeAttenuation:true,
             depthWrite:false,
-            color:color
+            color:0xffffff
         });
         var range=70;
         for(var i=0;i<5;i++){
@@ -347,10 +322,16 @@ mainScene.prototype.init = function()
             geom.vertices.push(particle);
         }
         cloud=new THREE.Points(geom,material);
-        this.scene.add(cloud);
-        this.smokeArr.push(cloud);
+        _this.scene.add(cloud);
+        _this.smokeArr.push(cloud);
+    };
 
+    for(var i=0;i<62;i++)
+    {
+        smokeType(this);
     }
+
+
     var puffs = [ 0,20,40,60,80,100];//运动方向延Y轴方向
     var r1=[0,20,40,60,80,100,120];//运动方向延X、Z坐标轴方向
     var r2=[0,20*(2^(1/2)),40*(2^(1/2)),60*(2^(1/2)),80*(2^(1/2)),100*(2^(1/2)),120*(2^(1/2))]//运动方向延X=Z方向
@@ -431,33 +412,18 @@ mainScene.prototype.init = function()
     };
 
 
-    var smokeSceneType=new function(){
-        this.size=40;
-        this.transparent=true;
-        this.opacity=0;
-        this.color=0xffffff;
-        this.rotateSystem=true;
-        this.sizeAttenuation=true;
-        this.redraw1=function(){
-            createPointCloud2(smokeSceneType.size,smokeSceneType.transparent,smokeSceneType.opacity,smokeSceneType.sizeAttenuation,smokeSceneType.color);
-        };
-    };
-
-    for(var e=0;e<46;e++){
-        smokeSceneType.redraw1();
-    }
-
-    function createPointCloud2(size,transparent,opacity,sizeAttenuation,color){
+    function smokeSceneType(_this)
+    {
         var geom1=new THREE.Geometry();//创建烟雾团
         //创建烟雾素材
         var material1=new THREE.PointsMaterial({
-            size:size,
-            transparent:transparent,
-            opacity:opacity,
-            map:this.smokeTexture,
-            sizeAttenuation:sizeAttenuation,
+            size:40,
+            transparent:true,
+            opacity:0,
+            map:_this.smokeTexture,
+            sizeAttenuation:true,
             depthWrite:false,
-            color:color
+            color:0xffffff
         });
         //var range=15;
         for(var i=0;i<50;i++){
@@ -467,10 +433,15 @@ mainScene.prototype.init = function()
             geom1.vertices.push(particle1);
         }
         cloud1=new THREE.Points(geom1,material1);
-        this.scene.add(cloud1);
-        this.smokeSceneArr.push(cloud1);
+        _this.scene.add(cloud1);
+        _this.smokeSceneArr.push(cloud1);
+    };
 
+    for(var e=0;e<46;e++)
+    {
+        smokeSceneType(this);
     }
+
 
     //铺设一层46个烟团
     this.smokeScene=function(){
