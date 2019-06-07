@@ -31,13 +31,14 @@ $(function () {
     var acoPathFindingWorker =  new Worker("js/ACOPathFindingWorker.js"); //创建子线程ACOPathFindingWorker.js为蚁群寻路算法
     var workerLoadVsg=new Worker("js/loadBlockVsg.js");
     var workerDout=new Worker("js/loadMergedFile.js");
-    var workerLoadModel=new Worker("js/loadModel.js");
     var workerLoadSmokeAndPath=new Worker("js/loadSmokeJsonWorker.js");
+    var workerLoadModel=new Worker("js/loadModel.js");
 //json
 
     var currentBlcokName = "TJSub_Vis";
     var pathArr,pathMap;
     var antCountMap,iterationCountMap,antTotalCount,iterationTotalCount;
+
     var pathControlMap={},isFinishLoadCharactor, blendMeshArr = [],meshLoadCount;
     var blendMeshPosArr = [];
     var mixerArr = [];
@@ -318,6 +319,7 @@ $(function () {
 //endregion
 
 //region 修补地图...
+        /*
         var cube1 = new THREE.Mesh(new THREE.BoxGeometry(17,10,1),new THREE.MeshBasicMaterial({color:0xff0000,transparent:true,opacity:0.5}));
         cube1.position.set(416,22,7);
         var cube2 = new THREE.Mesh(new THREE.BoxGeometry(15,10,1),new THREE.MeshBasicMaterial({color:0xff0000,transparent:true,opacity:0.5}));
@@ -481,7 +483,7 @@ $(function () {
         var cube3Material=new THREE.MeshPhongMaterial({color:0xaeb1b3});
         var cube3Mesh=new THREE.Mesh(cube3Geometry,cube3Material);
         scene.add(cube3Mesh);
-
+*/
         //正四面体，用于标记火源位置
         Te1Geometry=new THREE.TetrahedronGeometry(5);
         Te1Material=new THREE.MeshLambertMaterial({color:0xff0000});
@@ -502,6 +504,8 @@ $(function () {
         Te2Material.visible=false;
         scene.add(Te2Mesh);
         Te2.push(Te2Mesh);
+
+
 //endregion
 
 //region 水
@@ -949,7 +953,6 @@ $(function () {
                 scene.add(guidCube);
             }
         });
-
 
         //生成人数
         createRandomPos(meshTotalCount);
@@ -1455,7 +1458,6 @@ $(function () {
             //createPositionCube();
         }
     }
-
 
 
     //LeaderFollower算法
@@ -3001,6 +3003,7 @@ $(function () {
             }
 
         }
+
         if(isfiremanclick)
         {
             createFireman();
@@ -3099,7 +3102,8 @@ $(function () {
     }
 
     //生成消防员
-    function createFireman() {
+    function createFireman()
+    {
         if (isCreateFireman && !isCreateFiremanCompleted && isStartRun && clock.getElapsedTime() > 5) {
 
 
@@ -3163,6 +3167,7 @@ $(function () {
      * 消防员调整朝向
      * @constructor
      */
+
     function SteeringFollowPathFireman() {
         this.dist = this.target.clone().sub(this.position);
         this.angleDist = this.dist.clone().setY(0);
@@ -3211,7 +3216,6 @@ $(function () {
 
         }
     }
-
 //endregion
 
     //region 交互部分
@@ -3263,20 +3267,12 @@ $(function () {
         {
             //console.log(smokeNumber);
             if(!isEdit){
-                if(!MOBILE) {
+
                     document.getElementById("fireman").style.display = "inline-block";
                     document.getElementById("floor1").style.display = "inline-block";
                     document.getElementById("floor2").style.display = "inline-block";
                     document.getElementById("startRun").style.display = "none";
                     document.getElementById("transformSmoke").style.display = "none";
-                }
-                else
-                {
-                    document.getElementById("fireman").style.display = "none";
-                    document.getElementById("floor1").style.display = "none";
-                    document.getElementById("floor2").style.display = "none";
-                    document.getElementById("transformSmoke").style.display = "none";
-                }
                 redBallMesh.position.x=positionBallMesh.position.x+16;
                 redBallMesh.position.z=positionBallMesh.position.z;
                 positionBallMesh.visible=false;
@@ -3308,6 +3304,7 @@ $(function () {
                     activateAllActions1(actions);
                     mixerArr.push(meshMixer);
                 }
+
                 for(var iL=0; iL<leaderMeshArr.length;iL++) {
                     var meshMixer = new THREE.AnimationMixer( leaderMeshArr[iL] );
                     walkAction = meshMixer.clipAction( 'walk' );
@@ -3317,6 +3314,7 @@ $(function () {
                     activateAllActions1(actions);
                     mixerArr.push(meshMixer);
                 }
+
                 //////////////////////////////////////////////////////////////////////////////////////////////////////
             }else{
                 alert("请点击‘编辑烟雾’按钮，并退出编辑模式");
@@ -3564,7 +3562,7 @@ $(function () {
         var btnClickedId = e.target.id;
         console.log(btnClickedId);
         if(btnClickedId=="user_book1"){
-            alert("欢迎体验本火灾模拟实验平台，您可以通过鼠标和键盘进行场景漫游。或过点击“地下一层”和“地下二层”按钮变换视角。若要开始火灾模拟，请点击“编辑烟雾”按钮进行编辑，编辑完毕后点击“开始模拟”");
+            alert("体验本火灾模拟实验平台，您可以通过鼠标和键盘进行场景漫游。或过点击“地下一层”和“地下二层”按钮变换视角。若要开始火灾模拟，请点击“编辑烟雾”按钮进行编辑，编辑完毕后点击“开始模拟”");
         }
         if(btnClickedId=="user_book2"){
             alert("您已进入烟雾编辑页面，请通过拖动屏幕上的坐标轴至“红色标识”下方并使其成半透明效果，以选择起火位置，或者直接点选“火灾情景”按钮进行选择。在选择完毕后，请再次点击“编辑烟雾”以退出编辑模式，并点击“开始模拟”");
@@ -3577,8 +3575,10 @@ $(function () {
             alert('\t\t'+"灭火器使用说明"+'\n'+'\t'+"身距火源约两米，先摇瓶身后拔销"+'\n'+'\t'+"身成弓步腿出力，下压开关把粉喷"+'\n'+'\t'+"喷时对准火焰根，余火不留防复燃");
         }
         if(btnClickedId=="start_run") {
+
             //console.log(smokeNumber);
             if(!isEdit){
+                /*
                 document.getElementById("start_run").style.display="none";
                 document.getElementById("fire_man").style.display="inline-block";
                 document.getElementById("f1").style.display="inline-block";
@@ -3594,6 +3594,7 @@ $(function () {
                 isStartRun = true;
                 isStartSmoke = true;
                 clock=new THREE.Clock();
+
                 let timeEscape = setInterval(function () {
                     if(meshTotalCount>=5){
                         currentEscapeTime += 1;
@@ -3602,6 +3603,8 @@ $(function () {
                         clearInterval(timeEscape);
                     }
                 },1000);
+
+
                 pp.set(positionBallMesh.position.x,positionBallMesh.position.y,positionBallMesh.position.z);
                 if(pp.x+18>215)
                 {
@@ -3610,6 +3613,7 @@ $(function () {
                 newsmokeData=smoke_insert(p0,p1,p2,pp,smokeDataA,smokeDataB,smokeDataC);
                 //开始模拟后开始行走
                 //////////////////////////////////////////////////////////////////////////////////////////////////////
+
                 for(var i=0; i<blendMeshArr.length;i++) {
                     var meshMixer = new THREE.AnimationMixer( blendMeshArr[i] );
                     walkAction = meshMixer.clipAction( 'walk' );
@@ -3619,6 +3623,8 @@ $(function () {
                     activateAllActions1(actions);
                     mixerArr.push(meshMixer);
                 }
+
+
                 for(var iL=0; iL<leaderMeshArr.length;iL++) {
                     var meshMixer = new THREE.AnimationMixer( leaderMeshArr[iL] );
                     walkAction = meshMixer.clipAction( 'walk' );
@@ -3628,18 +3634,18 @@ $(function () {
                     activateAllActions1(actions);
                     mixerArr.push(meshMixer);
                 }
-
+                */
                 //////////////////////////////////////////////////////////////////////////////////////////////////////
             }else{
                 alert("请点击‘编辑烟雾’按钮，并退出编辑模式");
             }
 
-            camera.position.set(397,29,42);
-            camControl.lon = 337;
-            camControl.lat = -30;
-            currentFloor = "floor1";
+            //camera.position.set(397,29,42);
+            //camControl.lon = 337;
+            //camControl.lat = -30;
+            //currentFloor = "floor1";
 
-            isOverView = false;
+            //isOverView = false;
 
 
         }

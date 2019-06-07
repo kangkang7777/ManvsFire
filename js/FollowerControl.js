@@ -104,7 +104,6 @@ THREE.FollowerControl = function ( object,humanMap,lodObj) {
 
             }
 
-
             var tempNextPosition1 = new THREE.Vector3(this.object.position.x-1,this.object.position.y, this.object.position.z);
             var tempNextPosition2 = new THREE.Vector3(this.object.position.x,this.object.position.y, this.object.position.z-1);
             var tempNextPosition3 = new THREE.Vector3(this.object.position.x+1,this.object.position.y, this.object.position.z);

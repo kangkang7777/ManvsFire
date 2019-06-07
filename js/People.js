@@ -2,48 +2,185 @@ var People = function () {
     this.number = 100;
     this.isLoaded = false;
     this.people = [];
+
+    // this.mapInfoMap;
+    // this.exitConnectionMap;
+    // this.exitInfoMap;
+    // this.pathControlMap;
+    // this.leaderMeshArr;
+    // this.blendMeshArr;
 }
 People.prototype.init = function (number,scene,renderer)
 {
     this.number = number;
     var self = this;
 
-    var mapWorker = new Worker("js/loadTJMap.js");
     var mapInfoMap;//地图信息
     var exitInfoMap;//出口信息
     var guidPosArr;//引导点位置信息
     var meshLoadCount = 0;
     var pathControlMap = [];
     var targetPositionArr = [];
+    var actions,mixerArr = [];
+    var idleAction, walkAction, runAction;//一共三个动作，站立、行走、低头跑
+    var blendMeshArr = [];
+    var blendMeshLodArr = [];    //TODO 此为LOD所建模型 建议删去
+    var blendMeshPosArr = [];
+    var leaderMeshArr = [];
+    var exitConnectionMap = [];    //todo 接下来寻路算法也会用到这个变量
+
+    var pathfinder;//导航网格管理
+    var postCount = 0;
+    var recieveCount = 0;
+    var finishPathNum = 0;
+    var isCalculateLeader = true;  //是否针对leader做寻路，默认是对人群做寻路
+    var isUseBufferPath = true;  //是否直接从内存里面读取路径数据
+    var pathArr,pathMap;
+    var finishTagMap = [];
+    var humanInfoMap=[];
+    var staticPathArr;
+    var antCountMap,iterationCountMap,antTotalCount,iterationTotalCount;
+
+    var mapWorker = new Worker("js/loadTJMap.js");
+    var acoPathFindingWorker =  new Worker("js/ACOPathFindingWorker.js"); //创建子线程ACOPathFindingWorker.js为蚁群寻路算法
+    var workerLoadSmokeAndPath=new Worker("js/loadSmokeJsonWorker.js");
+    var workerLoadVsg=new Worker("js/loadBlockVsg.js");
+    var workerDout=new Worker("js/loadMergedFile.js");
+
+    workerLoadSmokeAndPath.postMessage("../SmokeData/tjsub.json");
+
+    workerLoadSmokeAndPath.onmessage = function (event)
+    {
+
+        staticPathArr = event.data.staticPathArr;
+
+        //animate();
+    }
+    var isOnload = true; //判断是否在加载，如果在加载，render停掉
+    var cashVoxelSize;
+    var cashSceneBBoxMinX;
+    var cashSceneBBoxMinY;
+    var cashSceneBBoxMinZ;
+    var cashtriggerAreaMap;
+    var cashWallArr;
+
+    workerLoadVsg.onmessage=function(event) {
+        isOnload = true;
+
+        initValue();
+        vsgData = event.data.vsgMap;
+        cashVoxelSize = event.data.voxelSize;
+        cashSceneBBoxMinX = event.data.sceneBBoxMinX;
+        cashSceneBBoxMinY = event.data.sceneBBoxMinY;
+        cashSceneBBoxMinZ = event.data.sceneBBoxMinZ;
+        //需要获取到触发区域的值
+        cashtriggerAreaMap = event.data.structureInfo;
+        cashWallArr = event.data.wallInfoArr;
+
+        // drawVsgBlock();
+
+        var datNum = event.data.datNum;
+
+        document.getElementById('progressLable').innerHTML = "连接到服务器...";
+
+        SendMessagetoWorkDforOutsideModel(datNum);
+    }
+
+    function SendMessagetoWorkDforOutsideModel(datNum)
+    {
+        for(var key in vsgData)
+        {
+            for(var i=0;i<vsgData[key].length;i++)
+            {
+                if(vsgArr.indexOf(vsgData[key][i])==-1)
+                {
+                    vsgArr.push(vsgData[key][i]);
+                }
+            }
+        }
+        console.log("vsgArr length is:"+vsgArr.length);
+
+        for(var i=0;i<=datNum;i++)
+        {
+            workerDout.postMessage(currentBlcokName+"_"+i);
+        }
+    }
+
+    workerDout.onmessage = function (event) {
+        var Data=event.data;
+        if(Data.newFileName)
+        {
+            var tempKeyValue = Data.nam;
+            if(!modelDataNewN[tempKeyValue])
+            {
+                modelDataNewN[tempKeyValue] = [];
+            }
+            if(!modelDataM[tempKeyValue])
+            {
+                modelDataM[tempKeyValue] = [];
+            }
+            modelDataNewN[tempKeyValue] = Data.newFileName;
+            modelDataM[tempKeyValue] = Data.m;
+        }
+        else{
+            var tempKeyValue = Data.nam;
+            if(!modelDataV[tempKeyValue])
+            {
+                modelDataV[tempKeyValue] = [];
+            }
+            if(!modelDataT[tempKeyValue])
+            {
+                modelDataT[tempKeyValue] = [];
+            }
+            if(!modelDataF[tempKeyValue])
+            {
+                modelDataF[tempKeyValue] = [];
+            }
+            for(var dataCount = 0; dataCount<Data.v.length;dataCount++)
+            {
+                modelDataV[tempKeyValue].push(Data.v[dataCount]);
+                modelDataT[tempKeyValue].push(Data.t[dataCount]);
+                modelDataF[tempKeyValue].push(Data.f[dataCount]);
+            }
+        }
+        Data = null;
+        outsideSourcesFileCount++;
+
+        //修改HTML标签内容
+        var progress = Math.floor(100*outsideSourcesFileCount/vsgArr.length);
+        document.getElementById('progressLable').innerHTML = progress + "%";
+        // console.log("download progress is: "+outsideSourcesFileCount);
+        if(outsideSourcesFileCount==vsgArr.length)
+        {
+
+            DrawModel();
+            //加载完成
+            isOnload = false;
+
+        }
+    }
+    //烟雾相关
+    //var positionBallGeometry,positionBallMaterial,positionBallMesh;
+    //var redBallGeometry,redBallMaterial,redBallMesh;
+
     mapWorker.postMessage("../SmokeData/Block_Map_TJ.txt");
-    mapWorker.onmessage = function (event) {
+    mapWorker.onmessage = function (event)
+    {
         mapInfoMap = event.data.mapInfo;
         exitInfoMap = event.data.exitInfo;
         guidPosArr = event.data.guidPosArr;
         meshLoadCount = 0;
-//布吉岛四撒子东西、花花绿绿一片一片的
-        //是出口的引导位置，但不知为何用圆形
-/*
-        (function drawGuidCube() {
-            for(var i=0; i<guidPosArr.length; i++){
-                var guidCircle = new THREE.Mesh(new THREE.CircleGeometry( 18, 32 ),new THREE.MeshBasicMaterial({color:0xFFFFFF*Math.random(),transparent:true,opacity:0.5,side:THREE.DoubleSide}));
-                guidCircle.position.set(guidPosArr[i].x,guidPosArr[i].y+Math.random(),guidPosArr[i].z);
-                guidCircle.rotation.x += 0.5*Math.PI;
-                scene.add(guidCircle);
 
-                var guidCube = new THREE.Mesh(new THREE.CubeGeometry( 1, 1, 1 ),new THREE.MeshBasicMaterial({color:0xFF0000}));
-                guidCube.position.set(guidPosArr[i].x,guidPosArr[i].y,guidPosArr[i].z);
-                scene.add(guidCube);
-            }
-        }).call(this);
-*/
-        var blendMeshArr = [];
-        var blendMeshLodArr = [];    //TODO 此为LOD所建模型 建议删去
-        var blendMeshPosArr = [];
-        var leaderMeshArr = [];
-        var exitConnectionMap = [];    //todo 接下来寻路算法也会用到这个变量
         createRandomPos(number);
         loadBlendMeshWithPromise();
+
+        // this.mapInfoMap = mapInfoMap;
+        // this.exitConnectionMap = exitConnectionMap;
+        // this.exitInfoMap = exitInfoMap;
+        // this.pathControlMap = pathControlMap;
+        // this.leaderMeshArr = leaderMeshArr;
+        // this.blendMeshArr = blendMeshArr;
+
         function loadBlendMeshWithPromise() {
             var loadModelPromise = function (modelURL) {
                 return new Promise(function (resolve,reject) {
@@ -115,8 +252,6 @@ People.prototype.init = function (number,scene,renderer)
             var promiseL13 = loadLowModelPromise(modelUrlLod);
             var promiseL14 = loadLowModelPromise(modelUrlLod);
 
-
-
             var promiseAll = Promise.all([promise1,promise2,promise3,promise4,promise5,promise6,promise7,promise8,promise9,promise10,promise11,promise12,promise13,promise14]).then((data)=>{
                 var promiseLAll = Promise.all([promiseL1,promiseL2,promiseL3,promiseL4,promiseL5,promiseL6,promiseL7,promiseL8,promiseL9,promiseL10,promiseL11,promiseL12,promiseL13,promiseL14]).then((dataL)=>{
                     for(var i=0; i<blendMeshPosArr.length;i++) {
@@ -171,6 +306,7 @@ People.prototype.init = function (number,scene,renderer)
                         texture.repeat.set( 1, 1 );
                         dataLeader.material.map = texture;
                         initFollowerAndLeader(dataLeader);
+
                         function initFollowerAndLeader(mesh) {
                             var newMesh1 = mesh.clone();
                             var newMesh2 = mesh.clone();
@@ -269,32 +405,14 @@ People.prototype.init = function (number,scene,renderer)
 
                             self.isLoaded = true;
                         }
+                        //alert("testt");
 
+                        //////////////////////////////////////////////////////////////////////////////////////////////
 
                         //初始动画为站立
                         //////////////////////////////////////////////////////////////////////////////////////////////
-                        function activateAllActions(actions) {
-                            function setWeight( action, weight ) {
-                                action.enabled = true;
-                                var num=Math.floor(Math.random()*8+1);
-                                action.setEffectiveTimeScale( num/3 );
-                                action.setEffectiveWeight( weight );
-                            }
-                            var num=Math.floor(Math.random()*2+1);
-                            switch (num){
-                                case 1:
-                                    setWeight( actions[0], 1 );
-                                    break;
-                                case 2:
-                                    setWeight( actions[0], 1 );
-                                    break;
-                            }
-                            actions.forEach( function ( action ) {
-                                action.play();
-                            } );
-                        }
+
                         //todo 动作变量 这几个还有很多耦合的代码
-                        var actions,idleAction,mixerArr = [];
 
                         for(var i=0; i<blendMeshArr.length;i++) {
                             var meshMixer = new THREE.AnimationMixer( blendMeshArr[i] );
@@ -312,7 +430,13 @@ People.prototype.init = function (number,scene,renderer)
                             mixerArr.push(meshMixer);
                         }
                         self.people = mixerArr;
-                        //////////////////////////////////////////////////////////////////////////////////////////////
+
+                            for(var i=0; i<mixerArr.length;i++)
+                            {
+                                mixerArr[i].update(delta);
+                            }
+
+
                     });
                 });
             });
@@ -368,7 +492,495 @@ People.prototype.init = function (number,scene,renderer)
 ;
             }
         }
+
+        //path.init(mapInfoMap,exitConnectionMap,exitInfoMap,pathControlMap,leaderMeshArr,scene,blendMeshArr);
+
     }
+    //寻路
+    //var Path = new path();
+    createNav();
+    startPathFinding();
+
+    function getRandomColor(){
+        return  '#' +
+            (function(color){
+                return (color +=  '0123456789abcdef'[Math.floor(Math.random()*16)])
+                && (color.length == 6) ?  color : arguments.callee(color);
+            })('');
+    }
+
+    function createNav() {
+        let loader = new THREE.OBJLoader();
+        // load a resource
+        loader.load(
+            // resource URL
+            'Model/nav.obj',
+            // called when resource is loaded
+            function (object) {
+                let g;
+                g = new THREE.Geometry().fromBufferGeometry(object.children[0].geometry);
+                pathfinder = new THREE.Pathfinding();
+                // Create level.
+                pathfinder.setZoneData('level1', THREE.Pathfinding.createZone(g));
+
+            },
+            // called when loading is in progresses
+            function (xhr) {
+
+                console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+
+            },
+            // called when loading has errors
+            function (error) {
+
+                console.log('An error happened');
+
+            }
+        );
+    }
+
+    function startACOPathFinding(startPosition,targetPositionArr,currentFloor,tag)
+    {
+        /***
+         * 向子线程发送信息
+         * 信息体包括：startPosition寻路的出发点
+         *           targetPositionArr寻路的目的地数组
+         *           mapInfoMap地图信息
+         *           currentFloor所处的层数（场景包含2层）
+         *           tag寻路的角色的tag
+         */
+        var workerMessage = [];
+        workerMessage.push(startPosition);
+        workerMessage.push(targetPositionArr);
+        workerMessage.push(mapInfoMap);
+        workerMessage.push(currentFloor);
+        workerMessage.push(tag);
+        postCount++;
+        //发送子线程请求
+        acoPathFindingWorker.postMessage(workerMessage);
+    }
+
+    acoPathFindingWorker.onmessage=function(event)
+    {
+        recieveCount++;
+        // console.log(recieveCount+"/"+postCount);
+        /***
+         * 接受子线程处理好的数据
+         * 数据包括：pathTag寻路的角色的tag
+         *          pathArr当前线程找到的路径
+         *          resultBool寻路结果
+         *          floor寻路所在的层数
+         *          startPosition寻路的出发点（便于迭代）
+         *          targetPositionArr寻路的目的地数组
+         */
+        var pathTag = event.data.pathTag;
+        //!finishTagMap[pathTag] && recieveCount<=postCount
+        if(true)
+        {
+            if(!pathArr[pathTag])
+            {
+                pathArr[pathTag] = [];
+            }
+            if(event.data.resultBool != -1)
+            {
+                var path = event.data.pathArr;
+//            console.log("find path:" + path.length);
+                pathArr[pathTag].push(path);
+            }
+            else
+            {
+                if(event.data.floor == 19)
+                {
+//                console.log("dead!");
+                }
+            }
+            if(!antCountMap[pathTag])
+            {
+                antCountMap[pathTag]=0;
+            }
+            antCountMap[pathTag]++;
+//            console.log("antCountMap[pathTag]:"+antCountMap[pathTag]);
+            if(antCountMap[pathTag]==antTotalCount)
+            {
+                antCountMap[pathTag]=0;
+                if(pathArr[pathTag].length>0)
+                {
+                    var shortestPath = pathArr[pathTag][0];
+                    var shortesLength = 10000;
+                    for(var i=0; i<pathArr[pathTag].length;i++)
+                    {
+                        //比较路径长度
+                        var tempLength = getPathLength(pathArr[pathTag][i]);
+                        if(tempLength<shortesLength)
+                        {
+                            shortestPath = pathArr[pathTag][i];
+                            shortesLength = tempLength;
+                        }
+                    }
+                    for(var j=0;j<shortestPath.length;j++)
+                    {
+                        mapInfoMap[shortestPath[j]] = 1*mapInfoMap[shortestPath[j]] + 5;
+                    }
+
+                    if(!iterationCountMap[pathTag])
+                    {
+                        iterationCountMap[pathTag]=0;
+                    }
+                    iterationCountMap[pathTag]++;
+//                    console.log(pathTag + "count is:" +iterationCountMap[pathTag]);
+                    if(iterationCountMap[pathTag]!=iterationTotalCount)
+                    {
+//                        console.log("继续迭代");
+                        for(var acoCount=0;acoCount<antTotalCount;acoCount++)
+                        {
+                            startACOPathFinding(event.data.startPosition,event.data.targetPositionArr,event.data.floor,pathTag);
+                        }
+                    }
+                    else
+                    {
+                        iterationCountMap[pathTag]=0;
+                        console.log("find best path:" + shortestPath);
+                        console.log("best path length:" + shortesLength);
+
+                        if(!pathMap[pathTag]) pathMap[pathTag]=[];
+                        pathMap[pathTag].push(shortestPath);
+                        pathArr[pathTag] = [];
+                        if(event.data.floor==9)
+                        {
+                            console.log("第一层迭代完成");
+                            var startPosition = exitConnectionMap[shortestPath[shortestPath.length-1]][exitConnectionMap[shortestPath[shortestPath.length-1]].length-1];
+                            var targetPositionArr = [];
+                            for(var j=0;j<exitInfoMap[2].length;j++) {
+                                targetPositionArr.push(new THREE.Vector3(exitInfoMap[2][j][1], 19, exitInfoMap[2][j][3]));
+                            }
+                            console.log(startPosition);
+                            console.log(targetPositionArr);
+                            for(var acoCount=0;acoCount<antTotalCount;acoCount++)
+                            {
+                                console.log("迭代第二层");
+                                startACOPathFinding(startPosition,targetPositionArr,19,pathTag);
+                            }
+                        }
+                        if(event.data.floor==19)
+                        {
+                            console.log("第二层迭代完成");
+                            var runPath = [];
+                            for(var j=0; j<pathMap[pathTag].length; j++)
+                            {
+                                for(var i=0; i<pathMap[pathTag][j].length; i++)
+                                {
+                                    runPath.push(pathMap[pathTag][j][i]);
+                                    if(exitConnectionMap[pathMap[pathTag][j][i]])
+                                    {
+                                        for(var n=1; n<exitConnectionMap[pathMap[pathTag][j][i]].length-1;n++)
+                                        {
+                                            runPath.push(exitConnectionMap[pathMap[pathTag][j][i]][n]);
+                                        }
+                                    }
+                                }
+                            }
+                            finishTagMap[pathTag] = true;
+                            console.log("找到一条路径，当前耗时："+ clock.getElapsedTime());
+                            drawPath(runPath);
+                        }
+                    }
+                }
+                else
+                {
+                    console.log("20 只蚂蚁全死了"+event.data.floor);
+                    for(var acoCount=0;acoCount<antTotalCount;acoCount++)
+                    {
+                        startACOPathFinding(event.data.startPosition,event.data.targetPositionArr,event.data.floor,pathTag);
+                    }
+                }
+            }
+        }
+
+    }
+
+    function getPathLength(pathArr) {
+        var pathLength = 0;
+        for(var i=0;i<pathArr.length-1;i++)
+        {
+            var pos1 = calculatePositionByIndex(pathArr[i]);
+            var pos2 = calculatePositionByIndex(pathArr[i+1]);
+            pathLength += Math.abs(pos2.x-pos1.x)+Math.abs(pos2.y-pos1.y)+Math.abs(pos2.z-pos1.z);
+        }
+        return pathLength;
+    }
+
+    function calculatePositionByIndex(index){
+        var pos1=index.indexOf("&");
+        var pos2=index.indexOf("@");
+        var x=index.substring(0,pos1);
+        var z=index.substring(pos1+1,pos2);
+        var y=index.substring(pos2+1,index.length);
+        return new THREE.Vector3(x,y,z);
+    }
+
+    function drawPath(path)
+    {
+        console.log(path);
+        var geometryLine = new THREE.Geometry();
+        for(var i=0; i<path.length; i++)
+        {
+            var pos1=path[i].indexOf("&");
+            var pos2=path[i].indexOf("@");
+            var x=path[i].substring(0,pos1);
+            var z=path[i].substring(pos1+1,pos2);
+            var y=path[i].substring(pos2+1,path[i].length);
+            geometryLine.vertices[ i ] = new THREE.Vector3( x, y, z );
+        }
+        var lineColor = getRandomColor();
+        var object = new THREE.Line( geometryLine, new THREE.LineDashedMaterial( { color: lineColor, dashSize: 5, linewidth: 5,gapSize: 5 } ) );
+        scene.add(object);
+        humanInfoMap[path[0]]=0;
+        pathControlMap[path[0]].humanPosMap = humanInfoMap;
+        pathControlMap[path[0]].waypoints = path;
+        pathControlMap[path[0]].jumpPoint = new THREE.Vector3(3,0,0);
+        finishPathNum++;
+    }
+
+    //开始寻路
+    function startPathFinding()
+    {
+        // translateMap();
+        //clock.getElapsedTime();
+        if(isCalculateLeader){
+            for(var b=0; b<leaderMeshArr.length; b++)
+            {
+                var startPosition = new THREE.Vector3(leaderMeshArr[b].position.x,leaderMeshArr[b].position.y,leaderMeshArr[b].position.z);//开始寻路的起始点为Leader的起始坐标
+                var tag = startPosition.x + "&" + startPosition.z + "@" + startPosition.y;
+                var targetPositionArr = [];//终点坐标位置
+
+                if(startPosition.y>=10)
+                {
+                    if(!isUseBufferPath){
+                        for(var j=0;j<exitInfoMap[2].length;j++) {
+                            targetPositionArr.push(new THREE.Vector3(exitInfoMap[2][j][1], exitInfoMap[2][j][2], exitInfoMap[2][j][3]));
+                        }
+                        finishTagMap[tag] = false;
+                        for(var acoCount=0;acoCount<antTotalCount;acoCount++)
+                        {
+                            startACOPathFinding(startPosition,targetPositionArr,leaderMeshArr[b].position.y,tag);
+                        }
+                    }
+                }
+                else
+                {
+                    for(var j=0;j<exitInfoMap[1].length;j++)
+                    {
+                        targetPositionArr.push(new THREE.Vector3(exitInfoMap[1][j][1],exitInfoMap[1][j][2],exitInfoMap[1][j][3]));
+                        if(exitInfoMap[1][j][0]==2)
+                        {
+                            var index = exitInfoMap[1][j][1] + "&" + exitInfoMap[1][j][3] + "@" + exitInfoMap[1][j][2];
+                            if(exitInfoMap[1][j][1]==exitInfoMap[1][j][4])
+                            {
+                                var distance = exitInfoMap[1][j][6] - exitInfoMap[1][j][3];
+                                var connectionArr = [];
+                                var step = distance/Math.abs(distance);
+                                var upDelta = 10/Math.abs(distance);
+                                for(var count=0; count<Math.abs(distance);count++)
+                                {
+                                    var nextPos = exitInfoMap[1][j][3] + count*step;
+                                    var nextUp = exitInfoMap[1][j][2] + count*upDelta;
+                                    connectionArr.push(exitInfoMap[1][j][1] + "&" + nextPos + "@" + nextUp);
+                                }
+                                // connectionArr.push(new THREE.Vector3(exitInfoMap[1][j][4],exitInfoMap[1][j][5],exitInfoMap[1][j][6]));
+                                connectionArr.push(exitInfoMap[1][j][4]+ "&" +exitInfoMap[1][j][6]+ "@" +exitInfoMap[1][j][5]);
+                                exitConnectionMap[index] = connectionArr;
+                            }
+                            if(exitInfoMap[1][j][3]==exitInfoMap[1][j][6])
+                            {
+                                var distance = exitInfoMap[1][j][4] - exitInfoMap[1][j][1];
+                                var connectionArr = [];
+                                var step = distance/Math.abs(distance);
+                                var upDelta = 10/Math.abs(distance);
+                                for(var count=0; count<Math.abs(distance);count++)
+                                {
+                                    var nextPos = exitInfoMap[1][j][1] + count*step;
+                                    var nextUp = exitInfoMap[1][j][2] + count*upDelta;
+                                    connectionArr.push(nextPos + "&" + exitInfoMap[1][j][3] + "@" + nextUp);
+                                }
+                                // connectionArr.push(new THREE.Vector3(exitInfoMap[1][j][4],exitInfoMap[1][j][5],exitInfoMap[1][j][6]));
+                                connectionArr.push(exitInfoMap[1][j][4]+ "&" +exitInfoMap[1][j][6]+ "@" +exitInfoMap[1][j][5]);
+                                exitConnectionMap[index] = connectionArr;
+                            }
+                        }
+                    }
+
+                    if(!isUseBufferPath){
+                        finishTagMap[tag] = false;
+                        for(var acoCount=0;acoCount<antTotalCount;acoCount++)
+                        {
+                            startACOPathFinding(startPosition,targetPositionArr,leaderMeshArr[b].position.y,tag);
+                        }
+                    }
+                }
+            }
+        }else{
+            for(var b=0; b<blendMeshArr.length; b++)
+            {
+                var startPosition = new THREE.Vector3(blendMeshArr[b].position.x,blendMeshArr[b].position.y,blendMeshArr[b].position.z);//开始寻路的起始点为Leader的起始坐标
+                var tag = startPosition.x + "&" + startPosition.z + "@" + startPosition.y;
+                var targetPositionArr = [];//终点坐标位置
+
+                if(startPosition.y>=10)
+                {
+                    if(!isUseBufferPath){
+                        for(var j=0;j<exitInfoMap[2].length;j++) {
+                            targetPositionArr.push(new THREE.Vector3(exitInfoMap[2][j][1], exitInfoMap[2][j][2], exitInfoMap[2][j][3]));
+                        }
+                        finishTagMap[tag] = false;
+                        for(var acoCount=0;acoCount<antTotalCount;acoCount++)
+                        {
+                            startACOPathFinding(startPosition,targetPositionArr,blendMeshArr[b].position.y,tag);
+                        }
+                    }
+                }
+                else
+                {
+                    for(var j=0;j<exitInfoMap[1].length;j++)
+                    {
+                        targetPositionArr.push(new THREE.Vector3(exitInfoMap[1][j][1],exitInfoMap[1][j][2],exitInfoMap[1][j][3]));
+                        if(exitInfoMap[1][j][0]==2)
+                        {
+                            var index = exitInfoMap[1][j][1] + "&" + exitInfoMap[1][j][3] + "@" + exitInfoMap[1][j][2];
+                            if(exitInfoMap[1][j][1]==exitInfoMap[1][j][4])
+                            {
+                                var distance = exitInfoMap[1][j][6] - exitInfoMap[1][j][3];
+                                var connectionArr = [];
+                                var step = distance/Math.abs(distance);
+                                var upDelta = 10/Math.abs(distance);
+                                for(var count=0; count<Math.abs(distance);count++)
+                                {
+                                    var nextPos = exitInfoMap[1][j][3] + count*step;
+                                    var nextUp = exitInfoMap[1][j][2] + count*upDelta;
+                                    connectionArr.push(exitInfoMap[1][j][1] + "&" + nextPos + "@" + nextUp);
+                                }
+                                // connectionArr.push(new THREE.Vector3(exitInfoMap[1][j][4],exitInfoMap[1][j][5],exitInfoMap[1][j][6]));
+                                connectionArr.push(exitInfoMap[1][j][4]+ "&" +exitInfoMap[1][j][6]+ "@" +exitInfoMap[1][j][5]);
+                                exitConnectionMap[index] = connectionArr;
+                            }
+                            if(exitInfoMap[1][j][3]==exitInfoMap[1][j][6])
+                            {
+                                var distance = exitInfoMap[1][j][4] - exitInfoMap[1][j][1];
+                                var connectionArr = [];
+                                var step = distance/Math.abs(distance);
+                                var upDelta = 10/Math.abs(distance);
+                                for(var count=0; count<Math.abs(distance);count++)
+                                {
+                                    var nextPos = exitInfoMap[1][j][1] + count*step;
+                                    var nextUp = exitInfoMap[1][j][2] + count*upDelta;
+                                    connectionArr.push(nextPos + "&" + exitInfoMap[1][j][3] + "@" + nextUp);
+                                }
+                                // connectionArr.push(new THREE.Vector3(exitInfoMap[1][j][4],exitInfoMap[1][j][5],exitInfoMap[1][j][6]));
+                                connectionArr.push(exitInfoMap[1][j][4]+ "&" +exitInfoMap[1][j][6]+ "@" +exitInfoMap[1][j][5]);
+                                exitConnectionMap[index] = connectionArr;
+                            }
+                        }
+                    }
+
+                    if(!isUseBufferPath){
+                        finishTagMap[tag] = false;
+                        for(var acoCount=0;acoCount<antTotalCount;acoCount++)
+                        {
+                            startACOPathFinding(startPosition,targetPositionArr,blendMeshArr[b].position.y,tag);
+                        }
+                    }
+                }
+            }
+        }
+
+        if(isUseBufferPath){
+            for(var i=0; i<staticPathArr.length;i++){
+                drawPath(staticPathArr[i]);
+            }
+        }
+    }
+
+    function setWeight( action, weight ) {
+        action.enabled = true;
+        var num=Math.floor(Math.random()*8+1);
+        action.setEffectiveTimeScale( num/3 );
+        action.setEffectiveWeight( weight );
+    }
+    function activateAllActions(actions) {
+
+        var num=Math.floor(Math.random()*2+1);
+        switch (num){
+            case 1:
+                setWeight( actions[0], 1 );
+                break;
+            case 2:
+                setWeight( actions[0], 1 );
+                break;
+        }
+        actions.forEach( function ( action ) {
+            action.play();
+        } );
+    }
+    function activateAllActions1(actions) {
+        var num=Math.floor(Math.random()*2+1);
+        switch (num){
+            case 1:
+                setWeight( actions[0], 1 );
+                setWeight( actions[1], 0 );
+                // setWeight( actions[2], 0 );
+                break;
+            case 2:
+                setWeight( actions[0], 1 );
+                setWeight( actions[1], 0 );
+                // setWeight( actions[2], 1 );
+                break;
+        }
+        // setWeight( actions[1], 1 );
+        actions.forEach( function ( action ) {
+            action.play();
+        } );
+    }
+
+    $('startRun').addEventListener('click',function (event)
+    {
+        alert("test1");
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
+        for(var i=0; i<blendMeshArr.length;i++) {
+            var meshMixer = new THREE.AnimationMixer( blendMeshArr[i] );
+            walkAction = meshMixer.clipAction( 'walk' );
+            runAction=meshMixer.clipAction('run');
+            //actions = [ walkAction, idleAction, runAction ];
+            actions = [walkAction, runAction];
+            activateAllActions1(actions);
+            mixerArr.push(meshMixer);
+        }
+        for(var iL=0; iL<leaderMeshArr.length;iL++) {
+            var meshMixer = new THREE.AnimationMixer( leaderMeshArr[iL] );
+            walkAction = meshMixer.clipAction( 'walk' );
+            runAction=meshMixer.clipAction('run');
+            //actions = [ walkAction, idleAction, runAction ];
+            actions = [walkAction, runAction];
+            activateAllActions1(actions);
+            mixerArr.push(meshMixer);
+        }
+        alert("test1");
+        var meshTotalCount = 100;
+        for(var key in pathControlMap)
+        {
+            pathControlMap[key].update(delta);
+            if(pathControlMap[key].isArrive)
+            {
+                //去掉场景中的人物并修改计数器，当计数器为0时，显示结果列表
+                scene.remove(pathControlMap[key].object);
+                scene.remove(pathControlMap[key].lod_low_level_obj);
+                delete pathControlMap[key];
+                meshTotalCount--;
+            }
+        }
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    });
 }
 People.prototype.update = function(delta){
     if(this.isLoaded){
@@ -378,3 +990,4 @@ People.prototype.update = function(delta){
         }
     }
 }
+
