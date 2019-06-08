@@ -2233,7 +2233,8 @@ $(function () {
     烟雾变化分两种情况，开始着火与消防员开始灭火，开始着火正向读入烟雾数据，烟雾变浓，开始灭火，逆向读入数据，烟雾逐渐消失
      */
 
-    function smokeColor() {
+    function smokeColor()
+    {
 
         if (Math.floor(clock.getElapsedTime() + 10) % ((kk + 1) * 10) == 0 && ii < 61&&!iswater) {
             for (var j = 0; j < newsmokeData[ii].length; j++) {
@@ -2791,7 +2792,7 @@ $(function () {
         waterBody();
 
         smokeSceneArr.forEach(function (child) {
-            step1 += 0.00005
+            step1 += 0.00005;
             child.rotation.y=step1*(Math.random>0.5?1:-1);
         });
 
@@ -2845,7 +2846,7 @@ $(function () {
 
         //FDS起火点坐标点选 艾子豪
 
-        if(isEdit){
+        if(isEdit) {
             raycasterLogo=new THREE.Raycaster();
             raycasterLogo.setFromCamera(mouse,camera);
             var intersectsLogo=raycasterLogo.intersectObjects(logoArr);

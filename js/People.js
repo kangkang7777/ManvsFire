@@ -1,4 +1,5 @@
-var People = function () {
+var People = function ()
+{
     this.number = 100;
     this.isLoaded = false;
     this.people = [];
@@ -10,7 +11,7 @@ var People = function () {
     // this.leaderMeshArr;
     // this.blendMeshArr;
 }
-People.prototype.init = function (number,scene,renderer)
+People.prototype.init = function (number,_this)
 {
     this.number = number;
     var self = this;
@@ -21,7 +22,7 @@ People.prototype.init = function (number,scene,renderer)
     var meshLoadCount = 0;
     var pathControlMap = [];
     var targetPositionArr = [];
-    var actions,mixerArr = [];
+    var actions;
     var idleAction, walkAction, runAction;//一共三个动作，站立、行走、低头跑
     var blendMeshArr = [];
     var blendMeshLodArr = [];    //TODO 此为LOD所建模型 建议删去
@@ -42,20 +43,9 @@ People.prototype.init = function (number,scene,renderer)
     var antCountMap,iterationCountMap,antTotalCount,iterationTotalCount;
 
     var mapWorker = new Worker("js/loadTJMap.js");
-    var acoPathFindingWorker =  new Worker("js/ACOPathFindingWorker.js"); //创建子线程ACOPathFindingWorker.js为蚁群寻路算法
-    var workerLoadSmokeAndPath=new Worker("js/loadSmokeJsonWorker.js");
     var workerLoadVsg=new Worker("js/loadBlockVsg.js");
     var workerDout=new Worker("js/loadMergedFile.js");
 
-    workerLoadSmokeAndPath.postMessage("../SmokeData/tjsub.json");
-
-    workerLoadSmokeAndPath.onmessage = function (event)
-    {
-
-        staticPathArr = event.data.staticPathArr;
-
-        //animate();
-    }
     var isOnload = true; //判断是否在加载，如果在加载，render停掉
     var cashVoxelSize;
     var cashSceneBBoxMinX;
@@ -170,6 +160,7 @@ People.prototype.init = function (number,scene,renderer)
         exitInfoMap = event.data.exitInfo;
         guidPosArr = event.data.guidPosArr;
         meshLoadCount = 0;
+        _this.isFinishLoadCharactor = false;
 
         createRandomPos(number);
         loadBlendMeshWithPromise();
@@ -286,14 +277,14 @@ People.prototype.init = function (number,scene,renderer)
                         newMeshLod.scale.set(scaleSize, scaleSize, scaleSize);
 
                         var texture = THREE.ImageUtils.loadTexture(textureURL );
-                        texture.anisotropy = renderer.getMaxAnisotropy();
+                        texture.anisotropy = _this.renderer.getMaxAnisotropy();
                         texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
                         texture.repeat.set( 1, 1 );
 
                         newMesh.material.map = texture;
                         newMeshLod.material.map = texture;
 
-                        scene.add(newMesh);
+                        _this.scene.add(newMesh);
                         //scene.add(newMeshLod);
 
                         blendMeshArr.push(newMesh);
@@ -301,7 +292,7 @@ People.prototype.init = function (number,scene,renderer)
                     }
                     promiseLeader.then((dataLeader)=>{
                         var texture = THREE.ImageUtils.loadTexture('./Model/man/MarineCv2_color_leader.jpg' );
-                        texture.anisotropy = renderer.getMaxAnisotropy();
+                        texture.anisotropy = _this.renderer.getMaxAnisotropy();
                         texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
                         texture.repeat.set( 1, 1 );
                         dataLeader.material.map = texture;
@@ -345,7 +336,7 @@ People.prototype.init = function (number,scene,renderer)
                                 var index = leaderMeshArr[j].position.x + "&" +leaderMeshArr[j].position.z+'@'+ leaderMeshArr[j].position.y;
 
                                 pathControlMap[index] = pathControl;
-                                scene.add(leaderMeshArr[j]);
+                                _this.scene.add(leaderMeshArr[j]);
                             }
 
                             let getLeaderArr = [];
@@ -419,7 +410,7 @@ People.prototype.init = function (number,scene,renderer)
                             idleAction = meshMixer.clipAction( 'idle' );
                             actions = [ idleAction];
                             activateAllActions(actions);
-                            mixerArr.push(meshMixer);
+                            _this.mixerArr.push(meshMixer);
                         }
                         for(var iL=0; iL<leaderMeshArr.length;iL++) {
                             var meshMixer = new THREE.AnimationMixer( leaderMeshArr[iL] );
@@ -427,13 +418,13 @@ People.prototype.init = function (number,scene,renderer)
                             //actions = [ walkAction, idleAction, runAction ];
                             actions = [ idleAction];
                             activateAllActions(actions);
-                            mixerArr.push(meshMixer);
+                            _this.mixerArr.push(meshMixer);
                         }
-                        self.people = mixerArr;
+                        self.people = _this.mixerArr;
 
-                            for(var i=0; i<mixerArr.length;i++)
+                            for(var i=0; i<_this.mixerArr.length;i++)
                             {
-                                mixerArr[i].update(delta);
+                                _this.mixerArr[i].update(delta);
                             }
 
 
@@ -498,6 +489,7 @@ People.prototype.init = function (number,scene,renderer)
     }
     //寻路
     //var Path = new path();
+    /*
     createNav();
     startPathFinding();
 
@@ -541,14 +533,14 @@ People.prototype.init = function (number,scene,renderer)
 
     function startACOPathFinding(startPosition,targetPositionArr,currentFloor,tag)
     {
-        /***
-         * 向子线程发送信息
-         * 信息体包括：startPosition寻路的出发点
-         *           targetPositionArr寻路的目的地数组
-         *           mapInfoMap地图信息
-         *           currentFloor所处的层数（场景包含2层）
-         *           tag寻路的角色的tag
-         */
+        // /***
+        //  * 向子线程发送信息
+        //  * 信息体包括：startPosition寻路的出发点
+        //  *           targetPositionArr寻路的目的地数组
+        //  *           mapInfoMap地图信息
+        //  *           currentFloor所处的层数（场景包含2层）
+        //  *           tag寻路的角色的tag
+        //
         var workerMessage = [];
         workerMessage.push(startPosition);
         workerMessage.push(targetPositionArr);
@@ -563,16 +555,16 @@ People.prototype.init = function (number,scene,renderer)
     acoPathFindingWorker.onmessage=function(event)
     {
         recieveCount++;
-        // console.log(recieveCount+"/"+postCount);
-        /***
-         * 接受子线程处理好的数据
-         * 数据包括：pathTag寻路的角色的tag
-         *          pathArr当前线程找到的路径
-         *          resultBool寻路结果
-         *          floor寻路所在的层数
-         *          startPosition寻路的出发点（便于迭代）
-         *          targetPositionArr寻路的目的地数组
-         */
+        // // console.log(recieveCount+"/"+postCount);
+        // /***
+        //  * 接受子线程处理好的数据
+        //  * 数据包括：pathTag寻路的角色的tag
+        //  *          pathArr当前线程找到的路径
+        //  *          resultBool寻路结果
+        //  *          floor寻路所在的层数
+        //  *          startPosition寻路的出发点（便于迭代）
+        //  *          targetPositionArr寻路的目的地数组
+        //
         var pathTag = event.data.pathTag;
         //!finishTagMap[pathTag] && recieveCount<=postCount
         if(true)
@@ -898,7 +890,7 @@ People.prototype.init = function (number,scene,renderer)
             }
         }
     }
-
+*/
     function setWeight( action, weight ) {
         action.enabled = true;
         var num=Math.floor(Math.random()*8+1);
@@ -940,47 +932,7 @@ People.prototype.init = function (number,scene,renderer)
         } );
     }
 
-    $('startRun').addEventListener('click',function (event)
-    {
-        alert("test1");
-        //////////////////////////////////////////////////////////////////////////////////////////////////////
-        for(var i=0; i<blendMeshArr.length;i++) {
-            var meshMixer = new THREE.AnimationMixer( blendMeshArr[i] );
-            walkAction = meshMixer.clipAction( 'walk' );
-            runAction=meshMixer.clipAction('run');
-            //actions = [ walkAction, idleAction, runAction ];
-            actions = [walkAction, runAction];
-            activateAllActions1(actions);
-            mixerArr.push(meshMixer);
-        }
-        for(var iL=0; iL<leaderMeshArr.length;iL++) {
-            var meshMixer = new THREE.AnimationMixer( leaderMeshArr[iL] );
-            walkAction = meshMixer.clipAction( 'walk' );
-            runAction=meshMixer.clipAction('run');
-            //actions = [ walkAction, idleAction, runAction ];
-            actions = [walkAction, runAction];
-            activateAllActions1(actions);
-            mixerArr.push(meshMixer);
-        }
-        alert("test1");
-        var meshTotalCount = 100;
-        for(var key in pathControlMap)
-        {
-            pathControlMap[key].update(delta);
-            if(pathControlMap[key].isArrive)
-            {
-                //去掉场景中的人物并修改计数器，当计数器为0时，显示结果列表
-                scene.remove(pathControlMap[key].object);
-                scene.remove(pathControlMap[key].lod_low_level_obj);
-                delete pathControlMap[key];
-                meshTotalCount--;
-            }
-        }
 
-
-        //////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    });
 }
 People.prototype.update = function(delta){
     if(this.isLoaded){
