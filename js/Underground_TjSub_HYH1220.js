@@ -2730,7 +2730,8 @@ $(function () {
     var isfiremanclick=false;
     let currentEscapeTime = 0;
 
-    function animate() {
+    function animate()
+    {
         if(isposition)
         {
             if(whetherrotate)

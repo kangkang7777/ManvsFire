@@ -76,6 +76,7 @@ Utils.generateWaterFragment = function () {
 
     return canvas;
 }
+
 Utils.generateRandomNum = function(minNum,maxNum){
     switch(arguments.length){
         case 1:
@@ -89,6 +90,7 @@ Utils.generateRandomNum = function(minNum,maxNum){
             break;
     }
 }
+
 //数组复制
 Utils.copyArray = function(arr){
     var result = [];
@@ -97,6 +99,7 @@ Utils.copyArray = function(arr){
     }
     return result;
 }
+
 Utils.getClosePoint = function(obj, objArr, maxDis){
     /**
      * 在原来的基础上设置一个距离阈值，只有当距离小于这个阈值的时候，才会找到满足最近距离点的index
@@ -114,3 +117,9 @@ Utils.getClosePoint = function(obj, objArr, maxDis){
     }
     return clostIndex;
 }
+
+Utils.loading = function(timeout){
+    setTimeout(function(){
+        document.getElementById('loading').style.display = 'none';
+    },timeout);
+};

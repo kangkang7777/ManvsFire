@@ -11,14 +11,14 @@ var People = function ()
     this.pathControlMap = [];
     this.blendMeshArr = [];
     this.leaderMeshArr = [];
+    this.humanInfoMap=[];
 }
 
 People.prototype.init = function (number,_this)
 {
     this.number = number;
     var self = this;
-    var mapInfoMap;//地图信息
-    var exitInfoMap;//出口信息
+    this.exitInfoMap;//出口信息
     var guidPosArr;//引导点位置信息
     var meshLoadCount = 0;
     var targetPositionArr = [];
@@ -31,8 +31,8 @@ People.prototype.init = function (number,_this)
     mapWorker.postMessage("../SmokeData/Block_Map_TJ.txt");
     mapWorker.onmessage = function (event)
     {
-        mapInfoMap = event.data.mapInfo;
-        exitInfoMap = event.data.exitInfo;
+        _this.Path.mapInfoMap = event.data.mapInfo;
+        self.exitInfoMap = event.data.exitInfo;
         guidPosArr = event.data.guidPosArr;
         meshLoadCount = 0;
         _this.isFinishLoadCharactor = false;
@@ -168,7 +168,8 @@ People.prototype.init = function (number,_this)
                         dataLeader.material.map = texture;
                         initFollowerAndLeader(dataLeader);
 
-                        function initFollowerAndLeader(mesh) {
+                        function initFollowerAndLeader(mesh)
+                        {
                             var newMesh1 = mesh.clone();
                             var newMesh2 = mesh.clone();
                             var newMesh3 = mesh.clone();
@@ -197,14 +198,14 @@ People.prototype.init = function (number,_this)
                             self.leaderMeshArr.push(newMesh4);
                             self.leaderMeshArr.push(newMesh5);
 
-                            for(var j=0;j<exitInfoMap[2].length;j++) {
-                                targetPositionArr.push(new THREE.Vector3(exitInfoMap[2][j][1], exitInfoMap[2][j][2], exitInfoMap[2][j][3]));
+                            for(var j=0;j<self.exitInfoMap[2].length;j++) {
+                                targetPositionArr.push(new THREE.Vector3(self.exitInfoMap[2][j][1], self.exitInfoMap[2][j][2], self.exitInfoMap[2][j][3]));
                             }
 
                             for(var j=0; j<self.leaderMeshArr.length; j++){
                                 var pathControl = new THREE.MyPathControl(self.leaderMeshArr[j]);
                                 var index = self.leaderMeshArr[j].position.x + "&" +self.leaderMeshArr[j].position.z+'@'+ self.leaderMeshArr[j].position.y;
-
+                                self.humanInfoMap[index]=0;
                                 self.pathControlMap[index] = pathControl;
                                 _this.scene.add(self.leaderMeshArr[j]);
                             }
@@ -228,11 +229,12 @@ People.prototype.init = function (number,_this)
                                     var pathControl = new THREE.FollowerControl(self.blendMeshArr[i],humanMap,blendMeshLodArr[i]);
                                     pathControl.targetObject = self.leaderMeshArr[bestIndex];
                                     pathControl.randomSeed = Utils.generateRandomNum(-2,2);
-                                    pathControl.mapInfoMap = mapInfoMap;
+                                    pathControl.mapInfoMap = _this.Path.mapInfoMap;
                                     pathControl.targetPositionArr = targetPositionArr;
                                     pathControl.guidPositionArr = Utils.copyArray(guidPosArr);
                                     pathControl.exitConnectionMap = exitConnectionMap;
                                     var index = self.blendMeshArr[i].position.x + "&" +self.blendMeshArr[i].position.z+'@'+ self.blendMeshArr[i].position.y;
+                                    self.humanInfoMap[index]=0;
                                     self.pathControlMap[index] = pathControl;
                                 }else{
                                     unGetLeaderArr.push(self.blendMeshArr[i]);
@@ -247,13 +249,13 @@ People.prototype.init = function (number,_this)
                                         var pathControl = new THREE.FollowerControl(unGetLeaderArr[i],humanMap,unGetLeaderLODArr[i]);
                                         pathControl.targetObject = getLeaderArr[bestIndex];
                                         pathControl.randomSeed = Utils.generateRandomNum(-5,5);
-                                        pathControl.mapInfoMap = mapInfoMap;
+                                        pathControl.mapInfoMap = _this.Path.mapInfoMap;
                                         pathControl.targetPositionArr = targetPositionArr;
                                         pathControl.guidPositionArr = Utils.copyArray(guidPosArr);
                                         pathControl.exitConnectionMap = exitConnectionMap;
                                         var index = unGetLeaderArr[i].position.x + "&" +unGetLeaderArr[i].position.z+'@'+ unGetLeaderArr[i].position.y;
                                         self.pathControlMap[index] = pathControl;
-
+                                        self.humanInfoMap[index]=0;
                                         getLeaderArr.push(unGetLeaderArr[i]);
                                         getLeaderLODArr.push(unGetLeaderLODArr[i]);
                                         unGetLeaderArr.splice(i,1);
@@ -323,7 +325,7 @@ People.prototype.init = function (number,_this)
 
                 var index1 = x + "&" + z + "@"+y;
 
-                while(blendMeshPosIndexArr.indexOf(index1)!=-1 || mapInfoMap[index1]==0 )
+                while(blendMeshPosIndexArr.indexOf(index1)!=-1 || _this.Path.mapInfoMap[index1]==0 )
                 {
                     if(Math.random() > 0.5)
                     {

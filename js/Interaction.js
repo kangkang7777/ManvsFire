@@ -82,3 +82,42 @@ Interaction.prototype.fuc2 = function (_this)
 
     });
 }
+
+Interaction.prototype.fuc3 = function (MainScene)
+{
+    var $ = function(_) {
+        return document.getElementById(_);
+    };
+    $('createPersonBtn').addEventListener('click',function (event)
+    {
+        $('createPerson').style.display = 'none';
+        $('Menu').style.display = 'block';
+        $('menu-div').style.display = 'block';
+    });
+
+    $('submitBtn').addEventListener('click',function (event)
+    {
+        $('menu-div').style.display = 'none';
+        $('loading').style.display = 'block';
+        Utils.loading(1000);
+        MainScene.addPeople(MainScene.number);
+    })
+
+    $('addBtn').addEventListener('click',function (event)
+    {
+        MainScene.number += 100;
+        $('totalNum').innerHTML= MainScene.number;
+    });
+
+    $('subBtn').addEventListener('click',function (event)
+    {
+        MainScene.number -= 100;
+        $('totalNum').innerHTML= MainScene.number;
+    });
+
+    $('userBook').addEventListener('click',function (event)
+    {
+        alert("欢迎体验本火灾模拟实验平台，您可以通过鼠标和键盘进行场景漫游。或过点击“地下一层”和“地下二层”按钮变换视角。若要开始火灾模拟，请点击“编辑烟雾”按钮进行编辑，编辑完毕后点击“开始模拟”");
+    });
+
+}

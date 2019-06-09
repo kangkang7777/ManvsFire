@@ -17,6 +17,8 @@ var mainScene = function()
 
     clock.start();
 
+    this.number = 100;
+
     this.camera = null;
 
     this.renderer = null;
@@ -34,6 +36,8 @@ var mainScene = function()
     this.underground = new Underground();//场景
 
     this.people = new People();//人群
+
+    this.Path = new path();
 
     this.smoke = new Smoke();//烟
 
@@ -132,6 +136,10 @@ mainScene.prototype.init = function()
     this.extinguisherControl.visible=false;
 //endregion
 
+    //region 路径
+    this.Path.init(this);
+    //endregion
+
     //region 水
     this.water.init(this);
     //endregion
@@ -153,49 +161,7 @@ mainScene.prototype.init = function()
 
     //交互2
     this.HCI.fuc2(this);
-  /*
-    document.getElementById('startRun').addEventListener('click',function (event)
-    {
-        alert("test1");
-        //////////////////////////////////////////////////////////////////////////////////////////////////////
-        for(var i=0; i<blendMeshArr.length;i++) {
-            var meshMixer = new THREE.AnimationMixer( blendMeshArr[i] );
-            walkAction = meshMixer.clipAction( 'walk' );
-            runAction=meshMixer.clipAction('run');
-            //actions = [ walkAction, idleAction, runAction ];
-            actions = [walkAction, runAction];
-            activateAllActions1(actions);
-            mixerArr.push(meshMixer);
-        }
-        for(var iL=0; iL<leaderMeshArr.length;iL++) {
-            var meshMixer = new THREE.AnimationMixer( leaderMeshArr[iL] );
-            walkAction = meshMixer.clipAction( 'walk' );
-            runAction=meshMixer.clipAction('run');
-            //actions = [ walkAction, idleAction, runAction ];
-            actions = [walkAction, runAction];
-            activateAllActions1(actions);
-            mixerArr.push(meshMixer);
-        }
-        alert("test1");
-        var meshTotalCount = 100;
-        for(var key in pathControlMap)
-        {
-            pathControlMap[key].update(delta);
-            if(pathControlMap[key].isArrive)
-            {
-                //去掉场景中的人物并修改计数器，当计数器为0时，显示结果列表
-                _this.scene.remove(pathControlMap[key].object);
-                _this.scene.remove(pathControlMap[key].lod_low_level_obj);
-                delete pathControlMap[key];
-                meshTotalCount--;
-            }
-        }
 
-
-        //////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    });
-*/
 }
 
 mainScene.prototype.start = function()
@@ -203,6 +169,7 @@ mainScene.prototype.start = function()
     var self = this;
     this.clock.start();  //todo maybe stop
     this.delta = this.clock.getDelta();
+    self.Path.createNav();
     animate();
 
     function animate()
