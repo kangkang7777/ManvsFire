@@ -3,31 +3,27 @@ var People = function ()
     this.number = 100;
     this.isLoaded = false;
     this.people = [];
-
-    // this.mapInfoMap;
-    // this.exitConnectionMap;
-    // this.exitInfoMap;
-    // this.pathControlMap;
-    // this.leaderMeshArr;
-    // this.blendMeshArr;
+    this.mixerArr = [];
+    this.actions;
+    this.idleAction;
+    this.walkAction;
+    this.runAction;//一共三个动作，站立、行走、低头跑
+    this.pathControlMap = [];
+    this.blendMeshArr = [];
+    this.leaderMeshArr = [];
 }
+
 People.prototype.init = function (number,_this)
 {
     this.number = number;
     var self = this;
-
     var mapInfoMap;//地图信息
     var exitInfoMap;//出口信息
     var guidPosArr;//引导点位置信息
     var meshLoadCount = 0;
-    var pathControlMap = [];
     var targetPositionArr = [];
-    var actions;
-    var idleAction, walkAction, runAction;//一共三个动作，站立、行走、低头跑
-    var blendMeshArr = [];
     var blendMeshLodArr = [];    //TODO 此为LOD所建模型 建议删去
     var blendMeshPosArr = [];
-    var leaderMeshArr = [];
     var exitConnectionMap = [];    //todo 接下来寻路算法也会用到这个变量
 
     var mapWorker = new Worker("js/loadTJMap.js");
@@ -43,13 +39,8 @@ People.prototype.init = function (number,_this)
 
         createRandomPos(number);
         loadBlendMeshWithPromise();
+        _this.isStartRun = false;
 
-        // this.mapInfoMap = mapInfoMap;
-        // this.exitConnectionMap = exitConnectionMap;
-        // this.exitInfoMap = exitInfoMap;
-        // this.pathControlMap = pathControlMap;
-        // this.leaderMeshArr = leaderMeshArr;
-        // this.blendMeshArr = blendMeshArr;
 
         function loadBlendMeshWithPromise() {
             var loadModelPromise = function (modelURL) {
@@ -166,7 +157,7 @@ People.prototype.init = function (number,_this)
                         _this.scene.add(newMesh);
                         //scene.add(newMeshLod);
 
-                        blendMeshArr.push(newMesh);
+                        self.blendMeshArr.push(newMesh);
                         blendMeshLodArr.push(newMeshLod);
                     }
                     promiseLeader.then((dataLeader)=>{
@@ -200,22 +191,22 @@ People.prototype.init = function (number,_this)
                             newMesh5.position.set(459,9,30);
                             newMesh5.rotation.y=-95;
                             newMesh5.scale.set(scaleSize, scaleSize, scaleSize);
-                            leaderMeshArr.push(newMesh1);
-                            leaderMeshArr.push(newMesh2);
-                            leaderMeshArr.push(newMesh3);
-                            leaderMeshArr.push(newMesh4);
-                            leaderMeshArr.push(newMesh5);
+                            self.leaderMeshArr.push(newMesh1);
+                            self.leaderMeshArr.push(newMesh2);
+                            self.leaderMeshArr.push(newMesh3);
+                            self.leaderMeshArr.push(newMesh4);
+                            self.leaderMeshArr.push(newMesh5);
 
                             for(var j=0;j<exitInfoMap[2].length;j++) {
                                 targetPositionArr.push(new THREE.Vector3(exitInfoMap[2][j][1], exitInfoMap[2][j][2], exitInfoMap[2][j][3]));
                             }
 
-                            for(var j=0; j<leaderMeshArr.length; j++){
-                                var pathControl = new THREE.MyPathControl(leaderMeshArr[j]);
-                                var index = leaderMeshArr[j].position.x + "&" +leaderMeshArr[j].position.z+'@'+ leaderMeshArr[j].position.y;
+                            for(var j=0; j<self.leaderMeshArr.length; j++){
+                                var pathControl = new THREE.MyPathControl(self.leaderMeshArr[j]);
+                                var index = self.leaderMeshArr[j].position.x + "&" +self.leaderMeshArr[j].position.z+'@'+ self.leaderMeshArr[j].position.y;
 
-                                pathControlMap[index] = pathControl;
-                                _this.scene.add(leaderMeshArr[j]);
+                                self.pathControlMap[index] = pathControl;
+                                _this.scene.add(self.leaderMeshArr[j]);
                             }
 
                             let getLeaderArr = [];
@@ -224,32 +215,32 @@ People.prototype.init = function (number,_this)
                             let unGetLeaderLODArr = [];
                             let findGuidPersonDis = 200;
                             let humanMap = [];
-                            if(blendMeshArr.length>200) findGuidPersonDis = 20;
-                            for(var i=0; i<blendMeshArr.length; i++){
-                                var bestIndex = Utils.getClosePoint(blendMeshArr[i],leaderMeshArr,findGuidPersonDis);
-                                if(blendMeshArr[i].position.y<18) {
-                                    bestIndex = Utils.getClosePoint(blendMeshArr[i],leaderMeshArr,200);
+                            if(self.blendMeshArr.length>200) findGuidPersonDis = 20;
+                            for(var i=0; i<self.blendMeshArr.length; i++){
+                                var bestIndex = Utils.getClosePoint(self.blendMeshArr[i],self.leaderMeshArr,findGuidPersonDis);
+                                if(self.blendMeshArr[i].position.y<18) {
+                                    bestIndex = Utils.getClosePoint(self.blendMeshArr[i],self.leaderMeshArr,200);
                                 }
 
                                 if(bestIndex!==-1){
-                                    getLeaderArr.push(blendMeshArr[i]);
+                                    getLeaderArr.push(self.blendMeshArr[i]);
                                     getLeaderLODArr.push(blendMeshLodArr[i]);
-                                    var pathControl = new THREE.FollowerControl(blendMeshArr[i],humanMap,blendMeshLodArr[i]);
-                                    pathControl.targetObject = leaderMeshArr[bestIndex];
+                                    var pathControl = new THREE.FollowerControl(self.blendMeshArr[i],humanMap,blendMeshLodArr[i]);
+                                    pathControl.targetObject = self.leaderMeshArr[bestIndex];
                                     pathControl.randomSeed = Utils.generateRandomNum(-2,2);
                                     pathControl.mapInfoMap = mapInfoMap;
                                     pathControl.targetPositionArr = targetPositionArr;
                                     pathControl.guidPositionArr = Utils.copyArray(guidPosArr);
                                     pathControl.exitConnectionMap = exitConnectionMap;
-                                    var index = blendMeshArr[i].position.x + "&" +blendMeshArr[i].position.z+'@'+ blendMeshArr[i].position.y;
-                                    pathControlMap[index] = pathControl;
+                                    var index = self.blendMeshArr[i].position.x + "&" +self.blendMeshArr[i].position.z+'@'+ self.blendMeshArr[i].position.y;
+                                    self.pathControlMap[index] = pathControl;
                                 }else{
-                                    unGetLeaderArr.push(blendMeshArr[i]);
+                                    unGetLeaderArr.push(self.blendMeshArr[i]);
                                     unGetLeaderLODArr.push(blendMeshLodArr[i]);
                                 }
                             }
                             /*如果已经找到leader的blend的数量和总数量不一致，就一直循环来保证所有的blend都找到leader*/
-                            while(getLeaderArr.length != blendMeshArr.length){
+                            while(getLeaderArr.length != self.blendMeshArr.length){
                                 for(var i=0; i<unGetLeaderArr.length; i++){
                                     var bestIndex = Utils.getClosePoint(unGetLeaderArr[i],getLeaderArr,20);
                                     if(bestIndex!==-1){
@@ -261,7 +252,7 @@ People.prototype.init = function (number,_this)
                                         pathControl.guidPositionArr = Utils.copyArray(guidPosArr);
                                         pathControl.exitConnectionMap = exitConnectionMap;
                                         var index = unGetLeaderArr[i].position.x + "&" +unGetLeaderArr[i].position.z+'@'+ unGetLeaderArr[i].position.y;
-                                        pathControlMap[index] = pathControl;
+                                        self.pathControlMap[index] = pathControl;
 
                                         getLeaderArr.push(unGetLeaderArr[i]);
                                         getLeaderLODArr.push(unGetLeaderLODArr[i]);
@@ -275,7 +266,6 @@ People.prototype.init = function (number,_this)
 
                             self.isLoaded = true;
                         }
-                        //alert("testt");
 
                         //////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -284,28 +274,21 @@ People.prototype.init = function (number,_this)
 
                         //todo 动作变量 这几个还有很多耦合的代码
 
-                        for(var i=0; i<blendMeshArr.length;i++) {
-                            var meshMixer = new THREE.AnimationMixer( blendMeshArr[i] );
-                            idleAction = meshMixer.clipAction( 'idle' );
-                            actions = [ idleAction];
-                            self.activateAllActions(actions);
-                            _this.mixerArr.push(meshMixer);
+                        for(var i=0; i<self.blendMeshArr.length;i++) {
+                            var meshMixer = new THREE.AnimationMixer( self.blendMeshArr[i] );
+                            self.idleAction = meshMixer.clipAction( 'idle' );
+                            self.actions = [ self.idleAction];
+                            self.activateAllActions(self.actions);
+                            self.mixerArr.push(meshMixer);
                         }
-                        for(var iL=0; iL<leaderMeshArr.length;iL++) {
-                            var meshMixer = new THREE.AnimationMixer( leaderMeshArr[iL] );
-                            idleAction = meshMixer.clipAction( 'idle' );
-                            //actions = [ walkAction, idleAction, runAction ];
-                            actions = [ idleAction];
-                            self.activateAllActions(actions);
-                            _this.mixerArr.push(meshMixer);
+                        for(var iL=0; iL<self.leaderMeshArr.length;iL++) {
+                            var meshMixer = new THREE.AnimationMixer( self.leaderMeshArr[iL] );
+                            self.idleAction = meshMixer.clipAction( 'idle' );
+                            self.actions = [ self.idleAction];
+                            self.activateAllActions(self.actions);
+                            self.mixerArr.push(meshMixer);
                         }
-                        self.people = _this.mixerArr;
-
-                            for(var i=0; i<_this.mixerArr.length;i++)
-                            {
-                                _this.mixerArr[i].update(delta);
-                            }
-
+                        self.people = self.mixerArr;
 
                     });
                 });
@@ -362,54 +345,10 @@ People.prototype.init = function (number,_this)
 ;
             }
         }
-
-        //path.init(mapInfoMap,exitConnectionMap,exitInfoMap,pathControlMap,leaderMeshArr,scene,blendMeshArr);
-
     }
-/*
-    function setWeight( action, weight ) {
-        action.enabled = true;
-        var num=Math.floor(Math.random()*8+1);
-        action.setEffectiveTimeScale( num/3 );
-        action.setEffectiveWeight( weight );
-    }
-    function activateAllActions(actions) {
-
-        var num=Math.floor(Math.random()*2+1);
-        switch (num){
-            case 1:
-                setWeight( actions[0], 1 );
-                break;
-            case 2:
-                setWeight( actions[0], 1 );
-                break;
-        }
-        actions.forEach( function ( action ) {
-            action.play();
-        } );
-    }
-    function activateAllActions1(actions) {
-        var num=Math.floor(Math.random()*2+1);
-        switch (num){
-            case 1:
-                setWeight( actions[0], 1 );
-                setWeight( actions[1], 0 );
-                // setWeight( actions[2], 0 );
-                break;
-            case 2:
-                setWeight( actions[0], 1 );
-                setWeight( actions[1], 0 );
-                // setWeight( actions[2], 1 );
-                break;
-        }
-        // setWeight( actions[1], 1 );
-        actions.forEach( function ( action ) {
-            action.play();
-        } );
-    }
-*/
 
 }
+
 People.prototype.update = function(delta)
 {
     if(this.isLoaded){
@@ -449,16 +388,17 @@ People.prototype.activateAllActions = function (actions)
 
 People.prototype.activateAllActions1 = function (actions)
 {
+    var self = this;
     var num=Math.floor(Math.random()*2+1);
     switch (num){
         case 1:
-            setWeight( actions[0], 1 );
-            setWeight( actions[1], 0 );
+            self.setWeight( actions[0], 1 );
+            self.setWeight( actions[1], 0 );
             // setWeight( actions[2], 0 );
             break;
         case 2:
-            setWeight( actions[0], 1 );
-            setWeight( actions[1], 0 );
+            self.setWeight( actions[0], 1 );
+            self.setWeight( actions[1], 0 );
             // setWeight( actions[2], 1 );
             break;
     }
@@ -466,4 +406,15 @@ People.prototype.activateAllActions1 = function (actions)
     actions.forEach( function ( action ) {
         action.play();
     } );
+}
+
+People.prototype.isfinishedloadchar = function (_this)
+{
+    if(_this.isFinishLoadCharactor)
+    {
+        for(var i=0; i<_this.people.mixerArr.length;i++)
+        {
+            _this.people.mixerArr[i].update(_this.delta);
+        }
+    }
 }

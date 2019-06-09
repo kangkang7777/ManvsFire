@@ -27,6 +27,8 @@ var mainScene = function()
 
     this.followViewControl = null;    //跟随消防员的视角
 
+    this.isStartRun = false; //是否开始？
+
     this.active = true;    //暂停
 
     this.underground = new Underground();//场景
@@ -48,7 +50,6 @@ var mainScene = function()
 
     this.mouse=new THREE.Vector2();
 
-    this.mixerArr = [];
 
     this.isFinishLoadCharactor = false;
 
@@ -146,35 +147,13 @@ mainScene.prototype.init = function()
     //region场景加载
     this.underground.init(this.scene,this.renderer);
     //endregion
-/*todo
-    this.particles.init();
-    this.fireman.init();
-*/
 
-    document.getElementById('escapeDoor1').addEventListener('click',function (evet) {
-        c.position.set(400,80,70);
-        camControlOver.center.set(416,22,7);
-    });
-    document.getElementById('escapeDoor2').addEventListener('click',function (evet) {
-        c.position.set(500,60,53);
-        camControlOver.center.set(554,22,46);
-    });
-    document.getElementById('escapeDoor3').addEventListener('click',function (evet) {
-        c.position.set(540,60,-32);
-        camControlOver.center.set(548,22,6);
-    });
-    document.getElementById('WebGL-output').addEventListener('click',function(event){
-        camControlOver.autoRotate=false;
-    });
-    document.getElementById('floor1').addEventListener('click',function(event)
-    {
-        c.position.set(397,29,42);
-    });
-    document.getElementById('floor2').addEventListener('click',function(event)
-    {
-        c.position.set(589,14,18);
-    });
+    //交互1
+    this.HCI.fuc1(c,camControlOver);
 
+    //交互2
+    this.HCI.fuc2(this);
+  /*
     document.getElementById('startRun').addEventListener('click',function (event)
     {
         alert("test1");
@@ -216,14 +195,14 @@ mainScene.prototype.init = function()
         //////////////////////////////////////////////////////////////////////////////////////////////////////
 
     });
-
+*/
 }
 
 mainScene.prototype.start = function()
 {
     var self = this;
     this.clock.start();  //todo maybe stop
-    var delta = this.clock.getDelta();
+    this.delta = this.clock.getDelta();
     animate();
 
     function animate()
@@ -261,20 +240,14 @@ mainScene.prototype.start = function()
         self.smoke.smokeLocationRepair(self);
         //endregion
 
-        //!!!!!一个update 暂时不知作用
-        if(self.isFinishLoadCharactor)
-        {
-            for(var i=0; i<self.mixerArr.length;i++)
-            {
-                self.mixerArr[i].update(delta);
-            }
-        }
+        //!!!!!一个update
+        self.people.isfinishedloadchar(self);
 
         //改变烟雾状态
         self.smoke.smokeSurfaceChange(self);
 
-        self.freeViewControl.update(delta);
-        self.people.update(delta);    //todo 需要判别是否开始
+        self.freeViewControl.update(self.delta);
+        self.people.update(self.delta);    //todo 需要判别是否开始
 /*todo
 
         self.particles.update();
@@ -283,7 +256,6 @@ mainScene.prototype.start = function()
         self.renderer.render(self.scene, self.camera);
         //todo self.renderer.clear();    与renderer.autoClear = false 对应 不知道意义何在
     }
-
 }
 
 mainScene.prototype.addPeople = function (number)
@@ -292,11 +264,6 @@ mainScene.prototype.addPeople = function (number)
 
 }
 
-// mainScene.prototype.addPath = function()
-// {
-//     this.Path.init(this.people.exitConnectionMap,this.people.exitInfoMap,this.people.pathControlMap,this.people.leaderMeshArr,this.scene,this.people.blendMeshArr);
-// }
-//两个参数为lon lat
 mainScene.prototype.setCamControl = function(lon,lat )
 {
     this.CamControl.lon = lon;

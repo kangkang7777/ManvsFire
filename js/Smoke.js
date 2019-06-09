@@ -1,3 +1,4 @@
+
 var Smoke = function ()
 {
     this.p0=new THREE.Vector3(183,10,42);
@@ -263,8 +264,8 @@ Smoke.prototype.smokeColor = function (_this)
 */
 
     if (Math.floor(_this.clock.getElapsedTime() + 10) % ((kk + 1) * 10) == 0 && ii < 61&&!_this.iswater) {
-        for (var j = 0; j < newsmokeData[ii].length; j++) {
-            _this.smokeSceneArr[j].material.opacity = self.newsmokeData[ii][j];
+        for (var j = 0; j < self.newsmokeData[ii].length; j++) {
+            self.smokeSceneArr[j].material.opacity = self.newsmokeData[ii][j];
 
         }
         ii++;
@@ -273,7 +274,7 @@ Smoke.prototype.smokeColor = function (_this)
     else if(Math.floor(_this.clock.getElapsedTime() + 10) % ((kk + 1)) == 0 && ii >= 0&&_this.iswater)
     {
         for (var j = 0; j < self.newsmokeData[ii].length; j++) {
-            _this.smokeSceneArr[j].material.opacity = self.newsmokeData[ii][j];
+            self.smokeSceneArr[j].material.opacity = self.newsmokeData[ii][j];
 
         }
         ii--;
@@ -324,7 +325,7 @@ Smoke.prototype.smokeSurfaceChange = function (_this)
         _this.step[0] += 0.05;
         if(_this.count[2]==10)
         {
-            _this.smokeBody();//运行烟柱程序
+            _this.smoke.smokeBody();//运行烟柱程序
             _this.count[2]=0;
         }else
         {
@@ -358,7 +359,7 @@ Smoke.prototype.smokeSurfaceChange = function (_this)
 
         //场景烟雾逐渐变浓
         //console.log(smokeNumber);
-        self.smokeColor();
+        self.smokeColor(_this);
 
     }
 }
