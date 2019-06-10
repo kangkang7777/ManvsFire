@@ -17,11 +17,11 @@ var mainScene = function()
 
     clock.start();
 
-    this.number = 100;
+    this.number = 100;//人数好久
 
     this.camera = null;
 
-    this.renderer = null;
+    this.renderer = null;//渲染器
 
     this.clock = new THREE.Clock();
 
@@ -45,9 +45,9 @@ var mainScene = function()
 
     this.fire = new fireControl();//火
 
-    this.water = new waterControl();
+    this.water = new waterControl();//水
 
-    this.HCI = new Interaction();
+    this.HCI = new Interaction();//交互控制
     //控制参数
 
     this.isEdit = false;
@@ -156,6 +156,13 @@ mainScene.prototype.init = function()
     this.underground.init(this.scene,this.renderer);
     //endregion
 
+
+
+
+
+
+    //交互放在最后
+
     //交互1
     this.HCI.fuc1(c,camControlOver);
 
@@ -229,10 +236,4 @@ mainScene.prototype.addPeople = function (number)
 {
     this.people.init(number,this);
 
-}
-
-mainScene.prototype.setCamControl = function(lon,lat )
-{
-    this.CamControl.lon = lon;
-    this.CamControl.lat = lat;
 }

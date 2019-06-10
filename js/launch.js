@@ -1,7 +1,6 @@
-(function () {
-    var $ = function(_) {
-        return document.getElementById(_);
-    };
+(function ()
+{
+
     var MainScene = new mainScene();
     MainScene.init();
     Utils.loading(1500);
