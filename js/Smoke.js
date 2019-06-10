@@ -1,4 +1,3 @@
-
 var Smoke = function ()
 {
     this.p0=new THREE.Vector3(183,10,42);
@@ -18,6 +17,7 @@ var Smoke = function ()
     this.frustumSize=100;//小窗口大小设置
     this.aspect = window.innerWidth / window.innerHeight;
     this.r1=[0,20,40,60,80,100,120];//运动方向延X、Z坐标轴方向
+    this.iswater = false;
     //this.prototype.init();
 }
 
@@ -263,7 +263,7 @@ Smoke.prototype.smokeColor = function (_this)
 烟雾变化分两种情况，开始着火与消防员开始灭火，开始着火正向读入烟雾数据，烟雾变浓，开始灭火，逆向读入数据，烟雾逐渐消失
 */
 
-    if (Math.floor(_this.clock.getElapsedTime() + 10) % ((kk + 1) * 10) == 0 && ii < 61&&!_this.iswater) {
+    if (Math.floor(_this.clock.getElapsedTime() + 10) % ((kk + 1) * 10) == 0 && ii < 61&&!self.iswater) {
         for (var j = 0; j < self.newsmokeData[ii].length; j++) {
             self.smokeSceneArr[j].material.opacity = self.newsmokeData[ii][j];
 
@@ -271,7 +271,7 @@ Smoke.prototype.smokeColor = function (_this)
         ii++;
         kk++;
     }
-    else if(Math.floor(_this.clock.getElapsedTime() + 10) % ((kk + 1)) == 0 && ii >= 0&&_this.iswater)
+    else if(Math.floor(_this.clock.getElapsedTime() + 10) % ((kk + 1)) == 0 && ii >= 0&&self.iswater)
     {
         for (var j = 0; j < self.newsmokeData[ii].length; j++) {
             self.smokeSceneArr[j].material.opacity = self.newsmokeData[ii][j];
@@ -337,7 +337,7 @@ Smoke.prototype.smokeSurfaceChange = function (_this)
          */
         self.smokeArr.forEach(function (child)
         {
-            if (child.type === 'Points'&&!_this.iswater)
+            if (child.type === 'Points'&&!self.iswater)
             {
                 _this.count[0]++;
                 if (child.material.opacity < 0.8)
@@ -345,7 +345,7 @@ Smoke.prototype.smokeSurfaceChange = function (_this)
                     child.material.opacity = _this.count[0] * _this.step[0] / 1000;
                 }
             }
-            else if(child.type === 'Points'&&_this.iswater)
+            else if(child.type === 'Points'&&self.iswater)
             {
                 //if(count>0)
                 //count--;

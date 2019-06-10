@@ -1,7 +1,7 @@
 var path = function ()
 {
     this.mapInfoMap;//地图信息
-
+    this.pathfinder;
 }
 
 path.prototype.init= function (_this)
@@ -99,7 +99,7 @@ path.prototype.init= function (_this)
 //                        console.log("继续迭代");
                         for(var acoCount=0;acoCount<antTotalCount;acoCount++)
                         {
-                            startACOPathFinding(event.data.startPosition,event.data.targetPositionArr,event.data.floor,pathTag);
+                            self.startACOPathFinding(event.data.startPosition,event.data.targetPositionArr,event.data.floor,pathTag);
                         }
                     }
                     else
@@ -124,7 +124,7 @@ path.prototype.init= function (_this)
                             for(var acoCount=0;acoCount<antTotalCount;acoCount++)
                             {
                                 console.log("迭代第二层");
-                                startACOPathFinding(startPosition,targetPositionArr,19,pathTag);
+                                self.startACOPathFinding(startPosition,targetPositionArr,19,pathTag);
                             }
                         }
                         if(event.data.floor==19)
@@ -169,6 +169,7 @@ path.prototype.init= function (_this)
 
 path.prototype.createNav = function ()
 {
+    var self = this;
         let loader = new THREE.OBJLoader();
         // load a resource
         loader.load(

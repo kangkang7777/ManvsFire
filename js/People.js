@@ -1,8 +1,6 @@
 var People = function ()
 {
-    this.number = 100;
     this.isLoaded = false;
-    this.people = [];
     this.mixerArr = [];
     this.actions;
     this.idleAction;
@@ -14,9 +12,8 @@ var People = function ()
     this.humanInfoMap=[];
 }
 
-People.prototype.init = function (number,_this)
+People.prototype.init = function (_this)
 {
-    this.number = number;
     var self = this;
     this.exitInfoMap;//出口信息
     var guidPosArr;//引导点位置信息
@@ -37,7 +34,7 @@ People.prototype.init = function (number,_this)
         meshLoadCount = 0;
         _this.isFinishLoadCharactor = false;
 
-        createRandomPos(number);
+        createRandomPos(_this.number);
         loadBlendMeshWithPromise();
         _this.isStartRun = false;
 
@@ -274,7 +271,7 @@ People.prototype.init = function (number,_this)
                         //初始动画为站立
                         //////////////////////////////////////////////////////////////////////////////////////////////
 
-                        //todo 动作变量 这几个还有很多耦合的代码
+                        //todo
 
                         for(var i=0; i<self.blendMeshArr.length;i++) {
                             var meshMixer = new THREE.AnimationMixer( self.blendMeshArr[i] );
@@ -290,8 +287,9 @@ People.prototype.init = function (number,_this)
                             self.activateAllActions(self.actions);
                             self.mixerArr.push(meshMixer);
                         }
-                        self.people = self.mixerArr;
-
+                        _this.isFinishLoadCharactor = true;
+                        if(_this.isACO)
+                            _this.Path.startPathFinding();
                     });
                 });
             });
@@ -351,15 +349,15 @@ People.prototype.init = function (number,_this)
 
 }
 
-People.prototype.update = function(delta)
-{
-    if(this.isLoaded){
-        var p = this.people;
-        for(var i=0; i<p.length;i++) {
-            p[i].update(delta);
-        }
-    }
-}
+// People.prototype.update = function(delta)
+// {
+//     if(this.isLoaded){
+//         var p = this.people;
+//         for(var i=0; i<p.length;i++) {
+//             p[i].update(delta);
+//         }
+//     }
+// }
 
 People.prototype.setWeight=function (action, weight)
 {
@@ -418,5 +416,26 @@ People.prototype.isfinishedloadchar = function (_this)
         {
             _this.people.mixerArr[i].update(_this.delta);
         }
+    }
+}
+
+People.prototype.ifstartRun = function (_this)
+{
+    var self = this;
+    if(_this.isStartRun)
+    {
+        for(var key in self.pathControlMap)
+        {
+            self.pathControlMap[key].update(_this.delta);
+            if(self.pathControlMap[key].isArrive)
+            {
+                //去掉场景中的人物并修改计数器，当计数器为0时，显示结果列表
+                _this.scene.remove(self.pathControlMap[key].object);
+                _this.scene.remove(self.pathControlMap[key].lod_low_level_obj);
+                delete self.pathControlMap[key];
+                _this.number--;
+            }
+        }
+
     }
 }

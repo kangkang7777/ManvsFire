@@ -1,7 +1,7 @@
 //火焰、消防员、灭火都在这里
 var fireControl = function ()
 {
-
+    this.roangle=0;
 }
 
 fireControl.prototype.init = function (_this)
@@ -72,6 +72,39 @@ fireControl.prototype.FDSpositionChoose = function (_this)
                 self.positionBallMesh.position.z=logoObject.object.position.z;
             },false);
 
+        }
+    }
+}
+
+fireControl.prototype.ifisposition = function (_this)
+{
+    var self = this;
+    if(_this.Fireman.isposition)
+    {
+        if(_this.HCI.whetherrotate)
+        {
+            if(self.roangle<5/6*Math.PI)
+            {
+                _this.Fireman.cubeFireman.rotation.y += Math.PI * 0.02;
+                self.roangle += Math.PI * 0.02;
+            }
+            else {
+                for(var i=0;i<_this.water.waterArr.length;i++){
+                    _this.water.waterArr[i].material.opacity=1;
+                }
+                _this.smoke.iswater=true;
+                self.fireManager.target.visible = false;
+                _this.Fireman.isposition=false;
+            }
+        }
+        else
+        {
+            for (var i = 0; i < _this.water.waterArr.length; i++) {
+                _this.water.waterArr[i].material.opacity = 1;
+            }
+            _this.smoke.iswater=true;
+            self.fireManager.target.visible = false;
+            _this.Fireman.isposition=false;
         }
     }
 }

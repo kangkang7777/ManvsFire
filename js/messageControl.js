@@ -9,14 +9,12 @@ var messageControl = function ()
     this.smokeDataF;
     this.smokeDataE;
     this.workerLoadSmokeAndPath=new Worker("js/loadSmokeJsonWorker.js");
-
 }
 
-messageControl.prototype.fuc1 = function ()
+messageControl.prototype.START = function ()
 {
     var self = this;
     self.workerLoadSmokeAndPath.postMessage("../SmokeData/tjsub.json");
-
     self.workerLoadSmokeAndPath.onmessage = function (event)
     {
         self.smokeDataA = event.data.smokeDataA;
@@ -28,4 +26,5 @@ messageControl.prototype.fuc1 = function ()
         self.smokeData = event.data.smokeData;
         self.staticPathArr = event.data.staticPathArr;
     }
+
 }

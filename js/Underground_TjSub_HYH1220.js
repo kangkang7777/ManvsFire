@@ -2826,7 +2826,7 @@ $(function () {
                     intersectsExtinguisher[0].object.position.z=44;
                     extinguisherControl.position.z=44;
                 }else if(intersectsExtinguisher[0].object.position.y>objectHigh){
-                    intersectsExtinguisher[0].object.position.y=objecthigh;
+                    intersectsExtinguisher[0].object.position.y=objectHigh;
                     extinguisherControl.position.y=19;
                 }else if(intersectsExtinguisher[0].object.position.y<objectHigh){
                     intersectsExtinguisher[0].object.position.y=objectHigh;
@@ -3107,7 +3107,6 @@ $(function () {
     function createFireman()
     {
         if (isCreateFireman && !isCreateFiremanCompleted && isStartRun && clock.getElapsedTime() > 5) {
-
 
             //导入消防员模型
             let loader = new THREE.ObjectLoader();

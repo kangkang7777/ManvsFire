@@ -4,30 +4,30 @@ var Interaction = function ()
     this.whetherrotate = false;
 }
 //交互部分
-Interaction.prototype.fuc1 = function (c,camControlOver)
+Interaction.prototype.fuc1 = function (_this)
 {
     document.getElementById('escapeDoor1').addEventListener('click',function (event) {
-        c.position.set(400,80,70);
-        camControlOver.center.set(416,22,7);
+        _this.camera.position.set(400,80,70);
+        _this.camControlOver.center.set(416,22,7);
     });
     document.getElementById('escapeDoor2').addEventListener('click',function (event) {
-        c.position.set(500,60,53);
-        camControlOver.center.set(554,22,46);
+        _this.camera.position.set(500,60,53);
+        _this.camControlOver.center.set(554,22,46);
     });
     document.getElementById('escapeDoor3').addEventListener('click',function (event) {
-        c.position.set(540,60,-32);
-        camControlOver.center.set(548,22,6);
+        _this.camera.position.set(540,60,-32);
+        _this.camControlOver.center.set(548,22,6);
     });
     document.getElementById('WebGL-output').addEventListener('click',function(event){
-        camControlOver.autoRotate=false;
+        _this.camControlOver.autoRotate=false;
     });
     document.getElementById('floor1').addEventListener('click',function(event)
     {
-        c.position.set(397,29,42);
+        _this.camera.position.set(397,29,42);
     });
     document.getElementById('floor2').addEventListener('click',function(event)
     {
-        c.position.set(589,14,18);
+        _this.camera.position.set(589,14,18);
     });
 
 }
@@ -100,7 +100,7 @@ Interaction.prototype.fuc3 = function (MainScene)
         $('menu-div').style.display = 'none';
         $('loading').style.display = 'block';
         Utils.loading(1000);
-        MainScene.addPeople(MainScene.number);
+        MainScene.addPeople();
     })
 
     $('addBtn').addEventListener('click',function (event)
