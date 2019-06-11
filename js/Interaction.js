@@ -100,6 +100,7 @@ Interaction.prototype.fuc3 = function (MainScene)
         $('menu-div').style.display = 'none';
         $('loading').style.display = 'block';
         Utils.loading(1000);
+        MainScene.Path.createNav();
         MainScene.addPeople();
     })
 

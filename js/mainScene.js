@@ -118,7 +118,7 @@ mainScene.prototype.start = function()
     var self = this;
     this.clock.start();  //todo maybe stop
     this.delta = this.clock.getDelta();
-    self.Path.createNav();
+    //self.Path.createNav();
 
     animate();
 
@@ -163,17 +163,13 @@ mainScene.prototype.start = function()
         self.smoke.smokeLocationRepair(self);
         //endregion
 
-        //!!!!!一个update
+        //一个update
         self.people.isfinishedloadchar(self);
 
         //改变烟雾状态
         self.smoke.smokeSurfaceChange(self);
 
-        //
-
         self.freeViewControl.update(self.delta);
-        //self.people.update(self.delta);    //todo 需要判别是否开始
-
 
         self.renderer.clear();
         self.renderer.setViewport(0, 0, window.innerWidth, window.innerHeight);
@@ -190,7 +186,7 @@ mainScene.prototype.start = function()
 
         self.stats.end();
 
-        self.LOD;//lod算法
+        //self.LOD;//lod算法
 
     }
 
@@ -258,7 +254,6 @@ mainScene.prototype.setScene = function()
 mainScene.prototype.addPeople = function ()
 {
     this.people.init(this);
-
 }
 
 mainScene.prototype.LOD = function ()
@@ -269,7 +264,7 @@ mainScene.prototype.LOD = function ()
     var isCamUp = self.camera.position.y>18; //如果摄像机在第二层，将此变量设置成true
     for(var key in self.people.pathControlMap){
 
-        if(self.people.pathControlMap[key].__proto__ === THREE.FollowerControl.prototype){
+        if(self.people.pathControlMap[key].prototype === THREE.FollowerControl.prototype){
             if(Math.abs(self.people.pathControlMap[key].object.position.x-self.camDirection.x)+
                 Math.abs(self.people.pathControlMap[key].object.position.y-self.camDirection.y)+
                 Math.abs(self.people.pathControlMap[key].object.position.z-self.camDirection.z) > 100){

@@ -6,7 +6,7 @@ var People = function ()
     this.idleAction;
     this.walkAction;
     this.runAction;//一共三个动作，站立、行走、低头跑
-    this.pathControlMap = [];
+    this.pathControlMap = {};
     this.blendMeshArr = [];
     this.leaderMeshArr = [];
     this.humanInfoMap=[];
@@ -21,7 +21,7 @@ People.prototype.init = function (_this)
     var targetPositionArr = [];
     var blendMeshLodArr = [];    //TODO 此为LOD所建模型 建议删去
     var blendMeshPosArr = [];
-    var exitConnectionMap = [];    //todo 接下来寻路算法也会用到这个变量
+    //_this.Path.exitConnectionMap = [];    //todo 接下来寻路算法也会用到这个变量
 
     var mapWorker = new Worker("js/loadTJMap.js");
 
@@ -229,7 +229,7 @@ People.prototype.init = function (_this)
                                     pathControl.mapInfoMap = _this.Path.mapInfoMap;
                                     pathControl.targetPositionArr = targetPositionArr;
                                     pathControl.guidPositionArr = Utils.copyArray(guidPosArr);
-                                    pathControl.exitConnectionMap = exitConnectionMap;
+                                    pathControl.exitConnectionMap = _this.Path.exitConnectionMap;
                                     var index = self.blendMeshArr[i].position.x + "&" +self.blendMeshArr[i].position.z+'@'+ self.blendMeshArr[i].position.y;
                                     self.humanInfoMap[index]=0;
                                     self.pathControlMap[index] = pathControl;
@@ -249,7 +249,7 @@ People.prototype.init = function (_this)
                                         pathControl.mapInfoMap = _this.Path.mapInfoMap;
                                         pathControl.targetPositionArr = targetPositionArr;
                                         pathControl.guidPositionArr = Utils.copyArray(guidPosArr);
-                                        pathControl.exitConnectionMap = exitConnectionMap;
+                                        pathControl.exitConnectionMap = _this.Path.exitConnectionMap;
                                         var index = unGetLeaderArr[i].position.x + "&" +unGetLeaderArr[i].position.z+'@'+ unGetLeaderArr[i].position.y;
                                         self.pathControlMap[index] = pathControl;
                                         self.humanInfoMap[index]=0;
@@ -270,9 +270,7 @@ People.prototype.init = function (_this)
 
                         //初始动画为站立
                         //////////////////////////////////////////////////////////////////////////////////////////////
-
-                        //todo
-
+                        //leader的动作
                         for(var i=0; i<self.blendMeshArr.length;i++) {
                             var meshMixer = new THREE.AnimationMixer( self.blendMeshArr[i] );
                             self.idleAction = meshMixer.clipAction( 'idle' );
@@ -280,6 +278,7 @@ People.prototype.init = function (_this)
                             self.activateAllActions(self.actions);
                             self.mixerArr.push(meshMixer);
                         }
+                        //follower的动作
                         for(var iL=0; iL<self.leaderMeshArr.length;iL++) {
                             var meshMixer = new THREE.AnimationMixer( self.leaderMeshArr[iL] );
                             self.idleAction = meshMixer.clipAction( 'idle' );
@@ -289,7 +288,7 @@ People.prototype.init = function (_this)
                         }
                         _this.isFinishLoadCharactor = true;
                         if(_this.isACO)
-                            _this.Path.startPathFinding();
+                            _this.Path.startPathFinding(_this);
                     });
                 });
             });
@@ -348,16 +347,6 @@ People.prototype.init = function (_this)
     }
 
 }
-
-// People.prototype.update = function(delta)
-// {
-//     if(this.isLoaded){
-//         var p = this.people;
-//         for(var i=0; i<p.length;i++) {
-//             p[i].update(delta);
-//         }
-//     }
-// }
 
 People.prototype.setWeight=function (action, weight)
 {
@@ -436,6 +425,5 @@ People.prototype.ifstartRun = function (_this)
                 _this.number--;
             }
         }
-
     }
 }

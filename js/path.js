@@ -2,6 +2,7 @@ var path = function ()
 {
     this.mapInfoMap;//地图信息
     this.pathfinder;
+    this.exitConnectionMap = [];
 }
 
 path.prototype.init= function (_this)
@@ -18,7 +19,7 @@ path.prototype.init= function (_this)
     this.isUseBufferPath = true;  //是否直接从内存里面读取路径数据
     var pathArr,pathMap;
     this.finishTagMap = [];
-    this.staticPathArr;
+    //this.staticPathArr;
     var antCountMap,iterationCountMap,antTotalCount,iterationTotalCount;
 
     this.acoPathFindingWorker =  new Worker("js/ACOPathFindingWorker.js"); //创建子线程ACOPathFindingWorker.js为蚁群寻路算法
@@ -114,7 +115,7 @@ path.prototype.init= function (_this)
                         if(event.data.floor==9)
                         {
                             console.log("第一层迭代完成");
-                            var startPosition = exitConnectionMap[shortestPath[shortestPath.length-1]][exitConnectionMap[shortestPath[shortestPath.length-1]].length-1];
+                            var startPosition = self.exitConnectionMap[shortestPath[shortestPath.length-1]][self.exitConnectionMap[shortestPath[shortestPath.length-1]].length-1];
                             var targetPositionArr = [];
                             for(var j=0;j<exitInfoMap[2].length;j++) {
                                 targetPositionArr.push(new THREE.Vector3(exitInfoMap[2][j][1], 19, exitInfoMap[2][j][3]));
@@ -136,11 +137,11 @@ path.prototype.init= function (_this)
                                 for(var i=0; i<pathMap[pathTag][j].length; i++)
                                 {
                                     runPath.push(pathMap[pathTag][j][i]);
-                                    if(exitConnectionMap[pathMap[pathTag][j][i]])
+                                    if(self.exitConnectionMap[pathMap[pathTag][j][i]])
                                     {
-                                        for(var n=1; n<exitConnectionMap[pathMap[pathTag][j][i]].length-1;n++)
+                                        for(var n=1; n<self.exitConnectionMap[pathMap[pathTag][j][i]].length-1;n++)
                                         {
-                                            runPath.push(exitConnectionMap[pathMap[pathTag][j][i]][n]);
+                                            runPath.push(self.exitConnectionMap[pathMap[pathTag][j][i]][n]);
                                         }
                                     }
                                 }
@@ -277,7 +278,7 @@ path.prototype.drawPath = function (path)
     //finishPathNum++; 应该没用
 }
 
-path.prototype.startPathFinding = function ()
+path.prototype.startPathFinding = function (_this)
 {
     var antTotalCount = 1000;//蚂蚁的总数
     var self = this;
@@ -325,7 +326,7 @@ path.prototype.startPathFinding = function ()
                                 }
                                 // connectionArr.push(new THREE.Vector3(exitInfoMap[1][j][4],exitInfoMap[1][j][5],exitInfoMap[1][j][6]));
                                 connectionArr.push(self._this.people.exitInfoMap[1][j][4]+ "&" +self._this.people.exitInfoMap[1][j][6]+ "@" +self._this.people.exitInfoMap[1][j][5]);
-                                exitConnectionMap[index] = connectionArr;
+                                self.exitConnectionMap[index] = connectionArr;
                             }
                             if(self._this.people.exitInfoMap[1][j][3]==self._this.people.exitInfoMap[1][j][6])
                             {
@@ -341,7 +342,7 @@ path.prototype.startPathFinding = function ()
                                 }
                                 // connectionArr.push(new THREE.Vector3(exitInfoMap[1][j][4],exitInfoMap[1][j][5],exitInfoMap[1][j][6]));
                                 connectionArr.push(self._this.people.exitInfoMap[1][j][4]+ "&" +self._this.people.exitInfoMap[1][j][6]+ "@" +self._this.people.exitInfoMap[1][j][5]);
-                                exitConnectionMap[index] = connectionArr;
+                                self.exitConnectionMap[index] = connectionArr;
                             }
                         }
                     }
@@ -397,7 +398,7 @@ path.prototype.startPathFinding = function ()
                                 }
                                 // connectionArr.push(new THREE.Vector3(exitInfoMap[1][j][4],exitInfoMap[1][j][5],exitInfoMap[1][j][6]));
                                 connectionArr.push(self._this.people.exitInfoMap[1][j][4]+ "&" +self._this.people.exitInfoMap[1][j][6]+ "@" +self._this.people.exitInfoMap[1][j][5]);
-                                exitConnectionMap[index] = connectionArr;
+                                self.exitConnectionMap[index] = connectionArr;
                             }
                             if(self._this.people.exitInfoMap[1][j][3]==self._this.people.exitInfoMap[1][j][6])
                             {
@@ -413,7 +414,7 @@ path.prototype.startPathFinding = function ()
                                 }
                                 // connectionArr.push(new THREE.Vector3(exitInfoMap[1][j][4],exitInfoMap[1][j][5],exitInfoMap[1][j][6]));
                                 connectionArr.push(self._this.people.exitInfoMap[1][j][4]+ "&" +self._this.people.exitInfoMap[1][j][6]+ "@" +self._this.people.exitInfoMap[1][j][5]);
-                                exitConnectionMap[index] = connectionArr;
+                                self.exitConnectionMap[index] = connectionArr;
                             }
                         }
                     }
@@ -430,8 +431,8 @@ path.prototype.startPathFinding = function ()
         }
 
         if(self.isUseBufferPath){
-            for(var i=0; i<self.staticPathArr.length;i++){
-                self.drawPath(self.staticPathArr[i]);
+            for(var i=0; i<_this.messagecontrol.staticPathArr.length;i++){
+                self.drawPath(_this.messagecontrol.staticPathArr[i]);
             }
         }
 }

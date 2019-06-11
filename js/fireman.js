@@ -15,6 +15,9 @@ var fireman = function ()
     this.raycasterExtinguish;
     this.cubeArr=new Array();
     this.objectHigh;
+    this.isfiremanclick = false;
+    this.desireVelocity = 4;//预期寻路速度
+
 }
 
 fireman.prototype.init = function (_this)//消防员&灭火器
@@ -150,14 +153,14 @@ fireman.prototype.SteeringFollowPathFireman = function (_this)//消防员调整�
     if (this.i == this.path.length - 1) {
         if (this.dist.lengthSq() < 0.1)
         {
-            setWeight(this.outfireAction, 1);
-            setWeight(this.walkAction, 0);
-            isposition=true;
+            _this.people.setWeight(this.outfireAction, 1);
+            _this.people.setWeight(this.walkAction, 0);
+            _this.fire.isposition=true;
             this.angle = 0;
         }
         else {
             this.dist.normalize();
-            this.position.add(this.dist.multiplyScalar(delta * desireVelocity));
+            this.position.add(this.dist.multiplyScalar(_this.delta * this.desireVelocity));
         }
         if (this.angle > 0.05) {
             if (this.angleDist.y < 0) {
@@ -176,7 +179,7 @@ fireman.prototype.SteeringFollowPathFireman = function (_this)//消防员调整�
         }
         else {
             this.dist.normalize();
-            this.position.add(this.dist.multiplyScalar(delta * desireVelocity));
+            this.position.add(this.dist.multiplyScalar(_this.delta * this.desireVelocity));
 
         }
         if (this.angle > 0.05) {
@@ -269,7 +272,7 @@ fireman.prototype.cameraControl = function (_this)//摄像机的位置控制，�
     }else{
         if (_this.camControl && !_this.isEdit)
         {
-            _this.camControl.update(delta)
+            _this.camControl.update(_this.delta)
         }
         else
             {
@@ -284,10 +287,13 @@ fireman.prototype.cameraControl = function (_this)//摄像机的位置控制，�
 fireman.prototype.firemanclick = function (_this)
 {
     var self = this;
-    self.createFireman(_this);
-    //createFiremanExtinguisher();
-    self.setSteer.forEach(element => {
-        element.meshMixer.update(delta);//更新动画
-        element.dispatchEvent({ type: 'steer', message: '' });//注册了导航事件的 进行导航
-    });
+    if(self.isfiremanclick)
+    {
+        self.createFireman(_this);
+        //createFiremanExtinguisher();
+        self.setSteer.forEach(element => {
+            element.meshMixer.update(_this.delta);//更新动画
+            element.dispatchEvent({type: 'steer', message: ''});//注册了导航事件的 进行导航
+        });
+    }
 }

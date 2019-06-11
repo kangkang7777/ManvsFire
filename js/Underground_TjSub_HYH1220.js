@@ -3295,6 +3295,7 @@ $(function () {
                 }
                 newsmokeData=smoke_insert(p0,p1,p2,pp,smokeDataA,smokeDataB,smokeDataC);
                 //开始模拟后开始行走
+
                 //////////////////////////////////////////////////////////////////////////////////////////////////////
                 for(var i=0; i<blendMeshArr.length;i++) {
                     var meshMixer = new THREE.AnimationMixer( blendMeshArr[i] );
