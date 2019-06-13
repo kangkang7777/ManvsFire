@@ -119,8 +119,7 @@ mainScene.prototype.start = function()
     this.clock.start();  //todo maybe stop
     this.delta = this.clock.getDelta();
     //self.Path.createNav();
-
-    animate();
+        animate();
 
     function animate()
     {
