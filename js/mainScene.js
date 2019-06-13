@@ -117,14 +117,14 @@ mainScene.prototype.start = function()
 {
     var self = this;
     this.clock.start();  //todo maybe stop
-    this.delta = this.clock.getDelta();
+
     //self.Path.createNav();
 
     animate();
 
     function animate()
     {
-        //var self = this;
+        self.delta = self.clock.getDelta();
         self.fire.ifisposition(self);
 
         self.water.ifwaterMiss();
