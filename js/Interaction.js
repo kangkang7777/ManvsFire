@@ -37,6 +37,13 @@ Interaction.prototype.fuc2 = function (_this)
     var self = this;
     document.getElementById('startRun').addEventListener('click',function (event)
     {
+
+        document.getElementById("fireman").style.display = "inline-block";
+        document.getElementById("floor1").style.display = "inline-block";
+        document.getElementById("floor2").style.display = "inline-block";
+        document.getElementById("startRun").style.display = "none";
+        document.getElementById("transformSmoke").style.display = "none";
+
         _this.smoke.redBallMesh.position.x=_this.smoke.positionBallMesh.position.x+16;
         _this.smoke.redBallMesh.position.z= _this.smoke.positionBallMesh.position.z;
         _this.smoke.positionBallMesh.visible=false;
@@ -102,6 +109,12 @@ Interaction.prototype.fuc3 = function (MainScene)
         Utils.loading(1000);
         MainScene.Path.createNav();
         MainScene.addPeople();
+
+        $("toNo1").style.display="none";
+        $("toNo2").style.display="none";
+
+        $("shut_div").style.display='block';
+        $("clibtn_b").style.display='block';
     })
 
     $('addBtn').addEventListener('click',function (event)
@@ -121,4 +134,24 @@ Interaction.prototype.fuc3 = function (MainScene)
         alert("欢迎体验本火灾模拟实验平台，您可以通过鼠标和键盘进行场景漫游。或过点击“地下一层”和“地下二层”按钮变换视角。若要开始火灾模拟，请点击“编辑烟雾”按钮进行编辑，编辑完毕后点击“开始模拟”");
     });
 
+
+    $('fireman').addEventListener('click',function (event)
+    {
+        MainScene.isfiremanclick=true;
+        MainScene.camControlOver.autoRotate = false;
+
+            $("fireman").style.display="none";
+            $("userBook").style.display="none";
+            $("userBook2").style.display="none";
+            $("userBook3").style.display="inline-block";
+            $("shutuserbook3").style.display="none";
+            //消防员出现之后就是跟随视角
+            $("floor1").style.display="none";
+            $("floor2").style.display="none";
+            $("cancelFollow").style.display="inline-block";
+            $("allowFollow").style.display="none";
+            $("startRun").style.display="none";
+
+        MainScene.isOverView = true;
+    });
 }
