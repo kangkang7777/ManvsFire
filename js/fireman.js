@@ -129,11 +129,59 @@ fireman.prototype.createFireman = function (_this)
             self.cubeFireman.walkAction.setEffectiveWeight(1);
             self.cubeFireman.outfireAction.play();
             self.cubeFireman.walkAction.play();
-            self.cubeFireman.path = _this.path.pathfinder.findPath(self.cubeFireman.position, new THREE.Vector3(pp.x+18,pp.y,pp.z), 'level1', 5);
+            self.cubeFireman.path = _this.Path.pathfinder.findPath(self.cubeFireman.position, new THREE.Vector3(_this.smoke.pp.x+18,_this.smoke.pp.y,_this.smoke.pp.z), 'level1', 5);
 
             self.cubeFireman.i = 0;
             self.cubeFireman.target = self.cubeFireman.path[0];
-            self.cubeFireman.addEventListener("steer", self.SteeringFollowPathFireman);
+            self.cubeFireman.addEventListener("steer", SteeringFollowPathFireman);
+            function SteeringFollowPathFireman() {
+                this.dist = this.target.clone().sub(this.position);
+                this.angleDist = this.dist.clone().setY(0);
+                this.angle = this.angleDist.angleTo(this.getWorldDirection().multiplyScalar(-1));
+                this.angleDist.cross(this.getWorldDirection().multiplyScalar(-1));
+                if (this.i == this.path.length - 1) {
+                    if (this.dist.lengthSq() < 0.1)
+                    {
+                        _this.people.setWeight(this.outfireAction, 1);
+                        _this.people.setWeight(this.walkAction, 0);
+                        _this.fire.isposition=true;
+                        this.angle = 0;
+                    }
+                    else {
+                        this.dist.normalize();
+                        this.position.add(this.dist.multiplyScalar(_this.delta * 4));
+                    }
+                    if (this.angle > 0.05) {
+                        if (this.angleDist.y < 0) {
+                            this.rotateY(Math.PI * 0.02);
+                        }
+                        else {
+                            this.rotateY(-Math.PI * 0.02);
+                        }
+                    }
+                }
+                else {
+                    if (this.dist.lengthSq() < 0.01) {
+                        this.i++;
+                        this.target.set(this.path[this.i].x, this.path[this.i].y, this.path[this.i].z);//消防员寻找火灾地点
+
+                    }
+                    else {
+                        this.dist.normalize();
+                        this.position.add(this.dist.multiplyScalar(_this.delta * 4));
+
+                    }
+                    if (this.angle > 0.05) {
+                        if (this.angleDist.y < 0) {
+                            this.rotateY(Math.PI * 0.02);
+                        }
+                        else {
+                            this.rotateY(-Math.PI * 0.02);
+                        }
+                    }
+
+                }
+            }
             self.setSteer.add(self.cubeFireman);
 
             self.isOverViewFireMan = true; //消防员出现之后设置成true
@@ -143,7 +191,7 @@ fireman.prototype.createFireman = function (_this)
         self.isCreateFireman = false;
     }
 }
-
+/*
 fireman.prototype.SteeringFollowPathFireman = function (_this)//消防员调整朝向
 {
     this.dist = this.target.clone().sub(this.position);
@@ -179,7 +227,7 @@ fireman.prototype.SteeringFollowPathFireman = function (_this)//消防员调整�
         }
         else {
             this.dist.normalize();
-            this.position.add(this.dist.multiplyScalar(_this.delta * this.desireVelocity));
+            this.position.add(this.dist.multiplyScalar(_this.delta * 4));
 
         }
         if (this.angle > 0.05) {
@@ -194,6 +242,7 @@ fireman.prototype.SteeringFollowPathFireman = function (_this)//消防员调整�
     }
 }
 
+ */
 fireman.prototype.positionAdjust = function (_this)
 {
     var self = this;
@@ -252,13 +301,13 @@ fireman.prototype.cameraControl = function (_this)//摄像机的位置控制，�
         if(self.cubeFireman && self.isOverViewFireMan){
 
             if(self.cubeFireman.position.x<355&&self.cubeFireman.position.x>280){
-                _this.camControlOver.center = new THREE.Vector3(self.cubeFireman.position.x,self.cubeFireman.position.y+2.5,self.cubeFireman.position.z);
+                _this.freeViewControl.center = new THREE.Vector3(self.cubeFireman.position.x,self.cubeFireman.position.y+2.5,self.cubeFireman.position.z);
                 _this.camera.lookAt(self.cubeFireman.position.x,self.cubeFireman.position.y,self.cubeFireman.position.z);
-                _this.camControlOver.maxDistance = 3;
+                _this.freeViewControl.maxDistance = 3;
             }
             else{
-                _this.camControlOver.center = new THREE.Vector3(self.cubeFireman.position.x,self.cubeFireman.position.y+2,self.cubeFireman.position.z);
-                _this.camControlOver.maxDistance = 6;
+                _this.freeViewControl.center = new THREE.Vector3(self.cubeFireman.position.x,self.cubeFireman.position.y+2,self.cubeFireman.position.z);
+                _this.freeViewControl.maxDistance = 6;
             }
         }
         // if(isOverViewLeader){
@@ -287,7 +336,7 @@ fireman.prototype.cameraControl = function (_this)//摄像机的位置控制，�
 fireman.prototype.firemanclick = function (_this)
 {
     var self = this;
-    if(self.isfiremanclick)
+    if(_this.isfiremanclick)
     {
         self.createFireman(_this);
         //createFiremanExtinguisher();
