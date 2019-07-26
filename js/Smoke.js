@@ -256,7 +256,7 @@ Smoke.prototype.init = function(_this)
 
 Smoke.prototype.smokeColor = function (_this)
 {
-    var ii=0;    //todo @xiekang debug here
+    var ii=0;
     var kk=0;
     var self = this;
     /*
@@ -362,4 +362,25 @@ Smoke.prototype.smokeSurfaceChange = function (_this)
         self.smokeColor(_this);
 
     }
+}
+
+
+Smoke.prototype.update = function (_this)
+{
+    this.smokeScene();
+
+    this.smokeFunction();
+
+    this.smokeBody();
+
+    this.smokeLocationRepair(_this);
+
+    this.smokeSurfaceChange(_this);
+
+    this.smokeSceneArr.forEach(function (child)
+    {
+        _this.step[1] += 0.00005;
+        child.rotation.y=_this.step[1]*(Math.random>0.5?1:-1);
+    });
+
 }

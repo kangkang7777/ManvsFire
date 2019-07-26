@@ -427,3 +427,9 @@ People.prototype.ifstartRun = function (_this)
         }
     }
 }
+
+People.prototype.update = function (_this)
+{
+    this.isfinishedloadchar(_this);
+    this.ifstartRun(_this);
+}

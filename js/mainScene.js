@@ -124,65 +124,28 @@ mainScene.prototype.start = function()
     function animate()
     {
         self.delta = self.clock.getDelta();
-        self.fire.ifisposition(self);
 
-        self.water.ifwaterMiss();
+        self.water.update();    //todo debug here
 
-        self.fire.Run(self);
+        self.fire.update(self);
+
+        self.smoke.update(self);
+
+        self.Fireman.update(self);
+
+        self.people.update(self);
 
         TWEEN.update();
 
-        if(self.active)
-            requestAnimationFrame(animate);
-
         self.stats.update();
-
-        self.smoke.smokeScene();
-
-        self.smoke.smokeFunction();
-
-        self.smoke.smokeBody();
-
-        self.water.waterBody();
-
-        self.smoke.smokeSceneArr.forEach(function (child)
-        {
-            self.step[1] += 0.00005;
-            child.rotation.y=self.step[1]*(Math.random>0.5?1:-1);
-        });
-
-        //灭火器调整
-        self.Fireman.positionAdjust(self);
-
-        //region FDS起火坐标选择
-        self.fire.FDSpositionChoose(self);
-        //endregion
-
-        //region烟气球坐标修正
-        self.smoke.smokeLocationRepair(self);
-        //endregion
-
-        //一个update
-        self.people.isfinishedloadchar(self);
-
-        //改变烟雾状态
-        self.smoke.smokeSurfaceChange(self);
 
         self.freeViewControl.update(self.delta);
 
+        if(self.active) requestAnimationFrame(animate);
         self.renderer.clear();
         self.renderer.setViewport(0, 0, window.innerWidth, window.innerHeight);
         self.renderer.render(self.scene, self.camera);
         //todo self.renderer.clear();    与renderer.autoClear = false 对应 不知道意义何在
-
-        //摄像机的位置控制，消防员出来的时候就是跟随效果，其它情况就是第一人称漫游效果
-        self.Fireman.cameraControl(self);
-
-        self.people.ifstartRun(self);
-
-        self.Fireman.firemanclick(self);
-        //self.Fireman.extinguisherChange(self);
-
         self.stats.end();
 
         //self.LOD;//lod算法

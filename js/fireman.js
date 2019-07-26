@@ -346,3 +346,11 @@ fireman.prototype.firemanclick = function (_this)
         });
     }
 }
+
+fireman.prototype.update = function (_this)
+{
+    this.positionAdjust(_this);
+    this.cameraControl(_this);    //todo 相机控制不应该放在这里
+    this.firemanclick(_this);
+    // todo @xiekang this.extinguisherChange();
+}

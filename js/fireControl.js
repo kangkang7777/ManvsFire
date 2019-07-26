@@ -108,3 +108,10 @@ fireControl.prototype.ifisposition = function (_this)
         }
     }
 }
+
+fireControl.prototype.update = function (_this)
+{
+    this.Run(_this);
+    this.FDSpositionChoose(_this);
+    this.ifisposition(_this);
+}
