@@ -256,7 +256,7 @@ Smoke.prototype.init = function(_this)
 
 Smoke.prototype.smokeColor = function (_this)
 {
-    var ii=0;
+    var ii=0;    //todo @xiekang debug here
     var kk=0;
     var self = this;
     /*
@@ -281,7 +281,7 @@ Smoke.prototype.smokeColor = function (_this)
         kk--;
         if(kk==0)
         {
-            _this.watermiss=true;
+            _this.water.watermiss=true;
         }
     }
 }
