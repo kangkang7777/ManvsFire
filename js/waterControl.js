@@ -3,13 +3,15 @@ var waterControl = function ()
     this.waterArr=new Array();
     this.watermiss = false;
 
+    this.waterRX=[0,4.8,12,16.20,24];
+    this.waterRY=[0,0.2,0.4,0.6,0.8,1.0,1.2];
+    this.waterRZ=[0,0.2,0.4,0.6,0.8,1.0,1.2];
 }
 
 waterControl.prototype.init = function (_this)
 {
     var self = this;
     //region 水
-    var waterTexture = new THREE.TextureLoader().load('textures/water.png');
     var waterCloud;
 
     function waterType()
@@ -20,7 +22,7 @@ waterControl.prototype.init = function (_this)
             size: 2,
             transparent: true,
             opacity: 0,
-            map: waterTexture,
+            map: new THREE.TextureLoader().load('textures/water.png'),
             sizeAttenuation: true,
             depthWrite: false,
             color: 0xffffff
@@ -39,35 +41,31 @@ waterControl.prototype.init = function (_this)
 
     for(var i=0;i<7;i++)
     {
-        waterType(self);
+        waterType();
     }
 
-    var waterRX=[0,4.8,12,16.20,24];
-    var waterRY=[0,0.2,0.4,0.6,0.8,1.0,1.2];
-    var waterRZ=[0,0.2,0.4,0.6,0.8,1.0,1.2];
+}
 
-//这个函数在后面才会用到
-    this.waterBody=function(){
-        for (var i = 0; i < waterRX.length; i++) {
-            if (waterRX[i] > 20){
-                waterRX[i] = 0;
-                waterRY[i] = 0;
-                waterRZ[i] = 0;
-            }
-            else{
-                waterRX[i]++;
-                waterRY[i]++;
-                waterRZ[i]++;
-            }
-
-            _this.smoke.r1[i]++;
-            this.waterArr[i].position.setX(_this.smoke.redBallMesh.position.x - waterRX[i]);
-            this.waterArr[i].position.setZ(_this.smoke.redBallMesh.position.z + waterRZ[i]/10);
-            this.waterArr[i].position.setY(_this.smoke.redBallMesh.position.y - waterRY[i]/10);
-            //waterArr[i].scale.setScalar(Math.sin(r1[i] * sNumber / 150.0 * (Math.PI / 2)));
+waterControl.prototype.waterBody = function (_this)
+{
+    for (var i = 0; i < waterRX.length; i++) {
+        if (this.waterRX[i] > 20){
+            this.waterRX[i] = 0;
+            this.waterRY[i] = 0;
+            this.waterRZ[i] = 0;
         }
-    };
-//endregion
+        else{
+            this.waterRX[i]++;
+            this.waterRY[i]++;
+            this.waterRZ[i]++;
+        }
+
+        _this.smoke.r1[i]++;
+        this.waterArr[i].position.setX(_this.smoke.redBallMesh.position.x - this.waterRX[i]);
+        this.waterArr[i].position.setZ(_this.smoke.redBallMesh.position.z + this.waterRZ[i]/10);
+        this.waterArr[i].position.setY(_this.smoke.redBallMesh.position.y - this.waterRY[i]/10);
+        //waterArr[i].scale.setScalar(Math.sin(r1[i] * sNumber / 150.0 * (Math.PI / 2)));
+    }
 }
 
 waterControl.prototype.ifwaterMiss = function ()
