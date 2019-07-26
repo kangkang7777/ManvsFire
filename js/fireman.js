@@ -144,7 +144,7 @@ fireman.prototype.createFireman = function (_this)
                     {
                         _this.people.setWeight(this.outfireAction, 1);
                         _this.people.setWeight(this.walkAction, 0);
-                        _this.fire.isposition=true;
+                        self.isposition=true;
                         this.angle = 0;
                     }
                     else {
