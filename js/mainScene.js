@@ -29,6 +29,8 @@ var mainScene = function()
 
     this.freeViewControl = null;     //自由观察视角
 
+    this.camControl = null;
+
     this.isACO = true;  //是否进行默认的蚁群算法
 
     this.isOverView = true; //初始时观察整个地铁站时用这个
@@ -139,8 +141,6 @@ mainScene.prototype.start = function()
 
         self.stats.update();
 
-        self.freeViewControl.update(self.delta);
-
         if(self.active) requestAnimationFrame(animate);
         self.renderer.clear();
         self.renderer.setViewport(0, 0, window.innerWidth, window.innerHeight);
@@ -168,24 +168,24 @@ mainScene.prototype.setScene = function()
     this.renderer.setPixelRatio( window.devicePixelRatio );
     document.getElementById("WebGL-output").appendChild(this.renderer.domElement);
 
-    this.camControlOver = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+    var camControlOver = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+    camControlOver.center = new THREE.Vector3(430,24,21);
+    camControlOver.userPan = false;
+    camControlOver.autoRotate=true;
+    this.freeViewControl = camControlOver;
 
+    var camControl = new THREE.FirstPersonControls(this.camera, this.renderer.domElement);
+    camControl.lookSpeed = 1;
+    camControl.movementSpeed = 2 * 10;
+    camControl.noFly = true;
+    camControl.lookVertical = true;
+    camControl.constrainVertical = true;
+    camControl.verticalMin = 1.0;
+    camControl.verticalMax = 2.0;
+    camControl.lon =-138;
+    camControl.lat =-90;
+    this.camControl = camControl;
 
-    this.camControlOver.center = new THREE.Vector3(430,24,21);
-    this.camControlOver.userPan = false;
-    this.camControlOver.autoRotate=true;
-    this.freeViewControl = this.camControlOver;
-
-    this.camControl = new THREE.FirstPersonControls(this.camera, this.renderer.domElement);
-    this.lookSpeed = 1;
-    this.camControl.movementSpeed = 2 * 10;
-    this.camControl.noFly = true;
-    this.camControl.lookVertical = true;
-    this.camControl.constrainVertical = true;
-    this.camControl.verticalMin = 1.0;
-    this.camControl.verticalMax = 2.0;
-    this.camControl.lon =-138;
-    this.camControl.lat =-90;
 
     var ambientLight = new THREE.AmbientLight(0xcccccc);
     this.scene.add(ambientLight);

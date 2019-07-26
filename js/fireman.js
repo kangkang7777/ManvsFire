@@ -294,7 +294,7 @@ fireman.prototype.positionAdjust = function (_this)
 
 }
 
-fireman.prototype.cameraControl = function (_this)//摄像机的位置控制，消防员出来的时候就是跟随效果，其它情况就是第一人称漫游效果
+fireman.prototype.cameraControl = function (_this)//todo 不应该放在这里！ 摄像机的位置控制，消防员出来的时候就是跟随效果，其它情况就是第一人称漫游效果
 {
     var self = this;
     if (_this.isOverView){
@@ -317,7 +317,7 @@ fireman.prototype.cameraControl = function (_this)//摄像机的位置控制，�
         //     camControlOver.maxDistance = 3;
         // }
 
-        _this.camControlOver.update(_this.delta);
+        _this.freeViewControl.update(_this.delta);
     }else{
         if (_this.camControl && !_this.isEdit)
         {

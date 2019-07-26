@@ -8,18 +8,18 @@ Interaction.prototype.fuc1 = function (_this)
 {
     document.getElementById('escapeDoor1').addEventListener('click',function (event) {
         _this.camera.position.set(400,80,70);
-        _this.camControlOver.center.set(416,22,7);
+        _this.freeViewControl.center.set(416,22,7);
     });
     document.getElementById('escapeDoor2').addEventListener('click',function (event) {
         _this.camera.position.set(500,60,53);
-        _this.camControlOver.center.set(554,22,46);
+        _this.freeViewControl.center.set(554,22,46);
     });
     document.getElementById('escapeDoor3').addEventListener('click',function (event) {
         _this.camera.position.set(540,60,-32);
-        _this.camControlOver.center.set(548,22,6);
+        _this.freeViewControl.center.set(548,22,6);
     });
     document.getElementById('WebGL-output').addEventListener('click',function(event){
-        _this.camControlOver.autoRotate=false;
+        _this.freeViewControl.autoRotate=false;
     });
     document.getElementById('floor1').addEventListener('click',function(event)
     {
@@ -88,6 +88,8 @@ Interaction.prototype.fuc2 = function (_this)
         }
 
     });
+
+
 }
 
 Interaction.prototype.fuc3 = function (MainScene)
@@ -153,5 +155,25 @@ Interaction.prototype.fuc3 = function (MainScene)
             $("startRun").style.display="none";
 
         MainScene.isOverView = true;
+    });
+
+    $('floor1').addEventListener('click',function (event)
+    {
+        MainScene.camera.position.set(397,29,42);
+        MainScene.camControl.lon = 337;
+        MainScene.camControl.lat = -30;
+        MainScene.currentFloor = "floor1";
+
+        MainScene.isOverView = false;
+    });
+
+    $('floor2').addEventListener('click',function (event)
+    {
+        MainScene.camera.position.set(589,14,18);
+        MainScene.camControl.lon = 160;
+        MainScene.camControl.lat = -30;
+        MainScene.currentFloor = "floor2";
+
+        MainScene.isOverView = false;
     });
 }
