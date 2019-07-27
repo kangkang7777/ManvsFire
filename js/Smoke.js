@@ -19,6 +19,8 @@ var Smoke = function ()
     this.r1=[0,20,40,60,80,100,120];//运动方向延X、Z坐标轴方向
     this.iswater = false;
     //this.prototype.init();
+    this.ii=0;
+    this.kk=0;
 }
 
 Smoke.prototype.init = function(_this)
@@ -256,30 +258,28 @@ Smoke.prototype.init = function(_this)
 
 Smoke.prototype.smokeColor = function (_this)
 {
-    var ii=0;
-    var kk=0;
     var self = this;
     /*
 烟雾变化分两种情况，开始着火与消防员开始灭火，开始着火正向读入烟雾数据，烟雾变浓，开始灭火，逆向读入数据，烟雾逐渐消失
 */
 
-    if (Math.floor(_this.clock.getElapsedTime() + 10) % ((kk + 1) * 10) == 0 && ii < 61&&!self.iswater) {
-        for (var j = 0; j < self.newsmokeData[ii].length; j++) {
-            self.smokeSceneArr[j].material.opacity = self.newsmokeData[ii][j];
+    if (Math.floor(_this.clock.getElapsedTime() + 10) % ((self.kk + 1) * 10) == 0 && self.ii < 61&&!self.iswater) {
+        for (var j = 0; j < self.newsmokeData[self.ii].length; j++) {
+            self.smokeSceneArr[j].material.opacity = self.newsmokeData[self.ii][j];
 
         }
-        ii++;
-        kk++;
+        self.ii++;
+        self.kk++;
     }
-    else if(Math.floor(_this.clock.getElapsedTime() + 10) % ((kk + 1)) == 0 && ii >= 0&&self.iswater)
+    else if(Math.floor(_this.clock.getElapsedTime() + 10) % ((self.kk + 1)) == 0 && self.ii >= 0&&self.iswater)
     {
-        for (var j = 0; j < self.newsmokeData[ii].length; j++) {
-            self.smokeSceneArr[j].material.opacity = self.newsmokeData[ii][j];
+        for (var j = 0; j < self.newsmokeData[self.ii].length; j++) {
+            self.smokeSceneArr[j].material.opacity = self.newsmokeData[self.ii][j];
 
         }
-        ii--;
-        kk--;
-        if(kk==0)
+        self.ii--;
+        self.kk--;
+        if(self.kk==0)
         {
             _this.water.watermiss=true;
         }

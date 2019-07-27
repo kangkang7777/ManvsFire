@@ -331,7 +331,7 @@ $(function () {
         scene.add(cube3);
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////
-
+         */
         //测试用顶点集合
         var vertices1=[
             new THREE.Vector3(620,31,47),//0
@@ -359,7 +359,7 @@ $(function () {
             new THREE.Face3(7,3,6),
             new THREE.Face3(3,2,6)
         ];
-        */
+
         //测试用模拟楼板
         var cube1Geometry=new THREE.CubeGeometry();
         cube1Geometry.vertices=vertices1;
@@ -2782,7 +2782,7 @@ $(function () {
         stats.begin();
 
 
-        //var stepSize = (!isFrameStepping) ? delta * 1: timeToStep;
+        var stepSize = (!isFrameStepping) ? delta * 1: timeToStep;
 
         smokeScene();
 
