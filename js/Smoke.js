@@ -11,7 +11,7 @@ var Smoke = function ()
     this.smokeTexture = new THREE.TextureLoader().load('textures/Smoke-Element.png');
     var smokeLogoTexture = new THREE.TextureLoader().load('textures/firelogo2.png');
     this.smokeArr=[];
-    this.sNumber=1;
+    this.sNumber=0.07;//烟柱与烟冠模型缩放系数
     this.smokeSceneArr= new Array();
     this.isStartSmoke = false;
     this.frustumSize=100;//小窗口大小设置
@@ -142,7 +142,7 @@ Smoke.prototype.init = function(_this)
 
     //烟雾主体包括两个部分“烟冠部分”56个烟团，“烟柱部分”12个烟团
     this.smokeFunction=function(){
-        //四条烟冠，运动方向延X、Z坐标轴方向
+        //四条烟冠，运动方向延X=Z坐标轴方向
         for(var i=0;i<self.r1.length;i++){
             if(self.r1[i]>130)
                 self.r1[i]=0;
@@ -165,7 +165,7 @@ Smoke.prototype.init = function(_this)
             this.smokeArr[i+14].scale.setScalar(Math.sin(self.r1[i]*this.sNumber / 150.0 * (Math.PI/2)));
             this.smokeArr[i+21].scale.setScalar(Math.sin(self.r1[i]*this.sNumber / 150.0 * (Math.PI/2)));
         }
-        //四条烟冠，运动方向延X=Z坐标轴方向
+        //四条烟冠，运动方向延X，Z坐标轴方向
         for(var i=0;i<r2.length;i++){
             if(r2[i]>180)
                 r2[i]=0;

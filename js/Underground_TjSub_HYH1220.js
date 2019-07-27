@@ -359,7 +359,7 @@ $(function () {
             new THREE.Face3(7,3,6),
             new THREE.Face3(3,2,6)
         ];
-
+        */
         //测试用模拟楼板
         var cube1Geometry=new THREE.CubeGeometry();
         cube1Geometry.vertices=vertices1;
@@ -410,7 +410,7 @@ $(function () {
 
         cubeArr.push(cube1Mesh);
         cubeArr.push(cube2Mesh);
-
+        /*
         //人工搭建的站台
         var cubeX1Geometry=new THREE.CubeGeometry(0.3,12.1,6.8);
         var cubeX1Material=new THREE.MeshPhongMaterial({color:0xaeb1b3});
