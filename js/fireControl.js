@@ -62,8 +62,8 @@ fireControl.prototype.FDSpositionChoose = function (_this)
     if(_this.isEdit)
     {
         var raycasterLogo=new THREE.Raycaster();
-        raycasterLogo.setFromCamera(self.mouse,self.camera);
-        var intersectsLogo=raycasterLogo.intersectObjects(logoArr);
+        raycasterLogo.setFromCamera(_this.mouse,_this.camera);
+        var intersectsLogo=raycasterLogo.intersectObjects(_this.smoke.logoArr);
         if(intersectsLogo.length>0){
             var logoObject=intersectsLogo[0];
             document.addEventListener('dblclick',function () {

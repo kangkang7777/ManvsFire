@@ -176,4 +176,103 @@ Interaction.prototype.fuc3 = function (MainScene)
 
         MainScene.isOverView = false;
     });
+
+    $('transformSmoke').addEventListener('click',function(event)
+    {
+        if(!MainScene.isEdit){
+            userBookNumber=1;
+
+            $("startRun").style.display="none";
+            $("floor1").style.display = "none";
+            $("floor2").style.display = "none";
+            $("toNo1").style.display = "inline-block";
+            $("toNo2").style.display = "inline-block";
+            $("toNo3").style.display = "inline-block";
+            $("toNo4").style.display = "inline-block";
+            $("toNo5").style.display = "inline-block";
+
+            MainScene.smoke.Logo1Material.visible=true;
+            MainScene.smoke.Logo2Material.visible=true;
+            MainScene.smoke.Logo3Material.visible=true;
+            MainScene.smoke.Logo4Material.visible=true;
+            MainScene.smoke.Logo5Material.visible=true;
+            MainScene.camera.position.set(150,195, 60)
+            MainScene.camera.lookAt(150, 0, 8);
+            MainScene.globalPlane.constant = 17;
+            MainScene.globalPlane.set(new THREE.Vector3(0, -1, 0), 17);
+            MainScene.control.attach(MainScene.smoke.positionBallMesh);
+            console.log(MainScene.control);
+            MainScene.isEdit = true;
+            MainScene.control.visible = true;
+            MainScene.fire.Te1Material.visible=false;
+            MainScene.fire.Te2Material.visible=false;
+            MainScene.smoke.positionBallMesh.visible=true;
+
+        } else{
+            userBookNumber=0;
+
+            $("startRun").style.display="inline-block";
+            $("floor1").style.display = "none";
+            $("floor2").style.display = "none";
+            $("toNo1").style.display = "none";
+            $("toNo2").style.display = "none";
+            $("toNo3").style.display = "none";
+            $("toNo4").style.display = "none";
+            $("toNo5").style.display = "none";
+
+            MainScene.smoke.Logo1Material.visible=false;
+            MainScene.smoke.Logo2Material.visible=false;
+            MainScene.smoke.Logo3Material.visible=false;
+            MainScene.smoke.Logo4Material.visible=false;
+            MainScene.smoke.Logo5Material.visible=false;
+            MainScene.camera.position.set(573,53,69);
+            MainScene.camControl.lon = -140;
+            MainScene.camControl.lat = -90;
+            MainScene.globalPlane.constant=100000;
+            MainScene.control.attach();
+            MainScene.isEdit = false;
+            MainScene.control.visible = false;
+            MainScene.fire.Te1Material.visible=false;
+            MainScene.fire.Te2Material.visible=false;
+            MainScene.smoke.positionBallMesh.visible=false;
+
+        }
+        MainScene.isOverView = false;
+    });
+
+    $('toNo1').addEventListener('click',function(event)
+    {
+        MainScene.smoke.positionBallMesh.position.x=41;
+        MainScene.smoke.positionBallMesh.position.z=25;
+
+        isOverView = false;
+    });
+    $('toNo2').addEventListener('click',function(event)
+    {
+        MainScene.smoke.positionBallMesh.position.x=91;
+        MainScene.smoke.positionBallMesh.position.z=25;
+
+        isOverView = false;
+    });
+    $('toNo3').addEventListener('click',function(event)
+    {
+        MainScene.smoke.positionBallMesh.position.x=151;
+        MainScene.smoke.positionBallMesh.position.z=20;
+
+        isOverView = false;
+    });
+    $('toNo4').addEventListener('click',function(event)
+    {
+        MainScene.smoke.positionBallMesh.position.x=180;
+        MainScene.smoke.positionBallMesh.position.z=22;
+
+        isOverView = false;
+    });
+    $('toNo5').addEventListener('click',function(event)
+    {
+        MainScene.smoke.positionBallMesh.position.x=215;
+        MainScene.smoke.positionBallMesh.position.z=27;
+
+        isOverView = false;
+    });
 }

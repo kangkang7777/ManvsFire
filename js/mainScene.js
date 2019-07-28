@@ -57,6 +57,8 @@ var mainScene = function()
 
     this.HCI = new Interaction();//交互控制
 
+    this.globalPlane = null;
+
 
     //控制参数
 
@@ -211,6 +213,10 @@ mainScene.prototype.setScene = function()
     this.extinguisherControl.visible=false;
 //endregion
 
+    this.globalPlane = new THREE.Plane( new THREE.Vector3( 0, -1, 0 ), 0.1 );
+    this.globalPlane.constant =10000;//剖切的位置
+    this.renderer.clippingPlanes.push(this.globalPlane);
+    this.renderer.localClippingEnabled = true;
 }
 
 mainScene.prototype.addPeople = function ()
