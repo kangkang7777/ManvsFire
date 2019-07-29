@@ -88,24 +88,17 @@ fireControl.prototype.ifisposition = function (_this)
                 _this.Fireman.cubeFireman.rotation.y += Math.PI * 0.02;
                 self.roangle += Math.PI * 0.02;
             }
-            else {
-                for(var i=0;i<_this.water.waterArr.length;i++){
-                    _this.water.waterArr[i].material.opacity=1;
-                }
-                _this.smoke.iswater=true;
-                self.fireManager.target.visible = false;
-                _this.Fireman.isposition=false;
-            }
         }
-        else
+        if(!_this.water.watermiss)
         {
             for (var i = 0; i < _this.water.waterArr.length; i++) {
                 _this.water.waterArr[i].material.opacity = 1;
             }
-            _this.smoke.iswater=true;
-            self.fireManager.target.visible = false;
-            _this.Fireman.isposition=false;
         }
+        _this.smoke.iswater=true;
+        self.fireManager.target.visible = false;
+        _this.Fireman.isposition=false;
+
     }
 }
 

@@ -180,7 +180,7 @@ Interaction.prototype.fuc3 = function (MainScene)
     $('transformSmoke').addEventListener('click',function(event)
     {
         if(!MainScene.isEdit){
-            userBookNumber=1;
+           // userBookNumber=1;
 
             $("startRun").style.display="none";
             $("floor1").style.display = "none";
@@ -209,7 +209,7 @@ Interaction.prototype.fuc3 = function (MainScene)
             MainScene.smoke.positionBallMesh.visible=true;
 
         } else{
-            userBookNumber=0;
+           // userBookNumber=0;
 
             $("startRun").style.display="inline-block";
             $("floor1").style.display = "none";
@@ -245,34 +245,34 @@ Interaction.prototype.fuc3 = function (MainScene)
         MainScene.smoke.positionBallMesh.position.x=41;
         MainScene.smoke.positionBallMesh.position.z=25;
 
-        isOverView = false;
+        MainScene.isOverView = false;
     });
     $('toNo2').addEventListener('click',function(event)
     {
         MainScene.smoke.positionBallMesh.position.x=91;
         MainScene.smoke.positionBallMesh.position.z=25;
 
-        isOverView = false;
+        MainScene.isOverView = false;
     });
     $('toNo3').addEventListener('click',function(event)
     {
         MainScene.smoke.positionBallMesh.position.x=151;
         MainScene.smoke.positionBallMesh.position.z=20;
 
-        isOverView = false;
+        MainScene.isOverView = false;
     });
     $('toNo4').addEventListener('click',function(event)
     {
         MainScene.smoke.positionBallMesh.position.x=180;
         MainScene.smoke.positionBallMesh.position.z=22;
 
-        isOverView = false;
+        MainScene.isOverView = false;
     });
     $('toNo5').addEventListener('click',function(event)
     {
         MainScene.smoke.positionBallMesh.position.x=215;
         MainScene.smoke.positionBallMesh.position.z=27;
 
-        isOverView = false;
+        MainScene.isOverView = false;
     });
 }
