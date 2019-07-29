@@ -115,8 +115,8 @@ Interaction.prototype.fuc3 = function (MainScene)
         $("toNo1").style.display="none";
         $("toNo2").style.display="none";
 
-        $("shut_div").style.display='block';
-        $("clibtn_b").style.display='block';
+        //$("shut_div").style.display='block';
+        //$("clibtn_b").style.display='block';
     })
 
     $('addBtn').addEventListener('click',function (event)
@@ -212,8 +212,8 @@ Interaction.prototype.fuc3 = function (MainScene)
            // userBookNumber=0;
 
             $("startRun").style.display="inline-block";
-            $("floor1").style.display = "none";
-            $("floor2").style.display = "none";
+            $("floor1").style.display="inline-block";
+            $("floor2").style.display="inline-block";
             $("toNo1").style.display = "none";
             $("toNo2").style.display = "none";
             $("toNo3").style.display = "none";

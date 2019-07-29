@@ -170,11 +170,11 @@ mainScene.prototype.setScene = function()
     this.renderer.setPixelRatio( window.devicePixelRatio );
     document.getElementById("WebGL-output").appendChild(this.renderer.domElement);
 
-    var camControlOver = new THREE.OrbitControls(this.camera, this.renderer.domElement);
-    camControlOver.center = new THREE.Vector3(430,24,21);
-    camControlOver.userPan = false;
-    camControlOver.autoRotate=true;
-    this.freeViewControl = camControlOver;
+    this.camControlOver = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+    this.camControlOver.center = new THREE.Vector3(430,24,21);
+    this.camControlOver.userPan = false;
+    this.camControlOver.autoRotate=true;
+    this.freeViewControl = this.camControlOver;
 
     var camControl = new THREE.FirstPersonControls(this.camera, this.renderer.domElement);
     camControl.lookSpeed = 1;

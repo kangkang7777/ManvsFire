@@ -4,7 +4,6 @@
     <list default="true" id="7b682202-0905-458a-ab74-ff5472c71de9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/Interaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Interaction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/fireControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/fireControl.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/mainScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/mainScene.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -17,15 +16,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DockManager">
-    <window id="2">
+    <window id="1">
       <content type="file-editors">
         <state>
-          <leaf>
+          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/new.html">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="104">
-                    <caret line="89" column="49" selection-start-line="89" selection-start-column="49" selection-end-line="89" selection-end-column="49" />
+                  <state relative-caret-position="-2">
+                    <caret line="70" column="128" lean-forward="true" selection-start-line="70" selection-start-column="128" selection-end-line="70" selection-end-column="128" />
                   </state>
                 </provider>
               </entry>
@@ -38,25 +37,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FESDemo.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="118" column="118" selection-start-line="118" selection-start-column="118" selection-end-line="118" selection-end-column="118" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#3;n#body#0;n#html#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Underground_TjSub_HYH1220.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="3475" column="27" selection-start-line="3446" selection-start-column="8" selection-end-line="3478" selection-end-column="9" />
+            <state relative-caret-position="-7492">
+              <caret line="1667" column="71" selection-start-line="1667" selection-start-column="71" selection-end-line="1667" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -73,7 +57,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SmokeData/tjsub.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
+            <state relative-caret-position="702">
               <caret line="26" column="114" selection-start-line="26" selection-start-column="114" selection-end-line="26" selection-end-column="114" />
             </state>
           </provider>
@@ -82,8 +66,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/mainScene.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="206" column="32" selection-start-line="206" selection-start-column="25" selection-end-line="206" selection-end-column="32" />
+            <state relative-caret-position="3699">
+              <caret line="137" column="20" selection-start-line="137" selection-start-column="20" selection-end-line="137" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/fireman.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2565">
+              <caret line="95" column="11" selection-start-line="95" selection-start-column="11" selection-end-line="95" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model/man/fireman.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1647">
+              <caret line="61" column="19" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -91,16 +93,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/three.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="42159" column="69" lean-forward="true" selection-start-line="42159" selection-start-column="69" selection-end-line="42159" selection-end-column="69" />
+            <state relative-caret-position="993222">
+              <caret line="36786" column="29" selection-start-line="36786" selection-start-column="29" selection-end-line="36786" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Smoke.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="718">
+            <state relative-caret-position="10395">
               <caret line="385" column="1" selection-start-line="385" selection-start-column="1" selection-end-line="385" selection-end-column="1" />
             </state>
           </provider>
@@ -109,17 +111,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/fireControl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="62" column="5" lean-forward="true" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
+            <state relative-caret-position="1755">
+              <caret line="65" column="79" selection-start-line="65" selection-start-column="79" selection-end-line="65" selection-end-column="79" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/Interaction.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="235" column="53" lean-forward="true" selection-start-line="235" selection-start-column="53" selection-end-line="235" selection-end-column="53" />
+            <state relative-caret-position="270">
+              <caret line="94" column="26" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -128,9 +130,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>self.kk</find>
-      <find>animate</find>
-      <find>isedit</find>
       <find>kk</find>
       <find>isEdit</find>
       <find>mouse</find>
@@ -158,6 +157,9 @@
       <find>toNo5</find>
       <find>toNo</find>
       <find>control</find>
+      <find>m</find>
+      <find>model</find>
+      <find>camControlOver</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -166,12 +168,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/new.html" />
         <option value="$PROJECT_DIR$/js/launch.js" />
         <option value="$PROJECT_DIR$/js/Underground_TjSub_HYH1220.js" />
         <option value="$PROJECT_DIR$/js/Smoke.js" />
-        <option value="$PROJECT_DIR$/js/mainScene.js" />
         <option value="$PROJECT_DIR$/js/fireControl.js" />
+        <option value="$PROJECT_DIR$/new.html" />
+        <option value="$PROJECT_DIR$/js/mainScene.js" />
+        <option value="$PROJECT_DIR$/lib/three.js" />
         <option value="$PROJECT_DIR$/js/Interaction.js" />
       </list>
     </option>
@@ -186,7 +189,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-18" />
     <option name="y" value="42" />
     <option name="width" value="1696" />
@@ -197,6 +200,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -217,13 +221,28 @@
             <path>
               <item name="manvsFire" type="b2602c69:ProjectViewProjectNode" />
               <item name="manvsFire" type="462c0819:PsiDirectoryNode" />
+              <item name="MergedFiles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manvsFire" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manvsFire" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manvsFire" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manvsFire" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+              <item name="man" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manvsFire" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manvsFire" type="462c0819:PsiDirectoryNode" />
               <item name="SmokeData" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -284,15 +303,18 @@
       <workItem from="1560415021731" duration="16000" />
       <workItem from="1564211388113" duration="9201000" />
       <workItem from="1564275742120" duration="13142000" />
-      <workItem from="1564305181516" duration="5854000" />
+      <workItem from="1564305181516" duration="6571000" />
+      <workItem from="1564360613691" duration="4832000" />
+      <workItem from="1564377116388" duration="9487000" />
+      <workItem from="1564388403265" duration="689000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37095000" />
+    <option name="totallyTimeSpent" value="52820000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13992763" />
@@ -454,23 +476,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="42159" column="69" lean-forward="true" selection-start-line="42159" selection-start-column="69" selection-end-line="42159" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/fireControl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="62" column="5" lean-forward="true" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FESDemo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
+        <state relative-caret-position="2835">
           <caret line="118" column="118" selection-start-line="118" selection-start-column="118" selection-end-line="118" selection-end-column="118" />
           <folding>
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -490,43 +498,71 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SmokeData/tjsub.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
+        <state relative-caret-position="702">
           <caret line="26" column="114" selection-start-line="26" selection-start-column="114" selection-end-line="26" selection-end-column="114" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/mainScene.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="206" column="32" selection-start-line="206" selection-start-column="25" selection-end-line="206" selection-end-column="32" />
+        <state relative-caret-position="3699">
+          <caret line="137" column="20" selection-start-line="137" selection-start-column="20" selection-end-line="137" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/Underground_TjSub_HYH1220.js">
+    <entry file="file://$PROJECT_DIR$/js/fireman.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="3475" column="27" selection-start-line="3446" selection-start-column="8" selection-end-line="3478" selection-end-column="9" />
+        <state relative-caret-position="2565">
+          <caret line="95" column="11" selection-start-line="95" selection-start-column="11" selection-end-line="95" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/Interaction.js">
+    <entry file="file://$PROJECT_DIR$/lib/three.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="235" column="53" lean-forward="true" selection-start-line="235" selection-start-column="53" selection-end-line="235" selection-end-column="53" />
+        <state relative-caret-position="993222">
+          <caret line="36786" column="29" selection-start-line="36786" selection-start-column="29" selection-end-line="36786" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/Smoke.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="718">
+        <state relative-caret-position="10395">
           <caret line="385" column="1" selection-start-line="385" selection-start-column="1" selection-end-line="385" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/fireControl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1755">
+          <caret line="65" column="79" selection-start-line="65" selection-start-column="79" selection-end-line="65" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/man/fireman.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1647">
+          <caret line="61" column="19" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Underground_TjSub_HYH1220.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7492">
+          <caret line="1667" column="71" selection-start-line="1667" selection-start-column="71" selection-end-line="1667" selection-end-column="71" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/new.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="89" column="49" selection-start-line="89" selection-start-column="49" selection-end-line="89" selection-end-column="49" />
+        <state relative-caret-position="-2">
+          <caret line="70" column="128" lean-forward="true" selection-start-line="70" selection-start-column="128" selection-end-line="70" selection-end-column="128" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Interaction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="94" column="26" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="26" />
         </state>
       </provider>
     </entry>
