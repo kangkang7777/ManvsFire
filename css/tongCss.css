@@ -390,6 +390,7 @@ label{
     opacity: 1;
 }
 /*UI界面控制结束----冯玉山*/
+
 .bottom-menu{
     text-align: center;
     position: absolute;
@@ -402,6 +403,14 @@ label{
     -webkit-border-radius: 10px;
     -o-border-radius: 10px;
 }
+
+.bottom-menu button{
+    width:20%;
+    height:80%;
+    margin: 5px 40px;
+    display: inline;
+}
+
 .illustration{
     border-radius: 10px;
     -moz-border-radius: 10px;
