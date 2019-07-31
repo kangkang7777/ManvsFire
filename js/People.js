@@ -260,7 +260,6 @@ People.prototype.init = function (_this)
                                         i--;
                                     }
                                 }
-                                alert('修改这里!!!迭代完一批leader: ' + getLeaderArr.length);
                             }
 
                             self.isLoaded = true;

@@ -104,31 +104,25 @@ Interaction.prototype.fuc3 = function (MainScene)
         $('menu-div').style.display = 'block';
     });
 
-    $('submitBtn').addEventListener('click',function (event)
+    $('createPersonBtn').addEventListener('click',function (event)
     {
         $('menu-div').style.display = 'none';
         $('loading').style.display = 'block';
+        var number=Number($('people-number').textContent);
+        MainScene.number=number;
+        alert(number);
+        alert(MainScene.number);
+
         Utils.loading(1000);
         MainScene.Path.createNav();
         MainScene.addPeople();
+
 
         $("toNo1").style.display="none";
         $("toNo2").style.display="none";
 
         //$("shut_div").style.display='block';
         //$("clibtn_b").style.display='block';
-    })
-
-    $('addBtn').addEventListener('click',function (event)
-    {
-        MainScene.number += 100;
-        $('totalNum').innerHTML= MainScene.number;
-    });
-
-    $('subBtn').addEventListener('click',function (event)
-    {
-        MainScene.number -= 100;
-        $('totalNum').innerHTML= MainScene.number;
     });
 
     $('userBook').addEventListener('click',function (event)
