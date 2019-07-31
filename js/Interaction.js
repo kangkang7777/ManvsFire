@@ -136,6 +136,25 @@ Interaction.prototype.fuc3 = function (MainScene)
         alert("欢迎体验本火灾模拟实验平台，您可以通过鼠标和键盘进行场景漫游。或过点击“地下一层”和“地下二层”按钮变换视角。若要开始火灾模拟，请点击“编辑烟雾”按钮进行编辑，编辑完毕后点击“开始模拟”");
     });
 
+    $('userBook2').addEventListener('click',function(event)
+    {
+        alert("您已进入烟雾编辑页面，请通过拖动屏幕上的坐标轴至“红色标识”下方并使其成半透明效果，以选择起火位置，或者直接点选“火灾情景”按钮进行选择。在选择完毕后，请再次点击“编辑烟雾”以退出编辑模式，并点击“开始模拟”");
+    });
+
+    $('userBook3').addEventListener('click',function(event)
+    {
+        if(!MainScene.isBook3)
+        {
+            $('Extin').style.display="inline-block";
+            $('userBook3').innerText="关闭使用说明";
+            MainScene.isBook3 = true;
+        }
+        else{
+            $('Extin').style.display="none";
+            $('userBook3').innerText="灭火器使用书";
+            MainScene.isBook3 = false;
+        }
+    });
 
     $('fireman').addEventListener('click',function (event)
     {
@@ -146,13 +165,43 @@ Interaction.prototype.fuc3 = function (MainScene)
             $("userBook").style.display="none";
             $("userBook2").style.display="none";
             $("userBook3").style.display="inline-block";
-            $("shutuserbook3").style.display="none";
             //消防员出现之后就是跟随视角
             $("floor1").style.display="none";
             $("floor2").style.display="none";
             $("cancelFollow").style.display="inline-block";
             $("allowFollow").style.display="none";
             $("startRun").style.display="none";
+
+        MainScene.isOverView = true;
+    });
+
+    $('cancelFollow').addEventListener('click',function(event)
+    {
+        $("userBook").style.display="none";
+        $("userBook2").style.display="none";
+        $("userBook3").style.display="inline-block";
+        $("floor1").style.display="inline-block";
+        $("floor2").style.display="inline-block";
+        $("allowFollow").style.display="inline-block";
+        $("cancelFollow").style.display="none";
+        MainScene.isOverView = false;
+    });
+
+    $('allowFollow').addEventListener('click',function(event)
+    {
+        MainScene.isfiremanclick=true;
+        MainScene.camControlOver.autoRotate = false;
+
+        $("fireman").style.display="none";
+        $("userBook").style.display="none";
+        $("userBook2").style.display="none";
+        $("userBook3").style.display="inline-block";
+        //消防员出现之后就是跟随视角
+        $("floor1").style.display="none";
+        $("floor2").style.display="none";
+        $("cancelFollow").style.display="inline-block";
+        $("allowFollow").style.display="none";
+        $("startRun").style.display="none";
 
         MainScene.isOverView = true;
     });
@@ -180,11 +229,11 @@ Interaction.prototype.fuc3 = function (MainScene)
     $('transformSmoke').addEventListener('click',function(event)
     {
         if(!MainScene.isEdit){
-           // userBookNumber=1;
-
             $("startRun").style.display="none";
             $("floor1").style.display = "none";
             $("floor2").style.display = "none";
+            $('userBook').style.display = "none";
+            $('userBook2').style.display = "inline-block";
             $("toNo1").style.display = "inline-block";
             $("toNo2").style.display = "inline-block";
             $("toNo3").style.display = "inline-block";
@@ -209,11 +258,11 @@ Interaction.prototype.fuc3 = function (MainScene)
             MainScene.smoke.positionBallMesh.visible=true;
 
         } else{
-           // userBookNumber=0;
-
             $("startRun").style.display="inline-block";
             $("floor1").style.display="inline-block";
             $("floor2").style.display="inline-block";
+            $('userBook').style.display = "inline-block";
+            $('userBook2').style.display = "none";
             $("toNo1").style.display = "none";
             $("toNo2").style.display = "none";
             $("toNo3").style.display = "none";

@@ -63,6 +63,7 @@ var mainScene = function()
     //控制参数
 
     this.isEdit = false;
+    this.isBook3 = false;
 
     this.mouse=new THREE.Vector2();
 

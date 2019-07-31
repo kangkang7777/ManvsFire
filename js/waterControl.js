@@ -74,8 +74,8 @@ waterControl.prototype.ifwaterMiss = function ()
 {
     if(this.watermiss)
     {
-        for (var i = 0; i < this.water.waterArr.length; i++) {
-            this.water.waterArr[i].material.opacity = 0;
+        for (var i = 0; i < this.waterArr.length; i++) {
+            this.waterArr[i].material.opacity = 0;
         }
     }
 }
