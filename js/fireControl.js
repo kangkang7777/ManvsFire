@@ -11,12 +11,15 @@ fireControl.prototype.init = function (_this)
         length: 1,
         high: 20
     });
-    this.fireManager = new FIRE.Manager(fireControl);
-    this.fireManager.maxParticlesNum = 6000;
-    this.fireManager.runTimer();
-    this.fireManager.controlSheet.x = _this.smoke.positionBallMesh.position.x;
-    this.fireManager.controlSheet.y = _this.smoke.positionBallMesh.position.y;
-    this.fireManager.controlSheet.z = _this.smoke.positionBallMesh.position.z;
+    var fireManager = new FIRE.Manager(fireControl);
+    fireManager.maxParticlesNum = 1000;
+    fireManager.runTimer();
+    fireManager.controlSheet.x = _this.smoke.positionBallMesh.position.x;
+    fireManager.controlSheet.y = _this.smoke.positionBallMesh.position.y;
+    fireManager.controlSheet.z = _this.smoke.positionBallMesh.position.z;
+    fireManager.target.visible =false;
+    this.fireManager = fireManager;
+
 
     _this.scene.add(this.fireManager.target);
 

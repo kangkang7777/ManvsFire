@@ -49,6 +49,7 @@ Interaction.prototype.fuc2 = function (_this)
         _this.smoke.positionBallMesh.visible=false;
         _this.isStartRun = true;
         _this.smoke.isStartSmoke = true;
+        _this.fire.fireManager.target.visible = true;
         _this.clock=new THREE.Clock();
         /*
         let timeEscape = setInterval(function ()
@@ -102,9 +103,7 @@ Interaction.prototype.fuc3 = function (MainScene)
     {
         $('loading').style.display = 'block';
         $('createPerson').style.display = 'none';
-        $('escapedoor-menu').style.display = 'none';
         $('Menu').style.display = 'block';
-        $('floor-menu').style.display = 'block';
 
 
         var number=Number($('people-number').textContent);
@@ -123,13 +122,11 @@ Interaction.prototype.fuc3 = function (MainScene)
             $("fireman").style.display="none";
 
             //消防员出现之后就是跟随视角
-            $("floor1").style.display="none";
-            $("floor2").style.display="none";
             $("cancelFollow").style.display="inline-block";
             $("allowFollow").style.display="none";
             $("startRun").style.display="none";
             $('OrbitView').click();
-            $('floor-menu').style.display="none";
+            $('bottom-menu').style.display="none";
 
     });
 
@@ -151,16 +148,12 @@ Interaction.prototype.fuc3 = function (MainScene)
 
     $('transformSmoke').addEventListener('click',function(event)
     {
+        $('freeView').click();
         if(!MainScene.isEdit){
            // userBookNumber=1;
             $("startRun").style.display="none";
-            $("floor1").style.display = "none";
-            $("floor2").style.display = "none";
-            $("toNo1").style.display = "inline-block";
-            $("toNo2").style.display = "inline-block";
-            $("toNo3").style.display = "inline-block";
-            $("toNo4").style.display = "inline-block";
-            $("toNo5").style.display = "inline-block";
+            $("floor-menu").style.display = "none";
+            $("fire-menu").style.display = "inline-block";
             $('transformSmoke').textContent="返回";
 
             MainScene.smoke.Logo1Material.visible=true;
@@ -177,18 +170,14 @@ Interaction.prototype.fuc3 = function (MainScene)
             MainScene.control.visible = true;
             MainScene.fire.Te1Material.visible=false;
             MainScene.fire.Te2Material.visible=false;
+            MainScene.fire.fireManager.target.visible=true;
             MainScene.smoke.positionBallMesh.visible=true;
 
         } else{
            // userBookNumber=0;
             $("startRun").style.display="inline-block";
-            $("floor1").style.display="inline-block";
-            $("floor2").style.display="inline-block";
-            $("toNo1").style.display = "none";
-            $("toNo2").style.display = "none";
-            $("toNo3").style.display = "none";
-            $("toNo4").style.display = "none";
-            $("toNo5").style.display = "none";
+            $("floor-menu").style.display="block";
+            $("fire-menu").style.display = "none";
             $('transformSmoke').textContent="编辑烟雾";
 
             MainScene.smoke.Logo1Material.visible=false;
@@ -205,6 +194,7 @@ Interaction.prototype.fuc3 = function (MainScene)
             MainScene.control.visible = false;
             MainScene.fire.Te1Material.visible=false;
             MainScene.fire.Te2Material.visible=false;
+            MainScene.fire.fireManager.target.visible=false;
             MainScene.smoke.positionBallMesh.visible=false;
 
         }
