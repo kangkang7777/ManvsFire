@@ -139,36 +139,29 @@
     });
 </script>
 
-<div id="escapedoor-menu" class="bottom-menu" style="background:rgb(255, 255, 255, 0.8);display: block">
-    <button  id="escapeDoor1" class="btn btn-default btn-lg">逃生门1</button>
-    <button  id="escapeDoor2" class="btn btn-default btn-lg">逃生门2</button>
-    <button  id="escapeDoor3" class="btn btn-default btn-lg">逃生门3</button>
-</div>
+
 
 <div id="WebGL-output">
 </div>
 
-<div id="floor-menu" class="bottom-menu" style="background:rgb(255, 255, 255, 0.8);display: none">
-    <button  id="floor1" class="btn btn-default btn-lg" style="display:inline">地下一层</button>
-    <button  id="floor2" class="btn btn-default btn-lg" style="display:inline">地下二层</button>
-    <button  id="toNo1" class="btn btn-default btn-lg" style="width:15%;margin: 5px 20px;display:none">1号火灾情景</button>
-    <button  id="toNo2" class="btn btn-default btn-lg" style="width:15%;margin: 5px 20px;display:none">2号火灾情景</button>
-    <button  id="toNo3" class="btn btn-default btn-lg" style="width:15%;margin: 5px 20px;display:none">3号火灾情景</button>
-    <button  id="toNo4" class="btn btn-default btn-lg" style="width:15%;margin: 5px 20px;display:none">4号火灾情景</button>
-    <button  id="toNo5" class="btn btn-default btn-lg" style="width:15%;margin: 5px 20px;display:none">5号火灾情景</button>
-</div>
-<div id="menu-div" style="display:none; top: 0px;width: 100%;height: 100%;position: absolute;background-color:rgb(187, 208, 217,0.9);z-index: 1000;text-align: center">
-    <div style="margin-top:35vh;height: 100%;width: 100%">
-        <h1 style="margin-bottom: 20px">地下空间逃生模拟</h1>
-        <label style="margin-left: 0">请设置逃生人数</label>
-        <label style="margin-left: 0">(手机端建议在100人左右)</label>
-        <label id="totalNum" style="color: #ffff00;margin-left: 0">100</label>
-        <label style="margin-left: 0">人</label>
-        <button id="addBtn" style="border-radius:0.5em;width: 50px">+</button>
-        <button id="subBtn" style="border-radius:0.5em;width: 50px">-</button>
-        <button id="submitBtn" style="border-radius:0.5em;width: 60px">开始</button>
+<div id="bottom-menu" class="bottom-menu" style="background:rgb(255, 255, 255, 0.8);display:block">
+    <div id="floor-menu">
+        <button  id="escapeDoor1" class="btn btn-default btn-lg">逃生门1</button>
+        <button  id="escapeDoor2" class="btn btn-default btn-lg">逃生门2</button>
+        <button  id="escapeDoor3" class="btn btn-default btn-lg">逃生门3</button>
+        <button  id="floor1" class="btn btn-default btn-lg">地下一层</button>
+        <button  id="floor2" class="btn btn-default btn-lg">地下二层</button>
     </div>
+    <div id="fire-menu" style="display:none">
+        <button  id="toNo1" class="btn btn-default btn-lg">1号火灾情景</button>
+        <button  id="toNo2" class="btn btn-default btn-lg">2号火灾情景</button>
+        <button  id="toNo3" class="btn btn-default btn-lg">3号火灾情景</button>
+        <button  id="toNo4" class="btn btn-default btn-lg">4号火灾情景</button>
+        <button  id="toNo5" class="btn btn-default btn-lg">5号火灾情景</button>
+    </div>
+
 </div>
+
 
 <script src="js/particle_system.js"></script>
 <script src="js/fire.js"></script>
