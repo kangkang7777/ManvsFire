@@ -39,8 +39,7 @@ Interaction.prototype.fuc2 = function (_this)
     {
 
         document.getElementById("fireman").style.display = "inline-block";
-        document.getElementById("floor1").style.display = "inline-block";
-        document.getElementById("floor2").style.display = "inline-block";
+        document.getElementById("active").style.display = "inline-block";
         document.getElementById("startRun").style.display = "none";
         document.getElementById("transformSmoke").style.display = "none";
 
@@ -240,5 +239,15 @@ Interaction.prototype.fuc3 = function (MainScene)
     });
     $('freeView').addEventListener('change',function () {
         MainScene.isOverView = false;
+    });
+    $('pause').addEventListener('click',function () {
+        MainScene.active = false;
+        $('continue').style.display = "block";
+        $('pause').style.display = "none";
+    });
+    $('continue').addEventListener('click',function () {
+        MainScene.active = true;
+        $('continue').style.display = "none";
+        $('pause').style.display = "block";
     });
 }
