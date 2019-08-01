@@ -60,6 +60,7 @@ var mainScene = function()
 
     this.globalPlane = null;
 
+    this.currentEscapeTime = 0;
 
     //控制参数
 

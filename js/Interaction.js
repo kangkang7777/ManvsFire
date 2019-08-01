@@ -51,17 +51,21 @@ Interaction.prototype.fuc2 = function (_this)
         _this.smoke.isStartSmoke = true;
         _this.fire.fireManager.target.visible = true;
         _this.clock=new THREE.Clock();
-        /*
-        let timeEscape = setInterval(function ()
-        {
-            if(meshTotalCount>=5){
-                currentEscapeTime += 1;
-                document.getElementById('escapeTimePanel').innerHTML = '逃生用时：'+ currentEscapeTime +' s';
-            }else{
+
+        let timeEscape = setInterval(function () {
+            if (_this.currentEscapeTime < 600) {
+                var clockTime = 600 - _this.currentEscapeTime;
+                if (clockTime < 240)
+                    $('#escapeTimePanel').css("color", "red");
+                $('#escapeTimePanel').html(Math.floor(clockTime / 60) + ':' + Math.floor((clockTime % 60) / 10) + (clockTime % 60) % 10);
+                _this.currentEscapeTime += 1;
+            } else {
                 clearInterval(timeEscape);
+                _this.active = false;
+                //输出统计信息TODO
             }
         },1000);
-        */
+
         _this.smoke.pp.set(_this.smoke.positionBallMesh.position.x,_this.smoke.positionBallMesh.position.y,_this.smoke.positionBallMesh.position.z);
         if( _this.smoke.pp.x+18>215)
         {
@@ -104,7 +108,7 @@ Interaction.prototype.fuc3 = function (MainScene)
         $('loading').style.display = 'block';
         $('createPerson').style.display = 'none';
         $('Menu').style.display = 'block';
-
+        $('illustration-context').innerText = "您已成功创建疏散人群，若要开始火灾模拟，请点击“编辑烟雾”按钮进行编辑，编辑完毕后点击“开始模拟”"
 
         var number=Number($('people-number').textContent);
         MainScene.number=number;
@@ -155,6 +159,7 @@ Interaction.prototype.fuc3 = function (MainScene)
             $("floor-menu").style.display = "none";
             $("fire-menu").style.display = "inline-block";
             $('transformSmoke').textContent="返回";
+            $('illustration-context').innerHTML = "您已进入烟雾编辑页面，请通过拖动屏幕上的坐标轴至“红色标识”下方并使其成半透明效果，以选择起火位置，或者直接点选“火灾情景”按钮进行选择。在选择完毕后，请再次点击“编辑烟雾”以退出编辑模式，并点击“开始模拟”"
 
             MainScene.smoke.Logo1Material.visible=true;
             MainScene.smoke.Logo2Material.visible=true;
