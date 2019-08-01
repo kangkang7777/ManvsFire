@@ -294,44 +294,6 @@ fireman.prototype.positionAdjust = function (_this)
 
 }
 
-fireman.prototype.cameraControl = function (_this)//todo 不应该放在这里！ 摄像机的位置控制，消防员出来的时候就是跟随效果，其它情况就是第一人称漫游效果
-{
-    var self = this;
-    if (_this.isOverView){
-        if(self.cubeFireman && self.isOverViewFireMan){
-
-            if(self.cubeFireman.position.x<355&&self.cubeFireman.position.x>280){
-                _this.freeViewControl.center = new THREE.Vector3(self.cubeFireman.position.x,self.cubeFireman.position.y+2.5,self.cubeFireman.position.z);
-                _this.camera.lookAt(self.cubeFireman.position.x,self.cubeFireman.position.y,self.cubeFireman.position.z);
-                _this.freeViewControl.maxDistance = 3;
-            }
-            else{
-                _this.freeViewControl.center = new THREE.Vector3(self.cubeFireman.position.x,self.cubeFireman.position.y+2,self.cubeFireman.position.z);
-                _this.freeViewControl.maxDistance = 6;
-            }
-        }
-        // if(isOverViewLeader){
-        //
-        //     camControlOver.center = new THREE.Vector3(leaderMeshArr[overViewLeaderIndex].position.x,leaderMeshArr[overViewLeaderIndex].position.y+2.5,leaderMeshArr[overViewLeaderIndex].position.z);
-        //     camera.lookAt(leaderMeshArr[overViewLeaderIndex].position.x,leaderMeshArr[overViewLeaderIndex].position.y,leaderMeshArr[overViewLeaderIndex].position.z);
-        //     camControlOver.maxDistance = 3;
-        // }
-
-        _this.freeViewControl.update(_this.delta);
-    }else{
-        if (_this.camControl && !_this.isEdit)
-        {
-            _this.camControl.update(_this.delta)
-        }
-        else
-            {
-                _this.renderer.setViewport(window.innerWidth * 0.6, window.innerHeight * 0.6, window.innerWidth, window.innerHeight);
-                //renderer.render(scene, cameraOrtho);
-                _this.renderer.setViewport(0, window.innerHeight * 0.6, window.innerWidth * 0.6, window.innerHeight);
-                //renderer.render(scene,cameraPerspective);
-            }
-    }
-}
 
 fireman.prototype.firemanclick = function (_this)
 {
@@ -350,7 +312,6 @@ fireman.prototype.firemanclick = function (_this)
 fireman.prototype.update = function (_this)
 {
     this.positionAdjust(_this);
-    this.cameraControl(_this);    //todo 相机控制不应该放在这里
     this.firemanclick(_this);
     // todo @xiekang this.extinguisherChange();
 }

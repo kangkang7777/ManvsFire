@@ -38,11 +38,10 @@ Interaction.prototype.fuc2 = function (_this)
     document.getElementById('startRun').addEventListener('click',function (event)
     {
 
-        document.getElementById("floor1").style.display = "inline-block";
-        document.getElementById("floor2").style.display = "inline-block";
+        document.getElementById("fireman").style.display = "inline-block";
+        document.getElementById("active").style.display = "inline-block";
         document.getElementById("startRun").style.display = "none";
         document.getElementById("transformSmoke").style.display = "none";
-        $('#illustration-title').text("火场情况");
 
         _this.smoke.redBallMesh.position.x=_this.smoke.positionBallMesh.position.x+16;
         _this.smoke.redBallMesh.position.z= _this.smoke.positionBallMesh.position.z;
@@ -52,27 +51,17 @@ Interaction.prototype.fuc2 = function (_this)
         _this.fire.fireManager.target.visible = true;
         _this.clock=new THREE.Clock();
 
-        _this.EscapeNumber = _this.number;
         let timeEscape = setInterval(function () {
-            if (_this.currentEscapeTime < 600 && _this.number>25 ) {
-                if(_this.number == _this.EscapeNumber-1)
-                    _this.firstEscapeTime = _this.currentEscapeTime;
+            if (_this.currentEscapeTime < 600) {
                 var clockTime = 600 - _this.currentEscapeTime;
                 if (clockTime < 240)
                     $('#escapeTimePanel').css("color", "red");
                 $('#escapeTimePanel').html(Math.floor(clockTime / 60) + ':' + Math.floor((clockTime % 60) / 10) + (clockTime % 60) % 10);
-                $('#illustration-context').html("<br/>火场剩余人数： "+_this.number+"人");
                 _this.currentEscapeTime += 1;
             } else {
                 clearInterval(timeEscape);
-                //_this.active = false;
+                _this.active = false;
                 //输出统计信息TODO
-                $('#illustration-title').text("模拟结束");
-                $('#illustration-context').html("<br/>成功逃出人数："+_this.EscapeNumber+"人"
-                                                    +"<br/>未逃出人数：0人"
-                                                    +"<br/>最快逃生用时："+(_this.firstEscapeTime+1)+"s"
-                                                    +"<br/>全体逃生用时："+_this.currentEscapeTime+"s");
-                $("#fireman").css("display","inline-block");
             }
         },1000);
 
@@ -141,16 +130,6 @@ Interaction.prototype.fuc3 = function (MainScene)
             $("startRun").style.display="none";
             $('OrbitView').click();
             $('bottom-menu').style.display="none";
-
-            $('illustration-title').innerHTML ="<center>\n" +
-                "        <h5>灭火器使用说明</h5>\n" +
-                "    </center>"
-            $('illustration-context').innerHTML = "<center>\n" +
-                "        <p style=\"font-size: 14px\">身距火源约两米，先摇瓶身后拔销</p>\n" +
-                "        <p style=\"font-size: 14px\">身成弓步腿出力，下压开关把粉喷</p>\n" +
-                "        <p style=\"font-size: 14px\">喷时对准火焰根，余火不留防复燃</p>\n" +
-                "        <a href=\"https://www.iqiyi.com/w_19rs6bmc8d.html\" target='_blank'>点击可观看使用教学视频</a>\n" +
-                "    </center>";
 
     });
 
@@ -225,14 +204,7 @@ Interaction.prototype.fuc3 = function (MainScene)
         }
     });
     $('cancelFollow').addEventListener('click',function (event) {
-        if(MainScene.isOverView){
-            MainScene.isOverView = false;
-            $('cancelFollow').innerText = "跟随消防员"
-        }
-        else{
-         MainScene.isOverView = true;
-            $('cancelFollow').innerText = "取消跟随"
-        }
+        MainScene.isOverView = false;
     });
 
     $('toNo1').addEventListener('click',function(event)
@@ -267,5 +239,15 @@ Interaction.prototype.fuc3 = function (MainScene)
     });
     $('freeView').addEventListener('change',function () {
         MainScene.isOverView = false;
+    });
+    $('pause').addEventListener('click',function () {
+        MainScene.active = false;
+        $('continue').style.display = "block";
+        $('pause').style.display = "none";
+    });
+    $('continue').addEventListener('click',function () {
+        MainScene.active = true;
+        $('continue').style.display = "none";
+        $('pause').style.display = "block";
     });
 }

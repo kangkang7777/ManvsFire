@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>New Demo</title>
     <meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
     <link rel="stylesheet" type="text/css" href="css/tongCss.css">
 
 
@@ -70,12 +71,19 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#" style="color:white"><b>同济大学地铁站火灾逃生模拟平台</b></a>
+
         </div>
     </div>
 </nav>
 <div id="escapeTimePanel" class="timePanel"></div>
+<div id="setting" class="btn btn-default btn-lg" style="width:50px;height:45px;background:rgb(0, 0, 0, 0.8);border:none;display: none">
+    <span class="glyphicon glyphicon-cog"></span>
+</div>
 <div class="rightside-menu" style="background:rgb(255, 255, 255, 0.8);display: block">
     <div  style="height:3%;background:rgb(0, 0, 0, 0.8)">
+        <button id="minimize" type="button" class="btn btn-default btn-xs" style="background:rgb(0, 0, 0, 0.1);border:none;margin-top:0;position: absolute;right:0;top:0;">
+            <span class="glyphicon glyphicon-play-circle"></span>
+        </button>
     </div>
     <p>fps统计：</p>
     <div id="Stats-output"></div>
@@ -105,10 +113,13 @@
         <button  id="startRun" class="btn btn-default btn-lg" style="left:10%;width:80%;position: absolute;top:80%">开始模拟</button>
         <!--<button  id="follow_leader" class="btn btn btn-default btn-lg" style="width:140px;display:inline-block;margin: 0 3px">跟随逃生者</button>-->
         <!--<button  id="cancel_follow_leader" class="btn btn btn-default btn-lg" style="width:140px;display:inline-block;margin: 0 3px">取消跟随逃生者</button>-->
+        <div id="active" style="display: none">
+            <button  id="pause" class="btn btn-default btn-lg" style="left:10%;width:80%;position:absolute;top:65%"><span class="glyphicon glyphicon-pause"></span>暂停</button>
+            <button  id="continue" class="btn btn-default btn-lg" style="left:10%;width:80%;position:absolute;top:65%;display: none;"><span class="glyphicon glyphicon-play"></span>继续</button>
+        </div>
         <button  id="transformSmoke" class="btn btn-default btn-lg" style="left:10%;width:80%;position:absolute;top:65%">编辑烟雾</button>
-        <button  id="fireman" class="btn btn-default btn-lg" style="display:none;left:10%;width:80%;position:absolute;top:65%">开始灭火</button>
-        <button  id="cancelFollow" class="btn btn-default btn-lg" style="display:none;left:10%;width:80%;position:absolute;top:65%">取消跟随</button>
-        <button  id="allowFollow" class="btn btn-default btn-lg" style="display:none;left:10%;width:80%;position: absolute;top:65%">跟随消防员</button>
+        <button  id="fireman" class="btn btn-default btn-lg" style="display:none;left:10%;width:80%;position:absolute;top:80%">开始灭火</button>
+        <button  id="cancelFollow" class="btn btn-default btn-lg" style="display:none;left:10%;width:80%;position:absolute;top:80%">取消跟随</button>
         <!--UI界面开始----冯玉山-->
         <!--<div class="fingureControlBtn" style="z-index: 2">-->
         <!--<button class="directionButton" style="left: 50px;bottom:100px" id="up"></button>-->
@@ -128,7 +139,20 @@
     $(function() {
 
         $( ".rightside-menu" ).draggable();
+        $("#setting").draggable();
         $( "#View" ).buttonset();
+        $("#minimize").click(function(){
+            $(".rightside-menu").hide(200);
+            $("#setting").css("display","block");
+            $("#setting").css("left", $(".rightside-menu").css("left"));
+            $("#setting").css("top", $(".rightside-menu").css("top"));
+        });
+        $("#setting").click(function(){
+            $("#setting").hide(0);
+            $(".rightside-menu").css("left", $("#setting").css("left"));
+            $(".rightside-menu").css("top",  $("#setting").css("top"));
+            $(".rightside-menu").show(200);
+        });
         $("#person-slider").slider(
             {
                 value:100,

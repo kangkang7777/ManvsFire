@@ -136,21 +136,25 @@ mainScene.prototype.start = function()
     {
         self.delta = self.clock.getDelta();
 
-        self.water.update();    //todo debug here
+        if(self.active){
+            self.water.update();    //todo debug here
 
-        self.fire.update(self);
+            self.fire.update(self);
 
-        self.smoke.update(self);
+            self.smoke.update(self);
 
-        self.Fireman.update(self);
+            self.Fireman.update(self);
 
-        self.people.update(self);
+            self.people.update(self);
+        }
+
+        self.cameraControl();
 
         TWEEN.update();
 
         self.stats.update();
 
-        if(self.active) requestAnimationFrame(animate);
+        requestAnimationFrame(animate);
         self.renderer.clear();
         self.renderer.setViewport(0, 0, window.innerWidth, window.innerHeight);
         self.renderer.render(self.scene, self.camera);
@@ -262,5 +266,45 @@ mainScene.prototype.LOD = function ()
             }
         }
 
+    }
+}
+
+
+mainScene.prototype.cameraControl = function ()
+{
+    var self = this;
+    if (self.isOverView){
+        if(self.Fireman.cubeFireman && self.Fireman.isOverViewFireMan){
+
+            if(self.Fireman.cubeFireman.position.x<355&&self.Fireman.cubeFireman.position.x>280){
+                self.freeViewControl.center = new THREE.Vector3(self.Fireman.cubeFireman.position.x,self.Fireman.cubeFireman.position.y+2.5,self.Fireman.cubeFireman.position.z);
+                self.camera.lookAt(self.Fireman.cubeFireman.position.x,self.Fireman.cubeFireman.position.y,self.Fireman.cubeFireman.position.z);
+                self.freeViewControl.maxDistance = 3;
+            }
+            else{
+                self.freeViewControl.center = new THREE.Vector3(self.Fireman.cubeFireman.position.x,self.Fireman.cubeFireman.position.y+2,self.Fireman.cubeFireman.position.z);
+                self.freeViewControl.maxDistance = 6;
+            }
+        }
+        // if(isOverViewLeader){
+        //
+        //     camControlOver.center = new THREE.Vector3(leaderMeshArr[overViewLeaderIndex].position.x,leaderMeshArr[overViewLeaderIndex].position.y+2.5,leaderMeshArr[overViewLeaderIndex].position.z);
+        //     camera.lookAt(leaderMeshArr[overViewLeaderIndex].position.x,leaderMeshArr[overViewLeaderIndex].position.y,leaderMeshArr[overViewLeaderIndex].position.z);
+        //     camControlOver.maxDistance = 3;
+        // }
+
+        self.freeViewControl.update(self.delta);
+    }else{
+        if (self.camControl && !self.isEdit)
+        {
+            self.camControl.update(self.delta)
+        }
+        else
+        {
+            self.renderer.setViewport(window.innerWidth * 0.6, window.innerHeight * 0.6, window.innerWidth, window.innerHeight);
+            //renderer.render(scene, cameraOrtho);
+            self.renderer.setViewport(0, window.innerHeight * 0.6, window.innerWidth * 0.6, window.innerHeight);
+            //renderer.render(scene,cameraPerspective);
+        }
     }
 }
