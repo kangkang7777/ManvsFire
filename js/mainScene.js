@@ -62,6 +62,10 @@ var mainScene = function()
 
     this.currentEscapeTime = 0;
 
+    this.firstEscapeTime = 0;
+
+    this.EscapeNumber = 0;
+
     //控制参数
 
     this.isEdit = false;

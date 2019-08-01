@@ -109,7 +109,8 @@ Utils.getClosePoint = function(obj, objArr, maxDis){
     var dis = maxDis;
     for(var i =0 ;i<objArr.length; i++ ){
         if(obj.position.y === objArr[i].position.y){
-            var currentDis = Math.abs(obj.position.x-objArr[i].position.x)+Math.abs(obj.position.z-objArr[i].position.z);                if(currentDis<dis){
+            var currentDis = Math.abs(obj.position.x-objArr[i].position.x)+Math.abs(obj.position.z-objArr[i].position.z);
+            if(currentDis<dis){
                 dis = currentDis;
                 clostIndex = i;
             }
