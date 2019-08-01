@@ -1,17 +1,19 @@
 var mainScene = function()
 {
-    this.stats = initStats();
+    /*    this.stats = initStats();
 
-    function initStats() {
-        var stats = new Stats();
-        stats.setMode(0); // 0: fps, 1: ms
-        // Align top-left
-        stats.domElement.style.position = 'relative';
-        stats.domElement.style.left = '35%';
-        stats.domElement.style.top = '0px';
-        document.getElementById("Stats-output").appendChild(stats.domElement);
-        return stats;
-    }
+        function initStats() {
+            var stats = new Stats();
+            stats.setMode(0); // 0: fps, 1: ms
+            // Align top-left
+            stats.domElement.style.position = 'relative';
+            stats.domElement.style.left = '35%';
+            stats.domElement.style.top = '0px';
+            document.getElementById("Stats-output").appendChild(stats.domElement);
+            return stats;
+        }
+
+     */
     clock = new THREE.Clock();
 
     this.scene = new THREE.Scene();
@@ -152,14 +154,14 @@ mainScene.prototype.start = function()
 
         TWEEN.update();
 
-        self.stats.update();
+        //self.stats.update();
 
         requestAnimationFrame(animate);
         self.renderer.clear();
         self.renderer.setViewport(0, 0, window.innerWidth, window.innerHeight);
         self.renderer.render(self.scene, self.camera);
         //todo self.renderer.clear();    与renderer.autoClear = false 对应 不知道意义何在
-        self.stats.end();
+        //self.stats.end();
 
         //self.LOD;//lod算法
 

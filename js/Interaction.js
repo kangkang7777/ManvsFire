@@ -7,16 +7,22 @@ var Interaction = function ()
 Interaction.prototype.fuc1 = function (_this)
 {
     document.getElementById('escapeDoor1').addEventListener('click',function (event) {
-        _this.camera.position.set(400,80,70);
+        _this.camera.position.set(400,60,70);
         _this.freeViewControl.center.set(416,22,7);
+        _this.camControl.lat = -85;
+        _this.camControl.lon = -70;
     });
     document.getElementById('escapeDoor2').addEventListener('click',function (event) {
-        _this.camera.position.set(500,60,53);
+        _this.camera.position.set(520,38,12);
         _this.freeViewControl.center.set(554,22,46);
+        _this.camControl.lat = -80;
+        _this.camControl.lon = -298;
     });
     document.getElementById('escapeDoor3').addEventListener('click',function (event) {
-        _this.camera.position.set(540,60,-32);
+        _this.camera.position.set(525,52,-41);
         _this.freeViewControl.center.set(548,22,6);
+        _this.camControl.lat = -85;
+        _this.camControl.lon = -285;
     });
     document.getElementById('WebGL-output').addEventListener('click',function(event){
         _this.freeViewControl.autoRotate=false;
@@ -24,10 +30,18 @@ Interaction.prototype.fuc1 = function (_this)
     document.getElementById('floor1').addEventListener('click',function(event)
     {
         _this.camera.position.set(397,29,42);
+        console.log(_this.camera);
+        console.log(_this.freeViewControl);
+
+        console.log(_this.camControl);
     });
     document.getElementById('floor2').addEventListener('click',function(event)
     {
         _this.camera.position.set(589,14,18);
+        console.log(_this.camera);
+        console.log(_this.freeViewControl);
+
+        console.log(_this.camControl);
     });
 
 }
@@ -38,7 +52,6 @@ Interaction.prototype.fuc2 = function (_this)
     document.getElementById('startRun').addEventListener('click',function (event)
     {
 
-        document.getElementById("fireman").style.display = "inline-block";
         document.getElementById("active").style.display = "inline-block";
         document.getElementById("startRun").style.display = "none";
         document.getElementById("transformSmoke").style.display = "none";
@@ -51,17 +64,32 @@ Interaction.prototype.fuc2 = function (_this)
         _this.fire.fireManager.target.visible = true;
         _this.clock=new THREE.Clock();
 
+        _this.EscapeNumber = _this.number;
         let timeEscape = setInterval(function () {
-            if (_this.currentEscapeTime < 600) {
-                var clockTime = 600 - _this.currentEscapeTime;
-                if (clockTime < 240)
-                    $('#escapeTimePanel').css("color", "red");
-                $('#escapeTimePanel').html(Math.floor(clockTime / 60) + ':' + Math.floor((clockTime % 60) / 10) + (clockTime % 60) % 10);
-                _this.currentEscapeTime += 1;
-            } else {
-                clearInterval(timeEscape);
-                _this.active = false;
-                //输出统计信息TODO
+            if(_this.active) {
+                if (_this.currentEscapeTime < 600 && _this.number > 20) {
+                    _this.currentEscapeTime += 1;
+                    if (_this.number == _this.EscapeNumber - 1)
+                        _this.firstEscapeTime = _this.currentEscapeTime;
+                    var clockTime = 600 - _this.currentEscapeTime;
+                    if (clockTime < 240)
+                        $('#escapeTimePanel').css("color", "red");
+                    $('#escapeTimePanel').html('0' + Math.floor(clockTime / 60) + ':' + Math.floor((clockTime % 60) / 10) + (clockTime % 60) % 10);
+                    $('#illustration-title').text("火场情况");
+                    $('#illustration-context').html("<br/>火场剩余人数： " + _this.number + "人");
+
+                } else {
+                    clearInterval(timeEscape);
+                    _this.active = false;
+
+                    $("#fireman").css('display',"inline-block");
+                    $('#illustration-title').text("模拟结束");
+                    $('#illustration-context').html("<br/>成功逃出人数：" + _this.EscapeNumber + "人"
+                        + "<br/>未逃出人数：0人"
+                        + "<br/>最快逃生用时：" + (_this.firstEscapeTime) + "s"
+                        + "<br/>全体逃生用时：" + _this.currentEscapeTime + "s");
+                    $("#fireman").css("display", "inline-block");
+                }
             }
         },1000);
 
@@ -119,17 +147,28 @@ Interaction.prototype.fuc3 = function (MainScene)
 
     $('fireman').addEventListener('click',function (event)
     {
+        MainScene.active = true;
         MainScene.isfiremanclick=true;
         MainScene.camControlOver.autoRotate = false;
 
             $("fireman").style.display="none";
-
+            $('escapeTimePanel').style.display = "none";
+            $('pause').style.display = "inline-block";
             //消防员出现之后就是跟随视角
             $("cancelFollow").style.display="inline-block";
-            $("allowFollow").style.display="none";
             $("startRun").style.display="none";
             $('OrbitView').click();
             $('bottom-menu').style.display="none";
+
+        $('illustration-title').innerHTML ="<center>\n" +
+            "        <h5>灭火器使用说明</h5>\n" +
+            "    </center>"
+        $('illustration-context').innerHTML = "<center>\n" +
+            "        <p style=\"font-size: 14px\">身距火源约两米，先摇瓶身后拔销</p>\n" +
+            "        <p style=\"font-size: 14px\">身成弓步腿出力，下压开关把粉喷</p>\n" +
+            "        <p style=\"font-size: 14px\">喷时对准火焰根，余火不留防复燃</p>\n" +
+            "        <a href=\"https://www.iqiyi.com/w_19rs6bmc8d.html\" target='_blank'>点击可观看使用教学视频</a>\n" +
+            "    </center>";
 
     });
 
@@ -156,9 +195,10 @@ Interaction.prototype.fuc3 = function (MainScene)
            // userBookNumber=1;
             $("startRun").style.display="none";
             $("floor-menu").style.display = "none";
+            $('View').style.display = "none";
             $("fire-menu").style.display = "inline-block";
             $('transformSmoke').textContent="返回";
-            $('illustration-context').innerHTML = "您已进入烟雾编辑页面，请通过拖动屏幕上的坐标轴至“红色标识”下方并使其成半透明效果，以选择起火位置，或者直接点选“火灾情景”按钮进行选择。在选择完毕后，请再次点击“编辑烟雾”以退出编辑模式，并点击“开始模拟”"
+            $('illustration-context').innerHTML = "您已进入烟雾编辑页面，请通过拖动屏幕上的坐标轴至“红色标识”下方并使其成半透明效果，以选择起火位置，或者直接点选“火灾情景”按钮进行选择。在选择完毕后，请点击“返回”以退出编辑模式，并点击“开始模拟”"
 
             MainScene.smoke.Logo1Material.visible=true;
             MainScene.smoke.Logo2Material.visible=true;
@@ -204,7 +244,16 @@ Interaction.prototype.fuc3 = function (MainScene)
         }
     });
     $('cancelFollow').addEventListener('click',function (event) {
-        MainScene.isOverView = false;
+        if(MainScene.isOverView){
+            MainScene.isOverView = false;
+            $('cancelFollow').innerText = "跟随消防员";
+            MainScene.camControl.lat = -26;
+            MainScene.camControl.lon = -166;
+        }
+        else{
+            MainScene.isOverView = true;
+            $('cancelFollow').innerText = "取消跟随"
+        }
     });
 
     $('toNo1').addEventListener('click',function(event)
@@ -239,6 +288,9 @@ Interaction.prototype.fuc3 = function (MainScene)
     });
     $('freeView').addEventListener('change',function () {
         MainScene.isOverView = false;
+        MainScene.camera.position.set(397,29,42);
+        MainScene.camControl.lat = -30;
+        MainScene.camControl.lon = 337;
     });
     $('pause').addEventListener('click',function () {
         MainScene.active = false;

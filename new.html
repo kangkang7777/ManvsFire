@@ -45,11 +45,11 @@
         }
         .timePanel{
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            color: #f0f0f0;
-            font-size: 3rem;
+            color: #333;
+            font-size: 4rem;
             font-weight:200;
             display: block;
-            top:0px;
+            top:4%;
             width: 100%;
             height: 10vh;
             position: absolute;
@@ -75,7 +75,6 @@
         </div>
     </div>
 </nav>
-<div id="escapeTimePanel" class="timePanel"></div>
 <div id="setting" class="btn btn-default btn-lg" style="width:50px;height:45px;background:rgb(0, 0, 0, 0.8);border:none;display: none">
     <span class="glyphicon glyphicon-cog"></span>
 </div>
@@ -85,17 +84,19 @@
             <span class="glyphicon glyphicon-play-circle"></span>
         </button>
     </div>
-    <p>fps统计：</p>
-    <div id="Stats-output"></div>
-
+    <!--<p>fps统计：</p>
+    <div id="Stats-output"></div>-->
+    <div id="escapeTimePanel" class="timePanel"></div>
     <div class="illustration">
         <div id="illustration-title">使用说明</div>
         <div id="illustration-context">
-            欢迎体验本火灾模拟实验平台，您可以切换漫游视角和环绕视角，通过鼠标和键盘进行场景漫游或底部菜单栏快速变换视角以观察场景。
-            <br/>若想模拟火灾请先创建人群。
+            <p>欢迎体验本火灾模拟实验平台。</p>
+            <br/>您可以切换漫游视角和环绕视角，通过鼠标键盘进行场景漫游或底部菜单栏快速变换视角以观察场景。
+            <p></p>
+            <p>若想模拟火灾请先创建人群。</p>
         </div>
     </div>
-    <form style="position:absolute;top:55%;left:10%">
+    <form style="position:absolute;top:57%;left:10%">
         <div id="View">
             <input type="radio" id="OrbitView" name="View" checked="checked"><label for="OrbitView">环绕视角</label>
             <input type="radio" id="freeView" name="View"><label for="freeView">漫游视角</label>

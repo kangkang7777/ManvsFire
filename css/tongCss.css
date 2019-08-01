@@ -417,10 +417,10 @@ label{
     -webkit-border-radius: 10px;
     -o-border-radius: 10px;
     background:white;
-    top:20%;
+    top:12%;
     left:5%;
     width:90%;
-    height:30%;
+    height:37%;
     position: absolute;
     border:1px dashed black;
 }
