@@ -2,8 +2,15 @@ var Interaction = function ()
 {
     this.currentFloor = "floor1";
     this.whetherrotate = false;
+
+    this.SCREEN_WIDTH = window.innerWidth;
+    this.SCREEN_HEIGHT = window.innerHeight;
+    this.aspect = this.SCREEN_WIDTH / this.SCREEN_HEIGHT;
 }
 //交互部分
+
+//视角控制
+//todo 房屋加载
 Interaction.prototype.fuc1 = function (_this)
 {
     document.getElementById('escapeDoor1').addEventListener('click',function (event) {
@@ -12,6 +19,7 @@ Interaction.prototype.fuc1 = function (_this)
         _this.camControl.lat = -85;
         _this.camControl.lon = -70;
     });
+
     document.getElementById('escapeDoor2').addEventListener('click',function (event) {
         _this.camera.position.set(520,38,12);
         _this.freeViewControl.center.set(554,22,46);
@@ -27,20 +35,47 @@ Interaction.prototype.fuc1 = function (_this)
     document.getElementById('WebGL-output').addEventListener('click',function(event){
         _this.freeViewControl.autoRotate=false;
     });
+
+    // document.getElementById('floor1').addEventListener('click',function(event)
+    // {
+    //     _this.camera.position.set(397,29,42);
+    //     console.log(_this.camera);
+    //     console.log(_this.freeViewControl);
+    //
+    //     console.log(_this.camControl);
+    // });
+
+    //上层 视角控制 加载
     document.getElementById('floor1').addEventListener('click',function(event)
     {
+        //设置视角是一层 触发改变
+        _this.camera_status = _this.Cameracontroller.setenum.floor1;
+        //设定视角具体数值
         _this.camera.position.set(397,29,42);
+        console.log(_this.camera);
+        console.log(_this.freeViewControl);
+        console.log(_this.camControl);
+    });
+
+    document.getElementById('floor2').addEventListener('click',function(event)
+    {
+        //设置视角是二层 触发改变
+        _this.camera_status = _this.Cameracontroller.setenum.floor2;
+        //设定视角具体数值
+        _this.camera.position.set(589,14,18);
         console.log(_this.camera);
         console.log(_this.freeViewControl);
 
         console.log(_this.camControl);
     });
-    document.getElementById('floor2').addEventListener('click',function(event)
+
+    document.getElementById('test').addEventListener('click',function(event)
     {
-        _this.camera.position.set(589,14,18);
+        var output = _this.camera.position.x.toString()+","+_this.camera.position.y.toString()+","+_this.camera.position.z.toString();
+        alert(output);
+        console.log(_this.camera.position);
         console.log(_this.camera);
         console.log(_this.freeViewControl);
-
         console.log(_this.camControl);
     });
 
@@ -283,10 +318,13 @@ Interaction.prototype.fuc3 = function (MainScene)
         MainScene.smoke.positionBallMesh.position.z=27;
     });
 
-    $('OrbitView').addEventListener('change',function () {
+    $('OrbitView').addEventListener('change',function ()
+    {
+        MainScene.Cameracontroller.active=false;
         MainScene.isOverView = true;
     });
     $('freeView').addEventListener('change',function () {
+        MainScene.Cameracontroller.active=true;
         MainScene.isOverView = false;
         MainScene.camera.position.set(397,29,42);
         MainScene.camControl.lat = -30;
@@ -302,4 +340,21 @@ Interaction.prototype.fuc3 = function (MainScene)
         $('continue').style.display = "none";
         $('pause').style.display = "block";
     });
+}
+
+Interaction.prototype.fuc4 = function (_this)
+{
+    var self = this;
+    window.addEventListener( 'resize', onWindowResize, false );
+    //窗口设置
+    function onWindowResize()
+    {
+        self.SCREEN_WIDTH = window.innerWidth;
+        self.SCREEN_HEIGHT = window.innerHeight;
+        self.aspect = self.SCREEN_WIDTH / self.SCREEN_HEIGHT;
+        _this.renderer.setSize(self.SCREEN_WIDTH, self.SCREEN_HEIGHT);
+        _this.camera.aspect = _this.aspect;
+        _this.camera.updateProjectionMatrix();
+
+    }
 }

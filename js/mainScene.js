@@ -32,6 +32,12 @@ var mainScene = function()
 
     this.freeViewControl = null;     //自由观察视角
 
+    //视角限制的实例
+    this.Cameracontroller = new CameraController();
+
+    //视角状态初始化
+    this.camera_status = this.Cameracontroller.setenum.none;
+
     this.camControl = null;
 
     this.isACO = true;  //是否进行默认的蚁群算法
@@ -124,6 +130,8 @@ mainScene.prototype.init = function()
     //交互2
     this.HCI.fuc2(this);
 
+    //交互4
+    //this.HCI.fuc4(this);
 }
 
 mainScene.prototype.start = function()
@@ -138,7 +146,8 @@ mainScene.prototype.start = function()
     {
         self.delta = self.clock.getDelta();
 
-        if(self.active){
+        if(self.active)
+        {
             self.water.update();    //todo debug here
 
             self.fire.update(self);
@@ -149,6 +158,7 @@ mainScene.prototype.start = function()
 
             self.people.update(self);
         }
+        self.Cameracontroller.update(self);
 
         self.cameraControl();
 
@@ -271,7 +281,7 @@ mainScene.prototype.LOD = function ()
     }
 }
 
-
+//视角的转动 并非调整不同房间
 mainScene.prototype.cameraControl = function ()
 {
     var self = this;
@@ -309,4 +319,9 @@ mainScene.prototype.cameraControl = function ()
             //renderer.render(scene,cameraPerspective);
         }
     }
+}
+
+mainScene.prototype.camera_tatus_change = function ()
+{
+
 }
