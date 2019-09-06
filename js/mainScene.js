@@ -100,6 +100,10 @@ mainScene.prototype.init = function()
     //初始化
     this.setScene();
 
+    //region 视角控制初始化
+    this.Cameracontroller.init(this);
+    //endregion
+
     //region 路径
     this.Path.init(this);
     //endregion
@@ -117,7 +121,7 @@ mainScene.prototype.init = function()
     //endregion
 
     //region场景加载
-    this.underground.init(this.scene,this.renderer);
+    this.underground.init(this.scene,this.renderer,this);
     //endregion
 
     //regiog消防员加载
@@ -158,7 +162,7 @@ mainScene.prototype.start = function()
 
             self.people.update(self);
         }
-        self.Cameracontroller.update(self);
+        self.Cameracontroller.update1(self);
 
         self.cameraControl();
 

@@ -2,12 +2,12 @@ var Underground = function () {
     this.currentBlockName = "TJSub_Vis";
     this.isOnload = false;
 }
-Underground.prototype.init = function (scene,renderer) {
-    this.DrawBuilding(scene,renderer);
+Underground.prototype.init = function (scene,renderer,_this) {
+    this.DrawBuilding(scene,renderer,_this);
     this.FixBuliding(scene);
 }
 
-Underground.prototype.DrawBuilding = function(scene,renderer){
+Underground.prototype.DrawBuilding = function(scene,renderer,_this){
     var self = this;
     var name = this.currentBlockName;
     var workerLoadVsg=new Worker("js/loadBlockVsg.js");
@@ -384,54 +384,72 @@ Underground.prototype.DrawBuilding = function(scene,renderer){
 
                 var polyhedron = createMesh(IfcFootingGeo,name,"IfcFooting");
                 scene.add(polyhedron);
+                _this.Cameracontroller.collideMeshList.push(polyhedron);
 
                 polyhedron = createMesh(IfcWallStandardCaseGeo,name,"IfcWallStandardCase");
                 scene.add(polyhedron);
+                _this.Cameracontroller.collideMeshList.push(polyhedron);
 
                 polyhedron = createMesh(IfcSlabGeo,name,"IfcSlab");
                 scene.add(polyhedron);
+                _this.Cameracontroller.collideMeshList.push(polyhedron);
 
                 polyhedron = createMesh(IfcStairGeo,name,"IfcStair");
                 scene.add(polyhedron);
+                _this.Cameracontroller.collideMeshList.push(polyhedron);
 
                 polyhedron = createMesh(IfcDoorGeo,name,"IfcDoor");
                 scene.add(polyhedron);
+                _this.Cameracontroller.collideMeshList.push(polyhedron);
 
                 polyhedron = createMesh(IfcWindowGeo,name,"IfcWindow");
                 scene.add(polyhedron);
+                _this.Cameracontroller.collideMeshList.push(polyhedron);
 
                 polyhedron = createMesh(IfcBeamGeo,name,"IfcBeam");
                 scene.add(polyhedron);
+                _this.Cameracontroller.collideMeshList.push(polyhedron);
 
                 polyhedron = createMesh(IfcCoveringGeo,name,"IfcCovering");
                 scene.add(polyhedron);
+                _this.Cameracontroller.collideMeshList.push(polyhedron);
 
                 polyhedron = createMesh(IfcFlowSegmentGeo,name,"IfcFlowSegment");
                 scene.add(polyhedron);
+                _this.Cameracontroller.collideMeshList.push(polyhedron);
 
                 polyhedron = createMesh(IfcWallGeo,name,"IfcWall");
                 scene.add(polyhedron);
+                _this.Cameracontroller.collideMeshList.push(polyhedron);
 
                 polyhedron = createMesh(IfcRampGeo,name,"IfcRamp");
                 scene.add(polyhedron);
+                _this.Cameracontroller.collideMeshList.push(polyhedron);
 
                 polyhedron = createMesh(IfcRailingGeo,name,"IfcRailing");
                 scene.add(polyhedron);
+                _this.Cameracontroller.collideMeshList.push(polyhedron);
 
                 polyhedron = createMesh(IfcFlowTerminalGeo,name,"IfcFlowTerminal");
                 scene.add(polyhedron);
+                _this.Cameracontroller.collideMeshList.push(polyhedron);
 
                 polyhedron = createMesh(IfcBuildingElementProxyGeo,name,"IfcBuildingElementProxy");
                 scene.add(polyhedron);
+                _this.Cameracontroller.collideMeshList.push(polyhedron);
 
                 polyhedron = createMesh(IfcColumnGeo,name,"IfcColumn");
                 scene.add(polyhedron);
+                _this.Cameracontroller.collideMeshList.push(polyhedron);
 
                 polyhedron = createMesh(IfcFlowControllerGeo,name,"IfcFlowController");
                 scene.add(polyhedron);
+                _this.Cameracontroller.collideMeshList.push(polyhedron);
 
                 polyhedron = createMesh(IfcFlowFittingGeo,name,"IfcFlowFitting");
                 scene.add(polyhedron);
+                _this.Cameracontroller.collideMeshList.push(polyhedron);
+
             }
 
             self.isOnload = false;
