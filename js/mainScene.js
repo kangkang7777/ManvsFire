@@ -74,9 +74,9 @@ var mainScene = function()
 
     this.EscapeNumber = 0;
 
-    this.raycaster = new THREE.Raycaster();
+    this.raycaster = new THREE.Raycaster();//点击坐标测试射线
 
-    this.pMesh = null;
+    this.pMesh = null;//点击坐标测试球体
 
 
     //控制参数
@@ -252,16 +252,14 @@ mainScene.prototype.setScene = function()
     this.renderer.localClippingEnabled = true;
 //endregion
 
-    var axesHelper = new THREE.AxesHelper(10);
-    this.scene.add(axesHelper);
-
+    //region 点击坐标测试球体设置
     var pointGeo = new THREE.SphereGeometry(1,8,8);
     var pointMaterial = new THREE.MeshLambertMaterial({
         emissive: 0xff0000
     });
     this.pMesh = new THREE.Mesh(pointGeo,pointMaterial);
     this.scene.add(this.pMesh);
-
+//endregion
 }
 
 mainScene.prototype.addPeople = function ()

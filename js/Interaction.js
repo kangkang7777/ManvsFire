@@ -133,7 +133,8 @@ Interaction.prototype.fuc2 = function (_this)
         {
             self.whetherrotate=true;
         }
-        _this.smoke.newsmokeData=smoke_insert(_this.smoke.p0,_this.smoke.p1,_this.smoke.p2,_this.smoke.pp,_this.messagecontrol.smokeDataA,_this.messagecontrol.smokeDataB,_this.messagecontrol.smokeDataC);
+        //_this.smoke.newsmokeData=smoke_insert(_this.smoke.p0,_this.smoke.p1,_this.smoke.p2,_this.smoke.pp,_this.messagecontrol.smokeDataA,_this.messagecontrol.smokeDataB,_this.messagecontrol.smokeDataC);
+        _this.smoke.newsmokeData = _this.messagecontrol.smokeData;
         //开始模拟后开始行走
         for(var i=0; i<_this.people.blendMeshArr.length;i++) {
             var meshMixer = new THREE.AnimationMixer( _this.people.blendMeshArr[i] );
@@ -170,7 +171,7 @@ Interaction.prototype.fuc3 = function (MainScene)
         $('loading').style.display = 'block';
         $('createPerson').style.display = 'none';
         $('Menu').style.display = 'block';
-        $('illustration-context').innerText = "您已成功创建疏散人群，若要开始火灾模拟，请点击“编辑烟雾”按钮进行编辑，编辑完毕后点击“开始模拟”"
+        $('illustration-context').innerHTML = "<p>您已成功创建疏散人群</p>"+"若要开始火灾模拟，请点击“编辑烟雾”按钮进行编辑，编辑完毕后点击“开始模拟”"
 
         var number=Number($('people-number').textContent);
         MainScene.number=number;
@@ -186,16 +187,16 @@ Interaction.prototype.fuc3 = function (MainScene)
         MainScene.isfiremanclick=true;
         MainScene.camControlOver.autoRotate = false;
 
-            $("fireman").style.display="none";
-            $('escapeTimePanel').style.display = "none";
-            $('pause').style.display = "inline-block";
-            //消防员出现之后就是跟随视角
-            $("cancelFollow").style.display="inline-block";
-            $("startRun").style.display="none";
-            $('OrbitView').click();
-            $('bottom-menu').style.display="none";
+        $("fireman").style.display = "none";
+        $('escapeTimePanel').style.display = "none";
+        $('pause').style.display = "inline-block";
+        //消防员出现之后就是跟随视角
+        $("cancelFollow").style.display = "inline-block";
+        $("startRun").style.display = "none";
+        $('OrbitView').click();
+        $('bottom-menu').style.display = "none";
 
-        $('illustration-title').innerHTML ="<center>\n" +
+        $('illustration-title').innerHTML = "<center>\n" +
             "        <h5>灭火器使用说明</h5>\n" +
             "    </center>"
         $('illustration-context').innerHTML = "<center>\n" +
@@ -240,7 +241,7 @@ Interaction.prototype.fuc3 = function (MainScene)
             MainScene.smoke.Logo3Material.visible=true;
             MainScene.smoke.Logo4Material.visible=true;
             MainScene.smoke.Logo5Material.visible=true;
-            MainScene.camera.position.set(150,195, 60)
+            MainScene.camera.position.set(150, 195, 60);//原x为150 450
             MainScene.camera.lookAt(150, 0, 8);
             MainScene.globalPlane.constant = 17;
             MainScene.globalPlane.set(new THREE.Vector3(0, -1, 0), 17);
@@ -256,8 +257,10 @@ Interaction.prototype.fuc3 = function (MainScene)
            // userBookNumber=0;
             $("startRun").style.display="inline-block";
             $("floor-menu").style.display="block";
+            $('View').style.display = "inline-block";
             $("fire-menu").style.display = "none";
             $('transformSmoke').textContent="编辑烟雾";
+            $('illustration-context').innerHTML = "<p>您已成功选取起火点位置</p>" + "<p>若想模拟火灾请点击“开始模拟”</p>";
 
             MainScene.smoke.Logo1Material.visible=false;
             MainScene.smoke.Logo2Material.visible=false;
@@ -340,6 +343,29 @@ Interaction.prototype.fuc3 = function (MainScene)
         $('continue').style.display = "none";
         $('pause').style.display = "block";
     });
+//region 点击坐标测试
+    window.addEventListener('mousemove', onMouseMove, false);
+
+    function onMouseMove(event) {
+        MainScene.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        MainScene.mouse.y = (event.clientY / window.innerHeight) * 2 + 1;
+    }
+
+
+    window.addEventListener('click', onClick, false);
+
+    function onClick(event) {
+        MainScene.raycaster.setFromCamera(MainScene.mouse, MainScene.camera);
+        var intersects = MainScene.raycaster.intersectObjects(MainScene.Cameracontroller.collideMeshList, true);
+        if (intersects.length > 0) {
+
+            console.log(intersects[0].point);
+            MainScene.pMesh.position.set(intersects[0].point.x, intersects[0].point.y, intersects[0].point.z);
+            console.log(MainScene.pMesh.position);
+        }
+
+    }
+    //deregion
 }
 
 Interaction.prototype.fuc4 = function (_this)
