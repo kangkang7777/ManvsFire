@@ -2,8 +2,15 @@ var Interaction = function ()
 {
     this.currentFloor = "floor1";
     this.whetherrotate = false;
+
+    this.SCREEN_WIDTH = window.innerWidth;
+    this.SCREEN_HEIGHT = window.innerHeight;
+    this.aspect = this.SCREEN_WIDTH / this.SCREEN_HEIGHT;
 }
 //交互部分
+
+//视角控制
+//todo 房屋加载
 Interaction.prototype.fuc1 = function (_this)
 {
     document.getElementById('escapeDoor1').addEventListener('click',function (event) {
@@ -12,6 +19,7 @@ Interaction.prototype.fuc1 = function (_this)
         _this.camControl.lat = -85;
         _this.camControl.lon = -70;
     });
+
     document.getElementById('escapeDoor2').addEventListener('click',function (event) {
         _this.camera.position.set(520,38,12);
         _this.freeViewControl.center.set(554,22,46);
@@ -27,20 +35,47 @@ Interaction.prototype.fuc1 = function (_this)
     document.getElementById('WebGL-output').addEventListener('click',function(event){
         _this.freeViewControl.autoRotate=false;
     });
+
+    // document.getElementById('floor1').addEventListener('click',function(event)
+    // {
+    //     _this.camera.position.set(397,29,42);
+    //     console.log(_this.camera);
+    //     console.log(_this.freeViewControl);
+    //
+    //     console.log(_this.camControl);
+    // });
+
+    //上层 视角控制 加载
     document.getElementById('floor1').addEventListener('click',function(event)
     {
+        //设置视角是一层 触发改变
+        _this.camera_status = _this.Cameracontroller.setenum.floor1;
+        //设定视角具体数值
         _this.camera.position.set(397,29,42);
+        console.log(_this.camera);
+        console.log(_this.freeViewControl);
+        console.log(_this.camControl);
+    });
+
+    document.getElementById('floor2').addEventListener('click',function(event)
+    {
+        //设置视角是二层 触发改变
+        _this.camera_status = _this.Cameracontroller.setenum.floor2;
+        //设定视角具体数值
+        _this.camera.position.set(589,14,18);
         console.log(_this.camera);
         console.log(_this.freeViewControl);
 
         console.log(_this.camControl);
     });
-    document.getElementById('floor2').addEventListener('click',function(event)
+
+    document.getElementById('test').addEventListener('click',function(event)
     {
-        _this.camera.position.set(589,14,18);
+        var output = _this.camera.position.x.toString()+","+_this.camera.position.y.toString()+","+_this.camera.position.z.toString();
+        alert(output);
+        console.log(_this.camera.position);
         console.log(_this.camera);
         console.log(_this.freeViewControl);
-
         console.log(_this.camControl);
     });
 
@@ -67,7 +102,7 @@ Interaction.prototype.fuc2 = function (_this)
         _this.EscapeNumber = _this.number;
         let timeEscape = setInterval(function () {
             if(_this.active) {
-                if (_this.currentEscapeTime < 600 && _this.number > 10) {
+                if (_this.currentEscapeTime < 600 && _this.number > 20) {
                     _this.currentEscapeTime += 1;
                     if (_this.number == _this.EscapeNumber - 1)
                         _this.firstEscapeTime = _this.currentEscapeTime;
@@ -98,8 +133,7 @@ Interaction.prototype.fuc2 = function (_this)
         {
             self.whetherrotate=true;
         }
-        //_this.smoke.newsmokeData=smoke_insert(_this.smoke.p0,_this.smoke.p1,_this.smoke.p2,_this.smoke.pp,_this.messagecontrol.smokeDataA,_this.messagecontrol.smokeDataB,_this.messagecontrol.smokeDataC);
-        _this.smoke.newsmokeData = _this.messagecontrol.smokeData;
+        _this.smoke.newsmokeData=smoke_insert(_this.smoke.p0,_this.smoke.p1,_this.smoke.p2,_this.smoke.pp,_this.messagecontrol.smokeDataA,_this.messagecontrol.smokeDataB,_this.messagecontrol.smokeDataC);
         //开始模拟后开始行走
         for(var i=0; i<_this.people.blendMeshArr.length;i++) {
             var meshMixer = new THREE.AnimationMixer( _this.people.blendMeshArr[i] );
@@ -125,40 +159,43 @@ Interaction.prototype.fuc2 = function (_this)
 
 }
 
-Interaction.prototype.fuc3 = function (MainScene) {
-    var $ = function (_) {
+Interaction.prototype.fuc3 = function (MainScene)
+{
+    var $ = function(_) {
         return document.getElementById(_);
     };
 
-    $('createPersonBtn').addEventListener('click', function (event) {
+    $('createPersonBtn').addEventListener('click',function (event)
+    {
         $('loading').style.display = 'block';
         $('createPerson').style.display = 'none';
         $('Menu').style.display = 'block';
-        $('illustration-context').innerHTML = "<p>您已成功创建疏散人群</p>" + "若要开始火灾模拟，请点击“编辑烟雾”按钮进行编辑，编辑完毕后点击“开始模拟”";
+        $('illustration-context').innerText = "您已成功创建疏散人群，若要开始火灾模拟，请点击“编辑烟雾”按钮进行编辑，编辑完毕后点击“开始模拟”"
 
-        var number = Number($('people-number').textContent);
-        MainScene.number = number;
+        var number=Number($('people-number').textContent);
+        MainScene.number=number;
         Utils.loading(1000);
         MainScene.Path.createNav();
         MainScene.addPeople();
 
     });
 
-    $('fireman').addEventListener('click', function (event) {
+    $('fireman').addEventListener('click',function (event)
+    {
         MainScene.active = true;
-        MainScene.isfiremanclick = true;
+        MainScene.isfiremanclick=true;
         MainScene.camControlOver.autoRotate = false;
 
-        $("fireman").style.display = "none";
-        $('escapeTimePanel').style.display = "none";
-        $('pause').style.display = "inline-block";
-        //消防员出现之后就是跟随视角
-        $("cancelFollow").style.display = "inline-block";
-        $("startRun").style.display = "none";
-        $('OrbitView').click();
-        $('bottom-menu').style.display = "none";
+            $("fireman").style.display="none";
+            $('escapeTimePanel').style.display = "none";
+            $('pause').style.display = "inline-block";
+            //消防员出现之后就是跟随视角
+            $("cancelFollow").style.display="inline-block";
+            $("startRun").style.display="none";
+            $('OrbitView').click();
+            $('bottom-menu').style.display="none";
 
-        $('illustration-title').innerHTML = "<center>\n" +
+        $('illustration-title').innerHTML ="<center>\n" +
             "        <h5>灭火器使用说明</h5>\n" +
             "    </center>"
         $('illustration-context').innerHTML = "<center>\n" +
@@ -170,149 +207,154 @@ Interaction.prototype.fuc3 = function (MainScene) {
 
     });
 
-    $('floor1').addEventListener('click', function (event) {
-        MainScene.camera.position.set(397, 29, 42);
+    $('floor1').addEventListener('click',function (event)
+    {
+        MainScene.camera.position.set(397,29,42);
         MainScene.camControl.lon = 337;
         MainScene.camControl.lat = -30;
         MainScene.currentFloor = "floor1";
     });
 
-    $('floor2').addEventListener('click', function (event) {
-        MainScene.camera.position.set(589, 14, 18);
+    $('floor2').addEventListener('click',function (event)
+    {
+        MainScene.camera.position.set(589,14,18);
         MainScene.camControl.lon = 160;
         MainScene.camControl.lat = -30;
         MainScene.currentFloor = "floor2";
     });
 
-    $('transformSmoke').addEventListener('click', function (event) {
+    $('transformSmoke').addEventListener('click',function(event)
+    {
         $('freeView').click();
-        if (!MainScene.isEdit) {
-            // userBookNumber=1;
-            $("startRun").style.display = "none";
+        if(!MainScene.isEdit){
+           // userBookNumber=1;
+            $("startRun").style.display="none";
             $("floor-menu").style.display = "none";
             $('View').style.display = "none";
             $("fire-menu").style.display = "inline-block";
-            $('transformSmoke').textContent = "返回";
+            $('transformSmoke').textContent="返回";
             $('illustration-context').innerHTML = "您已进入烟雾编辑页面，请通过拖动屏幕上的坐标轴至“红色标识”下方并使其成半透明效果，以选择起火位置，或者直接点选“火灾情景”按钮进行选择。在选择完毕后，请点击“返回”以退出编辑模式，并点击“开始模拟”"
 
-            MainScene.smoke.Logo1Material.visible = true;
-            MainScene.smoke.Logo2Material.visible = true;
-            MainScene.smoke.Logo3Material.visible = true;
-            MainScene.smoke.Logo4Material.visible = true;
-            MainScene.smoke.Logo5Material.visible = true;
-            MainScene.camera.position.set(150, 195, 60)//原x为150 450
+            MainScene.smoke.Logo1Material.visible=true;
+            MainScene.smoke.Logo2Material.visible=true;
+            MainScene.smoke.Logo3Material.visible=true;
+            MainScene.smoke.Logo4Material.visible=true;
+            MainScene.smoke.Logo5Material.visible=true;
+            MainScene.camera.position.set(150,195, 60)
             MainScene.camera.lookAt(150, 0, 8);
             MainScene.globalPlane.constant = 17;
             MainScene.globalPlane.set(new THREE.Vector3(0, -1, 0), 17);
             MainScene.control.attach(MainScene.smoke.positionBallMesh);
             MainScene.isEdit = true;
             MainScene.control.visible = true;
-            MainScene.fire.Te1Material.visible = false;
-            MainScene.fire.Te2Material.visible = false;
-            MainScene.fire.fireManager.target.visible = true;
-            MainScene.smoke.positionBallMesh.visible = true;
+            MainScene.fire.Te1Material.visible=false;
+            MainScene.fire.Te2Material.visible=false;
+            MainScene.fire.fireManager.target.visible=true;
+            MainScene.smoke.positionBallMesh.visible=true;
 
-        } else {
-            // userBookNumber=0;
-            $("startRun").style.display = "inline-block";
-            $("floor-menu").style.display = "block";
-            $('View').style.display = "inline-block";
+        } else{
+           // userBookNumber=0;
+            $("startRun").style.display="inline-block";
+            $("floor-menu").style.display="block";
             $("fire-menu").style.display = "none";
-            $('transformSmoke').textContent = "编辑烟雾";
-            $('illustration-context').innerHTML = "<p>您已成功选取起火点位置</p>" + "<p>若想模拟火灾请点击“开始模拟”</p>";
+            $('transformSmoke').textContent="编辑烟雾";
 
-            MainScene.smoke.Logo1Material.visible = false;
-            MainScene.smoke.Logo2Material.visible = false;
-            MainScene.smoke.Logo3Material.visible = false;
-            MainScene.smoke.Logo4Material.visible = false;
-            MainScene.smoke.Logo5Material.visible = false;
-            MainScene.camera.position.set(573, 53, 69);
+            MainScene.smoke.Logo1Material.visible=false;
+            MainScene.smoke.Logo2Material.visible=false;
+            MainScene.smoke.Logo3Material.visible=false;
+            MainScene.smoke.Logo4Material.visible=false;
+            MainScene.smoke.Logo5Material.visible=false;
+            MainScene.camera.position.set(573,53,69);
             MainScene.camControl.lon = -140;
             MainScene.camControl.lat = -90;
-            MainScene.globalPlane.constant = 100000;
+            MainScene.globalPlane.constant=100000;
             MainScene.control.attach();
             MainScene.isEdit = false;
             MainScene.control.visible = false;
-            MainScene.fire.Te1Material.visible = false;
-            MainScene.fire.Te2Material.visible = false;
-            MainScene.fire.fireManager.target.visible = false;
-            MainScene.smoke.positionBallMesh.visible = false;
+            MainScene.fire.Te1Material.visible=false;
+            MainScene.fire.Te2Material.visible=false;
+            MainScene.fire.fireManager.target.visible=false;
+            MainScene.smoke.positionBallMesh.visible=false;
 
         }
     });
-    $('cancelFollow').addEventListener('click', function (event) {
-        if (MainScene.isOverView) {
+    $('cancelFollow').addEventListener('click',function (event) {
+        if(MainScene.isOverView){
             MainScene.isOverView = false;
             $('cancelFollow').innerText = "跟随消防员";
             MainScene.camControl.lat = -26;
             MainScene.camControl.lon = -166;
-        } else {
+        }
+        else{
             MainScene.isOverView = true;
             $('cancelFollow').innerText = "取消跟随"
         }
     });
 
-    $('toNo1').addEventListener('click', function (event) {
-        MainScene.smoke.positionBallMesh.position.x = 41;
-        MainScene.smoke.positionBallMesh.position.z = 25;
+    $('toNo1').addEventListener('click',function(event)
+    {
+        MainScene.smoke.positionBallMesh.position.x=41;
+        MainScene.smoke.positionBallMesh.position.z=25;
 
     });
-    $('toNo2').addEventListener('click', function (event) {
-        MainScene.smoke.positionBallMesh.position.x = 91;
-        MainScene.smoke.positionBallMesh.position.z = 25;
+    $('toNo2').addEventListener('click',function(event)
+    {
+        MainScene.smoke.positionBallMesh.position.x=91;
+        MainScene.smoke.positionBallMesh.position.z=25;
     });
-    $('toNo3').addEventListener('click', function (event) {
-        MainScene.smoke.positionBallMesh.position.x = 151;
-        MainScene.smoke.positionBallMesh.position.z = 20;
+    $('toNo3').addEventListener('click',function(event)
+    {
+        MainScene.smoke.positionBallMesh.position.x=151;
+        MainScene.smoke.positionBallMesh.position.z=20;
     });
-    $('toNo4').addEventListener('click', function (event) {
-        MainScene.smoke.positionBallMesh.position.x = 180;
-        MainScene.smoke.positionBallMesh.position.z = 22;
+    $('toNo4').addEventListener('click',function(event)
+    {
+        MainScene.smoke.positionBallMesh.position.x=180;
+        MainScene.smoke.positionBallMesh.position.z=22;
     });
-    $('toNo5').addEventListener('click', function (event) {
-        MainScene.smoke.positionBallMesh.position.x = 215;
-        MainScene.smoke.positionBallMesh.position.z = 27;
+    $('toNo5').addEventListener('click',function(event)
+    {
+        MainScene.smoke.positionBallMesh.position.x=215;
+        MainScene.smoke.positionBallMesh.position.z=27;
     });
 
-    $('OrbitView').addEventListener('change', function () {
+    $('OrbitView').addEventListener('change',function ()
+    {
+        MainScene.Cameracontroller.active=false;
         MainScene.isOverView = true;
     });
-    $('freeView').addEventListener('change', function () {
+    $('freeView').addEventListener('change',function () {
+        MainScene.Cameracontroller.active=true;
         MainScene.isOverView = false;
-        MainScene.camera.position.set(397, 29, 42);
+        MainScene.camera.position.set(397,29,42);
         MainScene.camControl.lat = -30;
         MainScene.camControl.lon = 337;
     });
-    $('pause').addEventListener('click', function () {
+    $('pause').addEventListener('click',function () {
         MainScene.active = false;
         $('continue').style.display = "block";
         $('pause').style.display = "none";
     });
-    $('continue').addEventListener('click', function () {
+    $('continue').addEventListener('click',function () {
         MainScene.active = true;
         $('continue').style.display = "none";
         $('pause').style.display = "block";
     });
+}
 
-    window.addEventListener('mousemove', onMouseMove, false);
-
-    function onMouseMove(event) {
-        MainScene.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        MainScene.mouse.y = (event.clientY / window.innerHeight) * 2 + 1;
-    }
-
-
-    window.addEventListener('click', onClick, false);
-
-    function onClick(event) {
-        MainScene.raycaster.setFromCamera(MainScene.mouse, MainScene.camera);
-        var intersects = MainScene.raycaster.intersectObjects(MainScene.underground.modelArr, true);
-        if (intersects.length > 0) {
-
-            console.log(intersects[0].point);
-            MainScene.pMesh.position.set(intersects[0].point.x, intersects[0].point.y, intersects[0].point.z);
-            console.log(MainScene.pMesh.position);
-        }
+Interaction.prototype.fuc4 = function (_this)
+{
+    var self = this;
+    window.addEventListener( 'resize', onWindowResize, false );
+    //窗口设置
+    function onWindowResize()
+    {
+        self.SCREEN_WIDTH = window.innerWidth;
+        self.SCREEN_HEIGHT = window.innerHeight;
+        self.aspect = self.SCREEN_WIDTH / self.SCREEN_HEIGHT;
+        _this.renderer.setSize(self.SCREEN_WIDTH, self.SCREEN_HEIGHT);
+        _this.camera.aspect = _this.aspect;
+        _this.camera.updateProjectionMatrix();
 
     }
 }
