@@ -83,7 +83,6 @@
     width: 100%;
     height: 100%;
     background-color:#bbd0d9;
-    z-index: 1001;
     text-align:center;
 }
 .loading img{
@@ -402,6 +401,7 @@ label{
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -o-border-radius: 10px;
+    z-index: 4;
 }
 
 .bottom-menu button{
@@ -437,6 +437,7 @@ label{
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -o-border-radius: 10px;
+    z-index: 4;
 }
 .rightside-menu button{
     margin-top:20px;

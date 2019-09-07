@@ -212,7 +212,7 @@ Smoke.prototype.init = function(_this)
         }
     };
 
-
+/*
     function smokeSceneType()
     {
         var geom1=new THREE.Geometry();//创建烟雾团
@@ -253,8 +253,125 @@ Smoke.prototype.init = function(_this)
             this.smokeSceneArr[i+24].position.set( i*25+20,25,25 );
         }
     };
+*/
+    //长度为60的烟雾团
+    function smokeSceneType1()
+    {
+        var geom1=new THREE.Geometry();//创建烟雾团
+        //创建烟雾素材
+        var material1=new THREE.PointsMaterial({
+            size:40,
+            transparent:true,
+            opacity:0,
+            map:self.smokeTexture,
+            sizeAttenuation:true,
+            depthWrite:false,
+            color:0xffffff
+        });
+        //var range=15;
+        for(var i=0;i<50;i++){
+            //创建烟雾片
+            var particle1=new THREE.Vector3(Math.random()*10-10/2,Math.random()*2-2/2,Math.random()*116-116/2);
+            //将烟雾片一片片加入到geom中
+            geom1.vertices.push(particle1);
+        }
+        cloud1=new THREE.Points(geom1,material1);
+        _this.scene.add(cloud1);
+        self.smokeSceneArr.push(cloud1);
+    }
+
+    //长度为30的烟雾团
+    var cloud2;
+    function smokeSceneType2()
+    {
+        var geom2=new THREE.Geometry();//创建烟雾团
+        //创建烟雾素材
+        var material2=new THREE.PointsMaterial({
+            size:20,
+            transparent:true,
+            opacity:0,
+            map:self.smokeTexture,
+            sizeAttenuation:true,
+            depthWrite:false,
+            color:0xffffff
+        });
+        //var range=15;
+        for(var i=0;i<50;i++){
+            //创建烟雾片
+            var particle2=new THREE.Vector3(Math.random()*30-30/2,Math.random()*1-1/2,Math.random()*30-30/2);
+            //将烟雾片一片片加入到geom中
+            geom2.vertices.push(particle2);
+        }
+        cloud2=new THREE.Points(geom2,material2);
+        _this.scene.add(cloud2);
+        self.smokeSceneArr.push(cloud2);
+    }
+
+    var cloud3;
+    function smokeSceneType3()
+    {
+        var geom3=new THREE.Geometry();//创建烟雾团
+        //创建烟雾素材
+        var material3=new THREE.PointsMaterial({
+            size:30,
+            transparent:true,
+            opacity:0,
+            map:self.smokeTexture,
+            sizeAttenuation:true,
+            depthWrite:false,
+            color:0xffffff
+        });
+        //var range=15;
+        for(var i=0;i<50;i++){
+            //创建烟雾片
+            var particle3=new THREE.Vector3(Math.random()*30-30/2,Math.random()*3-3/2,Math.random()*22-22/2);
+            //将烟雾片一片片加入到geom中
+            geom3.vertices.push(particle3);
+        }
+        cloud3=new THREE.Points(geom3,material3);
+        _this.scene.add(cloud3);
+        self.smokeSceneArr.push(cloud3);
+    }
+
+    for (var i=0;i<12;i++){
+        smokeSceneType3();
+    }
+    for (var i=0;i<4;i++){
+        smokeSceneType1();
+    }
+    for (var i=0;i<12;i++){
+        smokeSceneType2();
+    }
+    for (var i=0;i<6;i++){
+        smokeSceneType3();
+    }
+    for (var i=0;i<6;i++){
+        smokeSceneType1();
+    }
+    for (var i=0;i<6;i++){
+        smokeSceneType2();
+    }
+
+    this.smokeScene=function(){
+        for(var i=0;i<12;i++){
+            this.smokeSceneArr[i].position.set( i*30+275,9.8,25 );
+            this.smokeSceneArr[i+16].position.set( i*30+275,15,25 );
+        }
+        for(var i=0;i<4;i++){
+            this.smokeSceneArr[i+12].position.set( i*60+50,11.8,25 );
+        }
+        for(var i=0;i<6;i++){
+            this.smokeSceneArr[i+28].position.set( i*30+395,22.6,25 );
+            this.smokeSceneArr[i+40].position.set( i*30+395,28.6,25 );
+        }
+        for(var i=0;i<6;i++){
+            this.smokeSceneArr[i+34].position.set( i*60+50,24.5,25 );
+        }
+    };
+
 //endregion
 }
+
 
 Smoke.prototype.smokeColor = function (_this)
 {

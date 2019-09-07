@@ -263,6 +263,13 @@ People.prototype.init = function (_this)
                             }
 
                             self.isLoaded = true;
+                            console.log(self.pathControlMap);
+                            var position = [];
+                            for(var key in self.pathControlMap)
+                            {
+                                position.push(self.pathControlMap[key].object.position);
+                            }
+                            console.log(position);
                         }
 
                         //////////////////////////////////////////////////////////////////////////////////////////////
@@ -422,6 +429,14 @@ People.prototype.ifstartRun = function (_this)
                 _this.scene.remove(self.pathControlMap[key].lod_low_level_obj);
                 delete self.pathControlMap[key];
                 _this.number--;
+                console.log(_this.number);
+                console.log(self.pathControlMap);
+                var position = [];
+                for(var key in self.pathControlMap)
+                {
+                    position.push(self.pathControlMap[key].object.position);
+                }
+                console.log(position);
             }
         }
     }

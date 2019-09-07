@@ -68,6 +68,11 @@ var mainScene = function()
 
     this.EscapeNumber = 0;
 
+    this.raycaster = new THREE.Raycaster();
+
+    this.pMesh = null;
+
+
     //控制参数
 
     this.isEdit = false;
@@ -85,7 +90,7 @@ var mainScene = function()
     this.count = new Array(10);
     this.count.fill(0);
 
-    this.messagecontrol.START();
+    this.messagecontrol.START1();
 
 }
 
@@ -226,10 +231,23 @@ mainScene.prototype.setScene = function()
     this.extinguisherControl.visible=false;
 //endregion
 
+    //region 选取着火点剖切平面
     this.globalPlane = new THREE.Plane( new THREE.Vector3( 0, -1, 0 ), 0.1 );
     this.globalPlane.constant =10000;//剖切的位置
     this.renderer.clippingPlanes.push(this.globalPlane);
     this.renderer.localClippingEnabled = true;
+//endregion
+
+    var axesHelper = new THREE.AxesHelper(10);
+    this.scene.add(axesHelper);
+
+    var pointGeo = new THREE.SphereGeometry(1,8,8);
+    var pointMaterial = new THREE.MeshLambertMaterial({
+        emissive: 0xff0000
+    });
+    this.pMesh = new THREE.Mesh(pointGeo,pointMaterial);
+    this.scene.add(this.pMesh);
+
 }
 
 mainScene.prototype.addPeople = function ()

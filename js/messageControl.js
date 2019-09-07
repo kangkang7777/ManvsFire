@@ -28,3 +28,15 @@ messageControl.prototype.START = function ()
     }
 
 }
+
+messageControl.prototype.START1 = function ()
+{
+    var self = this;
+    self.workerLoadSmokeAndPath.postMessage("../SmokeData/newsmoke.json");
+    self.workerLoadSmokeAndPath.onmessage = function (event)
+    {
+        self.smokeData = event.data.smokeData;
+        self.staticPathArr = event.data.staticPathArr;
+    }
+
+}

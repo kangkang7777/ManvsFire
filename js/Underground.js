@@ -23,6 +23,7 @@ Underground.prototype.DrawBuilding = function(scene,renderer){
     var cashSceneBBoxMinY;
     var cashSceneBBoxMinZ;
     var outsideSourcesFileCount = 0;
+    this.modelArr  = [];
 
     workerLoadVsg.postMessage(name);
 
@@ -384,54 +385,71 @@ Underground.prototype.DrawBuilding = function(scene,renderer){
 
                 var polyhedron = createMesh(IfcFootingGeo,name,"IfcFooting");
                 scene.add(polyhedron);
+                self.modelArr.push(polyhedron);
 
                 polyhedron = createMesh(IfcWallStandardCaseGeo,name,"IfcWallStandardCase");
                 scene.add(polyhedron);
+                self.modelArr.push(polyhedron);
 
                 polyhedron = createMesh(IfcSlabGeo,name,"IfcSlab");
                 scene.add(polyhedron);
+                self.modelArr.push(polyhedron);
 
                 polyhedron = createMesh(IfcStairGeo,name,"IfcStair");
                 scene.add(polyhedron);
+                self.modelArr.push(polyhedron);
 
                 polyhedron = createMesh(IfcDoorGeo,name,"IfcDoor");
                 scene.add(polyhedron);
+                self.modelArr.push(polyhedron);
 
                 polyhedron = createMesh(IfcWindowGeo,name,"IfcWindow");
                 scene.add(polyhedron);
+                self.modelArr.push(polyhedron);
 
                 polyhedron = createMesh(IfcBeamGeo,name,"IfcBeam");
                 scene.add(polyhedron);
+                self.modelArr.push(polyhedron);
 
                 polyhedron = createMesh(IfcCoveringGeo,name,"IfcCovering");
                 scene.add(polyhedron);
+                self.modelArr.push(polyhedron);
 
                 polyhedron = createMesh(IfcFlowSegmentGeo,name,"IfcFlowSegment");
                 scene.add(polyhedron);
+                self.modelArr.push(polyhedron);
 
                 polyhedron = createMesh(IfcWallGeo,name,"IfcWall");
                 scene.add(polyhedron);
+                self.modelArr.push(polyhedron);
 
                 polyhedron = createMesh(IfcRampGeo,name,"IfcRamp");
                 scene.add(polyhedron);
+                self.modelArr.push(polyhedron);
 
                 polyhedron = createMesh(IfcRailingGeo,name,"IfcRailing");
                 scene.add(polyhedron);
+                self.modelArr.push(polyhedron);
 
                 polyhedron = createMesh(IfcFlowTerminalGeo,name,"IfcFlowTerminal");
                 scene.add(polyhedron);
+                self.modelArr.push(polyhedron);
 
                 polyhedron = createMesh(IfcBuildingElementProxyGeo,name,"IfcBuildingElementProxy");
                 scene.add(polyhedron);
+                self.modelArr.push(polyhedron);
 
                 polyhedron = createMesh(IfcColumnGeo,name,"IfcColumn");
                 scene.add(polyhedron);
+                self.modelArr.push(polyhedron);
 
                 polyhedron = createMesh(IfcFlowControllerGeo,name,"IfcFlowController");
                 scene.add(polyhedron);
+                self.modelArr.push(polyhedron);
 
                 polyhedron = createMesh(IfcFlowFittingGeo,name,"IfcFlowFitting");
                 scene.add(polyhedron);
+                self.modelArr.push(polyhedron);
             }
 
             self.isOnload = false;
