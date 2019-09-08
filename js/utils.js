@@ -124,3 +124,72 @@ Utils.loading = function(timeout){
         document.getElementById('loading').style.display = 'none';
     },timeout);
 };
+
+Utils.Queue = function ()
+{
+    var self = this;
+    this.dataStore = [];
+    this.enqueue = enqueue;     //入队
+    this.dequeue = dequeue;     //出队
+    this.front = front;         //查看队首元素
+    this.back = back;           //查看队尾元素
+    this.toString = toString;   //显示队列所有元素
+    this.clear = clear;         //清空当前队列
+    this.empty = empty;         //判断当前队列是否为空
+    this.count = count;         //队列长度
+
+    function enqueue ( element )
+    {
+        self.dataStore.push( element );
+    }
+
+    function dequeue ()
+    {
+        //删除队列首的元素，可以利用 JS 数组中的 shift 方法
+        if( !self.empty() )
+            self.dataStore.shift();
+    }
+
+    function empty()
+    {
+        //我们通过判断 dataStore 的长度就可知道队列是否为空
+        return self.dataStore.length === 0;
+    }
+
+    //查看队首元素，直接返回数组首个元素即可
+    function front()
+    {
+        return self.dataStore[0];
+    }
+
+    //读取队列尾的元素
+    function back ()
+    {
+        if( self.empty() )
+            return 'This queue is empty';
+        else
+            return self.dataStore[ self.dataStore.length - 1 ];
+    }
+
+    //查看对了所有元素，我这里采用数组的 join 方法实现
+
+    function toString()
+    {
+        return self.dataStore.join('\n');
+    }
+
+    //清空当前队列，也很简单，我们直接将 dataStore 数值清空即可
+
+    function clear()
+    {
+        delete self.dataStore;
+        this.dataStor = [];
+    }
+
+    function count()
+    {
+        return self.dataStore.length;
+    }
+
+}
+

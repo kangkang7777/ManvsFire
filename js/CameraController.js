@@ -10,21 +10,23 @@ var CameraController = function ()
             floor2_room1 : 5,
             floor2_room2 : 6
         };
-
+    this.queue = new Utils.Queue();//这是未撞击之前的位置
+    this.Position_backup = new Utils.Queue();//储存最近几次的撞击位置，优化视觉效果
     this.MovingCube=null;
     this.collideMeshList=[];//这东西是被撞东西的集合
     this.active = true;
-    this.Position_backup=[];
+    this.backup_limit = 5;
 }
 
 CameraController.prototype.init = function(_this)
 {
     var self = this;
-    var cubeGeometry = new THREE.CubeGeometry(1, 1, 1);
+    var cubeGeometry = new THREE.CubeGeometry(1, 1,1);
     var wireMaterial = new THREE.MeshBasicMaterial({
-        color: 0xffffff,
+        color: 0xffffffff,
     });
     self.MovingCube = new THREE.Mesh(cubeGeometry, wireMaterial);
+    self.MovingCube.visible = false;
     //self.MovingCube.position.set(0, 25.1, 0);
     _this.scene.add(self.MovingCube);
 }
@@ -54,13 +56,25 @@ CameraController.prototype.update1 = function(_this)
             // 如果返回结果不为空，且交点与射线起点的距离小于物体中心至顶点的距离，则发生了碰撞
             if (collisionResults.length > 0 && collisionResults[0].distance < directionVector.length())
             {
-                    alert("撞上了");
-                //self.MovingCube.position.set(self.Position_backup);
+                if(self.Position_backup.count()<self.backup_limit)
+                    self.Position_backup.enqueue(_this.camera.position.clone());
+                else
+                {
+                    self.Position_backup.dequeue();
+                    self.Position_backup.enqueue(_this.camera.position.clone());
+                }
+                //alert("撞上了");
+                _this.camera.position.set(self.queue.front().x,self.queue.front().y,self.queue.front().z);
             }
             else
             {
-                //flag = 0;
-                //self.Position_backup=self.MovingCube.position.clone();
+                if(self.queue.count()<self.backup_limit)
+                    self.queue.enqueue(_this.camera.position.clone());
+                else
+                {
+                    self.queue.dequeue();
+                    self.queue.enqueue(_this.camera.position.clone());
+                }
             }
         }
     }
@@ -71,17 +85,17 @@ CameraController.prototype.update = function (_this)
 {
     var self = this;
     if(self.active) {
-        if (_this.camera_status == self.setenum.floor1) {
+        if (_this.camera_status === self.setenum.floor1) {
             self.floor1_limit(_this);
-        } else if (_this.camera_status == self.setenum.floor2) {
+        } else if (_this.camera_status === self.setenum.floor2) {
             self.floor2_limit(_this);
-        } else if (_this.camera_status == self.setenum.out) {
+        } else if (_this.camera_status === self.setenum.out) {
 
-        } else if (_this.camera_status == self.setenum.floor1_room) {
+        } else if (_this.camera_status === self.setenum.floor1_room) {
 
-        } else if (_this.camera_status == self.setenum.floor2_room1) {
+        } else if (_this.camera_status === self.setenum.floor2_room1) {
 
-        } else if (_this.camera_status == self.setenum.floor2_room2) {
+        } else if (_this.camera_status === self.setenum.floor2_room2) {
 
         } else {
 
