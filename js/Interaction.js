@@ -98,6 +98,7 @@ Interaction.prototype.fuc2 = function (_this)
         _this.smoke.isStartSmoke = true;
         _this.fire.fireManager.target.visible = true;
         _this.clock=new THREE.Clock();
+        _this.smoke.smokeStart(_this);
 
         _this.EscapeNumber = _this.number;
         let timeEscape = setInterval(function () {
@@ -128,13 +129,6 @@ Interaction.prototype.fuc2 = function (_this)
             }
         },1000);
 
-        _this.smoke.pp.set(_this.smoke.positionBallMesh.position.x,_this.smoke.positionBallMesh.position.y,_this.smoke.positionBallMesh.position.z);
-        if( _this.smoke.pp.x+18>215)
-        {
-            self.whetherrotate=true;
-        }
-        //_this.smoke.newsmokeData=smoke_insert(_this.smoke.p0,_this.smoke.p1,_this.smoke.p2,_this.smoke.pp,_this.messagecontrol.smokeDataA,_this.messagecontrol.smokeDataB,_this.messagecontrol.smokeDataC);
-        _this.smoke.newsmokeData = _this.messagecontrol.smokeData;
         //开始模拟后开始行走
         for(var i=0; i<_this.people.blendMeshArr.length;i++) {
             var meshMixer = new THREE.AnimationMixer( _this.people.blendMeshArr[i] );
@@ -241,8 +235,8 @@ Interaction.prototype.fuc3 = function (MainScene)
             MainScene.smoke.Logo3Material.visible=true;
             MainScene.smoke.Logo4Material.visible=true;
             MainScene.smoke.Logo5Material.visible=true;
-            MainScene.camera.position.set(150, 195, 60);//原x为150 450
-            MainScene.camera.lookAt(150, 0, 8);
+            MainScene.camera.position.set(450, 195, 60);//原x为150 450
+            MainScene.camera.lookAt(450, 0, 8);
             MainScene.globalPlane.constant = 17;
             MainScene.globalPlane.set(new THREE.Vector3(0, -1, 0), 17);
             MainScene.control.attach(MainScene.smoke.positionBallMesh);
@@ -296,29 +290,29 @@ Interaction.prototype.fuc3 = function (MainScene)
 
     $('toNo1').addEventListener('click',function(event)
     {
-        MainScene.smoke.positionBallMesh.position.x=41;
-        MainScene.smoke.positionBallMesh.position.z=25;
+        MainScene.smoke.positionBallMesh.position.x=MainScene.smoke.firePointArr[0].firePosition.x;
+        MainScene.smoke.positionBallMesh.position.z=MainScene.smoke.firePointArr[0].firePosition.z;
 
     });
     $('toNo2').addEventListener('click',function(event)
     {
-        MainScene.smoke.positionBallMesh.position.x=91;
-        MainScene.smoke.positionBallMesh.position.z=25;
+        MainScene.smoke.positionBallMesh.position.x=MainScene.smoke.firePointArr[1].firePosition.x;
+        MainScene.smoke.positionBallMesh.position.z=MainScene.smoke.firePointArr[1].firePosition.z;
     });
     $('toNo3').addEventListener('click',function(event)
     {
-        MainScene.smoke.positionBallMesh.position.x=151;
-        MainScene.smoke.positionBallMesh.position.z=20;
+        MainScene.smoke.positionBallMesh.position.x=MainScene.smoke.firePointArr[2].firePosition.x;
+        MainScene.smoke.positionBallMesh.position.z=MainScene.smoke.firePointArr[2].firePosition.z;
     });
     $('toNo4').addEventListener('click',function(event)
     {
-        MainScene.smoke.positionBallMesh.position.x=180;
-        MainScene.smoke.positionBallMesh.position.z=22;
+        MainScene.smoke.positionBallMesh.position.x=MainScene.smoke.firePointArr[3].firePosition.x;
+        MainScene.smoke.positionBallMesh.position.z=MainScene.smoke.firePointArr[3].firePosition.z;
     });
     $('toNo5').addEventListener('click',function(event)
     {
-        MainScene.smoke.positionBallMesh.position.x=215;
-        MainScene.smoke.positionBallMesh.position.z=27;
+        MainScene.smoke.positionBallMesh.position.x=MainScene.smoke.firePointArr[4].firePosition.x;
+        MainScene.smoke.positionBallMesh.position.z=MainScene.smoke.firePointArr[4].firePosition.z;
     });
 
     $('OrbitView').addEventListener('change',function ()

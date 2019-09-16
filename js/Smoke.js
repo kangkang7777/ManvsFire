@@ -11,7 +11,7 @@ var Smoke = function ()
     this.smokeTexture = new THREE.TextureLoader().load('textures/Smoke-Element.png');
     var smokeLogoTexture = new THREE.TextureLoader().load('textures/firelogo2.png');
     this.smokeArr=[];
-    this.sNumber=0.07;//烟柱与烟冠模型缩放系数
+    this.sNumber=0.045;//烟柱与烟冠模型缩放系数
     this.smokeSceneArr= new Array();
     this.isStartSmoke = false;
     this.frustumSize=100;//小窗口大小设置
@@ -21,6 +21,29 @@ var Smoke = function ()
     //this.prototype.init();
     this.ii=0;
     this.kk=0;
+
+    //起火点设置
+    this.firePointArr = [];
+
+    var firePoint1 = new firePoint();
+    firePoint1.firePosition = new THREE.Vector3(570,10,22.8);
+    this.firePointArr.push(firePoint1);
+
+    var firePoint2 = new firePoint();
+    firePoint2.firePosition = new THREE.Vector3(513,10,8.6);
+    this.firePointArr.push(firePoint2);
+
+    var firePoint3 = new firePoint();
+    firePoint3.firePosition = new THREE.Vector3(433,10,38.8);
+    this.firePointArr.push(firePoint3);
+
+    var firePoint4 = new firePoint();
+    firePoint4.firePosition = new THREE.Vector3(353,10,8.6);
+    this.firePointArr.push(firePoint4);
+
+    var firePoint5 = new firePoint();
+    firePoint5.firePosition = new THREE.Vector3(313,10,19.8);
+    this.firePointArr.push(firePoint5);
 }
 
 Smoke.prototype.init = function(_this)
@@ -35,7 +58,8 @@ Smoke.prototype.init = function(_this)
     var positionBallMaterial=new THREE.MeshPhongMaterial({color:0x00ff00});
     this.cameraPerspective = new THREE.PerspectiveCamera( 50,  this.aspect, 10, 1000 );
     this.positionBallMesh=new THREE.Mesh(positionBallGeometry,positionBallMaterial);
-    this.positionBallMesh.position.set(41,5,25);
+    //this.positionBallMesh.position.set(41,5,25);
+    this.positionBallMesh.position.set(this.firePointArr[2].firePosition.x,5.8,this.firePointArr[2].firePosition.z);
     cameraOrtho.up.set(0, 1, 0);
     cameraOrtho.position.set(80, -22, 111);
     this.cameraPerspective.position.set(-25,7,0);
@@ -46,8 +70,8 @@ Smoke.prototype.init = function(_this)
     this.redBallMesh=new THREE.Mesh(redBallGeometry,redBallMaterial);
     redBallMaterial.visible=false;
     this.redBallMesh.position.set(rX,rY,rZ);
+    this.redBallMesh.position.set(570,rY,22.8);
     _this.scene.add(this.redBallMesh);
-
 // 火焰Logo
     this.logoArr=[];
     var Logo1Geometry=new THREE.CylinderGeometry(3,4,1,6,1);
@@ -55,7 +79,8 @@ Smoke.prototype.init = function(_this)
     this.Logo1Material.transparent=true;
     this.Logo1Material.opacity=1;
     var Logo1Mesh=new THREE.Mesh(Logo1Geometry,this.Logo1Material);
-    Logo1Mesh.position.set(41,5.8,25);
+    //Logo1Mesh.position.set(41,5.8,25);
+    Logo1Mesh.position.set(this.firePointArr[0].firePosition.x,9,this.firePointArr[0].firePosition.z);
     this.Logo1Material.visible=false;
     this.logoArr.push(Logo1Mesh);
     _this.scene.add(Logo1Mesh);
@@ -65,7 +90,8 @@ Smoke.prototype.init = function(_this)
     this.Logo2Material.transparent=true;
     this.Logo2Material.opacity=1;
     var Logo2Mesh=new THREE.Mesh(Logo2Geometry,this.Logo2Material);
-    Logo2Mesh.position.set(91,5.8,25);
+    //Logo2Mesh.position.set(91,5.8,25);
+    Logo2Mesh.position.set(this.firePointArr[1].firePosition.x,5.8,this.firePointArr[1].firePosition.z);
     this.Logo2Material.visible=false;
     this.logoArr.push(Logo2Mesh);
     _this.scene.add(Logo2Mesh);
@@ -75,7 +101,8 @@ Smoke.prototype.init = function(_this)
     this.Logo3Material.transparent=true;
     this.Logo3Material.opacity=1;
     var Logo3Mesh=new THREE.Mesh(Logo3Geometry,this.Logo3Material);
-    Logo3Mesh.position.set(151,5.8,20);
+    //Logo3Mesh.position.set(151,5.8,20);
+    Logo3Mesh.position.set(this.firePointArr[2].firePosition.x,5.8,this.firePointArr[2].firePosition.z);
     this.Logo3Material.visible=false;
     this.logoArr.push(Logo3Mesh);
     _this.scene.add(Logo3Mesh);
@@ -85,7 +112,8 @@ Smoke.prototype.init = function(_this)
     this.Logo4Material.transparent=true;
     this.Logo4Material.opacity=1;
     var Logo4Mesh=new THREE.Mesh(Logo4Geometry,this.Logo4Material);
-    Logo4Mesh.position.set(180,5.8,22);
+    //Logo4Mesh.position.set(180,5.8,22);
+    Logo4Mesh.position.set(this.firePointArr[3].firePosition.x,5.8,this.firePointArr[3].firePosition.z);
     this.Logo4Material.visible=false;
     this.logoArr.push(Logo4Mesh);
     _this.scene.add(Logo4Mesh);
@@ -95,11 +123,11 @@ Smoke.prototype.init = function(_this)
     this.Logo5Material.transparent=true;
     this.Logo5Material.opacity=1;
     var Logo5Mesh=new THREE.Mesh(Logo5Geometry,this.Logo5Material);
-    Logo5Mesh.position.set(215,5.8,27);
+    //Logo5Mesh.position.set(215,5.8,27);
+    Logo5Mesh.position.set(this.firePointArr[4].firePosition.x,5.8,this.firePointArr[4].firePosition.z);
     this.Logo5Material.visible=false;
     this.logoArr.push(Logo5Mesh);
     _this.scene.add(Logo5Mesh);
-
 
 //endregion
     //烟雾属性设置
@@ -481,6 +509,62 @@ Smoke.prototype.smokeSurfaceChange = function (_this)
     }
 }
 
+Smoke.prototype.smokeStart = function (_this)
+{
+    var self = this;
+    var isInPoint = false;
+    self.pp.set(self.positionBallMesh.position.x,self.positionBallMesh.position.y,self.positionBallMesh.position.z);
+    if( self.pp.x+18>215)
+    {
+        _this.HCI.whetherrotate=true;
+    }
+    for(let i in self.firePointArr)
+    {
+        if(self.firePointArr[i].firePosition.x == self.pp.x && self.firePointArr[i].firePosition.z == self.pp.z)
+        {
+            self.newsmokeData = self.firePointArr[i].smokeData;
+            isInPoint = true;
+            break;
+        }
+    }
+    if(!isInPoint)
+    {
+        var rankArr = self.rankByDistance(self.firePointArr);
+        var p0 = rankArr[0];
+        var p1 = rankArr[1];
+        var p2 = rankArr[2];
+        //_this.smoke.newsmokeData=smoke_insert(_this.smoke.p0,_this.smoke.p1,_this.smoke.p2,_this.smoke.pp,_this.messagecontrol.smokeDataA,_this.messagecontrol.smokeDataB,_this.messagecontrol.smokeDataC);
+        //self.newsmokeData = _this.messagecontrol.smokeData;
+        self.newsmokeData=smoke_insert(p0.firePosition,p1.firePosition,p2.firePosition,self.pp,p0.smokeData,p1.smokeData,p2.smokeData);
+    }
+}
+
+Smoke.prototype.rankByDistance = function(pointArr)
+{
+    var self = this;
+    var arr = pointArr;
+    var minPoint,tempPoint;
+    var minDis,currentDis;
+    var minIndex;
+    for(var i=0; i<3; i++)
+    {
+        minPoint = arr[i];
+        minIndex = i;
+        minDis = Math.sqrt(Math.pow(self.positionBallMesh.position.x-minPoint.firePosition.x,2) + Math.pow(self.positionBallMesh.position.z-minPoint.firePosition.z,2));
+        for(var j=i+1; j<arr.length; j++)
+        {
+            currentDis = Math.sqrt(Math.pow(self.positionBallMesh.position.x-arr[j].firePosition.x,2) + Math.pow(self.positionBallMesh.position.z-arr[j].firePosition.z,2));
+            if(currentDis < minDis) {
+                minDis = currentDis;
+                minIndex = j;
+            }
+        }
+        tempPoint = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = tempPoint;
+    }
+    return arr;
+}
 
 Smoke.prototype.update = function (_this)
 {
@@ -490,7 +574,7 @@ Smoke.prototype.update = function (_this)
 
     this.smokeBody();
 
-    this.smokeLocationRepair(_this);
+    //this.smokeLocationRepair(_this);
 
     this.smokeSurfaceChange(_this);
 
@@ -501,3 +585,11 @@ Smoke.prototype.update = function (_this)
     });
 
 }
+
+//着火点
+function firePoint()
+{
+    this.firePosition = [];
+    this.smokeData = [];
+}
+

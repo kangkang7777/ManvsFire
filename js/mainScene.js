@@ -96,7 +96,7 @@ var mainScene = function()
     this.count = new Array(10);
     this.count.fill(0);
 
-    this.messagecontrol.START1();
+    this.messagecontrol.START(this);
 
 }
 
