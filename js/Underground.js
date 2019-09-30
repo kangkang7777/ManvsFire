@@ -724,10 +724,11 @@ Underground.prototype.GlbBuilding = function (scene) {
     function loadFunc(gltf, type) {
         let mesh = gltf.scene.children[0];
         console.log(gltf);
-        mesh.scale.set(0.00090, 0.00090, 0.00090 );
+        mesh.scale.set(0.002, 0.002, 0.002 );
         mesh.geometry.computeVertexNormals();
         //方法一
-        mesh.position.set(7900,-1923,27);
+        mesh.position.set(16990,38,4335);
+        mesh.rotateX(-Math.PI/2);
         //方法二
         // mesh.geometry.applyMatrix(new THREE.Matrix4().set(
         //     -1, 0, 0, 0,
@@ -757,14 +758,14 @@ Underground.prototype.GlbBuilding = function (scene) {
         startLoadTime = performance.now();
         Promise.all(
             [
-                loadAsync('./model_glb/Lower_model_room1.glb','lower1'),//下层建筑靠近外侧的房间
-                loadAsync('./model_glb/Lower_model_room2.glb','lower2'),//下层建筑内侧中间的房间
-                loadAsync('./model_glb/Lower_model_with_BuildingElementProxy.glb','lower3'),//下层建筑有围栏有电梯
-                loadAsync('./model_glb/Lower_model_without_BuildingElementProxy.glb','lower4'),//下层建筑没有围栏没有电梯
+                // loadAsync('./model_glb/Lower_model_room1.glb','lower1'),//下层建筑靠近外侧的房间
+                // loadAsync('./model_glb/Lower_model_room2.glb','lower2'),//下层建筑内侧中间的房间
+                // loadAsync('./model_glb/Lower_model_with_BuildingElementProxy.glb','lower3'),//下层建筑有围栏有电梯
+                // loadAsync('./model_glb/Lower_model_without_BuildingElementProxy.glb','lower4'),//下层建筑没有围栏没有电梯
                 loadAsync('./model_glb/Lower_model_without_BuildingElementProxy_except_escalator.glb','lower5'),//下层建筑没有围栏有电梯
-                loadAsync('./model_glb/Out_model.glb','outer'),//外壳
-                loadAsync('./model_glb/Upper_model.glb','upper1'),//上层建筑
-                loadAsync('./model_glb/Upper_model_bigroom.glb','upper2'),//上层建筑房间
+                // loadAsync('./model_glb/Out_model.glb','outer'),//外壳
+                // loadAsync('./model_glb/Upper_model.glb','upper1'),//上层建筑
+                // loadAsync('./model_glb/Upper_model_bigroom.glb','upper2'),//上层建筑房间
             ]
         ).then(() => {
             return Promise.all(
