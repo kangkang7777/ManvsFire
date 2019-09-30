@@ -727,7 +727,7 @@ Underground.prototype.GlbBuilding = function (scene) {
         mesh.scale.set(0.002, 0.002, 0.002 );
         mesh.geometry.computeVertexNormals();
         //方法一
-        mesh.position.set(16990,38,4335);
+        mesh.position.set(16807,38,4335);
         mesh.rotateX(-Math.PI/2);
         //方法二
         // mesh.geometry.applyMatrix(new THREE.Matrix4().set(
