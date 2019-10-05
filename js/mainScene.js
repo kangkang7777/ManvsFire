@@ -141,6 +141,9 @@ mainScene.prototype.init = function()
 
     //交互4
     //this.HCI.fuc4(this);
+
+    this.HCI.fuc5(this);
+
 }
 
 mainScene.prototype.start = function()

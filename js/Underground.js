@@ -1,5 +1,7 @@
-var Underground = function () {
+var Underground = function ()
+{
     // this.currentBlockName = "TJSub_Vis";
+    this.mesh;
     this.isOnload = false;
 }
 Underground.prototype.init = function (scene,renderer,_this) {
@@ -702,46 +704,26 @@ Underground.prototype.FixBuliding = function (scene) {
 
 /*从外部导入glb建筑物模型*/
 Underground.prototype.GlbBuilding = function (scene) {
-    // (function(){
-    //     var loader = new THREE.GLTFLoader();
-    //     loader.load( 'model_glb/Lower_model_room1.glb', function( gltf ) {
-    //         console.log(gltf);//在控制台输出gltf模型信息
-    //         scene.add( gltf.scene ); // 将模型引入three
-    //     })
-    // })();
-    // var material = new THREE.MeshPhongMaterial({transparent: true, opacity: 1.0, shininess: 60});
-    // var mesh = new THREE.Mesh(loader, material);
-    // mesh.position.set(80,2,10);//设置网格模型几何中心三维坐标
-    // mesh.scale.set(0.5, 0.5, 0.5);//设置网格模型尺寸大小
-    // scene.add(mesh);
-
+    var self = this;
     var loader = new THREE.GLTFLoader();
     // Optional: Provide a DRACOLoader instance to decode compressed mesh data
     THREE.DRACOLoader.setDecoderPath('./draco/');
     THREE.DRACOLoader.setDecoderConfig({type: 'js'});
     loader.setDRACOLoader(new THREE.DRACOLoader());
 
-    function loadFunc(gltf, type) {
-        let mesh = gltf.scene.children[0];
+    function loadFunc(gltf, type)
+    {
+        self.mesh = gltf.scene.children[0];
         console.log(gltf);
-        mesh.scale.set(0.002, 0.002, 0.002 );
-        mesh.geometry.computeVertexNormals();
+        self.mesh.scale.set(0.00192, 0.002, 0.002 );
+        self.mesh.geometry.computeVertexNormals();
         //方法一
-        mesh.position.set(16807,38,4335);
-        mesh.rotateX(-Math.PI/2);
-        //方法二
-        // mesh.geometry.applyMatrix(new THREE.Matrix4().set(
-        //     -1, 0, 0, 0,
-        //     0, 0, 1, 0,
-        //     0, 1, 0, 0,
-        //     0, 0, 0, 1
-        // ));
-        // mesh.translateX(50);
-        // mesh.translateY(10);
-        // mesh.translateZ(-80);
-        mesh.material.color = selectMaterialColor(type);
+        self.mesh.position.set(16155.5,38,4333);
+        self.mesh.rotateX(-Math.PI/2);
+
+        self.mesh.material.color = selectMaterialColor(type);
         // polyhedrons.push(mesh);
-        scene.add(mesh);
+        scene.add(self.mesh);
     }
 
     var loadAsync = function (path, type) {

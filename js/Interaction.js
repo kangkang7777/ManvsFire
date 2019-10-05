@@ -378,3 +378,44 @@ Interaction.prototype.fuc4 = function (_this)
 
     }
 }
+
+Interaction.prototype.fuc5 = function (_this)
+{
+    document.getElementById('x_1').addEventListener('click',function (event)
+    {
+        var x = _this.underground.mesh.position.x;
+        var y = _this.underground.mesh.position.y;
+        var z = _this.underground.mesh.position.z;
+
+        _this.underground.mesh.position.set(x+1,y,z);
+
+    });
+    document.getElementById('x_2').addEventListener('click',function (event) {
+        var x = _this.underground.mesh.position.x;
+        var y = _this.underground.mesh.position.y;
+        var z = _this.underground.mesh.position.z;
+
+        _this.underground.mesh.position.set(x-1,y,z);
+});
+    document.getElementById('x_3').addEventListener('click',function (event) {
+        var x = _this.underground.mesh.position.x;
+        var y = _this.underground.mesh.position.y;
+        var z = _this.underground.mesh.position.z;
+
+        _this.underground.mesh.position.set(x+10,y,z);
+});
+    document.getElementById('x_4').addEventListener('click',function (event) {
+        var x = _this.underground.mesh.position.x;
+        var y = _this.underground.mesh.position.y;
+        var z = _this.underground.mesh.position.z;
+
+        _this.underground.mesh.position.set(x-10,y,z);
+    });
+    document.getElementById('_test').addEventListener('click',function (event) {
+
+        var output = _this.underground.mesh.position.x.toString()+","+_this.underground.mesh.position.y.toString()+","+_this.underground.mesh.position.z.toString();
+
+        alert(output);
+    });
+
+}
