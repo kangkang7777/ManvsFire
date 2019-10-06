@@ -1,6 +1,6 @@
 var mainScene = function()
 {
-    /*    this.stats = initStats();
+        this.stats = initStats();
 
         function initStats() {
             var stats = new Stats();
@@ -13,7 +13,7 @@ var mainScene = function()
             return stats;
         }
 
-     */
+
     clock = new THREE.Clock();
 
     this.scene = new THREE.Scene();
@@ -176,7 +176,7 @@ mainScene.prototype.start = function()
 
         TWEEN.update();
 
-        //self.stats.update();
+        self.stats.update();
 
         requestAnimationFrame(animate);
         self.renderer.clear();
