@@ -16,6 +16,7 @@ var CameraController = function ()
     this.collideMeshList=[];//这东西是被撞东西的集合
     this.active = true;
     this.backup_limit = 5;
+
 }
 
 CameraController.prototype.init = function(_this)
