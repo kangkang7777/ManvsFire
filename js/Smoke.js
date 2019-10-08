@@ -21,6 +21,7 @@ var Smoke = function ()
     //this.prototype.init();
     this.ii=0;
     this.kk=0;
+    this.camIn=true;//相机是否在地下二层
 
     //起火点设置
     this.firePointArr = [];
@@ -435,6 +436,7 @@ Smoke.prototype.smokeLocationRepair = function (_this)
 {
     var self =this;
     //region烟气球坐标修正
+    /*
     //X轴
     if(self.positionBallMesh.position.x>=250){
         self.positionBallMesh.position.x = 250;
@@ -460,6 +462,18 @@ Smoke.prototype.smokeLocationRepair = function (_this)
         _this.control.position.y=5.8;
     }
     //endregion
+     */
+    if(self.positionBallMesh.position.x>=298 && self.positionBallMesh.position.x<=605 && self.positionBallMesh.position.z>=13.5 && self.positionBallMesh.position.z<=36)
+    {
+        self.positionBallMesh.position.y = 8.4;
+        _this.control.position.y=8.4;
+        this.sNumber=0.03;
+    }
+    else{
+        self.positionBallMesh.position.y = 5.8;
+        _this.control.position.y=5.8;
+        this.sNumber=0.045;
+    }
 }
 
 Smoke.prototype.smokeSurfaceChange = function (_this)
@@ -509,6 +523,7 @@ Smoke.prototype.smokeSurfaceChange = function (_this)
     }
 }
 
+//region 选取进行插值算法的着火点
 Smoke.prototype.smokeStart = function (_this)
 {
     var self = this;
@@ -565,16 +580,51 @@ Smoke.prototype.rankByDistance = function(pointArr)
     }
     return arr;
 }
+//deregion
+
+//region 烟冠穿出模型问题
+Smoke.prototype.smokeShelter = function(_this)
+{
+    var camPos = _this.camera.position;
+    var lastIn = this.camIn;
+    if(camPos.x>20 && camPos.x<615 && camPos.y>3.5 && camPos.y<17.8 && camPos.z>5 && camPos.z<46)
+    {
+        this.camIn = true;
+    }
+    else{
+        this.camIn = false;
+    }
+    if(this.camIn != lastIn)
+    {
+        if(this.camIn)
+        {
+            for(let i in this.smokeArr)
+            {
+                this.smokeArr[i].visible = true;
+            }
+        }
+        else{
+            for(let i in this.smokeArr)
+            {
+                this.smokeArr[i].visible = false;
+            }
+        }
+    }
+}
 
 Smoke.prototype.update = function (_this)
 {
     this.smokeScene();
 
-    this.smokeFunction();
+    this.smokeShelter(_this);
 
-    this.smokeBody();
+    if(this.camIn){
+        this.smokeFunction();
 
-    //this.smokeLocationRepair(_this);
+        this.smokeBody();
+    }
+
+    this.smokeLocationRepair(_this);
 
     this.smokeSurfaceChange(_this);
 
