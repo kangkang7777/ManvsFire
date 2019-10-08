@@ -11,7 +11,10 @@
 
     <script src="lib/three.js"></script>
     <script src="lib/stats.js"></script>
+    <script src="js/DRACOLoader.js"></script>
+    <script src="lib/OrbitControls.js"></script>
     <script src="lib/jquery-1.8.2.js"></script>
+    <script src="js/GLTFLoader.js"></script>
     <script src="lib/FirstPersonControls.js"></script>
     <script src="lib/TransformControls.js"></script>
     <script src="lib/MyOrbitControls.js"></script>
@@ -58,16 +61,27 @@
         .btn-default
         {
             color:white;
-            background: rgb(0,0,0,0.8);
+            background: rgb(0,0,0);
         }
 
     </style>
 
 </head>
 <body>
+<div style="position: absolute; left: 20px; top: 15px;padding:10px;width:200px;">
+<!--    <div>-->
+<!--        <label style="font-size: 15px;color:#ffffff">三角面片数:</label>-->
+<!--        <label id="triNum" style="font-size: 15px;color:#ffffff">0</label>-->
+<!--    </div>-->
+
+    <div>
+        <label style="font-size: 15px;color:#ffffff">加载时间:</label>
+        <label id="loadTime" style="font-size: 15px;color:#ffffff">0</label>
+    </div>
+</div>
 <div id="loading" class="loading" style="z-index: 2"><img src="images/loading.gif"/></div>
 <div id="progress"></div>
-<nav class="navbar navbar-default  navbar-fixed-top" role="navigation" style="background: rgb(0, 0, 0, 0.7)">
+<nav class="navbar navbar-default  navbar-fixed-top" role="navigation" style="background: rgb(0, 0, 0)">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#" style="color:white"><b>同济大学地铁站火灾逃生模拟平台</b></a>
@@ -75,17 +89,17 @@
         </div>
     </div>
 </nav>
-<div id="setting" class="btn btn-default btn-lg" style="width:50px;height:45px;background:rgb(0, 0, 0, 0.8);border:none;display: none">
+<div id="setting" class="btn btn-default btn-lg" style="width:50px;height:45px;background:rgb(0, 0, 0);border:none;display: none">
     <span class="glyphicon glyphicon-cog"></span>
 </div>
-<div class="rightside-menu" style="background:rgb(255, 255, 255, 0.8);display: block">
-    <div  style="height:3%;background:rgb(0, 0, 0, 0.8)">
-        <button id="minimize" type="button" class="btn btn-default btn-xs" style="background:rgb(0, 0, 0, 0.1);border:none;margin-top:0;position: absolute;right:0;top:0;">
+<div class="rightside-menu" style="background:rgb(255, 255, 255);display: block">
+    <div  style="height:3%;background:rgb(0, 0, 0)">
+        <button id="minimize" type="button" class="btn btn-default btn-xs" style="background:rgb(0, 0, 0);border:none;margin-top:0;position: absolute;right:0;top:0;">
             <span class="glyphicon glyphicon-play-circle"></span>
         </button>
     </div>
-    <!--<p>fps统计：</p>
-    <div id="Stats-output"></div>-->
+    <p>fps统计：</p>
+    <div id="Stats-output"></div>
     <div id="escapeTimePanel" class="timePanel"></div>
     <div class="illustration">
         <div id="illustration-title">使用说明</div>
@@ -171,17 +185,26 @@
 
 
 
+
+
 <div id="WebGL-output">
 </div>
 
-<div id="bottom-menu" class="bottom-menu" style="background:rgb(255, 255, 255, 0.8);display:block">
+<div id="bottom-menu" class="bottom-menu" style="background:rgb(255, 255, 255);display:block">
     <div id="floor-menu">
         <button  id="escapeDoor1" class="btn btn-default btn-lg">逃生门1</button>
         <button  id="escapeDoor2" class="btn btn-default btn-lg">逃生门2</button>
         <button  id="escapeDoor3" class="btn btn-default btn-lg">逃生门3</button>
         <button  id="floor1" class="btn btn-default btn-lg">地下一层</button>
         <button  id="floor2" class="btn btn-default btn-lg">地下二层</button>
-        <button  id="test" class="btn btn-default btn-lg">测试</button>
+        <button  id="test" class="btn btn-default btn-lg">视角坐标</button>
+<!--        <a  id="test"></a>-->
+        <button  id="_test" class="btn btn-default btn-lg">建筑坐标</button>
+        <button  id="x_1" class="btn btn-default btn-lg">x坐标+1</button>
+        <button  id="x_2" class="btn btn-default btn-lg">x坐标-1</button>
+        <button  id="x_3" class="btn btn-default btn-lg">x坐标+10</button>
+        <button  id="x_4" class="btn btn-default btn-lg">x坐标-10</button>
+
     </div>
     <div id="fire-menu" style="display:none">
         <button  id="toNo1" class="btn btn-default btn-lg">1号火灾情景</button>
@@ -190,7 +213,6 @@
         <button  id="toNo4" class="btn btn-default btn-lg">4号火灾情景</button>
         <button  id="toNo5" class="btn btn-default btn-lg">5号火灾情景</button>
     </div>
-
 </div>
 
 

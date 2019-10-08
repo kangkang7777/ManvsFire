@@ -2,12 +2,78 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b682202-0905-458a-ab74-ff5472c71de9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/js/DRACOLoader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/GLTFLoader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_glb/Lower_model_room1.glb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_glb/Lower_model_room2.glb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_glb/Lower_model_without_BuildingElementProxy.glb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_glb/Lower_model_without_BuildingElementProxy_except_escalator.glb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_glb/Out_model.glb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_glb/Upper_model.glb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_glb/Upper_model_bigroom.glb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmokeData/newsmoke.json" beforeDir="false" afterPath="$PROJECT_DIR$/SmokeData/newsmoke.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/ACOPathFindingWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/ACOPathFindingWorker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/CameraController.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/CameraController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/FollowerControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/FollowerControl.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/Interaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Interaction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/MyPathControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/MyPathControl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/SkyShader.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/SkyShader.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/Smoke.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Smoke.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/Underground.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Underground.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/WandaBuilding_HYH1214.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/WandaBuilding_HYH1214.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/fire.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/fire.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/fireControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/fireControl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/fireman.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/fireman.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/loadBlockVsg.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/loadBlockVsg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/loadMapInfoWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/loadMapInfoWorker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/loadSmokeInfoWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/loadSmokeInfoWorker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/loadSmokeInfoWorker1.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/loadSmokeInfoWorker1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/loadSmokeJsonWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/loadSmokeJsonWorker.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/mainScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/mainScene.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/messageControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/messageControl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/particle_system.1.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/particle_system.1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/particle_system.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/particle_system.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/path.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/path.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/physics_environment.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/physics_environment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/three-pathfinding.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/three-pathfinding.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/water.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/water.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/waterControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/waterControl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/BlendCharacter.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/BlendCharacter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/BlendCharacterGui.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/BlendCharacterGui.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Detector.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Detector.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/FirstPersonControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/FirstPersonControls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/FlyControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/FlyControls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/GPUParticleSystem.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/GPUParticleSystem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ImprovedNoise.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ImprovedNoise.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Matrix4.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Matrix4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/MyFPC.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/MyFPC.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/MyOrbitControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/MyOrbitControls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/OBJLoader.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/OBJLoader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/PathControls.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/PathControls.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/TongFPS.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/TongFPS.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Tween.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Tween.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/WebGLRenderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/WebGLRenderer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ammo.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ammo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dat.gui.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dat.gui.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dat.gui.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dat.gui.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dataview.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dataview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/deflate.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/deflate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/inflate.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/inflate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mime-types.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mime-types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/physi.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/physi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/physijs_worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/physijs_worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/stats.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/stats.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/stats.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/stats.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/three.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/three.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/three.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/three.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/z-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/z-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/zip-ext.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/zip-ext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/zip-fs.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/zip-fs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/zip.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/zip.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/zxx.color_exchange.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/zxx.color_exchange.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/new.html" beforeDir="false" afterPath="$PROJECT_DIR$/new.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,35 +84,12 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/new.html">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="189">
-                    <caret line="28" column="38" lean-forward="true" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
-                    <folding>
-                      <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                      <element signature="n#style#0;n#button#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/utils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1998">
+            <state relative-caret-position="1406">
               <caret line="74" column="41" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
             </state>
           </provider>
@@ -60,7 +103,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SmokeData/newsmoke.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
+            <state relative-caret-position="171">
               <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
             </state>
           </provider>
@@ -69,17 +112,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/fire.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1026">
+            <state relative-caret-position="722">
               <caret line="38" column="17" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/fireControl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="749">
+            <state relative-caret-position="1292">
               <caret line="68" column="76" selection-start-line="68" selection-start-column="76" selection-end-line="68" selection-end-column="76" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/new.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="246">
+              <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -87,7 +139,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Underground.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
+            <state relative-caret-position="152">
               <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
@@ -184,27 +236,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="manvsFire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manvsFire" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="manvsFire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manvsFire" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="manvsFire" type="b2602c69:ProjectViewProjectNode" />
-              <item name="manvsFire" type="462c0819:PsiDirectoryNode" />
-              <item name="SmokeData" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -310,11 +342,13 @@
       <workItem from="1567843702896" duration="38985000" />
       <workItem from="1568445747292" duration="3791000" />
       <workItem from="1568603389302" duration="335000" />
+      <workItem from="1570522932200" duration="233000" />
+      <workItem from="1570523174581" duration="13000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="277612000" />
+    <option name="totallyTimeSpent" value="277858000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -326,16 +360,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13992763" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13962065" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.2251732" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.28290993" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.28199565" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3290993" />
@@ -516,8 +550,8 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Temp/gui-config.json" />
-    <entry file="file://$USER_HOME$/Desktop/gui-config.json" />
-    <entry file="file://$USER_HOME$/Desktop/gui-config(1).json" />
+    <entry file="file://$PROJECT_DIR$/../gui-config.json" />
+    <entry file="file://$PROJECT_DIR$/../gui-config(1).json" />
     <entry file="file://$PROJECT_DIR$/js/Underground_TjSub_HYH1220.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="434">
@@ -590,27 +624,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1998">
-          <caret line="74" column="41" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/fire.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1026">
-          <caret line="38" column="17" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Underground.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/messageControl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
@@ -632,31 +645,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1406">
+          <caret line="74" column="41" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/CameraController.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/SmokeData/newsmoke.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
+        <state relative-caret-position="171">
           <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/new.html">
+    <entry file="file://$PROJECT_DIR$/js/fire.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="28" column="38" lean-forward="true" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="722">
+          <caret line="38" column="17" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/fireControl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="749">
+        <state relative-caret-position="1292">
           <caret line="68" column="76" selection-start-line="68" selection-start-column="76" selection-end-line="68" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Underground.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/new.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
         </state>
       </provider>
     </entry>

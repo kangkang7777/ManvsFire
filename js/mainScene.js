@@ -1,6 +1,6 @@
 var mainScene = function()
 {
-    /*    this.stats = initStats();
+        this.stats = initStats();
 
         function initStats() {
             var stats = new Stats();
@@ -13,7 +13,7 @@ var mainScene = function()
             return stats;
         }
 
-     */
+
     clock = new THREE.Clock();
 
     this.scene = new THREE.Scene();
@@ -126,7 +126,7 @@ mainScene.prototype.init = function()
     //endregion
 
     //region场景加载
-    this.underground.init(this.scene,this.renderer,this);
+    this.underground.init(this);
     //endregion
 
     //regiog消防员加载
@@ -141,6 +141,9 @@ mainScene.prototype.init = function()
 
     //交互4
     //this.HCI.fuc4(this);
+
+    this.HCI.fuc5(this);
+
 }
 
 mainScene.prototype.start = function()
@@ -167,13 +170,13 @@ mainScene.prototype.start = function()
 
             self.people.update(self);
         }
-        self.Cameracontroller.update1(self);
+        //self.Cameracontroller.update1(self);
 
         self.cameraControl();
 
         TWEEN.update();
 
-        //self.stats.update();
+        self.stats.update();
 
         requestAnimationFrame(animate);
         self.renderer.clear();
@@ -182,8 +185,7 @@ mainScene.prototype.start = function()
         //todo self.renderer.clear();    与renderer.autoClear = false 对应 不知道意义何在
         //self.stats.end();
 
-        //self.LOD;//lod算法
-
+        self.LOD;//lod算法
     }
 
 }
@@ -206,6 +208,8 @@ mainScene.prototype.setScene = function()
     this.camControlOver.center = new THREE.Vector3(430,24,21);
     this.camControlOver.userPan = false;
     this.camControlOver.autoRotate=true;
+
+
     this.freeViewControl = this.camControlOver;
 
     var camControl = new THREE.FirstPersonControls(this.camera, this.renderer.domElement);
