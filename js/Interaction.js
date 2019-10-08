@@ -235,7 +235,7 @@ Interaction.prototype.fuc3 = function (MainScene)
             MainScene.smoke.Logo3Material.visible=true;
             MainScene.smoke.Logo4Material.visible=true;
             MainScene.smoke.Logo5Material.visible=true;
-            MainScene.camera.position.set(450, 195, 60);//原x为150 450
+            MainScene.camera.position.set(450, 250, 60);//原x为150 450
             MainScene.camera.lookAt(450, 0, 8);
             MainScene.globalPlane.constant = 17;
             MainScene.globalPlane.set(new THREE.Vector3(0, -1, 0), 17);
