@@ -103,7 +103,7 @@ Interaction.prototype.fuc2 = function (_this)
         _this.EscapeNumber = _this.number;
         let timeEscape = setInterval(function () {
             if(_this.active) {
-                if (_this.currentEscapeTime < 600 && _this.number > 20) {
+                if (_this.currentEscapeTime < 600 && _this.number > 0) {
                     _this.currentEscapeTime += 1;
                     if (_this.number == _this.EscapeNumber - 1)
                         _this.firstEscapeTime = _this.currentEscapeTime;
@@ -120,8 +120,8 @@ Interaction.prototype.fuc2 = function (_this)
 
                     $("#fireman").css('display',"inline-block");
                     $('#illustration-title').text("模拟结束");
-                    $('#illustration-context').html("<br/>成功逃出人数：" + _this.EscapeNumber + "人"
-                        + "<br/>未逃出人数：0人"
+                    $('#illustration-context').html("<br/>成功逃出人数：" + (_this.EscapeNumber-_this.number) + "人"
+                        + "<br/>未逃出人数：" +  _this.number + "人"
                         + "<br/>最快逃生用时：" + (_this.firstEscapeTime) + "s"
                         + "<br/>全体逃生用时：" + _this.currentEscapeTime + "s");
                     $("#fireman").css("display", "inline-block");

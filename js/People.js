@@ -432,11 +432,16 @@ People.prototype.ifstartRun = function (_this)
                 console.log(_this.number);
                 console.log(self.pathControlMap);
                 var position = [];
+                var i=0;
                 for(var key in self.pathControlMap)
                 {
+                    if(!isNaN(self.pathControlMap[key].object.position.x)){
+                        i++;
+                    }
                     position.push(self.pathControlMap[key].object.position);
                 }
                 console.log(position);
+                _this.number = i;
             }
         }
     }
