@@ -31,7 +31,6 @@ THREE.FollowerControl = function ( object,humanMap,lodObj) {
     this.forwardVector = new THREE.Vector3(0,0,-1);
 
     this.update = function ( delta ) {
-
         if(!this.nextPosition ||
             (Math.abs(this.object.position.x-this.nextPosition.x)<0.3 && Math.abs(this.object.position.z-this.nextPosition.z)<0.3))
         {
@@ -173,8 +172,6 @@ THREE.FollowerControl = function ( object,humanMap,lodObj) {
             }
 
 
-
-
             var forVec = new THREE.Vector3(0,0,-100000);
             forVec = this.object.localToWorld(forVec);
 
@@ -186,7 +183,13 @@ THREE.FollowerControl = function ( object,humanMap,lodObj) {
             var tempVec = forVec.clone();
             tempVec = tempVec.cross(nextVec);
 
-            var theta = Math.acos(forVec.dot(nextVec));
+            var finalVec = forVec.dot(nextVec);
+            //当forVector和nextVec相同时，点积结果会稍大于1
+            if(finalVec > 1)
+                finalVec = 1;
+            else if(finalVec < -1)
+                finalVec = -1;
+            var theta = Math.acos(finalVec);
 
             if(tempVec.y>0)
             {
@@ -204,14 +207,13 @@ THREE.FollowerControl = function ( object,humanMap,lodObj) {
         }
 
         if(this.humanMap[this.nextKey]<=0){
-            // this.object.translateZ(-0.01*3.5);
+            //this.object.translateZ(-0.01*3.5);
             this.object.translateZ(-delta*this.runSpeed);
         }else{
-            // this.object.translateZ(-0.01*1.5);
+            //this.object.translateZ(-0.01*1.5);
             this.object.translateZ(-delta*(this.runSpeed/2));
         }
         this.lod_low_level_obj.position.set(this.object.position.x,this.object.position.y,this.object.position.z);
-
     }
 
     function getClostPoint(obj, objArr) {

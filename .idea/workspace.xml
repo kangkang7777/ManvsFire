@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7b682202-0905-458a-ab74-ff5472c71de9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/Interaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Interaction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/FollowerControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/FollowerControl.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/People.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/People.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/three.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/three.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -16,15 +17,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DockManager">
-    <window id="1">
+    <window id="5">
       <content type="file-editors">
         <state>
           <leaf>
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/new.html">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="108">
-                    <caret line="109" column="32" lean-forward="true" selection-start-line="109" selection-start-column="32" selection-end-line="109" selection-end-column="32" />
+                  <state relative-caret-position="34">
+                    <caret line="102" column="54" lean-forward="true" selection-start-line="102" selection-start-column="54" selection-end-line="102" selection-end-column="54" />
                     <folding>
                       <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                       <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -64,33 +65,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/path.js">
+        <entry file="file://$PROJECT_DIR$/js/ACOPathFindingWorker.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4185">
-              <caret line="155" column="17" selection-start-line="155" selection-start-column="17" selection-end-line="155" selection-end-column="17" />
+            <state relative-caret-position="837">
+              <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/ACOPathFindingWorker.js">
+        <entry file="file://$PROJECT_DIR$/js/Interaction.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+            <state relative-caret-position="4374">
+              <caret line="162" column="12" selection-start-line="162" selection-start-column="7" selection-end-line="162" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/Interaction.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/mainScene.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="123" column="61" selection-start-line="123" selection-start-column="61" selection-end-line="123" selection-end-column="61" />
-              <folding>
-                <element signature="n#style#0;n#p#0;n#center#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#1;n#center#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#2;n#center#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="351">
+              <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -104,20 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/loadTJMap.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="999">
-              <caret line="37" column="54" selection-start-line="37" selection-start-column="54" selection-end-line="37" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/People.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="443" column="33" selection-start-line="443" selection-start-column="33" selection-end-line="443" selection-end-column="33" />
+            <state relative-caret-position="459">
+              <caret line="272" column="50" lean-forward="true" selection-start-line="272" selection-start-column="50" selection-end-line="272" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -125,8 +112,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Underground.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="90" column="10" selection-start-line="90" selection-start-column="10" selection-end-line="90" selection-end-column="10" />
+            <state relative-caret-position="594">
+              <caret line="236" column="51" selection-start-line="236" selection-start-column="51" selection-end-line="236" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/three.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="448">
+              <caret line="10462" column="38" selection-start-line="10462" selection-start-column="26" selection-end-line="10462" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -134,8 +130,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/FollowerControl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1161">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
+            <state relative-caret-position="320">
+              <caret line="189" column="34" lean-forward="true" selection-start-line="189" selection-start-column="34" selection-end-line="189" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -143,7 +139,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/MyPathControl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
+            <state relative-caret-position="1107">
               <caret line="41" column="108" selection-start-line="41" selection-start-column="108" selection-end-line="41" selection-end-column="108" />
             </state>
           </provider>
@@ -162,21 +158,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>followercontrol</find>
-      <find>humanMap</find>
-      <find>isArrive</find>
-      <find>update</find>
-      <find>myData</find>
-      <find>startACOPathFinding</find>
-      <find>nextPosition</find>
-      <find>acoPathFindingWorker</find>
-      <find>setzonedata</find>
-      <find>buildZone</find>
-      <find>r1</find>
-      <find>sNumber</find>
-      <find>newsmokeData</find>
-      <find>ii</find>
-      <find>range</find>
       <find>pp</find>
       <find>smoke_</find>
       <find>transformSmoke</find>
@@ -192,6 +173,21 @@
       <find>messagecontrol</find>
       <find>controlSheet</find>
       <find>firePointArr</find>
+      <find>drawPath</find>
+      <find>createNav</find>
+      <find>Pathfinding</find>
+      <find>createz</find>
+      <find>exitConnectionMap</find>
+      <find>startPathFinding</find>
+      <find>runSpeed</find>
+      <find>quaternion</find>
+      <find>this.quaternion</find>
+      <find>translateOnAxis</find>
+      <find>blendMesh</find>
+      <find>creat</find>
+      <find>mesh</find>
+      <find>applyMatrix4</find>
+      <find>localToWorld</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -202,7 +198,6 @@
       <list>
         <option value="$PROJECT_DIR$/js/launch.js" />
         <option value="$PROJECT_DIR$/js/fireControl.js" />
-        <option value="$PROJECT_DIR$/lib/three.js" />
         <option value="$PROJECT_DIR$/js/waterControl.js" />
         <option value="$PROJECT_DIR$/UI.html" />
         <option value="$PROJECT_DIR$/Model/man/fireman.json" />
@@ -216,20 +211,22 @@
         <option value="$PROJECT_DIR$/js/ACOPathFindingWorker.js" />
         <option value="$PROJECT_DIR$/js/loadSmokeJsonWorker.js" />
         <option value="$PROJECT_DIR$/js/loadBlockVsg.js" />
-        <option value="$PROJECT_DIR$/js/path.js" />
         <option value="$PROJECT_DIR$/js/messageControl.js" />
         <option value="$PROJECT_DIR$/js/Smoke.js" />
         <option value="$PROJECT_DIR$/SmokeData/newsmoke.json" />
         <option value="$PROJECT_DIR$/js/mainScene.js" />
         <option value="$PROJECT_DIR$/new.html" />
-        <option value="$PROJECT_DIR$/js/People.js" />
         <option value="$PROJECT_DIR$/js/Interaction.js" />
+        <option value="$PROJECT_DIR$/js/path.js" />
+        <option value="$PROJECT_DIR$/lib/three.js" />
+        <option value="$PROJECT_DIR$/js/People.js" />
+        <option value="$PROJECT_DIR$/js/FollowerControl.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-132" />
-    <option name="y" value="96" />
+    <option name="x" value="-32" />
+    <option name="y" value="48" />
     <option name="width" value="1688" />
     <option name="height" value="1026" />
   </component>
@@ -250,6 +247,11 @@
               <item name="manvsFire" type="b2602c69:ProjectViewProjectNode" />
               <item name="manvsFire" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="manvsFire" type="b2602c69:ProjectViewProjectNode" />
+              <item name="manvsFire" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="manvsFire" type="b2602c69:ProjectViewProjectNode" />
@@ -371,11 +373,15 @@
       <workItem from="1568603389302" duration="335000" />
       <workItem from="1570522932200" duration="233000" />
       <workItem from="1570523174581" duration="13000" />
+      <workItem from="1571051472406" duration="2422000" />
+      <workItem from="1571054004793" duration="1248000" />
+      <workItem from="1571055933799" duration="3810000" />
+      <workItem from="1571102709863" duration="2014000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="279604000" />
+    <option name="totallyTimeSpent" value="306445000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -396,13 +402,13 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.2251732" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.2817552" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.17898384" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3290993" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.329718" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3290993" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3290993" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -425,13 +431,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1134">
           <caret line="42" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/three.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36207">
-          <caret line="1341" column="35" selection-start-line="1341" selection-start-column="35" selection-end-line="1341" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -487,20 +486,8 @@
     <entry file="file://$PROJECT_DIR$/SmokeData/UndergroundSmokeData">
       <provider selected="true" editor-type-id="LargeFileEditor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Model/nav.obj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12312" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SmokeData/smoke_density.txt">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SmokeData/Block_Map_TJ.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67851">
-          <caret line="2513" column="10" selection-start-line="2513" selection-start-column="10" selection-end-line="2513" selection-end-column="10" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/loadTJMap.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -513,13 +500,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1377">
           <caret line="75" column="39" lean-forward="true" selection-start-line="75" selection-start-column="39" selection-end-line="75" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/MyPathControl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="41" column="108" selection-start-line="41" selection-start-column="108" selection-end-line="41" selection-end-column="108" />
         </state>
       </provider>
     </entry>
@@ -542,34 +522,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SmokeData/smoke_small.txt">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/ACOPathFindingWorker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/three-pathfinding.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8856">
-          <caret line="328" column="40" selection-start-line="328" selection-start-column="40" selection-end-line="328" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/path.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4185">
-          <caret line="155" column="17" selection-start-line="155" selection-start-column="17" selection-end-line="155" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/FollowerControl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1161">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Temp/gui-config.json" />
     <entry file="file://$PROJECT_DIR$/../gui-config.json" />
@@ -677,13 +629,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/mainScene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="13" column="9" lean-forward="true" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/particle_system.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4239">
@@ -691,24 +636,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/Underground.js">
+    <entry file="file://$PROJECT_DIR$/Model/nav.obj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="90" column="10" selection-start-line="90" selection-start-column="10" selection-end-line="90" selection-end-column="10" />
+        <state relative-caret-position="-1863" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/three-pathfinding.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3254">
+          <caret line="837" column="31" selection-start-line="837" selection-start-column="24" selection-end-line="837" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/People.js">
+    <entry file="file://$PROJECT_DIR$/js/path.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="443" column="33" selection-start-line="443" selection-start-column="33" selection-end-line="443" selection-end-column="33" />
+        <state relative-caret-position="6966">
+          <caret line="258" column="20" selection-start-line="258" selection-start-column="20" selection-end-line="258" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/ACOPathFindingWorker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="837">
+          <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Interaction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4374">
+          <caret line="162" column="12" selection-start-line="162" selection-start-column="7" selection-end-line="162" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/mainScene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SmokeData/Block_Map_TJ.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67851">
+          <caret line="2513" column="10" selection-start-line="2513" selection-start-column="10" selection-end-line="2513" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/MyPathControl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1107">
+          <caret line="41" column="108" selection-start-line="41" selection-start-column="108" selection-end-line="41" selection-end-column="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/three.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="10462" column="38" selection-start-line="10462" selection-start-column="26" selection-end-line="10462" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Underground.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="236" column="51" selection-start-line="236" selection-start-column="51" selection-end-line="236" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/FollowerControl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="189" column="34" lean-forward="true" selection-start-line="189" selection-start-column="34" selection-end-line="189" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/new.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="109" column="32" lean-forward="true" selection-start-line="109" selection-start-column="32" selection-end-line="109" selection-end-column="32" />
+        <state relative-caret-position="34">
+          <caret line="102" column="54" lean-forward="true" selection-start-line="102" selection-start-column="54" selection-end-line="102" selection-end-column="54" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -739,15 +745,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/Interaction.js">
+    <entry file="file://$PROJECT_DIR$/js/People.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="123" column="61" selection-start-line="123" selection-start-column="61" selection-end-line="123" selection-end-column="61" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#center#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#1;n#center#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#2;n#center#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="459">
+          <caret line="272" column="50" lean-forward="true" selection-start-line="272" selection-start-column="50" selection-end-line="272" selection-end-column="50" />
         </state>
       </provider>
     </entry>

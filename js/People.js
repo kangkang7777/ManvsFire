@@ -152,6 +152,7 @@ People.prototype.init = function (_this)
                         newMeshLod.material.map = texture;
 
                         _this.scene.add(newMesh);
+                        //console.log(newMesh.quaternion);
                         //scene.add(newMeshLod);
 
                         self.blendMeshArr.push(newMesh);
@@ -263,13 +264,6 @@ People.prototype.init = function (_this)
                             }
 
                             self.isLoaded = true;
-                            console.log(self.pathControlMap);
-                            var position = [];
-                            for(var key in self.pathControlMap)
-                            {
-                                position.push(self.pathControlMap[key].object.position);
-                            }
-                            console.log(position);
                         }
 
                         //////////////////////////////////////////////////////////////////////////////////////////////
@@ -427,21 +421,9 @@ People.prototype.ifstartRun = function (_this)
                 //去掉场景中的人物并修改计数器，当计数器为0时，显示结果列表
                 _this.scene.remove(self.pathControlMap[key].object);
                 _this.scene.remove(self.pathControlMap[key].lod_low_level_obj);
+                if(self.pathControlMap[key] instanceof THREE.FollowerControl)
+                    _this.number--;
                 delete self.pathControlMap[key];
-                _this.number--;
-                console.log(_this.number);
-                console.log(self.pathControlMap);
-                var position = [];
-                var i=0;
-                for(var key in self.pathControlMap)
-                {
-                    if(!isNaN(self.pathControlMap[key].object.position.x)){
-                        i++;
-                    }
-                    position.push(self.pathControlMap[key].object.position);
-                }
-                console.log(position);
-                _this.number = i;
             }
         }
     }
