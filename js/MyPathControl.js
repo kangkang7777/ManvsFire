@@ -67,7 +67,7 @@ THREE.MyPathControl = function ( object) {
                         var tempVec = forVec.clone();
                         tempVec = tempVec.cross(tarVec);
 
-                        var theta = Math.acos(forVec.dot(tarVec));
+                        var theta = Math.acos(THREE.Math.clamp(forVec.dot(tarVec),-1,1));
 
                         if(tempVec.y>0)
                         {

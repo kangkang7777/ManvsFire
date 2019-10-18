@@ -341,7 +341,6 @@ People.prototype.init = function (_this)
                 }
                 blendMeshPosIndexArr.push(index1);
                 blendMeshPosArr.push(new THREE.Vector3(x,y,z));
-;
             }
         }
     }

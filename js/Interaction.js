@@ -87,9 +87,11 @@ Interaction.prototype.fuc2 = function (_this)
     document.getElementById('startRun').addEventListener('click',function (event)
     {
 
+
         document.getElementById("active").style.display = "inline-block";
         document.getElementById("startRun").style.display = "none";
         document.getElementById("transformSmoke").style.display = "none";
+        document.getElementById("fireman").style.display = "inline-block";
 
         _this.smoke.redBallMesh.position.x=_this.smoke.positionBallMesh.position.x+16;
         _this.smoke.redBallMesh.position.z= _this.smoke.positionBallMesh.position.z;
@@ -235,7 +237,7 @@ Interaction.prototype.fuc3 = function (MainScene)
             MainScene.smoke.Logo3Material.visible=true;
             MainScene.smoke.Logo4Material.visible=true;
             MainScene.smoke.Logo5Material.visible=true;
-            MainScene.camera.position.set(450, 250, 60);//原x为150 450
+            MainScene.camera.position.set(450, 300, 60);//原x为150 450
             MainScene.camera.lookAt(450, 0, 8);
             MainScene.globalPlane.constant = 17;
             MainScene.globalPlane.set(new THREE.Vector3(0, -1, 0), 17);

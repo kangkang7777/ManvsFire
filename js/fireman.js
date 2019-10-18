@@ -116,9 +116,17 @@ fireman.prototype.createFireman = function (_this)
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
             texture.repeat.set(1, 1);
             self.cubeFireman.material.map = texture;
+
             //cubeFireman.position.set(419.05, 18.7, 10.91);
             //cubeFireman.position.set(335, 9, 17);
-            self.cubeFireman.position.set(242, 7, 15);
+            if(_this.smoke.positionBallMesh.position.x>339 && _this.smoke.positionBallMesh.position.z>36)
+                self.cubeFireman.position.set(550, 5.8, 40);
+            else if(_this.smoke.positionBallMesh.position.x>339 && _this.smoke.positionBallMesh.position.z<13.5)
+                self.cubeFireman.position.set(550, 5.8, 10);
+            else
+                self.cubeFireman.position.set(419.05, 18.7, 10.91);
+
+
             self.cubeFireman.meshMixer = new THREE.AnimationMixer(self.cubeFireman);//创建一个动画混合器
             self.cubeFireman.outfireAction = self.cubeFireman.meshMixer.clipAction('idle');
             self.cubeFireman.walkAction = self.cubeFireman.meshMixer.clipAction('run');
@@ -129,7 +137,8 @@ fireman.prototype.createFireman = function (_this)
             self.cubeFireman.walkAction.setEffectiveWeight(1);
             self.cubeFireman.outfireAction.play();
             self.cubeFireman.walkAction.play();
-            self.cubeFireman.path = _this.Path.pathfinder.findPath(self.cubeFireman.position, new THREE.Vector3(_this.smoke.pp.x+18,_this.smoke.pp.y,_this.smoke.pp.z), 'level1', 5);
+            self.cubeFireman.groupID = _this.Path.pathfinder.getGroup('level1',self.cubeFireman.position);
+            self.cubeFireman.path = _this.Path.pathfinder.findPath(self.cubeFireman.position, new THREE.Vector3(_this.smoke.pp.x+18,_this.smoke.pp.y,_this.smoke.pp.z), 'level1', self.cubeFireman.groupID);
 
             self.cubeFireman.i = 0;
             self.cubeFireman.target = self.cubeFireman.path[0];
@@ -145,7 +154,10 @@ fireman.prototype.createFireman = function (_this)
                         _this.people.setWeight(this.outfireAction, 1);
                         _this.people.setWeight(this.walkAction, 0);
                         self.isposition=true;
-                        this.angle = 0;
+                        var toFireAngle = _this.smoke.positionBallMesh.position.sub(this.position).setY(0);
+                        this.angle = toFireAngle.angleTo(this.getWorldDirection().multiplyScalar(-1));
+                        this.angleDist = toFireAngle.clone();
+                        this.angleDist.cross(this.getWorldDirection().multiplyScalar(-1));
                     }
                     else {
                         this.dist.normalize();

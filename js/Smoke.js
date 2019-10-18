@@ -43,7 +43,7 @@ var Smoke = function ()
     this.firePointArr.push(firePoint4);
 
     var firePoint5 = new firePoint();
-    firePoint5.firePosition = new THREE.Vector3(313,10,19.8);
+    firePoint5.firePosition = new THREE.Vector3(313,10,35);
     this.firePointArr.push(firePoint5);
 }
 
@@ -125,7 +125,7 @@ Smoke.prototype.init = function(_this)
     this.Logo5Material.opacity=1;
     var Logo5Mesh=new THREE.Mesh(Logo5Geometry,this.Logo5Material);
     //Logo5Mesh.position.set(215,5.8,27);
-    Logo5Mesh.position.set(this.firePointArr[4].firePosition.x,5.8,this.firePointArr[4].firePosition.z);
+    Logo5Mesh.position.set(this.firePointArr[4].firePosition.x,9,this.firePointArr[4].firePosition.z);
     this.Logo5Material.visible=false;
     this.logoArr.push(Logo5Mesh);
     _this.scene.add(Logo5Mesh);
@@ -425,10 +425,12 @@ Smoke.prototype.smokeColor = function (_this)
         }
         self.ii--;
         self.kk--;
+        /*
         if(self.kk==0)
         {
             _this.water.watermiss=true;
         }
+         */
     }
 }
 
@@ -465,8 +467,8 @@ Smoke.prototype.smokeLocationRepair = function (_this)
      */
     if(self.positionBallMesh.position.x>=298 && self.positionBallMesh.position.x<=605 && self.positionBallMesh.position.z>=13.5 && self.positionBallMesh.position.z<=36)
     {
-        self.positionBallMesh.position.y = 8.4;
-        _this.control.position.y=8.4;
+        self.positionBallMesh.position.y = 8.9;//8.4
+        _this.control.position.y=8.9;
         this.sNumber=0.03;
     }
     else{
@@ -508,9 +510,14 @@ Smoke.prototype.smokeSurfaceChange = function (_this)
             {
                 //if(count>0)
                 //count--;
+                console.log(child.material.opacity);
                 if(child.material.opacity > 0)
                 {
                     child.material.opacity -=0.001;
+                }
+                else
+                {
+                    _this.water.watermiss=true;
                 }
             }
         });

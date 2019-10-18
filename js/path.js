@@ -169,7 +169,7 @@ path.prototype.init= function (_this)
 }
 
 path.prototype.createNav = function ()
-{
+{//interaction.js创建人群时调用
     var self = this;
         let loader = new THREE.OBJLoader();
         // load a resource
@@ -312,7 +312,7 @@ path.prototype.startPathFinding = function (_this)
                         if(self._this.people.exitInfoMap[1][j][0]==2)
                         {
                             var index = self._this.people.exitInfoMap[1][j][1] + "&" + self._this.people.exitInfoMap[1][j][3] + "@" + self._this.people.exitInfoMap[1][j][2];
-                            if(self._this.people.exitInfoMap[1][j][1]==self._this.people.exitInfoMap[1][j][4])
+                            if(self._this.people.exitInfoMap[1][j][1]==self._this.people.exitInfoMap[1][j][4])//若楼梯是沿z方向的
                             {
                                 var distance = self._this.people.exitInfoMap[1][j][6] - self._this.people.exitInfoMap[1][j][3];
                                 var connectionArr = [];
@@ -328,7 +328,7 @@ path.prototype.startPathFinding = function (_this)
                                 connectionArr.push(self._this.people.exitInfoMap[1][j][4]+ "&" +self._this.people.exitInfoMap[1][j][6]+ "@" +self._this.people.exitInfoMap[1][j][5]);
                                 self.exitConnectionMap[index] = connectionArr;
                             }
-                            if(self._this.people.exitInfoMap[1][j][3]==self._this.people.exitInfoMap[1][j][6])
+                            if(self._this.people.exitInfoMap[1][j][3]==self._this.people.exitInfoMap[1][j][6])//若楼梯是沿x方向的
                             {
                                 var distance = self._this.people.exitInfoMap[1][j][4] - self._this.people.exitInfoMap[1][j][1];
                                 var connectionArr = [];

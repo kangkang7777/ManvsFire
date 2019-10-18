@@ -183,13 +183,8 @@ THREE.FollowerControl = function ( object,humanMap,lodObj) {
             var tempVec = forVec.clone();
             tempVec = tempVec.cross(nextVec);
 
-            var finalVec = forVec.dot(nextVec);
             //当forVector和nextVec相同时，点积结果会稍大于1
-            if(finalVec > 1)
-                finalVec = 1;
-            else if(finalVec < -1)
-                finalVec = -1;
-            var theta = Math.acos(finalVec);
+            var theta = Math.acos(THREE.Math.clamp(forVec.dot(nextVec),-1,1));
 
             if(tempVec.y>0)
             {
