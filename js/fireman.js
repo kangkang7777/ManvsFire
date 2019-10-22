@@ -117,15 +117,8 @@ fireman.prototype.createFireman = function (_this)
             texture.repeat.set(1, 1);
             self.cubeFireman.material.map = texture;
 
-            //cubeFireman.position.set(419.05, 18.7, 10.91);
+            self.cubeFireman.position.set(419.05, 18.7, 10.91);
             //cubeFireman.position.set(335, 9, 17);
-            if(_this.smoke.positionBallMesh.position.x>339 && _this.smoke.positionBallMesh.position.z>36)
-                self.cubeFireman.position.set(550, 5.8, 40);
-            else if(_this.smoke.positionBallMesh.position.x>339 && _this.smoke.positionBallMesh.position.z<13.5)
-                self.cubeFireman.position.set(550, 5.8, 10);
-            else
-                self.cubeFireman.position.set(419.05, 18.7, 10.91);
-
 
             self.cubeFireman.meshMixer = new THREE.AnimationMixer(self.cubeFireman);//创建一个动画混合器
             self.cubeFireman.outfireAction = self.cubeFireman.meshMixer.clipAction('idle');
@@ -258,14 +251,6 @@ fireman.prototype.SteeringFollowPathFireman = function (_this)//消防员调整�
 fireman.prototype.positionAdjust = function (_this)
 {
     var self = this;
-    var raycaster=new THREE.Raycaster(_this.smoke.positionBallMesh.position,new THREE.Vector3(0,1,0),1,1000);
-    var intersects = raycaster.intersectObjects(self.cubeArr);
-    if(intersects.length>0){
-        if(intersects[0].distance<180||intersects[0].distance>0)
-            _this.smoke.sNumber=(intersects[0].distance)/160;
-        else
-            _this.smoke.sNumber=1;
-    }
 
     //灭火器位置调整 艾子豪
     self.raycasterExtinguish=new THREE.Raycaster();

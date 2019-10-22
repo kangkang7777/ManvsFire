@@ -362,6 +362,17 @@ Interaction.prototype.fuc3 = function (MainScene)
 
     }
     //deregion
+
+    //编辑烟雾状态下的摄像机移动
+    window.addEventListener('keydown',function(event){
+        if(MainScene.isEdit)
+        {
+            if(event.key == "a" || event.key == "Left Arrow")
+                MainScene.camera.position.x =MainScene.camera.position.x-2;
+            if(event.key == "d" || event.key == "Right Arrow")
+                MainScene.camera.position.x =MainScene.camera.position.x+2;
+        }
+    })
 }
 
 Interaction.prototype.fuc4 = function (_this)

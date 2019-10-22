@@ -510,7 +510,7 @@ Smoke.prototype.smokeSurfaceChange = function (_this)
             {
                 //if(count>0)
                 //count--;
-                console.log(child.material.opacity);
+                //console.log(child.position);
                 if(child.material.opacity > 0)
                 {
                     child.material.opacity -=0.001;
