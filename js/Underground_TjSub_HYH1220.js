@@ -2332,7 +2332,7 @@ $(function () {
         // load a resource
         loader.load(
             // resource URL
-            'Model/newNav.obj',
+            'Model/nav.obj',
             // called when resource is loaded
             function (object) {
                 let g;

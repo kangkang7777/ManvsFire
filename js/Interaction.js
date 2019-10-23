@@ -118,7 +118,7 @@ Interaction.prototype.fuc2 = function (_this)
 
                 } else {
                     clearInterval(timeEscape);
-                    _this.active = false;
+                    //_this.active = false;
 
                     $("#fireman").css('display',"inline-block");
                     $('#illustration-title').text("模拟结束");
@@ -126,7 +126,7 @@ Interaction.prototype.fuc2 = function (_this)
                         + "<br/>未逃出人数：" +  _this.number + "人"
                         + "<br/>最快逃生用时：" + (_this.firstEscapeTime) + "s"
                         + "<br/>全体逃生用时：" + _this.currentEscapeTime + "s");
-                    $("#fireman").css("display", "inline-block");
+                    //$("#fireman").css("display", "inline-block");
                 }
             }
         },1000);
@@ -184,7 +184,7 @@ Interaction.prototype.fuc3 = function (MainScene)
         MainScene.camControlOver.autoRotate = false;
 
         $("fireman").style.display = "none";
-        $('escapeTimePanel').style.display = "none";
+        //$('escapeTimePanel').style.display = "none";
         $('pause').style.display = "inline-block";
         //消防员出现之后就是跟随视角
         $("cancelFollow").style.display = "inline-block";

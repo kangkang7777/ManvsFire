@@ -147,7 +147,8 @@ fireman.prototype.createFireman = function (_this)
                         _this.people.setWeight(this.outfireAction, 1);
                         _this.people.setWeight(this.walkAction, 0);
                         self.isposition=true;
-                        var toFireAngle = _this.smoke.positionBallMesh.position.sub(this.position).setY(0);
+                        var firePos = _this.smoke.positionBallMesh.position.clone();
+                        var toFireAngle = firePos.sub(this.position).setY(0);
                         this.angle = toFireAngle.angleTo(this.getWorldDirection().multiplyScalar(-1));
                         this.angleDist = toFireAngle.clone();
                         this.angleDist.cross(this.getWorldDirection().multiplyScalar(-1));
