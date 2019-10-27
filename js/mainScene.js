@@ -142,7 +142,7 @@ mainScene.prototype.init = function()
     //交互4
     //this.HCI.fuc4(this);
 
-    this.HCI.fuc5(this);
+    //this.HCI.fuc5(this);
 
 }
 
@@ -185,7 +185,7 @@ mainScene.prototype.start = function()
         //todo self.renderer.clear();    与renderer.autoClear = false 对应 不知道意义何在
         //self.stats.end();
 
-        self.LOD;//lod算法
+       // self.LOD;//lod算法
     }
 
 }

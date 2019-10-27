@@ -69,15 +69,7 @@ Interaction.prototype.fuc1 = function (_this)
         console.log(_this.camControl);
     });
 
-    document.getElementById('test').addEventListener('click',function(event)
-    {
-        var output = _this.camera.position.x.toString()+","+_this.camera.position.y.toString()+","+_this.camera.position.z.toString();
-        alert(output);
-        console.log(_this.camera.position);
-        console.log(_this.camera);
-        console.log(_this.freeViewControl);
-        console.log(_this.camControl);
-    });
+
 
 }
 
@@ -424,10 +416,18 @@ Interaction.prototype.fuc5 = function (_this)
 
         _this.underground.mesh.position.set(x,y,z-10);
     });
-    document.getElementById('_test').addEventListener('click',function (event) {
+    document.getElementById('mesh_pos').addEventListener('click',function (event) {
 
         var output = _this.underground.mesh.position.x.toString()+","+_this.underground.mesh.position.y.toString()+","+_this.underground.mesh.position.z.toString();
         alert(output);
     });
-
+    document.getElementById('view_pos').addEventListener('click',function(event)
+    {
+        var output = _this.camera.position.x.toString()+","+_this.camera.position.y.toString()+","+_this.camera.position.z.toString();
+        alert(output);
+        console.log(_this.camera.position);
+        console.log(_this.camera);
+        console.log(_this.freeViewControl);
+        console.log(_this.camControl);
+    });
 }
