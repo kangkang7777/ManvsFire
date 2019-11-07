@@ -386,39 +386,43 @@ Interaction.prototype.fuc4 = function (_this)
 
 Interaction.prototype.fuc5 = function (_this)
 {
-    document.getElementById('x_1').addEventListener('click',function (event)
+    var flag = 'x';
+    document.getElementById('flag').addEventListener('click',function (event)
     {
-        var x = _this.underground.mesh.position.x;
-        var y = _this.underground.mesh.position.y;
-        var z = _this.underground.mesh.position.z;
-
-        _this.underground.mesh.position.set(x,y,z+1);
+        if(flag==='x')
+        {
+            flag = 'y';
+            $("#flag").html('Y');
+        }
+        else if(flag==='y')
+        {
+            flag = 'z';
+            $("#flag").html('Z');
+        }
+        else if(flag==='z')
+        {
+            flag = 'x';
+            $("#flag").html('X');
+        }
 
     });
-    document.getElementById('x_2').addEventListener('click',function (event) {
-        var x = _this.underground.mesh.position.x;
-        var y = _this.underground.mesh.position.y;
-        var z = _this.underground.mesh.position.z;
 
-        _this.underground.mesh.position.set(x,y,z-1);
+    document.getElementById('x_1').addEventListener('click',function (event)
+    {
+        change(1);
+    });
+    document.getElementById('x_2').addEventListener('click',function (event) {
+        change(-1);
 });
     document.getElementById('x_3').addEventListener('click',function (event) {
-        var x = _this.underground.mesh.position.x;
-        var y = _this.underground.mesh.position.y;
-        var z = _this.underground.mesh.position.z;
-
-        _this.underground.mesh.position.set(x,y,z+10);
+        change(10);
 });
     document.getElementById('x_4').addEventListener('click',function (event) {
-        var x = _this.underground.mesh.position.x;
-        var y = _this.underground.mesh.position.y;
-        var z = _this.underground.mesh.position.z;
-
-        _this.underground.mesh.position.set(x,y,z-10);
+        change(-10);
     });
     document.getElementById('mesh_pos').addEventListener('click',function (event) {
 
-        var output = _this.underground.mesh.position.x.toString()+","+_this.underground.mesh.position.y.toString()+","+_this.underground.mesh.position.z.toString();
+        var output = _this.underground.subway.position.x.toString()+","+_this.underground.subway.position.y.toString()+","+_this.underground.subway.position.z.toString();
         alert(output);
     });
     document.getElementById('view_pos').addEventListener('click',function(event)
@@ -430,4 +434,17 @@ Interaction.prototype.fuc5 = function (_this)
         console.log(_this.freeViewControl);
         console.log(_this.camControl);
     });
+
+    function change(num)
+    {
+        var x = _this.underground.subway.position.x;
+        var y = _this.underground.subway.position.y;
+        var z = _this.underground.subway.position.z;
+        if(flag==='x')
+            _this.underground.subway.position.set(x+num,y,z);
+        if(flag==='y')
+            _this.underground.subway.position.set(x,y+num,z);
+        if(flag==='z')
+            _this.underground.subway.position.set(x,y,z+num);
+    }
 }

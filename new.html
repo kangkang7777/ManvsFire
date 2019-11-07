@@ -11,14 +11,16 @@
 
     <script src="lib/three.js"></script>
     <script src="lib/stats.js"></script>
-    <script src="js/DRACOLoader.js"></script>
+    <script src="js/Loader/DRACOLoader.js"></script>
     <script src="lib/OrbitControls.js"></script>
     <script src="lib/jquery-1.8.2.js"></script>
-    <script src="js/GLTFLoader.js"></script>
+    <script src="js/Loader/GLTFLoader.js"></script>
     <script src="lib/FirstPersonControls.js"></script>
     <script src="lib/TransformControls.js"></script>
     <script src="lib/MyOrbitControls.js"></script>
     <script src="lib/Tween.js"></script>
+    <script src="js/Loader/OBJLoader.js" ></script>
+    <script src="js/Loader/OBJMTLLoader.js" ></script>
 
     <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
       <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
@@ -197,13 +199,15 @@
         <button  id="escapeDoor3" class="btn btn-default btn-lg">逃生门3</button>
         <button  id="floor1" class="btn btn-default btn-lg">地下一层</button>
         <button  id="floor2" class="btn btn-default btn-lg">地下二层</button>
-<!--        <button  id="view_pos" class="btn btn-default btn-lg">视角坐标</button>-->
-<!--&lt;!&ndash;        <a  id="test"></a>&ndash;&gt;-->
-<!--        <button  id="mesh_pos" class="btn btn-default btn-lg">建筑坐标</button>-->
-<!--        <button  id="x_1" class="btn btn-default btn-lg">x坐标+1</button>-->
-<!--        <button  id="x_2" class="btn btn-default btn-lg">x坐标-1</button>-->
-<!--        <button  id="x_3" class="btn btn-default btn-lg">x坐标+10</button>-->
-<!--        <button  id="x_4" class="btn btn-default btn-lg">x坐标-10</button>-->
+
+        <button  id="view_pos" class="btn btn-default btn-lg">视角坐标</button>
+<!--        <a  id="test"></a>-->
+        <button  id="mesh_pos" class="btn btn-default btn-lg">建筑坐标</button>
+        <button  id="flag" class="btn btn-default btn-lg">X</button>
+        <button  id="x_1" class="btn btn-default btn-lg">坐标+1</button>
+        <button  id="x_2" class="btn btn-default btn-lg">坐标-1</button>
+        <button  id="x_3" class="btn btn-default btn-lg">坐标+10</button>
+        <button  id="x_4" class="btn btn-default btn-lg">坐标-10</button>
 
     </div>
     <div id="fire-menu" style="display:none">
@@ -229,13 +233,14 @@
 <script src="js/messageControl.js"></script>
 <script src="js/path.js"></script>
 <script src="js/fireman.js"></script>
+<script src="js/Underground.js"></script>
 <script src="js/mainScene.js"></script>
 <script src="js/Smoke.js"></script>
-<script src="js/Underground.js"></script>
 <script src="js/FollowerControl.js"></script>
 <script src="js/MyPathControl.js"></script>
 <script src="js/People.js"></script>
 <script src="js/launch.js"></script>
+
 
 </body>
 </html>

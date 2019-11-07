@@ -142,7 +142,8 @@ mainScene.prototype.init = function()
     //交互4
     //this.HCI.fuc4(this);
 
-    //this.HCI.fuc5(this);
+    //debug专用
+    this.HCI.fuc5(this);
 
 }
 
@@ -169,6 +170,8 @@ mainScene.prototype.start = function()
             self.Fireman.update(self);
 
             self.people.update(self);
+
+            self.underground.update(self,self.delta);
         }
         //self.Cameracontroller.update1(self);
 

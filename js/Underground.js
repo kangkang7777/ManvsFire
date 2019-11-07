@@ -1,14 +1,17 @@
 var Underground = function ()
 {
     // this.currentBlockName = "TJSub_Vis";
-    this.mesh;
+    this.mesh=[];
     this.isOnload = false;
+    this.subway=[];
+    this.isready = false;
 }
 
 Underground.prototype.init = function (_this) {
     // this.DrawBuilding(scene,renderer,_this);
     this.FixBuliding(_this.scene);
     this.GlbBuilding(_this);
+    this.AddSubway(_this);
 }
 
 /*加载three.js自带模型*/
@@ -213,6 +216,8 @@ Underground.prototype.GlbBuilding = function (_this) {
     THREE.DRACOLoader.setDecoderConfig({type: 'js'});
     loader.setDRACOLoader(new THREE.DRACOLoader());
 
+
+
     function loadFunc(gltf, type)
     {
         self.mesh = gltf.scene.children[0];
@@ -291,4 +296,34 @@ Underground.prototype.GlbBuilding = function (_this) {
         return color;
     }
     /*设置建筑模型材质颜色结束*/
+}
+
+Underground.prototype.AddSubway = function (_this)
+{
+    var self = this;
+    var mtlLoader = new THREE.MTLLoader();
+    mtlLoader.setPath('Model/');
+    mtlLoader.load('subway.mtl', function(materials) {
+
+        materials.preload();
+
+        var objLoader = new THREE.OBJLoader();
+        objLoader.setMaterials(materials);
+        objLoader.setPath('Model/');
+        objLoader.load('subway.obj', function(object) {
+            self.subway = object;
+            object.position.set(390,6,41);
+            object.scale.set(0.03, 0.03, 0.03);
+            object.rotateY(Math.PI/2);
+            _this.scene.add(object);
+            self.isready = true;
+        });
+    });
+
+}
+
+Underground.prototype.update = function (_this,delta)
+{
+    if(this.isready)
+        _this.underground.subway.position.x+=delta*5;
 }
