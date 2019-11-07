@@ -249,6 +249,7 @@ Underground.prototype.GlbBuilding = function (_this) {
     var startLoadTime = performance.now();
     Promise.all(
         [
+            loadAsync('./model_glb/IfcBeam.glb','beam'),
             loadAsync('./model_glb/IfcColumnB1.glb','column'),
             loadAsync('./model_glb/IfcColumnB2.glb','column'),
             loadAsync('./model_glb/IfcElevator.glb','elevator'),
@@ -257,8 +258,8 @@ Underground.prototype.GlbBuilding = function (_this) {
             loadAsync('./model_glb/IfcSlabMid.glb','slab'),
             loadAsync('./model_glb/IfcSlabTop.glb','slab'),
             loadAsync('./model_glb/IfcStairFlight.glb','stair'),
-            loadAsync('./model_glb/IfcWallB1.glb','wall'),
-            loadAsync('./model_glb/IfcWallB2.glb','wall')
+            loadAsync('./model_glb/IfcWall.glb','wall'),
+            loadAsync('./model_glb/IfcWallStandardCase.glb','wall')
         ]
     ).then(() => {
         console.log("加载完成");
@@ -274,6 +275,9 @@ Underground.prototype.GlbBuilding = function (_this) {
     function selectMaterialColor(type) {
         let color = new THREE.Color(0xff0000);
         switch (type) {
+            case"beam":
+                color = new THREE.Color(0x808080);
+                break;
             case"column":
                 color = new THREE.Color(0xFFFFFF);
                 break;
@@ -326,6 +330,4 @@ Underground.prototype.update = function (_this,delta)
 {
     if(this.isready)
         _this.underground.subway.position.x+=delta*5;
-    if(this.isready&&_this.underground.subway.position.x>554)
-        this.isready = false;
 }
