@@ -316,7 +316,7 @@ Underground.prototype.AddSubway = function (_this)
         objLoader.setPath('Model/');
         objLoader.load('subway.obj', function(object) {
             self.subway = object;
-            object.position.set(390,6,41);
+            object.position.set(390,6,41.4);
             object.scale.set(0.03, 0.03, 0.03);
             object.rotateY(Math.PI/2);
             _this.scene.add(object);
