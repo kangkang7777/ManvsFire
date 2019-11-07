@@ -326,4 +326,6 @@ Underground.prototype.update = function (_this,delta)
 {
     if(this.isready)
         _this.underground.subway.position.x+=delta*5;
+    if(this.isready&&_this.underground.subway.position.x>554)
+        this.isready = false;
 }

@@ -386,23 +386,81 @@ Interaction.prototype.fuc4 = function (_this)
 
 Interaction.prototype.fuc5 = function (_this)
 {
+
+    // $("#TEST").html('        <button  id="TEST" class="btn btn-default btn-lg">退出测试</button>\n');
+    // $("#view_pos").html('        <button  id="view_pos" class="btn btn-default btn-lg">视角坐标</button>\n');
+    // $("#mesh_pos").html('        <button  id="mesh_pos" class="btn btn-default btn-lg">建筑坐标</button>\n');
+    // $("#flag").html('        <button  id="flag" class="btn btn-default btn-lg">X</button>\n');
+    // $("#x_1").html('        <button  id="x_1" class="btn btn-default btn-lg">坐标+1</button>\n');
+    // $("#x_2").html('        <button  id="x_2" class="btn btn-default btn-lg">坐标-1</button>\n');
+    // $("#x_3").html('        <button  id="x_3" class="btn btn-default btn-lg">坐标+10</button>\n');
+    // $("#x_4").html('        <button  id="x_4" class="btn btn-default btn-lg">坐标-10</button>\n');
+    var _flag = true;
+    document.getElementById('TEST').addEventListener('click',function (event) {
+        if(_flag) {
+            $("#floor-menu").html(
+                '     <button  id="escapeDoor1" class="btn btn-default btn-lg">逃生门1</button>\n' +
+                '            <button  id="escapeDoor2" class="btn btn-default btn-lg">逃生门2</button>\n' +
+                '            <button  id="escapeDoor3" class="btn btn-default btn-lg">逃生门3</button>\n' +
+                '            <button  id="floor1" class="btn btn-default btn-lg">地下一层</button>\n' +
+                '            <button  id="floor2" class="btn btn-default btn-lg">地下二层</button>\n' +
+                '            <button  id="TEST" class="btn btn-default btn-lg">退出测试</button>\n' +
+                '            <button  id="view_pos" class="btn btn-default btn-lg">视角坐标</button>\n' +
+                '            <button  id="mesh_pos" class="btn btn-default btn-lg">建筑坐标</button>\n' +
+                '            <button  id="flag" class="btn btn-default btn-lg">X</button>\n' +
+                '            <button  id="x_1" class="btn btn-default btn-lg">坐标+1</button>\n' +
+                '            <button  id="x_2" class="btn btn-default btn-lg">坐标-1</button>\n' +
+                '            <button  id="x_3" class="btn btn-default btn-lg">坐标+10</button>\n' +
+                '            <button  id="x_4" class="btn btn-default btn-lg">坐标-10</button>');
+            _flag = false;
+        }
+        else
+        {
+            $("#floor-menu").html(' \n' +
+                '            <button  id="escapeDoor1" class="btn btn-default btn-lg">逃生门1</button>\n' +
+                '            <button  id="escapeDoor2" class="btn btn-default btn-lg">逃生门2</button>\n' +
+                '            <button  id="escapeDoor3" class="btn btn-default btn-lg">逃生门3</button>\n' +
+                '            <button  id="floor1" class="btn btn-default btn-lg">地下一层</button>\n' +
+                '            <button  id="floor2" class="btn btn-default btn-lg">地下二层</button>\n' +
+                '            <button  id="TEST" class="btn btn-default btn-lg">测试模式</button>\n' +
+                '\n' +
+                '          <a  id="view_pos"></a>'
+               + ' <a  id="mesh_pos"></a>'
+                +'<a  id="flag"></a>'
+            +'<a  id="x_1"></a>'
+            +'<a  id="x_2"></a>'
+            +'<a  id="x_3"></a>'
+            +'<a  id="x_4"></a>');
+            _flag = true;
+        }
+    });
+    // document.getElementById('_TEST').addEventListener('click',function (event) {
+    //     $("#TEST").html('                <button  id="TEST" class="btn btn-default btn-lg">测试模式</button>\n');
+    //     $("#view_pos").html('               <a  id="view_pos"></a>\n');
+    //     $("#mesh_pos").html('         <a  id="mesh_pos"></a>');
+    //     $("#flag").html('                <a  id="flag"></a>\n');
+    //     $("#x_1").html('               <a  id="x_1"></a>\n');
+    //     $("#x_2").html('               <a  id="x_2"></a>\n');
+    //     $("#x_3").html('               <a  id="x_3"></a>\n');
+    //     $("#x_4").html('                <a  id="x_4"></a>\n');
+    // })
     var flag = 'x';
     document.getElementById('flag').addEventListener('click',function (event)
     {
         if(flag==='x')
         {
             flag = 'y';
-            $("#flag").html('Y');
+            $("#flag").html('        <button  id="flag" class="btn btn-default btn-lg">Y</button>\n');
         }
         else if(flag==='y')
         {
             flag = 'z';
-            $("#flag").html('Z');
+            $("#flag").html('        <button  id="flag" class="btn btn-default btn-lg">Z</button>\n');
         }
         else if(flag==='z')
         {
             flag = 'x';
-            $("#flag").html('X');
+            $("#flag").html('        <button  id="flag" class="btn btn-default btn-lg">X</button>\n');
         }
 
     });
