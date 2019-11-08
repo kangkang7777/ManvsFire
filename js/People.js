@@ -25,7 +25,7 @@ People.prototype.init = function (_this)
 
     var mapWorker = new Worker("js/loadTJMap.js");
 
-    mapWorker.postMessage("../SmokeData/Block_Map_TJ.txt");
+    mapWorker.postMessage("../SmokeData/new_Block_Map_TJ.txt");
     mapWorker.onmessage = function (event)
     {
         _this.Path.mapInfoMap = event.data.mapInfo;
@@ -34,7 +34,7 @@ People.prototype.init = function (_this)
         meshLoadCount = 0;
         _this.isFinishLoadCharactor = false;
 
-        createRandomPos(_this.number);
+        createRandomPosAndState(_this.number);
         loadBlendMeshWithPromise();
         _this.isStartRun = false;
 
@@ -136,11 +136,13 @@ People.prototype.init = function (_this)
                         newMeshLod = dataL[temp].clone();
 
                         var scaleSize = 0.002*(Math.random()*(8-6+1)+6);
-                        newMesh.position.set(blendMeshPosArr[i].x,blendMeshPosArr[i].y,blendMeshPosArr[i].z);
-                        newMesh.rotation.y=-90;
+                        newMesh.position.set(blendMeshPosArr[i].position.x,blendMeshPosArr[i].position.y,blendMeshPosArr[i].position.z);
+                        //newMesh.rotation.y=-90;
+                        newMesh.rotation.y=blendMeshPosArr[i].rotation;
                         newMesh.scale.set(scaleSize, scaleSize, scaleSize);
-                        newMeshLod.position.set(blendMeshPosArr[i].x,blendMeshPosArr[i].y,blendMeshPosArr[i].z);
-                        newMeshLod.rotation.y=-90;
+                        newMeshLod.position.set(blendMeshPosArr[i].position.x,blendMeshPosArr[i].position.y,blendMeshPosArr[i].position.z);
+                        //newMeshLod.rotation.y=-90;
+                        newMeshLod.rotation.y=blendMeshPosArr[i].rotation;
                         newMeshLod.scale.set(scaleSize, scaleSize, scaleSize);
 
                         var texture = THREE.ImageUtils.loadTexture(textureURL );
@@ -294,6 +296,7 @@ People.prototype.init = function (_this)
             });
 
         }
+        /*
         function createRandomPos(meshNum) {
             var blendMeshPosIndexArr = ["470&22@19","524&11@19","491&40@19","564&33@9","459&30@9"];
             for(var i=0; i<meshNum; i++)
@@ -339,9 +342,233 @@ People.prototype.init = function (_this)
 
                     index1 = x + "&" + z + "@"+y;
                 }
-                blendMeshPosIndexArr.push(index1);
+                //blendMeshPosIndexArr.push(index1);
                 blendMeshPosArr.push(new THREE.Vector3(x,y,z));
             }
+        }
+         */
+
+        function createRandomPosAndState(meshNum) {
+            var blendMeshPosIndexArr = ["470&22@19","524&11@19","491&40@19","564&33@9","459&30@9"];
+            var queue1 = 0;
+            var queue2 = 0;
+            var walkPeople = createWalkArr();
+            var num = 0;
+            for(var i=0; i<meshNum; i++)
+            {
+                var peopleAttribute = new PeopleAttribute();
+                var maxX1 = 556;
+                var minX1 = 400;
+                var maxZ1 = 42;
+                var minZ1 = 11;
+                var maxX2 = 586;
+                var minX2 = 334;
+                var maxZ2 = 31;
+                var minZ2 = 16;
+                var random = Math.random();
+                if(random < 0.1 && (queue1<6 || queue2<6))
+                {//状态为“排队”的人群
+                    peopleAttribute.state = "queue";
+                    if(Math.random()<0.5)
+                    {
+                        peopleAttribute.position.set(562,9,36-queue1);
+                        peopleAttribute.rotation = 5/6 * Math.PI;
+                        queue1++;
+                        console.log(peopleAttribute.position);
+                    }
+                    else{
+                        peopleAttribute.position.set(558,9,36-queue2);
+                        peopleAttribute.rotation = 7/6 * Math.PI;
+                        queue2++;
+                        console.log(peopleAttribute.position);
+                    }
+                }
+                else if(random <0.4)
+                {//状态为“向内走”
+                    state = "walkIn";
+                    num = Math.floor(Math.random()*1290);
+                    peopleAttribute.position.set(walkPeople[num].position.x,walkPeople[num].position.y,walkPeople[num].position.z);
+                    peopleAttribute.rotation = walkPeople[num].rotation;
+                }
+                else if(random <0.7)
+                {//状态为“向外走”
+                    state = "walkOut";
+                    num = Math.floor(Math.random()*1290);
+                    peopleAttribute.position.set(walkPeople[num].position.x,walkPeople[num].position.y,walkPeople[num].position.z);
+                    peopleAttribute.rotation = -walkPeople[num].rotation;
+                }
+                else if(random <0.8)
+                {//状态为“站在地铁里面”
+                    state = "standIn";
+                    peopleAttribute.position.x = Math.floor(Math.random()*97+505);
+                    peopleAttribute.position.y = 9;
+                    peopleAttribute.position.z = Math.floor(Math.random()*2+41);
+                    peopleAttribute.rotation = 2*Math.PI*Math.random();
+                }
+                else
+                {//状态为“站在地铁外面”
+                    state = "standOut";
+                    if(Math.random() > 0.5)
+                    {
+                        peopleAttribute.position.x = Math.floor(Math.random()*(maxX1-minX1+1)+minX1);
+                        peopleAttribute.position.z = Math.floor(Math.random()*(maxZ1-minZ1+1)+minZ1);
+                        peopleAttribute.position.y=19;
+                    }
+                    else
+                    {
+                        peopleAttribute.position.x = Math.floor(Math.random()*(maxX2-minX2+1)+minX2);
+                        peopleAttribute.position.z = Math.floor(Math.random()*(maxZ2-minZ2+1)+minZ2);
+                        peopleAttribute.position.y=9;
+                    }
+                    peopleAttribute.rotation = 2*Math.PI*Math.random();
+                }
+
+                var index1 = peopleAttribute.position.x + "&" + peopleAttribute.position.z + "@"+peopleAttribute.position.y;
+
+                while(blendMeshPosIndexArr.indexOf(index1)!=-1 || _this.Path.mapInfoMap[index1]==0 )
+                {
+                    if(Math.random() > 0.5)
+                    {
+                        peopleAttribute.position.x = Math.floor(Math.random()*(maxX1-minX1+1)+minX1);
+                        peopleAttribute.position.z = Math.floor(Math.random()*(maxZ1-minZ1+1)+minZ1);
+                        peopleAttribute.position.y=19;
+                    }
+                    else
+                    {
+                        peopleAttribute.position.x = Math.floor(Math.random()*(maxX2-minX2+1)+minX2);
+                        peopleAttribute.position.z = Math.floor(Math.random()*(maxZ2-minZ2+1)+minZ2);
+                        peopleAttribute.position.y=9;
+                    }
+
+                    index1 = peopleAttribute.position.x + "&" + peopleAttribute.position.z + "@"+peopleAttribute.position.y;
+                }
+                blendMeshPosIndexArr.push(index1);
+                blendMeshPosArr.push(Utils.clone(peopleAttribute));
+            }
+        }
+
+        //存储行走人流的位置及相应旋转角度的数组
+        function createWalkArr(){
+            var walkPeople = [];
+            var x,z;
+            var walkAttribute = new PeopleAttribute();
+
+            //地下二层
+            for (x= 530; x<553; x++)
+                for(z=20; z<26; z++)
+                {
+                    walkAttribute.position.set(x,9,z);
+                    walkAttribute.rotation = -Math.PI/2;
+                    walkPeople.push(Utils.clone(walkAttribute));
+                }
+            for (x= 538; x<553; x++)
+                for(z=26; z<29; z++)
+                {
+                    walkAttribute.position.set(x,9,z);
+                    walkAttribute.rotation = -Math.PI/2;
+                    walkPeople.push(Utils.clone(walkAttribute));
+                }
+            for (x= 399; x<422; x++)
+                for(z=20; z<26; z++)
+                {
+                    walkAttribute.position.set(x,9,z);
+                    walkAttribute.rotation = Math.PI/2;
+                    walkPeople.push(Utils.clone(walkAttribute));
+                }
+            for (x= 399; x<414; x++)
+                for(z=26; z<29; z++)
+                {
+                    walkAttribute.position.set(x,9,z);
+                    walkAttribute.rotation = Math.PI/2;
+                    walkPeople.push(Utils.clone(walkAttribute));
+                }
+
+            //地下一层
+            for (x= 500; x<508; x++)
+                for(z=20; z<26; z++)
+                {
+                    walkAttribute.position.set(x,19,z);
+                    walkAttribute.rotation = -Math.PI/2;
+                    walkPeople.push(Utils.clone(walkAttribute));
+                }
+            for (x= 500; x<503; x++)
+                for(z=15; z<26; z++)
+                {
+                    walkAttribute.position.set(x,19,z);
+                    walkAttribute.rotation = Math.PI;
+                    walkPeople.push(Utils.clone(walkAttribute));
+                }
+            for (x= 502; x<546; x++)
+                for(z=13; z<16; z++)
+                {
+                    walkAttribute.position.set(x,19,z);
+                    walkAttribute.rotation = Math.PI/2;
+                    walkPeople.push(Utils.clone(walkAttribute));
+                }
+            for (x= 445; x<451; x++)
+                for(z=20; z<26; z++)
+                {
+                    walkAttribute.position.set(x,19,z);
+                    walkAttribute.rotation = Math.PI/2;
+                    walkPeople.push(Utils.clone(walkAttribute));
+                }
+            for (x= 450; x<453; x++)
+                for(z=15; z<26; z++)
+                {
+                    walkAttribute.position.set(x,19,z);
+                    walkAttribute.rotation = Math.PI;
+                    walkPeople.push(Utils.clone(walkAttribute));
+                }
+            for (x= 416; x<453; x++)
+                for(z=13; z<16; z++)
+                {
+                    walkAttribute.position.set(x,19,z);
+                    walkAttribute.rotation = -Math.PI/2;
+                    walkPeople.push(Utils.clone(walkAttribute));
+                }
+            for (x= 489; x<508; x++)
+                for(z=26; z<29; z++)
+                {
+                    walkAttribute.position.set(x,19,z);
+                    walkAttribute.rotation = -Math.PI/2;
+                    walkPeople.push(Utils.clone(walkAttribute));
+                }
+            for (x= 487; x<490; x++)
+                for(z=26; z<38; z++)
+                {
+                    walkAttribute.position.set(x,19,z);
+                    walkAttribute.rotation = 0;
+                    walkPeople.push(Utils.clone(walkAttribute));
+                }
+            for (x= 487; x<554; x++)
+                for(z=37; z<40; z++)
+                {
+                    walkAttribute.position.set(x,19,z);
+                    walkAttribute.rotation = Math.PI/2;
+                    walkPeople.push(Utils.clone(walkAttribute));
+                }
+            for (x= 445; x<463; x++)
+                for(z=26; z<29; z++)
+                {
+                    walkAttribute.position.set(x,19,z);
+                    walkAttribute.rotation = Math.PI/2;
+                    walkPeople.push(Utils.clone(walkAttribute));
+                }
+            for (x= 462; x<465; x++)
+                for(z=26; z<38; z++)
+                {
+                    walkAttribute.position.set(x,19,z);
+                    walkAttribute.rotation = 0;
+                    walkPeople.push(Utils.clone(walkAttribute));
+                }
+            for (x= 416; x<465; x++)
+                for(z=37; z<40; z++)
+                {
+                    walkAttribute.position.set(x,19,z);
+                    walkAttribute.rotation = -Math.PI/2;
+                    walkPeople.push(Utils.clone(walkAttribute));
+                }
+            return walkPeople;
         }
     }
 
@@ -432,4 +659,10 @@ People.prototype.update = function (_this)
 {
     this.isfinishedloadchar(_this);
     this.ifstartRun(_this);
+}
+
+function PeopleAttribute(){
+    this.position = new THREE.Vector3(0,0,0);
+    this.state = null;
+    this.rotation = 0;
 }
