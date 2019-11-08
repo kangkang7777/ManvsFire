@@ -390,60 +390,14 @@ Interaction.prototype.fuc5 = function (_this)
     $("#view_pos").html('        <button  id="view_pos" class="btn btn-default btn-lg">视角坐标</button>\n');
     $("#mesh_pos").html('        <button  id="mesh_pos" class="btn btn-default btn-lg">建筑坐标</button>\n');
     $("#flag").html('        <button  id="flag" class="btn btn-default btn-lg">X</button>\n');
+    $("#_flag").html('        <button  id="flag" class="btn btn-default btn-lg">subway</button>\n');
     $("#x_1").html('        <button  id="x_1" class="btn btn-default btn-lg">坐标+1</button>\n');
     $("#x_2").html('        <button  id="x_2" class="btn btn-default btn-lg">坐标-1</button>\n');
     $("#x_3").html('        <button  id="x_3" class="btn btn-default btn-lg">坐标+10</button>\n');
     $("#x_4").html('        <button  id="x_4" class="btn btn-default btn-lg">坐标-10</button>\n');
-    // var _flag = true;
-    // document.getElementById('TEST').addEventListener('click',function (event) {
-    //     if(_flag) {
-    //         $("#floor-menu").html(
-    //             '     <button  id="escapeDoor1" class="btn btn-default btn-lg">逃生门1</button>\n' +
-    //             '            <button  id="escapeDoor2" class="btn btn-default btn-lg">逃生门2</button>\n' +
-    //             '            <button  id="escapeDoor3" class="btn btn-default btn-lg">逃生门3</button>\n' +
-    //             '            <button  id="floor1" class="btn btn-default btn-lg">地下一层</button>\n' +
-    //             '            <button  id="floor2" class="btn btn-default btn-lg">地下二层</button>\n' +
-    //             '            <button  id="TEST" class="btn btn-default btn-lg">退出测试</button>\n' +
-    //             '            <button  id="view_pos" class="btn btn-default btn-lg">视角坐标</button>\n' +
-    //             '            <button  id="mesh_pos" class="btn btn-default btn-lg">建筑坐标</button>\n' +
-    //             '            <button  id="flag" class="btn btn-default btn-lg">X</button>\n' +
-    //             '            <button  id="x_1" class="btn btn-default btn-lg">坐标+1</button>\n' +
-    //             '            <button  id="x_2" class="btn btn-default btn-lg">坐标-1</button>\n' +
-    //             '            <button  id="x_3" class="btn btn-default btn-lg">坐标+10</button>\n' +
-    //             '            <button  id="x_4" class="btn btn-default btn-lg">坐标-10</button>');
-    //         _flag = false;
-    //     }
-    //     else
-    //     {
-    //         $("#floor-menu").html(' \n' +
-    //             '            <button  id="escapeDoor1" class="btn btn-default btn-lg">逃生门1</button>\n' +
-    //             '            <button  id="escapeDoor2" class="btn btn-default btn-lg">逃生门2</button>\n' +
-    //             '            <button  id="escapeDoor3" class="btn btn-default btn-lg">逃生门3</button>\n' +
-    //             '            <button  id="floor1" class="btn btn-default btn-lg">地下一层</button>\n' +
-    //             '            <button  id="floor2" class="btn btn-default btn-lg">地下二层</button>\n' +
-    //             '            <button  id="TEST" class="btn btn-default btn-lg">测试模式</button>\n' +
-    //             '\n' +
-    //             '          <a  id="view_pos"></a>'
-    //            + ' <a  id="mesh_pos"></a>'
-    //             +'<a  id="flag"></a>'
-    //         +'<a  id="x_1"></a>'
-    //         +'<a  id="x_2"></a>'
-    //         +'<a  id="x_3"></a>'
-    //         +'<a  id="x_4"></a>');
-    //         _flag = true;
-    //     }
-    // });
-    // document.getElementById('_TEST').addEventListener('click',function (event) {
-    //     $("#TEST").html('                <button  id="TEST" class="btn btn-default btn-lg">测试模式</button>\n');
-    //     $("#view_pos").html('               <a  id="view_pos"></a>\n');
-    //     $("#mesh_pos").html('         <a  id="mesh_pos"></a>');
-    //     $("#flag").html('                <a  id="flag"></a>\n');
-    //     $("#x_1").html('               <a  id="x_1"></a>\n');
-    //     $("#x_2").html('               <a  id="x_2"></a>\n');
-    //     $("#x_3").html('               <a  id="x_3"></a>\n');
-    //     $("#x_4").html('                <a  id="x_4"></a>\n');
-    // })
+
     var flag = 'x';
+    var _flag =_this.underground.subway;
     document.getElementById('flag').addEventListener('click',function (event)
     {
         if(flag==='x')
@@ -464,12 +418,27 @@ Interaction.prototype.fuc5 = function (_this)
 
     });
 
+    document.getElementById('_flag').addEventListener('click',function (event)
+    {
+        if(_flag===_this.underground.subway)
+        {
+            _flag =_this.underground.rail;
+            $("#_flag").html('        <button  id="flag" class="btn btn-default btn-lg">rail</button>\n');
+        }
+        else
+        {
+            _flag =_this.underground.subway;
+            $("#_flag").html('        <button  id="flag" class="btn btn-default btn-lg">subway</button>\n');
+        }
+
+    });
+
     document.getElementById('x_1').addEventListener('click',function (event)
     {
-        change(1);
+        change(0.1);
     });
     document.getElementById('x_2').addEventListener('click',function (event) {
-        change(-1);
+        change(-0.1);
 });
     document.getElementById('x_3').addEventListener('click',function (event) {
         change(10);
@@ -479,7 +448,7 @@ Interaction.prototype.fuc5 = function (_this)
     });
     document.getElementById('mesh_pos').addEventListener('click',function (event) {
 
-        var output = _this.underground.subway.position.x.toString()+","+_this.underground.subway.position.y.toString()+","+_this.underground.subway.position.z.toString();
+        var output = _flag.position.x.toString()+","+_flag.position.y.toString()+","+_flag.position.z.toString();
         alert(output);
     });
     document.getElementById('view_pos').addEventListener('click',function(event)
@@ -494,14 +463,14 @@ Interaction.prototype.fuc5 = function (_this)
 
     function change(num)
     {
-        var x = _this.underground.subway.position.x;
-        var y = _this.underground.subway.position.y;
-        var z = _this.underground.subway.position.z;
+        var x = _flag.position.x;
+        var y = _flag.position.y;
+        var z = _flag.position.z;
         if(flag==='x')
-            _this.underground.subway.position.set(x+num,y,z);
+            _flag.position.set(x+num,y,z);
         if(flag==='y')
-            _this.underground.subway.position.set(x,y+num,z);
+            _flag.position.set(x,y+num,z);
         if(flag==='z')
-            _this.underground.subway.position.set(x,y,z+num);
+            _flag.position.set(x,y,z+num);
     }
 }
