@@ -45,6 +45,18 @@ Interaction.prototype.fuc1 = function (_this)
     //     console.log(_this.camControl);
     // });
 
+    //外观视角控制 加载
+    document.getElementById('outlook').addEventListener('click',function(event)
+    {
+        //设置视角是外观 触发改变
+        _this.camera_status = _this.Cameracontroller.setenum.outlook;
+        //设定视角具体数值
+        _this.camera.position.set(639,160,106);
+        console.log(_this.camera);
+        console.log(_this.freeViewControl);
+        console.log(_this.camControl);
+    });
+
     //上层 视角控制 加载
     document.getElementById('floor1').addEventListener('click',function(event)
     {
@@ -52,6 +64,90 @@ Interaction.prototype.fuc1 = function (_this)
         _this.camera_status = _this.Cameracontroller.setenum.floor1;
         //设定视角具体数值
         _this.camera.position.set(397,29,42);
+
+        var self = this;
+        var loader = new THREE.GLTFLoader();
+        // Optional: Provide a DRACOLoader instance to decode compressed mesh data
+        THREE.DRACOLoader.setDecoderPath('./draco/');
+        THREE.DRACOLoader.setDecoderConfig({type: 'js'});
+        loader.setDRACOLoader(new THREE.DRACOLoader());
+        console.log(this.children);
+        
+        function loadFunc(gltf, type)
+        {
+            self.mesh = gltf.scene.children[0];
+            console.log(gltf);
+            self.mesh.scale.set(0.00192, -0.002, 0.002 );
+            self.mesh.geometry.computeVertexNormals();
+            //方法一
+            self.mesh.position.set(16155.5,38,-4284);
+            self.mesh.rotateX(-Math.PI/2);
+
+            self.mesh.material.color = selectMaterialColor(type);
+            // polyhedrons.push(mesh);
+            _this.scene.add(self.mesh);
+        }
+
+        var loadAsync = function (path, type)
+        {
+            return new Promise((resolve) =>
+            {
+                loader.load(path, (gltf) =>
+                {
+                    loadFunc(gltf, type);
+                    resolve();
+                })
+            })
+        };
+
+        /*建筑模型加载开始*/
+        var startLoadTime = performance.now();
+        Promise.all(
+            [
+                loadAsync('./model_glb/IfcBeam.glb','beam'),
+                loadAsync('./model_glb/IfcColumnB1.glb','column'),
+                loadAsync('./model_glb/IfcElevator.glb','elevator'),
+                loadAsync('./model_glb/IfcRailing.glb','railing'),
+                loadAsync('./model_glb/IfcSlabMid.glb','slab'),
+                loadAsync('./model_glb/IfcSlabTop.glb','slab'),
+                loadAsync('./model_glb/IfcStairFlight.glb','stair'),
+            ]
+        ).then(() => {
+            console.log("加载完成");
+            $("#loadTime")[0].innerText = ((performance.now() - startLoadTime) / 1000).toFixed(2) + "秒";
+        }).then(() => {
+            _this.Cameracontroller.collideMeshList.push(self.mesh);
+        })
+
+
+        /*建筑模型加载结束*/
+
+        /*设置建筑模型材质颜色开始*/
+        function selectMaterialColor(type) {
+            let color = new THREE.Color(0xff0000);
+            switch (type) {
+                case"beam":
+                    color = new THREE.Color(0x808080);
+                    break;
+                case"column":
+                    color = new THREE.Color(0xFFFFFF);
+                    break;
+                case"elevator":
+                    color = new THREE.Color(0xD2B48C);
+                    break;
+                case"railing":
+                    color = new THREE.Color(0x808080);
+                    break;
+                case"slab":
+                    color = new THREE.Color(0xDCDCDC);
+                    break;
+                case"stair":
+                    color = new THREE.Color(0xBC8F8F);
+                    break;
+            }
+            return color;
+        }
+        /*设置建筑模型材质颜色结束*/
         console.log(_this.camera);
         console.log(_this.freeViewControl);
         console.log(_this.camControl);
