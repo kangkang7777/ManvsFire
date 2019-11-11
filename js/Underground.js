@@ -252,17 +252,17 @@ Underground.prototype.GlbBuilding = function (_this) {
     var startLoadTime = performance.now();
     Promise.all(
         [
-            // loadAsync('./model_glb/IfcBeam.glb','beam'),
-            // loadAsync('./model_glb/IfcColumnB1.glb','column'),
-            // loadAsync('./model_glb/IfcColumnB2.glb','column'),
-            // loadAsync('./model_glb/IfcElevator.glb','elevator'),
-            // loadAsync('./model_glb/IfcRailing.glb','railing'),
-            // loadAsync('./model_glb/IfcSlabBotm.glb','slab'),
-            // loadAsync('./model_glb/IfcSlabMid.glb','slab'),
-            // loadAsync('./model_glb/IfcSlabTop.glb','slab'),
-            // loadAsync('./model_glb/IfcStairFlight.glb','stair'),
-            // loadAsync('./model_glb/IfcWall.glb','wall'),
-            // loadAsync('./model_glb/IfcWallStandardCase.glb','wall')
+            loadAsync('./model_glb/IfcBeam.glb','beam'),
+            loadAsync('./model_glb/IfcColumnB1.glb','column'),
+            loadAsync('./model_glb/IfcColumnB2.glb','column'),
+            loadAsync('./model_glb/IfcElevator.glb','elevator'),
+            loadAsync('./model_glb/IfcRailing.glb','railing'),
+            loadAsync('./model_glb/IfcSlabBotm.glb','slab'),
+            loadAsync('./model_glb/IfcSlabMid.glb','slab'),
+            loadAsync('./model_glb/IfcSlabTop.glb','slab'),
+            loadAsync('./model_glb/IfcStairFlight.glb','stair'),
+            loadAsync('./model_glb/IfcWall.glb','wall'),
+            loadAsync('./model_glb/IfcWallStandardCase.glb','wall')
         ]
     ).then(() => {
         console.log("加载完成");
@@ -359,7 +359,7 @@ Underground.prototype.AddRail = function (_this)
 Underground.prototype.update = function (_this,delta)
 {
     if(this.isready)
-        _this.underground.subway.position.x+=delta*50;
+        _this.underground.subway.position.x+=delta*5;
     if(this.isready&&_this.underground.subway.position.x>560)
         this.isready = false;
 }
