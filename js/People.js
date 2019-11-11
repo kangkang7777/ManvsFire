@@ -386,14 +386,14 @@ People.prototype.init = function (_this)
                 else if(random <0.4)
                 {//状态为“向内走”
                     state = "walkIn";
-                    num = Math.floor(Math.random()*1290);
+                    num = Math.floor(Math.random()*walkPeople.length);
                     peopleAttribute.position.set(walkPeople[num].position.x,walkPeople[num].position.y,walkPeople[num].position.z);
                     peopleAttribute.rotation = walkPeople[num].rotation;
                 }
                 else if(random <0.7)
                 {//状态为“向外走”
                     state = "walkOut";
-                    num = Math.floor(Math.random()*1290);
+                    num = Math.floor(Math.random()*walkPeople.length);
                     peopleAttribute.position.set(walkPeople[num].position.x,walkPeople[num].position.y,walkPeople[num].position.z);
                     peopleAttribute.rotation = -walkPeople[num].rotation;
                 }
@@ -455,28 +455,28 @@ People.prototype.init = function (_this)
 
             //地下二层
             for (x= 530; x<553; x++)
-                for(z=20; z<26; z++)
+                for(z=20; z<25; z++)
                 {
                     walkAttribute.position.set(x,9,z);
                     walkAttribute.rotation = -Math.PI/2;
                     walkPeople.push(Utils.clone(walkAttribute));
                 }
             for (x= 538; x<553; x++)
-                for(z=26; z<29; z++)
+                for(z=27; z<29; z++)
                 {
                     walkAttribute.position.set(x,9,z);
                     walkAttribute.rotation = -Math.PI/2;
                     walkPeople.push(Utils.clone(walkAttribute));
                 }
             for (x= 399; x<422; x++)
-                for(z=20; z<26; z++)
+                for(z=20; z<25; z++)
                 {
                     walkAttribute.position.set(x,9,z);
                     walkAttribute.rotation = Math.PI/2;
                     walkPeople.push(Utils.clone(walkAttribute));
                 }
             for (x= 399; x<414; x++)
-                for(z=26; z<29; z++)
+                for(z=27; z<29; z++)
                 {
                     walkAttribute.position.set(x,9,z);
                     walkAttribute.rotation = Math.PI/2;
@@ -485,7 +485,7 @@ People.prototype.init = function (_this)
 
             //地下一层
             for (x= 500; x<508; x++)
-                for(z=20; z<26; z++)
+                for(z=20; z<25; z++)
                 {
                     walkAttribute.position.set(x,19,z);
                     walkAttribute.rotation = -Math.PI/2;
@@ -506,7 +506,7 @@ People.prototype.init = function (_this)
                     walkPeople.push(Utils.clone(walkAttribute));
                 }
             for (x= 445; x<451; x++)
-                for(z=20; z<26; z++)
+                for(z=20; z<25; z++)
                 {
                     walkAttribute.position.set(x,19,z);
                     walkAttribute.rotation = Math.PI/2;
@@ -527,7 +527,7 @@ People.prototype.init = function (_this)
                     walkPeople.push(Utils.clone(walkAttribute));
                 }
             for (x= 489; x<508; x++)
-                for(z=26; z<29; z++)
+                for(z=27; z<29; z++)
                 {
                     walkAttribute.position.set(x,19,z);
                     walkAttribute.rotation = -Math.PI/2;
@@ -548,7 +548,7 @@ People.prototype.init = function (_this)
                     walkPeople.push(Utils.clone(walkAttribute));
                 }
             for (x= 445; x<463; x++)
-                for(z=26; z<29; z++)
+                for(z=27; z<29; z++)
                 {
                     walkAttribute.position.set(x,19,z);
                     walkAttribute.rotation = Math.PI/2;
