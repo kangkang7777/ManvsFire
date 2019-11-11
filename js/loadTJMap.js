@@ -19,7 +19,7 @@ function readV(url,data){
 
         if(xhr.readyState==4&&xhr.status==200){
 
-            var arr=xhr.response.split("\r\n");
+            var arr=xhr.response.split("\n");
             var sp=new StringParser();
             for(var i=0;i<arr.length;i++){
                 sp.init(arr[i]);
