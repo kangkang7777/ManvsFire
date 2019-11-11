@@ -145,12 +145,12 @@ Underground.prototype.FixBuliding = function (scene) {
     cubeX5Mesh.scale.set(1,0.75,1);
     scene.add(cubeX5Mesh);
 
-    var cubeX6Geometry=new THREE.CubeGeometry(103,12.1,0.3);
-    var cubeX6Material=new THREE.MeshPhongMaterial({color:0xaeb1b3});
-    var cubeX6Mesh=new THREE.Mesh(cubeX6Geometry,cubeX6Material);
-    cubeX6Mesh.position.set(558.5,12,37.5);
-    cubeX6Mesh.scale.set(1,0.75,1);
-    scene.add(cubeX6Mesh);
+    // var cubeX6Geometry=new THREE.CubeGeometry(103,12.1,0.3);
+    // var cubeX6Material=new THREE.MeshPhongMaterial({color:0xaeb1b3});
+    // var cubeX6Mesh=new THREE.Mesh(cubeX6Geometry,cubeX6Material);
+    // cubeX6Mesh.position.set(558.5,12,37.5);
+    // cubeX6Mesh.scale.set(1,0.75,1);
+    // scene.add(cubeX6Mesh);
 
 
 
@@ -252,17 +252,17 @@ Underground.prototype.GlbBuilding = function (_this) {
     var startLoadTime = performance.now();
     Promise.all(
         [
-            loadAsync('./model_glb/IfcBeam.glb','beam'),
-            loadAsync('./model_glb/IfcColumnB1.glb','column'),
-            loadAsync('./model_glb/IfcColumnB2.glb','column'),
-            loadAsync('./model_glb/IfcElevator.glb','elevator'),
-            loadAsync('./model_glb/IfcRailing.glb','railing'),
-            loadAsync('./model_glb/IfcSlabBotm.glb','slab'),
-            loadAsync('./model_glb/IfcSlabMid.glb','slab'),
-            loadAsync('./model_glb/IfcSlabTop.glb','slab'),
-            loadAsync('./model_glb/IfcStairFlight.glb','stair'),
-            loadAsync('./model_glb/IfcWall.glb','wall'),
-            loadAsync('./model_glb/IfcWallStandardCase.glb','wall')
+            // loadAsync('./model_glb/IfcBeam.glb','beam'),
+            // loadAsync('./model_glb/IfcColumnB1.glb','column'),
+            // loadAsync('./model_glb/IfcColumnB2.glb','column'),
+            // loadAsync('./model_glb/IfcElevator.glb','elevator'),
+            // loadAsync('./model_glb/IfcRailing.glb','railing'),
+            // loadAsync('./model_glb/IfcSlabBotm.glb','slab'),
+            // loadAsync('./model_glb/IfcSlabMid.glb','slab'),
+            // loadAsync('./model_glb/IfcSlabTop.glb','slab'),
+            // loadAsync('./model_glb/IfcStairFlight.glb','stair'),
+            // loadAsync('./model_glb/IfcWall.glb','wall'),
+            // loadAsync('./model_glb/IfcWallStandardCase.glb','wall')
         ]
     ).then(() => {
         console.log("加载完成");
@@ -345,7 +345,7 @@ Underground.prototype.AddRail = function (_this)
         objLoader.setPath('Model/');
         objLoader.load('rail.obj', function(object) {
             self.rail = object;
-            object.position.set(328,7.7,28.7);
+            object.position.set(343.7,7.7,28.7);
             object.scale.set(0.0075, 0.005, 0.01);
             object.rotateY(Math.PI/2);
             _this.scene.add(object);
@@ -359,7 +359,7 @@ Underground.prototype.AddRail = function (_this)
 Underground.prototype.update = function (_this,delta)
 {
     if(this.isready)
-        _this.underground.subway.position.x+=delta*5;
-    if(this.isready&&_this.underground.subway.position.x>554)
+        _this.underground.subway.position.x+=delta*50;
+    if(this.isready&&_this.underground.subway.position.x>560)
         this.isready = false;
 }
