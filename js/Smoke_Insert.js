@@ -8,7 +8,7 @@ var smoke_insert=function(p0,p1,p2,p,smokedatap0,smokedatap1,smokedatap2)
 
     var is_inside=IsPointInTriangle(newp1,newp2,newp3,p);
     /*在三角形内*/
-    var newsmokedata=[];
+    var newsmokedata=null;
     if(is_inside)
     {
         var Sp1p2p=square(newp,newp2,newp3);//u
@@ -31,6 +31,35 @@ var smoke_insert=function(p0,p1,p2,p,smokedatap0,smokedatap1,smokedatap2)
     return newsmokedata;
 }
 
+var calculate_u_v=function(p0,p1,p2,p,_this)
+{
+    /*坐标平移*/
+    var newp=new THREE.Vector2(0,0);
+    var newp1=new THREE.Vector2(p0.x-p.x,p0.z-p.z);
+    var newp2=new THREE.Vector2(p1.x-p.x,p1.z-p.z);
+    var newp3=new THREE.Vector2(p2.x-p.x,p2.z-p.z);
+
+    var is_inside=IsPointInTriangle(newp1,newp2,newp3,p);
+    /*在三角形内*/
+    var newsmokedata=null;
+    if(is_inside)
+    {
+        var Sp1p2p=square(newp,newp2,newp3);//u
+        var Sp0p2p=square(newp,newp1,newp3);//v
+        var Sp0p1p2=square(newp1,newp2,newp3);
+        _this.smoke.u = Sp1p2p/Sp0p1p2;
+        _this.smoke.v = Sp0p2p/Sp0p1p2;
+    }
+    /*在三角形外*/
+    else
+    {
+        var Sp0p1p=square(newp,newp1,newp2);
+        var Sp0p2p=square(newp,newp1,newp3);//v
+        var Sp1p2p=square(newp,newp2,newp3);//u
+        _this.smoke.u=Sp1p2p/(Sp0p1p+Sp0p2p+Sp1p2p);
+        _this.smoke.v=Sp0p2p/(Sp0p1p+Sp0p2p+Sp1p2p);
+    }
+}
 /**********************************************************************************************************************/
 /*  4.21 谢尚汝 更改  */
 function Cross(v1,v2)
@@ -73,15 +102,9 @@ function square(v1,v2,v3)
 
 function calculatesmoke(u,v,data0,data1,data2)
 {
-    var newdata=[];
-    for(var i=0;i<data0.length;i++)
-    {
-        var data=[];
-        for(var j=0;j<data0[i].length;j++)
-        {
-            data.push((1-u-v)*data0[i][j]+u*data1[i][j]+v*data2[i][j]);
-        }
-        newdata.push(data);
-    }
+    var newdata= data0;
+    for(let key in newdata)
+        for(var i=0;i<data0[key].length;i++)
+            newdata[key].push(u*data0[key][i]+v*data1[key][i]+(1-u-v)*data2[key][i]);
     return newdata;
 }

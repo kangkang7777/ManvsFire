@@ -202,7 +202,7 @@ Utils.clone = function(obj){
             if (obj instanceof Array) {
                 o = [];
                 for (var i = 0, len = obj.length; i < len; i++) {
-                    o.push(clone(obj[i]));
+                    o.push(Utils.clone(obj[i]));
                 }
             } else {
                 o = {};

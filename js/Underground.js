@@ -234,6 +234,7 @@ Underground.prototype.GlbBuilding = function (_this) {
         self.mesh.material.color = selectMaterialColor(type);
         // polyhedrons.push(mesh);
         _this.scene.add(self.mesh);
+        _this.Cameracontroller.collideMeshList.push(self.mesh);
     }
 
     var loadAsync = function (path, type)
@@ -267,11 +268,7 @@ Underground.prototype.GlbBuilding = function (_this) {
     ).then(() => {
         console.log("加载完成");
         $("#loadTime")[0].innerText = ((performance.now() - startLoadTime) / 1000).toFixed(2) + "秒";
-    }).then(() => {
-        _this.Cameracontroller.collideMeshList.push(self.mesh);
     })
-
-
     /*建筑模型加载结束*/
 
     /*设置建筑模型材质颜色开始*/

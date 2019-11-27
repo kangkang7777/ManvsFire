@@ -92,7 +92,7 @@ Interaction.prototype.fuc2 = function (_this)
         _this.smoke.isStartSmoke = true;
         _this.fire.fireManager.target.visible = true;
         _this.clock=new THREE.Clock();
-        _this.smoke.smokeStart(_this);
+        //_this.messagecontrol.readSmoke(_this.smoke.firePointArr[2],_this);
 
         _this.EscapeNumber = _this.number;
         let timeEscape = setInterval(function () {
@@ -166,7 +166,7 @@ Interaction.prototype.fuc3 = function (MainScene)
         Utils.loading(1000);
         MainScene.Path.createNav();
         MainScene.addPeople();
-
+        MainScene.smoke.smokeStart(MainScene);
     });
 
     $('fireman').addEventListener('click',function (event)
@@ -249,6 +249,8 @@ Interaction.prototype.fuc3 = function (MainScene)
             $("fire-menu").style.display = "none";
             $('transformSmoke').textContent="编辑烟雾";
             $('illustration-context').innerHTML = "<p>您已成功选取起火点位置</p>" + "<p>若想模拟火灾请点击“开始模拟”</p>";
+
+            MainScene.smoke.smokeStart(MainScene);
 
             MainScene.smoke.Logo1Material.visible=false;
             MainScene.smoke.Logo2Material.visible=false;

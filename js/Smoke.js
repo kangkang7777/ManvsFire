@@ -7,8 +7,16 @@ var Smoke = function ()
     this.pe=new THREE.Vector3(290,9,43);
     this.pm=new THREE.Vector3(6,9,20);
     this.pp=new THREE.Vector3(0,0,0);
-    this.newsmokeData=[];
-    this.smokeTexture = new THREE.TextureLoader().load('textures/Smoke-Element.png');
+    this.newSmokeData= null;//最终读取的烟气数据
+    this.smokeData0 =null;//0-2分别为离实际着火点最近的三个采样着火点的烟气数据，用来进行插值运算
+    this.smokeData1 =null;
+    this.smokeData2 =null;
+    this.p0 = null;//0-2分别为离实际着火点最近的三个采样着火点
+    this.p1 = null;
+    this.p2 = null;
+    this.u = 0;//u和v是用来进行插值计算的参数
+    this.v = 0;
+    this.smokeTexture = new THREE.TextureLoader().load('textures/Smoke-Element2.png');
     var smokeLogoTexture = new THREE.TextureLoader().load('textures/firelogo2.png');
     this.smokeArr=[];
     this.sNumber=0.045;//烟柱与烟冠模型缩放系数
@@ -22,30 +30,82 @@ var Smoke = function ()
     this.ii=0;
     this.kk=0;
     this.camIn=true;//相机是否在地下二层
+    this.nowInSmokeArr = [];//在锥体内的烟气单元数列
 
     //起火点设置
     this.firePointArr = [];
 
     var firePoint1 = new firePoint();
     firePoint1.firePosition = new THREE.Vector3(570,10,22.8);
+    firePoint1.fireIndex = 1;
     this.firePointArr.push(firePoint1);
 
     var firePoint2 = new firePoint();
     firePoint2.firePosition = new THREE.Vector3(513,10,8.6);
+    firePoint2.fireIndex = 2;
     this.firePointArr.push(firePoint2);
 
     var firePoint3 = new firePoint();
     firePoint3.firePosition = new THREE.Vector3(433,10,38.8);
+    firePoint3.fireIndex = 3;
     this.firePointArr.push(firePoint3);
 
     var firePoint4 = new firePoint();
     firePoint4.firePosition = new THREE.Vector3(353,10,8.6);
+    firePoint4.fireIndex = 4;
     this.firePointArr.push(firePoint4);
 
     var firePoint5 = new firePoint();
     firePoint5.firePosition = new THREE.Vector3(313,10,35);
+    firePoint5.fireIndex = 5;
     this.firePointArr.push(firePoint5);
-}
+
+    //烟气单元
+    var smokeUnit = new SmokeUnit();
+    this.smokeUnitArr = [];
+    for(let i=0;i<77;i++)
+        for(let j=0;j<5;j++)
+            for(let k=0;k<3;k++)
+            {
+                let x = 4+8*i;
+                let z = 10+8*j;
+                let y = 8+4*k;
+                smokeUnit.index = x.toString()+'&'+z.toString()+'@'+y.toString();
+                smokeUnit.floor = 1;
+                smokeUnit.centerPos.set(x,y,z);
+                smokeUnit.vertexArr = [];
+                smokeUnit.vertexArr.push(new THREE.Vector3(x-4,y-2,z-4));
+                smokeUnit.vertexArr.push(new THREE.Vector3(x-4,y-2,z+4));
+                smokeUnit.vertexArr.push(new THREE.Vector3(x-4,y+2,z-4));
+                smokeUnit.vertexArr.push(new THREE.Vector3(x-4,y+2,z+4));
+                smokeUnit.vertexArr.push(new THREE.Vector3(x+4,y-2,z-4));
+                smokeUnit.vertexArr.push(new THREE.Vector3(x+4,y-2,z+4));
+                smokeUnit.vertexArr.push(new THREE.Vector3(x+4,y+2,z-4));
+                smokeUnit.vertexArr.push(new THREE.Vector3(x+4,y+2,z+4));
+                this.smokeUnitArr.push(Utils.clone(smokeUnit));
+            }
+    for(let i=0;i<77;i++)
+        for(let j=0;j<5;j++)
+            for(let k=0;k<3;k++)
+            {
+                let x = 4+8*i;
+                let z = 10+8*j;
+                let y = 20+4*k;
+                smokeUnit.index = x.toString()+'&'+z.toString()+'@'+y.toString();
+                smokeUnit.floor = 2;
+                smokeUnit.centerPos.set(x,y,z);
+                smokeUnit.vertexArr = [];
+                smokeUnit.vertexArr.push(new THREE.Vector3(x-4,y-2,z-4));
+                smokeUnit.vertexArr.push(new THREE.Vector3(x-4,y-2,z+4));
+                smokeUnit.vertexArr.push(new THREE.Vector3(x-4,y+2,z-4));
+                smokeUnit.vertexArr.push(new THREE.Vector3(x-4,y+2,z+4));
+                smokeUnit.vertexArr.push(new THREE.Vector3(x+4,y-2,z-4));
+                smokeUnit.vertexArr.push(new THREE.Vector3(x+4,y-2,z+4));
+                smokeUnit.vertexArr.push(new THREE.Vector3(x+4,y+2,z-4));
+                smokeUnit.vertexArr.push(new THREE.Vector3(x+4,y+2,z+4));
+                this.smokeUnitArr.push(Utils.clone(smokeUnit));
+            }
+};
 
 Smoke.prototype.init = function(_this)
 {
@@ -283,146 +343,50 @@ Smoke.prototype.init = function(_this)
         }
     };
 */
-    //长度为60的烟雾团
-    function smokeSceneType1()
-    {
-        var geom1=new THREE.Geometry();//创建烟雾团
-        //创建烟雾素材
-        var material1=new THREE.PointsMaterial({
-            size:40,
-            transparent:true,
-            opacity:0,
-            map:self.smokeTexture,
-            sizeAttenuation:true,
-            depthWrite:false,
-            color:0xffffff
-        });
-        //var range=15;
-        for(var i=0;i<50;i++){
-            //创建烟雾片
-            var particle1=new THREE.Vector3(Math.random()*10-10/2,Math.random()*2-2/2,Math.random()*116-116/2);
-            //将烟雾片一片片加入到geom中
-            geom1.vertices.push(particle1);
-        }
-        cloud1=new THREE.Points(geom1,material1);
-        _this.scene.add(cloud1);
-        self.smokeSceneArr.push(cloud1);
-    }
-
-    //长度为30的烟雾团
-    var cloud2;
-    function smokeSceneType2()
-    {
-        var geom2=new THREE.Geometry();//创建烟雾团
-        //创建烟雾素材
-        var material2=new THREE.PointsMaterial({
-            size:20,
-            transparent:true,
-            opacity:0,
-            map:self.smokeTexture,
-            sizeAttenuation:true,
-            depthWrite:false,
-            color:0xffffff
-        });
-        //var range=15;
-        for(var i=0;i<50;i++){
-            //创建烟雾片
-            var particle2=new THREE.Vector3(Math.random()*30-30/2,Math.random()*1-1/2,Math.random()*30-30/2);
-            //将烟雾片一片片加入到geom中
-            geom2.vertices.push(particle2);
-        }
-        cloud2=new THREE.Points(geom2,material2);
-        _this.scene.add(cloud2);
-        self.smokeSceneArr.push(cloud2);
-    }
-
-    var cloud3;
-    function smokeSceneType3()
-    {
-        var geom3=new THREE.Geometry();//创建烟雾团
-        //创建烟雾素材
-        var material3=new THREE.PointsMaterial({
-            size:30,
-            transparent:true,
-            opacity:0,
-            map:self.smokeTexture,
-            sizeAttenuation:true,
-            depthWrite:false,
-            color:0xffffff
-        });
-        //var range=15;
-        for(var i=0;i<50;i++){
-            //创建烟雾片
-            var particle3=new THREE.Vector3(Math.random()*30-30/2,Math.random()*3-3/2,Math.random()*22-22/2);
-            //将烟雾片一片片加入到geom中
-            geom3.vertices.push(particle3);
-        }
-        cloud3=new THREE.Points(geom3,material3);
-        _this.scene.add(cloud3);
-        self.smokeSceneArr.push(cloud3);
-    }
-
-    for (var i=0;i<12;i++){
-        smokeSceneType3();
-    }
-    for (var i=0;i<4;i++){
-        smokeSceneType1();
-    }
-    for (var i=0;i<12;i++){
-        smokeSceneType2();
-    }
-    for (var i=0;i<6;i++){
-        smokeSceneType3();
-    }
-    for (var i=0;i<6;i++){
-        smokeSceneType1();
-    }
-    for (var i=0;i<6;i++){
-        smokeSceneType2();
-    }
-
-    this.smokeScene=function(){
-        for(var i=0;i<12;i++){
-            this.smokeSceneArr[i].position.set( i*30+275,9.8,25 );
-            this.smokeSceneArr[i+16].position.set( i*30+275,15,25 );
-        }
-        for(var i=0;i<4;i++){
-            this.smokeSceneArr[i+12].position.set( i*60+50,11.8,25 );
-        }
-        for(var i=0;i<6;i++){
-            this.smokeSceneArr[i+28].position.set( i*30+395,22.6,25 );
-            this.smokeSceneArr[i+40].position.set( i*30+395,28.6,25 );
-        }
-        for(var i=0;i<6;i++){
-            this.smokeSceneArr[i+34].position.set( i*60+50,24.5,25 );
-        }
-    };
-
 //endregion
 }
 
-
+//烟气的自适应显示以及烟雾数据的读取
 Smoke.prototype.smokeColor = function (_this)
 {
     var self = this;
     /*
 烟雾变化分两种情况，开始着火与消防员开始灭火，开始着火正向读入烟雾数据，烟雾变浓，开始灭火，逆向读入数据，烟雾逐渐消失
 */
+    //获取视锥
+    var frustum = new THREE.Frustum();
+    frustum.setFromMatrix(new THREE.Matrix4().multiplyMatrices(_this.camera.projectionMatrix,_this.camera.matrixWorldInverse));
 
-    if (Math.floor(_this.clock.getElapsedTime() + 10) % ((self.kk + 1) * 10) == 0 && self.ii < 61&&!self.iswater) {
-        for (var j = 0; j < self.newsmokeData[self.ii].length; j++) {
-            self.smokeSceneArr[j].material.opacity = self.newsmokeData[self.ii][j];
-
+    //读取烟雾数据
+    if (Math.floor(_this.clock.getElapsedTime() + 2) % ((self.kk + 1) * 2) == 0 && self.ii < 301&&!self.iswater) {
+        if(self.newSmokeData)
+        {
+            self.smokeUnitArr.forEach(function(item){
+                item.smokeDensity = self.newSmokeData[item.index][self.ii];
+                if(item.smokeCloud)
+                    item.smokeCloud.material.opacity = item.smokeDensity;
+            });
+            self.ii++;
+            self.kk++;
         }
-        self.ii++;
-        self.kk++;
+        else
+        {
+            self.smokeUnitArr.forEach(function(item){
+                item.smokeDensity = self.u*self.smokeData0[item.index][self.ii] + self.v*self.smokeData1[item.index][self.ii] + (1-self.u-self.v)*self.smokeData2[item.index][self.ii];
+                if(item.smokeCloud)
+                    item.smokeCloud.material.opacity = item.smokeDensity;
+            });
+            self.ii++;
+            self.kk++;
+        }
     }
-    else if(Math.floor(_this.clock.getElapsedTime() + 10) % ((self.kk + 1)) == 0 && self.ii >= 0&&self.iswater)
+    else if(Math.floor(_this.clock.getElapsedTime() + 2) % ((self.kk + 1)) == 0 && self.ii >= 0&&self.iswater)
     {
-        for (var j = 0; j < self.newsmokeData[self.ii].length; j++) {
-            self.smokeSceneArr[j].material.opacity = self.newsmokeData[self.ii][j];
-
-        }
+        self.smokeUnitArr.forEach(function(item){
+            item.smokeDensity = self.newSmokeData[item.index][self.ii];
+            if(item.smokeCloud)
+                item.smokeCloud.material.opacity = item.smokeDensity;
+        })
         self.ii--;
         self.kk--;
         /*
@@ -432,7 +396,66 @@ Smoke.prototype.smokeColor = function (_this)
         }
          */
     }
-}
+
+    //筛选此刻在视锥体内且烟气浓度大于0的烟气单元
+    var newInArr = [];
+    var newOutArr = [];
+    self.nowInSmokeArr = [];
+    self.smokeUnitArr.forEach(function(item){
+        if(item.smokeDensity>0)
+        {
+            for(let i=0;i<8;i++)
+            {
+                if(frustum.containsPoint(item.vertexArr[i]))
+                {
+                    item.nowInFrustum = true;
+                    break;
+                }
+                if(i==7)
+                    item.nowInFrustum = false;
+            }
+        }
+        else
+            item.nowInFrustum = false;
+
+        if(item.nowInFrustum && item.smokeDensity > 0)
+            self.nowInSmokeArr.push(item);
+        if(item.nowInFrustum !=item.lastInFrustum)
+        {
+            if(item.nowInFrustum && item.smokeDensity>0)
+                newInArr.push(item);
+            if(!item.nowInFrustum && item.smokeDensity>0)
+                newOutArr.push(item);
+        }
+        item.lastInFrustum = item.nowInFrustum;
+    });
+
+
+    var num;
+    for(num=0; num<Math.min(newInArr.length,newOutArr.length) ;num++)
+    {
+        newInArr[num].smokeCloud = newOutArr[num].smokeCloud;
+        newOutArr[num].smokeCloud = null;
+        newInArr[num].smokeCloud.position.set(newInArr[num].centerPos.x,newInArr[num].centerPos.y,newInArr[num].centerPos.z);
+        newInArr[num].smokeCloud.material.opacity = newInArr[num].smokeDensity;
+    }
+    while(num < newOutArr.length)
+    {
+        _this.scene.remove(newOutArr[num].smokeCloud)
+        newOutArr[num].smokeCloud = null;
+        num++;
+    }
+    while(num < newInArr.length)
+    {
+        self.createCloud(_this,newInArr[num]);
+        newInArr[num].smokeCloud.position.set(newInArr[num].centerPos.x,newInArr[num].centerPos.y,newInArr[num].centerPos.z);
+        newInArr[num].smokeCloud.material.opacity = newInArr[num].smokeDensity;
+        num++;
+    }
+
+    //console.log(newInArr);
+    //console.log(self.nowInSmokeArr);
+};
 
 Smoke.prototype.smokeLocationRepair = function (_this)
 {
@@ -476,7 +499,7 @@ Smoke.prototype.smokeLocationRepair = function (_this)
         _this.control.position.y=5.8;
         this.sNumber=0.045;
     }
-}
+};
 
 Smoke.prototype.smokeSurfaceChange = function (_this)
 {
@@ -528,9 +551,9 @@ Smoke.prototype.smokeSurfaceChange = function (_this)
         self.smokeColor(_this);
 
     }
-}
+};
 
-//region 选取进行插值算法的着火点
+//region 选取进行插值算法的着火点的选取算法
 Smoke.prototype.smokeStart = function (_this)
 {
     var self = this;
@@ -544,7 +567,7 @@ Smoke.prototype.smokeStart = function (_this)
     {
         if(self.firePointArr[i].firePosition.x == self.pp.x && self.firePointArr[i].firePosition.z == self.pp.z)
         {
-            self.newsmokeData = self.firePointArr[i].smokeData;
+            _this.messagecontrol.readSmoke(self.firePointArr[i],_this);
             isInPoint = true;
             break;
         }
@@ -552,14 +575,15 @@ Smoke.prototype.smokeStart = function (_this)
     if(!isInPoint)
     {
         var rankArr = self.rankByDistance(self.firePointArr);
-        var p0 = rankArr[0];
-        var p1 = rankArr[1];
-        var p2 = rankArr[2];
-        //_this.smoke.newsmokeData=smoke_insert(_this.smoke.p0,_this.smoke.p1,_this.smoke.p2,_this.smoke.pp,_this.messagecontrol.smokeDataA,_this.messagecontrol.smokeDataB,_this.messagecontrol.smokeDataC);
-        //self.newsmokeData = _this.messagecontrol.smokeData;
-        self.newsmokeData=smoke_insert(p0.firePosition,p1.firePosition,p2.firePosition,self.pp,p0.smokeData,p1.smokeData,p2.smokeData);
+        self.p0 = rankArr[0];
+        self.p1 = rankArr[1];
+        self.p2 = rankArr[2];
+        _this.messagecontrol.readSmoke0(self.p0,_this);
+        _this.messagecontrol.readSmoke1(self.p1,_this);
+        _this.messagecontrol.readSmoke2(self.p2,_this);
+        calculate_u_v(self.p0.firePosition,self.p1.firePosition,self.p2.firePosition,self.pp,_this);
     }
-}
+};
 
 Smoke.prototype.rankByDistance = function(pointArr)
 {
@@ -586,7 +610,7 @@ Smoke.prototype.rankByDistance = function(pointArr)
         arr[minIndex] = tempPoint;
     }
     return arr;
-}
+};
 //deregion
 
 //region 烟冠穿出模型问题
@@ -617,12 +641,51 @@ Smoke.prototype.smokeShelter = function(_this)
             }
         }
     }
-}
+};
+
+//创建烟气单元的烟雾团
+Smoke.prototype.createCloud =function (_this,smokeUnit)
+{
+    var self = this;
+    var geom=new THREE.Geometry();//创建烟雾团
+    //创建烟雾素材
+    var material=new THREE.PointsMaterial({
+        size:36,
+        transparent:true,
+        opacity:0,
+        map:self.smokeTexture,
+        sizeAttenuation:true,
+        depthWrite:false,
+        color:0xffffff
+    });
+    //var range=15;
+    /*
+    for(var i=0;i<2;i++){
+        for(var j=0;j<2;j++)
+        {
+            //创建烟雾片
+            var particle=new THREE.Vector3(-2+4*i,0,-1+j);
+            //将烟雾片一片片加入到geom中
+            geom.vertices.push(particle);
+        }
+        //创建烟雾片
+        //var particle=new THREE.Vector3(Math.random()*6-6/2,0,Math.random()*6-6/2);
+        //将烟雾片一片片加入到geom中
+        //geom.vertices.push(particle);
+    }
+
+     */
+    //创建烟雾片
+    var particle=new THREE.Vector3(0,0,0);
+    //将烟雾片一片片加入到geom中
+    geom.vertices.push(particle);
+    var cloud=new THREE.Points(geom,material);
+    _this.scene.add(cloud);
+    smokeUnit.smokeCloud = cloud;
+};
 
 Smoke.prototype.update = function (_this)
 {
-    this.smokeScene();
-
     this.smokeShelter(_this);
 
     if(this.camIn){
@@ -635,18 +698,32 @@ Smoke.prototype.update = function (_this)
 
     this.smokeSurfaceChange(_this);
 
-    this.smokeSceneArr.forEach(function (child)
+    this.nowInSmokeArr.forEach(function (child)
     {
         _this.step[1] += 0.00005;
-        child.rotation.y=_this.step[1]*(Math.random>0.5?1:-1);
+        child.smokeCloud.rotation.y=_this.step[1]*(Math.random>0.5?1:-1)*0.5;
     });
 
-}
+};
 
 //着火点
 function firePoint()
 {
     this.firePosition = [];
+    this.fireIndex = 0;
     this.smokeData = [];
 }
 
+//烟雾单元
+function SmokeUnit()
+{
+    this.vertexArr =[];//八个顶点坐标所构成的数组
+    this.lastInFrustum = false;//上一刻是否在视锥体
+    this.nowInFrustum = false;//这一刻是否在视锥体
+    this.smokeCloud = null;
+    this.floor = 0;//烟雾所在楼层
+    this.centerPos = new THREE.Vector3(0,0,0);
+    this.index = '';
+    this.smokeDensity = 0;
+
+}
