@@ -143,7 +143,7 @@ mainScene.prototype.init = function()
     //this.HCI.fuc4(this);
 
     //debug专用
-    this.HCI.fuc5(this);
+    //this.HCI.fuc5(this);
 
 }
 
@@ -171,7 +171,8 @@ mainScene.prototype.start = function()
 
             self.people.update(self);
 
-            self.underground.update(self,self.delta);
+            //火车动
+            //self.underground.update(self,self.delta);
         }
         //self.Cameracontroller.update1(self);
 
