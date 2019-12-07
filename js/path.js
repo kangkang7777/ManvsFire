@@ -15,7 +15,7 @@ path.prototype.init= function (_this)
     this.postCount = 0;
     var recieveCount = 0;
     this.finishPathNum = 0;
-    this.isCalculateLeader = true;  //是否针对leader做寻路，默认是对人群做寻路
+    this.isCalculateLeader = false;  //是否针对leader做寻路，默认是对人群做寻路
     this.isUseBufferPath = true;  //是否直接从内存里面读取路径数据
     var pathArr,pathMap;
     this.finishTagMap = [];
@@ -297,6 +297,8 @@ path.prototype.startPathFinding = function (_this)
                         for(var j=0;j<self._this.people.exitInfoMap[2].length;j++) {
                             targetPositionArr.push(new THREE.Vector3(self._this.people.exitInfoMap[2][j][1], self._this.people.exitInfoMap[2][j][2], self._this.people.exitInfoMap[2][j][3]));
                         }
+
+
                         self.finishTagMap[tag] = false;
                         for(var acoCount=0;acoCount<antTotalCount;acoCount++)
                         {
