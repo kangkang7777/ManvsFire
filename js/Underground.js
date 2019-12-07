@@ -5,8 +5,6 @@ var Underground = function ()
     this.isOnload = false;
     this.subway=[];
     this.isready = false;
-    this.rail=[];
-
 }
 
 Underground.prototype.init = function (_this) {
@@ -14,7 +12,6 @@ Underground.prototype.init = function (_this) {
     this.FixBuliding(_this.scene);
     this.GlbBuilding(_this);
     this.AddSubway(_this);
-    this.AddRail(_this);
 }
 
 /*加载three.js自带模型*/
@@ -64,7 +61,7 @@ Underground.prototype.FixBuliding = function (scene) {
         cube1Geometry.computeFaceNormals();
         var cube1Material=new THREE.MeshPhongMaterial({color:0x0000ff,wireframe:true});
         var cube1Mesh=new THREE.Mesh(cube1Geometry,cube1Material);
-        cube1Mesh.setScale(0.75,1);
+        cube1Mesh.setScale(0.75,0.75);
         cube1Material.visible=false;
         scene.add(cube1Mesh);
 
@@ -103,7 +100,7 @@ Underground.prototype.FixBuliding = function (scene) {
         cube2Geometry.computeFaceNormals();
         var cube2Material=new THREE.MeshPhongMaterial({color:0x9caeba,wireframe:true});
         var cube2Mesh=new THREE.Mesh(cube2Geometry,cube2Material);
-        cube2Mesh.setScale(0.75,1);
+        cube2Mesh.setScale(0.75,0.75);
         cube2Material.visible=false;
         scene.add(cube2Mesh);
 
@@ -114,43 +111,43 @@ Underground.prototype.FixBuliding = function (scene) {
     var cubeX1Material=new THREE.MeshPhongMaterial({color:0xaeb1b3});
     var cubeX1Mesh=new THREE.Mesh(cubeX1Geometry,cubeX1Material);
     cubeX1Mesh.position.set(336,12,28);
-    cubeX1Mesh.scale.set(1,0.75,1);
+    cubeX1Mesh.scale.set(1,0.75,0.75);
     scene.add(cubeX1Mesh);
 
     var cubeX2Geometry=new THREE.CubeGeometry(0.3,12.1,5.8);
     var cubeX2Material=new THREE.MeshPhongMaterial({color:0xaeb1b3});
     var cubeX2Mesh=new THREE.Mesh(cubeX2Geometry,cubeX2Material);
     cubeX2Mesh.position.set(336,12,16);
-    cubeX2Mesh.scale.set(1,0.75,1);
+    cubeX2Mesh.scale.set(1,0.75,0.75);
     scene.add(cubeX2Mesh);
 
     var cubeX3Geometry=new THREE.CubeGeometry(274,12.1,0.3);
     var cubeX3Material=new THREE.MeshPhongMaterial({color:0xaeb1b3});
     var cubeX3Mesh=new THREE.Mesh(cubeX3Geometry,cubeX3Material);
     cubeX3Mesh.position.set(473,12,13.5);
-    cubeX3Mesh.scale.set(1,0.75,1);
+    cubeX3Mesh.scale.set(1,0.75,0.75);
     scene.add(cubeX3Mesh);
 
     var cubeX4Geometry=new THREE.CubeGeometry(0.3,12.1,5.8);
     var cubeX4Material=new THREE.MeshPhongMaterial({color:0xaeb1b3});
     var cubeX4Mesh=new THREE.Mesh(cubeX4Geometry,cubeX4Material);
     cubeX4Mesh.position.set(610,12,16);
-    cubeX4Mesh.scale.set(1,0.75,1);
+    cubeX4Mesh.scale.set(1,0.75,0.75);
     scene.add(cubeX4Mesh);
 
     var cubeX5Geometry=new THREE.CubeGeometry(0.3,12.1,5.8);
     var cubeX5Material=new THREE.MeshPhongMaterial({color:0xaeb1b3});
     var cubeX5Mesh=new THREE.Mesh(cubeX5Geometry,cubeX5Material);
     cubeX5Mesh.position.set(610,12,35);
-    cubeX5Mesh.scale.set(1,0.75,1);
+    cubeX5Mesh.scale.set(1,0.75,0.75);
     scene.add(cubeX5Mesh);
 
-    // var cubeX6Geometry=new THREE.CubeGeometry(103,12.1,0.3);
-    // var cubeX6Material=new THREE.MeshPhongMaterial({color:0xaeb1b3});
-    // var cubeX6Mesh=new THREE.Mesh(cubeX6Geometry,cubeX6Material);
-    // cubeX6Mesh.position.set(558.5,12,37.5);
-    // cubeX6Mesh.scale.set(1,0.75,1);
-    // scene.add(cubeX6Mesh);
+    var cubeX6Geometry=new THREE.CubeGeometry(103,12.1,0.3);
+    var cubeX6Material=new THREE.MeshPhongMaterial({color:0xaeb1b3});
+    var cubeX6Mesh=new THREE.Mesh(cubeX6Geometry,cubeX6Material);
+    cubeX6Mesh.position.set(558.5,12,37.5);
+    cubeX6Mesh.scale.set(1,0.75,0.75);
+    scene.add(cubeX6Mesh);
 
 
 
@@ -187,7 +184,7 @@ Underground.prototype.FixBuliding = function (scene) {
     cube3Geometry.computeFaceNormals();
     var cube3Material=new THREE.MeshPhongMaterial({color:0xaeb1b3});
     var cube3Mesh=new THREE.Mesh(cube3Geometry,cube3Material);
-    cube3Mesh.scale.set(1,0.75,1);
+    cube3Mesh.scale.set(1,0.75,0.75);
     scene.add(cube3Mesh);
 
     var Te1Geometry=new THREE.TetrahedronGeometry(5);
@@ -234,7 +231,6 @@ Underground.prototype.GlbBuilding = function (_this) {
         self.mesh.material.color = selectMaterialColor(type);
         // polyhedrons.push(mesh);
         _this.scene.add(self.mesh);
-        _this.Cameracontroller.collideMeshList.push(self.mesh);
     }
 
     var loadAsync = function (path, type)
@@ -268,7 +264,11 @@ Underground.prototype.GlbBuilding = function (_this) {
     ).then(() => {
         console.log("加载完成");
         $("#loadTime")[0].innerText = ((performance.now() - startLoadTime) / 1000).toFixed(2) + "秒";
+    }).then(() => {
+        _this.Cameracontroller.collideMeshList.push(self.mesh);
     })
+
+
     /*建筑模型加载结束*/
 
     /*设置建筑模型材质颜色开始*/
@@ -279,22 +279,22 @@ Underground.prototype.GlbBuilding = function (_this) {
                 color = new THREE.Color(0x808080);
                 break;
             case"column":
-                color = new THREE.Color(0xFFFFFF);
+                color = new THREE.Color(0xDBDBDB);
                 break;
             case"elevator":
-                color = new THREE.Color(0xD2B48C);
+                color = new THREE.Color(0xAFAFAF);
                 break;
             case"railing":
                 color = new THREE.Color(0x808080);
                 break;
             case"slab":
-                color = new THREE.Color(0xDCDCDC);
+                color = new THREE.Color(0xC6C6C6);
                 break;
             case"stair":
-                color = new THREE.Color(0xBC8F8F);
+                color = new THREE.Color(0xAAABA3);
                 break;
             case"wall":
-                color = new THREE.Color(0xD2B48C);
+                color = new THREE.Color(0xAAABA3);
                 break;
         }
         return color;
@@ -302,7 +302,6 @@ Underground.prototype.GlbBuilding = function (_this) {
     /*设置建筑模型材质颜色结束*/
 }
 
-//加载列车
 Underground.prototype.AddSubway = function (_this)
 {
     var self = this;
@@ -317,11 +316,7 @@ Underground.prototype.AddSubway = function (_this)
         objLoader.setPath('Model/');
         objLoader.load('subway.obj', function(object) {
             self.subway = object;
-            //正确位置
-            //object.position.set(314,8,41.4);
-
-            //临时位置
-            object.position.set(550,8,41.4);
+            object.position.set(390,6,41.4);
             object.scale.set(0.03, 0.03, 0.03);
             object.rotateY(Math.PI/2);
             _this.scene.add(object);
@@ -331,36 +326,10 @@ Underground.prototype.AddSubway = function (_this)
 
 }
 
-//加载轨道
-Underground.prototype.AddRail = function (_this)
-{
-    var self = this;
-    var mtlLoader = new THREE.MTLLoader();
-    mtlLoader.setPath('Model/');
-    mtlLoader.load('rail.mtl', function(materials) {
-
-        materials.preload();
-
-        var objLoader = new THREE.OBJLoader();
-        objLoader.setMaterials(materials);
-        objLoader.setPath('Model/');
-        objLoader.load('rail.obj', function(object) {
-            self.rail = object;
-            object.position.set(343.7,7.7,28.7);
-            object.scale.set(0.0075, 0.005, 0.01);
-            object.rotateY(Math.PI/2);
-            _this.scene.add(object);
-        });
-
-    });
-
-}
-
-//车动
 Underground.prototype.update = function (_this,delta)
 {
     if(this.isready)
         _this.underground.subway.position.x+=delta*5;
-    if(this.isready&&_this.underground.subway.position.x>560)
+    if(this.isready&&_this.underground.subway.position.x>554)
         this.isready = false;
 }
