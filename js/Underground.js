@@ -14,7 +14,7 @@ Underground.prototype.init = function (_this) {
     this.FixBuliding(_this.scene);
     this.GlbBuilding(_this);
     this.AddSubway(_this);
-    this.AddRail(_this);
+    //this.AddRail(_this);
 }
 
 /*加载three.js自带模型*/
@@ -29,6 +29,7 @@ Underground.prototype.FixBuliding = function (scene) {
     scene.add(cube2);
     scene.add(cube3);
     /*
+
         var vertices1=[
             new THREE.Vector3(620,31,47),//0
             new THREE.Vector3(620,31,0),//1
