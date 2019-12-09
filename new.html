@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>New Demo</title>
+    <title>Underground Fire Simulation</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -70,7 +70,7 @@
 
 </head>
 <body>
-<div style="position: absolute; left: 20px; top: 15px;padding:10px;width:200px;">
+<div style="position: absolute; left: 20px; top: 40px;padding:10px;width:200px;">
 <!--    <div>-->
 <!--        <label style="font-size: 15px;color:#ffffff">三角面片数:</label>-->
 <!--        <label id="triNum" style="font-size: 15px;color:#ffffff">0</label>-->
@@ -83,10 +83,10 @@
 </div>
 <div id="loading" class="loading" style="z-index: 2"><img src="images/loading.gif"/></div>
 <div id="progress"></div>
-<nav class="navbar navbar-default  navbar-fixed-top" role="navigation" style="background: rgb(0, 0, 0)">
+<nav class="navbar navbar-default  navbar-fixed-top" role="navigation" style="background: rgb(0, 0, 0); opacity:0.8">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#" style="color:white"><b>同济大学地铁站火灾逃生模拟平台</b></a>
+            <a class="navbar-brand" href="#" style="color:white; margin-left:600px"><b>同济大学地铁站火灾逃生模拟平台</b></a>
 
         </div>
     </div>
@@ -94,7 +94,7 @@
 <div id="setting" class="btn btn-default btn-lg" style="width:50px;height:45px;background:rgb(0, 0, 0);border:none;display: none">
     <span class="glyphicon glyphicon-cog"></span>
 </div>
-<div class="rightside-menu" style="background:rgb(255, 255, 255);display: block">
+<div class="rightside-menu" style="background:rgb(255, 255, 255);display: block; opacity:0.8">
     <div  style="height:3%;background:rgb(0, 0, 0)">
         <button id="minimize" type="button" class="btn btn-default btn-xs" style="background:rgb(0, 0, 0);border:none;margin-top:0;position: absolute;right:0;top:0;">
             <span class="glyphicon glyphicon-play-circle"></span>
@@ -192,7 +192,7 @@
 <div id="WebGL-output">
 </div>
 
-<div id="bottom-menu" class="bottom-menu" style="background:rgb(255, 255, 255);display:block">
+<div id="bottom-menu" class="bottom-menu" style="display:block; opacity:0.8">
     <div id="floor-menu">
         <button  id="escapeDoor1" class="btn btn-default btn-lg">逃生门1</button>
         <button  id="escapeDoor2" class="btn btn-default btn-lg">逃生门2</button>
