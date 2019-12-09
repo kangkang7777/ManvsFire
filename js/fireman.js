@@ -131,7 +131,11 @@ fireman.prototype.createFireman = function (_this)
             self.cubeFireman.outfireAction.play();
             self.cubeFireman.walkAction.play();
             self.cubeFireman.groupID = _this.Path.pathfinder.getGroup('level1',self.cubeFireman.position);
-            self.cubeFireman.path = _this.Path.pathfinder.findPath(self.cubeFireman.position, new THREE.Vector3(_this.smoke.pp.x+18,_this.smoke.pp.y,_this.smoke.pp.z), 'level1', self.cubeFireman.groupID);
+            if(_this.smoke.pp.x<230)
+                self.cubeFireman.path = _this.Path.pathfinder.findPath(self.cubeFireman.position, new THREE.Vector3(_this.smoke.pp.x+18,_this.smoke.pp.y,_this.smoke.pp.z), 'level1', self.cubeFireman.groupID);
+            else
+                self.cubeFireman.path = _this.Path.pathfinder.findPath(self.cubeFireman.position, new THREE.Vector3(_this.smoke.pp.x-18,_this.smoke.pp.y,_this.smoke.pp.z), 'level1', self.cubeFireman.groupID);
+
 
             self.cubeFireman.i = 0;
             self.cubeFireman.target = self.cubeFireman.path[0];

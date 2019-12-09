@@ -16,7 +16,7 @@ var Smoke = function ()
     this.p2 = null;
     this.u = 0;//u和v是用来进行插值计算的参数
     this.v = 0;
-    this.smokeTexture = new THREE.TextureLoader().load('textures/Smoke-Element2.png');
+    this.smokeTexture = new THREE.TextureLoader().load('textures/Smoke-Element.png');
     var smokeLogoTexture = new THREE.TextureLoader().load('textures/firelogo2.png');
     this.smokeArr=[];
     this.sNumber=0.045;//烟柱与烟冠模型缩放系数
@@ -380,15 +380,29 @@ Smoke.prototype.smokeColor = function (_this)
             self.kk++;
         }
     }
-    else if(Math.floor(_this.clock.getElapsedTime() + 2) % ((self.kk + 1)) == 0 && self.ii >= 0&&self.iswater)
+    else if(Math.floor(_this.clock.getElapsedTime() + 2) % ((self.kk + 1) * 2) == 0 && self.ii >= 0&&self.iswater)
     {
-        self.smokeUnitArr.forEach(function(item){
-            item.smokeDensity = self.newSmokeData[item.index][self.ii];
-            if(item.smokeCloud)
-                item.smokeCloud.material.opacity = item.smokeDensity;
-        })
-        self.ii--;
-        self.kk--;
+        if(self.newSmokeData)
+        {
+            self.smokeUnitArr.forEach(function(item){
+                item.smokeDensity = self.newSmokeData[item.index][self.ii];
+                if(item.smokeCloud)
+                    item.smokeCloud.material.opacity = item.smokeDensity;
+            });
+            self.ii--;
+            self.kk++;
+        }
+        else
+        {
+            self.smokeUnitArr.forEach(function(item){
+                item.smokeDensity = self.u*self.smokeData0[item.index][self.ii] + self.v*self.smokeData1[item.index][self.ii] + (1-self.u-self.v)*self.smokeData2[item.index][self.ii];
+                if(item.smokeCloud)
+                    item.smokeCloud.material.opacity = item.smokeDensity;
+            });
+            self.ii--;
+            self.kk++;
+        }
+        console.log(self.ii);
         /*
         if(self.kk==0)
         {
@@ -650,7 +664,7 @@ Smoke.prototype.createCloud =function (_this,smokeUnit)
     var geom=new THREE.Geometry();//创建烟雾团
     //创建烟雾素材
     var material=new THREE.PointsMaterial({
-        size:36,
+        size:17,
         transparent:true,
         opacity:0,
         map:self.smokeTexture,
@@ -659,12 +673,11 @@ Smoke.prototype.createCloud =function (_this,smokeUnit)
         color:0xffffff
     });
     //var range=15;
-    /*
     for(var i=0;i<2;i++){
         for(var j=0;j<2;j++)
         {
             //创建烟雾片
-            var particle=new THREE.Vector3(-2+4*i,0,-1+j);
+            var particle=new THREE.Vector3(-2+4*i+Math.random()*(Math.random()>0.5?1:-1),0,-2+4*j+Math.random()*(Math.random()>0.5?1:-1));
             //将烟雾片一片片加入到geom中
             geom.vertices.push(particle);
         }
@@ -673,12 +686,10 @@ Smoke.prototype.createCloud =function (_this,smokeUnit)
         //将烟雾片一片片加入到geom中
         //geom.vertices.push(particle);
     }
-
-     */
     //创建烟雾片
-    var particle=new THREE.Vector3(0,0,0);
+    //var particle=new THREE.Vector3(0,0,0);
     //将烟雾片一片片加入到geom中
-    geom.vertices.push(particle);
+    //geom.vertices.push(particle);
     var cloud=new THREE.Points(geom,material);
     _this.scene.add(cloud);
     smokeUnit.smokeCloud = cloud;
@@ -701,7 +712,7 @@ Smoke.prototype.update = function (_this)
     this.nowInSmokeArr.forEach(function (child)
     {
         _this.step[1] += 0.00005;
-        child.smokeCloud.rotation.y=_this.step[1]*(Math.random>0.5?1:-1)*0.5;
+        child.smokeCloud.rotation.y=_this.step[1]*(Math.random>0.5?1:-1)*0.6;
     });
 
 };

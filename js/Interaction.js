@@ -333,6 +333,7 @@ Interaction.prototype.fuc3 = function (MainScene)
         $('continue').style.display = "none";
         $('pause').style.display = "block";
     });
+    /*
 //region 点击坐标测试
     window.addEventListener('mousemove', onMouseMove, false);
 
@@ -356,6 +357,8 @@ Interaction.prototype.fuc3 = function (MainScene)
 
     }
     //deregion
+
+     */
 
     //编辑烟雾状态下的摄像机移动
     window.addEventListener('keydown',function(event){

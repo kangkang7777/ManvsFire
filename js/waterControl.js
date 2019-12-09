@@ -61,10 +61,19 @@ waterControl.prototype.init = function (_this)
             }
 
             _this.smoke.r1[i]++;
-            this.waterArr[i].position.setX(_this.smoke.redBallMesh.position.x - waterRX[i]);
-            this.waterArr[i].position.setZ(_this.smoke.redBallMesh.position.z + waterRZ[i]/10);
-            this.waterArr[i].position.setY(_this.smoke.redBallMesh.position.y - waterRY[i]/10);
-            //waterArr[i].scale.setScalar(Math.sin(r1[i] * sNumber / 150.0 * (Math.PI / 2)));
+            if(_this.smoke.redBallMesh.x<230)
+            {
+                this.waterArr[i].position.setX(_this.smoke.redBallMesh.position.x - waterRX[i]);
+                this.waterArr[i].position.setZ(_this.smoke.redBallMesh.position.z + waterRZ[i]/10);
+                this.waterArr[i].position.setY(_this.smoke.redBallMesh.position.y - waterRY[i]/10);
+                //waterArr[i].scale.setScalar(Math.sin(r1[i] * sNumber / 150.0 * (Math.PI / 2)));
+            }
+            else
+            {
+                this.waterArr[i].position.setX(_this.smoke.redBallMesh.position.x - 32 + waterRX[i]);
+                this.waterArr[i].position.setZ(_this.smoke.redBallMesh.position.z + waterRZ[i]/10);
+                this.waterArr[i].position.setY(_this.smoke.redBallMesh.position.y - waterRY[i]/10);
+            }
         }
     };
 //endregion
