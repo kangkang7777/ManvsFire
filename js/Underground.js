@@ -19,11 +19,11 @@ Underground.prototype.init = function (_this) {
 
 /*加载three.js自带模型*/
 Underground.prototype.FixBuliding = function (scene) {
-    var cube1 = new THREE.Mesh(new THREE.BoxGeometry(17,10,1),new THREE.MeshBasicMaterial({color:0xff0000,transparent:true,opacity:0.5}));
+    var cube1 = new THREE.Mesh(new THREE.BoxGeometry(17,10,1),new THREE.MeshBasicMaterial({color:0xCC0000,transparent:true,opacity:0.5}));
     cube1.position.set(416,22,7);
-    var cube2 = new THREE.Mesh(new THREE.BoxGeometry(15,10,1),new THREE.MeshBasicMaterial({color:0xff0000,transparent:true,opacity:0.5}));
+    var cube2 = new THREE.Mesh(new THREE.BoxGeometry(15,10,1),new THREE.MeshBasicMaterial({color:0xCC0000,transparent:true,opacity:0.5}));
     cube2.position.set(554,22,46);
-    var cube3 = new THREE.Mesh(new THREE.BoxGeometry(30,10,1),new THREE.MeshBasicMaterial({color:0xff0000,transparent:true,opacity:0.5}));
+    var cube3 = new THREE.Mesh(new THREE.BoxGeometry(30,10,1),new THREE.MeshBasicMaterial({color:0xCC0000,transparent:true,opacity:0.5}));
     cube3.position.set(548,22,6);
     scene.add(cube1);
     scene.add(cube2);
@@ -280,22 +280,22 @@ Underground.prototype.GlbBuilding = function (_this) {
                 color = new THREE.Color(0x808080);
                 break;
             case"column":
-                color = new THREE.Color(0xFFFFFF);
+                color = new THREE.Color(0xDBDBDB);
                 break;
             case"elevator":
-                color = new THREE.Color(0xD2B48C);
+                color = new THREE.Color(0xAFAFAF);
                 break;
             case"railing":
                 color = new THREE.Color(0x808080);
                 break;
             case"slab":
-                color = new THREE.Color(0xDCDCDC);
+                color = new THREE.Color(0xC6C6C6);
                 break;
             case"stair":
-                color = new THREE.Color(0xBC8F8F);
+                color = new THREE.Color(0xAAABA3);
                 break;
             case"wall":
-                color = new THREE.Color(0xD2B48C);
+                color = new THREE.Color(0xAAABA3);
                 break;
         }
         return color;
