@@ -64,6 +64,8 @@ var mainScene = function()
 
     this.Fireman = new fireman();//消防员&灭火
 
+    this.light = new light();//光照
+
     this.HCI = new Interaction();//交互控制
 
     this.globalPlane = null;
@@ -132,6 +134,8 @@ mainScene.prototype.init = function()
     //regiog消防员加载
     this.Fireman.init(this);
     //endregion
+
+    this.light.init(this);
 
     //交互1
     this.HCI.fuc1(this);
