@@ -14,7 +14,7 @@ Underground.prototype.init = function (_this) {
     this.FixBuliding(_this.scene);
     this.GlbBuilding(_this);
     this.AddSubway(_this);
-    //this.AddRail(_this);
+    this.AddRail(_this);
 }
 
 /*加载three.js自带模型*/
@@ -319,10 +319,10 @@ Underground.prototype.AddSubway = function (_this)
         objLoader.load('subway.obj', function(object) {
             self.subway = object;
             //正确位置
-            //object.position.set(314,8,41.4);
+            object.position.set(314,8,41.4);
 
             //临时位置
-            object.position.set(550,8,41.4);
+            //object.position.set(550,8,41.4);
             object.scale.set(0.03, 0.03, 0.03);
             object.rotateY(Math.PI/2);
             _this.scene.add(object);

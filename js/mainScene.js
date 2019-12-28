@@ -68,6 +68,8 @@ var mainScene = function()
 
     this.HCI = new Interaction();//交互控制
 
+    this.FOI = new foiControl();//视锥控制
+
     this.globalPlane = null;
 
     this.currentEscapeTime = 0;
@@ -107,6 +109,7 @@ mainScene.prototype.init = function()
     //初始化
     this.setScene();
 
+
     //region 视角控制初始化
     this.Cameracontroller.init(this);
     //endregion
@@ -136,6 +139,7 @@ mainScene.prototype.init = function()
     //endregion
 
     this.light.init(this);
+
 
     //交互1
     this.HCI.fuc1(this);
@@ -175,8 +179,10 @@ mainScene.prototype.start = function()
 
             self.people.update(self);
 
+            //视锥剔除
+            self.FOI.update(self);
             //火车动
-            //self.underground.update(self,self.delta);
+            self.underground.update(self,self.delta);
         }
         //self.Cameracontroller.update1(self);
 
@@ -277,6 +283,11 @@ mainScene.prototype.setScene = function()
 mainScene.prototype.addPeople = function ()
 {
     this.people.init(this);
+}
+
+mainScene.prototype.addFOI = function()
+{
+    this.FOI.init(this);
 }
 
 mainScene.prototype.LOD = function ()

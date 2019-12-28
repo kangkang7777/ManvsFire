@@ -37,7 +37,7 @@ People.prototype.init = function (_this)
         createRandomPosAndState(_this.number);
         loadBlendMeshWithPromise();
         _this.isStartRun = false;
-
+        //_this.addFOI();
 
         function loadBlendMeshWithPromise() {
             var loadModelPromise = function (modelURL) {
@@ -291,6 +291,7 @@ People.prototype.init = function (_this)
                         _this.isFinishLoadCharactor = true;
                         if(_this.isACO)
                             _this.Path.startPathFinding(_this);
+                        _this.addFOI();
                     });
                 });
             });
