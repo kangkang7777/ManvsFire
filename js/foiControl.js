@@ -33,7 +33,7 @@ foiControl.prototype.update = function (_this) {
     var self = this;
     if(self.active) {
         //视锥设定
-        if(self.count===50)
+        if(self.count===48)
         {
             if(self.direction.length<8)
                 self.frustum.setFromMatrix(new THREE.Matrix4().multiplyMatrices( _this.camera.projectionMatrix, _this.camera.matrixWorldInverse ));
@@ -87,7 +87,7 @@ foiControl.prototype.update = function (_this) {
 
         //帧数控制
         self.count++;
-        if(self.count === 100)
+        if(self.count === 50)
         {
             self.updateHelpers(_this);
             self.count=0;
@@ -148,7 +148,7 @@ foiControl.prototype.updateDistance = function (_this) {
     //     }
     // }
     if(self.count%5 === 1) {
-        let variable = (self.count/10 - 5) / 10;
+        let variable = (self.count/5 - 5) / 10;
         //const v = new THREE.Vector3();
         let temprotation = new THREE.Vector3(_this.camera.rotation.x, _this.camera.rotation.y, _this.camera.rotation.z);
         temprotation.normalize();
