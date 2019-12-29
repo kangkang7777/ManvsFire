@@ -375,13 +375,13 @@ People.prototype.init = function (_this)
                         peopleAttribute.position.set(557,9,36-queue1);
                         peopleAttribute.rotation = 5/6 * Math.PI;
                         queue1++;
-                        console.log(peopleAttribute.position);
+                        //console.log(peopleAttribute.position);
                     }
                     else{
                         peopleAttribute.position.set(553,9,36-queue2);
                         peopleAttribute.rotation = 7/6 * Math.PI;
                         queue2++;
-                        console.log(peopleAttribute.position);
+                        //console.log(peopleAttribute.position);
                     }
                 }
                 else if(random <0.4)

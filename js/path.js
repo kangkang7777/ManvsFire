@@ -257,7 +257,7 @@ path.prototype.calculatePositionByIndex = function (index)
 path.prototype.drawPath = function (path)
 {
     var self = this;
-    console.log(path);
+    //console.log(path);
     var geometryLine = new THREE.Geometry();
     for(var i=0; i<path.length; i++)
     {
