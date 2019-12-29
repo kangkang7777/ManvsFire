@@ -225,7 +225,6 @@ Underground.prototype.GlbBuilding = function (_this) {
     function loadFunc(gltf, type)
     {
         self.mesh = gltf.scene.children[0];
-        console.log(gltf);
         self.mesh.scale.set(0.00192, -0.002, 0.002 );
         self.mesh.geometry.computeVertexNormals();
         //方法一
@@ -267,7 +266,6 @@ Underground.prototype.GlbBuilding = function (_this) {
             loadAsync('./model_glb/IfcWallStandardCase.glb','wall')
         ]
     ).then(() => {
-        console.log("加载完成");
         $("#loadTime")[0].innerText = ((performance.now() - startLoadTime) / 1000).toFixed(2) + "秒";
     })
     /*建筑模型加载结束*/
