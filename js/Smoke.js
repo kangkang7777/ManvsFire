@@ -31,6 +31,7 @@ var Smoke = function ()
     this.kk=0;
     this.camIn=true;//相机是否在地下二层
     this.nowInSmokeArr = [];//在锥体内的烟气单元数列
+    this.edgeSmokeArr = [];//在视锥体边缘的烟气单元数列
 
     //起火点设置
     this.firePointArr = [];
@@ -62,7 +63,14 @@ var Smoke = function ()
 
     //烟气单元
     var smokeUnit = new SmokeUnit();
-    this.smokeUnitArr = [];
+    this.smokeUnitArr = new Array(77);
+    for(let i=0;i<77;i++)
+    {
+        this.smokeUnitArr[i] = new Array(5);
+        for(let j=0;j<5;j++)
+            this.smokeUnitArr[i][j] = new Array(6)
+    }
+
     for(let i=0;i<77;i++)
         for(let j=0;j<5;j++)
             for(let k=0;k<3;k++)
@@ -82,7 +90,7 @@ var Smoke = function ()
                 smokeUnit.vertexArr.push(new THREE.Vector3(x+4,y-2,z+4));
                 smokeUnit.vertexArr.push(new THREE.Vector3(x+4,y+2,z-4));
                 smokeUnit.vertexArr.push(new THREE.Vector3(x+4,y+2,z+4));
-                this.smokeUnitArr.push(Utils.clone(smokeUnit));
+                this.smokeUnitArr[i][j][k] = Utils.clone(smokeUnit);
             }
     for(let i=0;i<77;i++)
         for(let j=0;j<5;j++)
@@ -103,8 +111,9 @@ var Smoke = function ()
                 smokeUnit.vertexArr.push(new THREE.Vector3(x+4,y-2,z+4));
                 smokeUnit.vertexArr.push(new THREE.Vector3(x+4,y+2,z-4));
                 smokeUnit.vertexArr.push(new THREE.Vector3(x+4,y+2,z+4));
-                this.smokeUnitArr.push(Utils.clone(smokeUnit));
+                this.smokeUnitArr[i][j][k+3] = Utils.clone(smokeUnit);
             }
+    console.log(this.smokeUnitArr);
 };
 
 Smoke.prototype.init = function(_this)
@@ -301,6 +310,27 @@ Smoke.prototype.init = function(_this)
         }
     };
 
+    for(let i=0;i<77;i++)
+        for(let j=0;j<5;j++)
+            for(let k=0;k<6;k++)
+            {
+                if(i!=0)
+                    this.smokeUnitArr[i][j][k].xLast = this.smokeUnitArr[i-1][j][k];
+                if(i!=76)
+                    this.smokeUnitArr[i][j][k].xNext = this.smokeUnitArr[i+1][j][k];
+                if(j!=0)
+                    this.smokeUnitArr[i][j][k].zLast = this.smokeUnitArr[i][j-1][k];
+                if(j!=4)
+                    this.smokeUnitArr[i][j][k].zNext = this.smokeUnitArr[i][j+1][k];
+                if(k!=0)
+                    this.smokeUnitArr[i][j][k].yLast = this.smokeUnitArr[i][j][k-1];
+                if(k!=5)
+                    this.smokeUnitArr[i][j][k].yNext = this.smokeUnitArr[i][j][k+1];
+            }
+
+    this.scanPickSmoke(_this);
+    console.log(self.nowInSmokeArr);
+    console.log(self.edgeSmokeArr);
 /*
     function smokeSceneType()
     {
@@ -657,6 +687,185 @@ Smoke.prototype.smokeShelter = function(_this)
     }
 };
 
+//扫描拾取烟雾单元
+Smoke.prototype.scanPickSmoke = function (_this)
+{
+    var self = this;
+    self.nowInSmokeArr = [];
+    self.edgeSmokeArr = [];
+
+    var frustum = new THREE.Frustum();
+    frustum.setFromMatrix(new THREE.Matrix4().multiplyMatrices(_this.camera.projectionMatrix,_this.camera.matrixWorldInverse));
+
+    //获取视锥体的八个顶点
+    var vectice = [];
+    var hNear = 2 * Math.tan(_this.camera.fov/2) * _this.camera.near;//近端平面高度
+    var wNear = hNear * _this.camera.aspect;//近端平面宽度
+    var hFar = 2 * Math.tan(_this.camera.fov/2) * _this.camera.far;//远端平面高度
+    var wFar = hFar * _this.camera.aspect;//远端平面宽度
+
+    var ntr = new THREE.Vector3(wNear/2,hNear/2,-_this.camera.near);
+    _this.camera.updateMatrixWorld();
+    ntr.applyMatrix4(_this.camera.matrixWorld);
+    vectice.push(ntr);
+    var ntl = new THREE.Vector3(-wNear/2,hNear/2,-_this.camera.near);
+    _this.camera.updateMatrixWorld();
+    ntl.applyMatrix4(_this.camera.matrixWorld);
+    vectice.push(ntl);
+    var nbr = new THREE.Vector3(wNear/2,-hNear/2,-_this.camera.near);
+    _this.camera.updateMatrixWorld();
+    nbr.applyMatrix4(_this.camera.matrixWorld);
+    vectice.push(nbr);
+    var nbl = new THREE.Vector3(-wNear/2,-hNear/2,-_this.camera.near);
+    _this.camera.updateMatrixWorld();
+    nbl.applyMatrix4(_this.camera.matrixWorld);
+    vectice.push(nbl);
+    var ftr = new THREE.Vector3(wFar/2,hFar/2,-_this.camera.far);
+    _this.camera.updateMatrixWorld();
+    ftr.applyMatrix4(_this.camera.matrixWorld);
+    vectice.push(ftr);
+    var ftl = new THREE.Vector3(-wFar/2,hFar/2,-_this.camera.far);
+    _this.camera.updateMatrixWorld();
+    ftl.applyMatrix4(_this.camera.matrixWorld);
+    vectice.push(ftl);
+    var fbr = new THREE.Vector3(wFar/2,-hFar/2,-_this.camera.far);
+    _this.camera.updateMatrixWorld();
+    fbr.applyMatrix4(_this.camera.matrixWorld);
+    vectice.push(fbr);
+    var fbl = new THREE.Vector3(-wFar/2,-hFar/2,-_this.camera.far);
+    _this.camera.updateMatrixWorld();
+    fbl.applyMatrix4(_this.camera.matrixWorld);
+    vectice.push(fbl);
+
+    //找出视锥体在各坐标轴上最小最大的值
+    var minZ=0, maxZ=0, minY=0, maxY=0, minX=0, maxX=0;
+    vectice.forEach(function(item){
+        minZ = item.z<minZ ? item.z : minZ;
+        maxZ = item.z>maxZ ? item.z : maxZ;
+        minY = item.y<minY ? item.y : minY;
+        maxY = item.y>maxY ? item.y : maxY;
+        minX = item.x<minX ? item.x : minX;
+        maxX = item.x>maxX ? item.x : maxX;
+    });
+    var minZIndex = Math.floor((minZ-6)/8)>0 ? Math.floor((minZ-6)/8) : 0;
+    var maxZIndex = Math.floor((maxZ-6)/8)<4 ? Math.floor((maxZ-6)/8) : 4;
+    var minYIndex = Math.floor((minY-6)/4)>0 ? Math.floor((minY-6)/4) : 0;
+    var maxYIndex = Math.floor((maxY-6)/4)<5 ? Math.floor((maxY-6)/4) : 5;
+    var minXIndex = Math.floor(minX/8)>0 ? Math.floor(minX/8) : 0;
+
+    //获得在视锥体内的烟气单元和在视锥体边缘的烟气单元
+    if(minZIndex>4 || maxZIndex<0 || minYIndex>5 || maxYIndex<0 || minXIndex>76 || maxX<=0)
+    {
+        self.nowInSmokeArr = [];
+        self.edgeSmokeArr = [];
+    }
+    else
+    {
+        for(let k=minYIndex ; k<=maxYIndex ; k++)
+            for(let j=minZIndex ; j<=maxZIndex ; j++)
+            {
+                var inFrustum = false;
+                for(let i = minXIndex ; i <77 ; i++)
+                {
+                    for(let m=0;m<8;m++)
+                    {
+                        if(frustum.containsPoint(self.smokeUnitArr[i][j][k].vertexArr[m]))
+                        {
+                            self.smokeUnitArr[i][j][k].nowInFrustum = true;
+                            self.nowInSmokeArr.push(self.smokeUnitArr[i][j][k]);
+                            if(!inFrustum)
+                            {
+                                self.smokeUnitArr[i][j][k].isEdge =true;
+                                self.edgeSmokeArr.push(self.smokeUnitArr[i][j][k]);
+                            }
+                            inFrustum = true;
+                            break;
+                        }
+                        if(m==7)
+                            self.smokeUnitArr[i][j][k].nowInFrustum = false;
+                    }
+                    if(inFrustum && !self.smokeUnitArr[i][j][k].nowInFrustum)
+                    {
+                        self.smokeUnitArr[i-1][j][k].isEdge =true;
+                        self.edgeSmokeArr.push(self.smokeUnitArr[i-1][j][k]);
+                        break;
+                    }
+                    if(i==76 && inFrustum)
+                    {
+                        self.smokeUnitArr[i][j][k].isEdge =true;
+                        self.edgeSmokeArr.push(self.smokeUnitArr[i][j][k]);
+                    }
+                }
+            }
+    }
+};
+
+
+Smoke.prototype.smokeFOI = function (_this)
+{
+    var self = this;
+    var frustum = new THREE.Frustum();
+    frustum.setFromMatrix(new THREE.Matrix4().multiplyMatrices(_this.camera.projectionMatrix,_this.camera.matrixWorldInverse));
+
+    self.edgeSmokeArr.forEach(function (item,index){
+        var isIn = self.containSmoke(item,frustum);
+        if(isIn)
+        {
+            var haveNewEdge = false;
+            if(item.xLast && self.containSmoke(item.xLast,frustum) && !item.xLast.nowInFrustum)
+            {
+                self.addNewEdge(item.xLast,frustum);
+                haveNewEdge = true;
+            }
+            if(item.xNext && self.containSmoke(item.xNext,frustum) && !item.xNext.nowInFrustum)
+            {
+                self.addNewEdge(item.xNext,frustum);
+                haveNewEdge = true;
+            }
+            if(item.yLast && self.containSmoke(item.yLast,frustum) && !item.yLast.nowInFrustum)
+            {
+                self.addNewEdge(item.yLast,frustum);
+                haveNewEdge = true;
+            }
+            if(item.yNext && self.containSmoke(item.yNext,frustum) && !item.yNext.nowInFrustum)
+            {
+                self.addNewEdge(item.yNext,frustum);
+                haveNewEdge = true;
+            }
+            if(item.zLast && self.containSmoke(item.zLast,frustum) && !item.zLast.nowInFrustum)
+            {
+                self.addNewEdge(item.zLast,frustum);
+                haveNewEdge = true;
+            }
+            if(item.zNext && self.containSmoke(item.zNext,frustum) && !item.zNext.nowInFrustum)
+            {
+                self.addNewEdge(item.zNext,frustum);
+                haveNewEdge = true;
+            }
+            if(haveNewEdge)
+                self.edgeSmokeArr.splice(self.edgeSmokeArr.indexOf(item),1);
+        }
+        else
+        {
+            item.nowInFrustum = false;
+            self.nowInSmokeArr.splice(self.nowInSmokeArr.indexOf(item),1);
+            item.isEdge = false;
+            self.edgeSmokeArr.splice(self.edgeSmokeArr.indexOf(item),1);
+            if(item.xLast)
+                self.subEdge(item.xLast,frustum);
+            if(item.xNext)
+                self.subEdge(item.xNext,frustum);
+            if(item.yLast)
+                self.subEdge(item.yLast,frustum);
+            if(item.yNext)
+                self.subEdge(item.yNext,frustum);
+            if(item.zLast)
+                self.subEdge(item.zLast,frustum);
+            if(item.zNext)
+                self.subEdge(item.zNext,frustum);
+        }
+    })
+};
 //创建烟气单元的烟雾团
 Smoke.prototype.createCloud =function (_this,smokeUnit)
 {
@@ -695,6 +904,154 @@ Smoke.prototype.createCloud =function (_this,smokeUnit)
     smokeUnit.smokeCloud = cloud;
 };
 
+Smoke.prototype.containSmoke = function(smokeUnit,frustum)
+{
+    var isIn = false;
+    for(let i=0;i<8;i++)
+    {
+        if(frustum.containsPoint(smokeUnit.vertexArr[i]))
+        {
+            isIn = true;
+            break;
+        }
+    }
+    return isIn;
+};
+
+Smoke.prototype.addNewEdge = function(smokeUnit,frustum)
+{
+    var self = this;
+    var isEdge = true;
+
+    smokeUnit.nowInFrustum = true;
+    self.nowInSmokeArr.push(smokeUnit);
+
+    if(smokeUnit.xLast && self.containSmoke(smokeUnit.xLast,frustum) && !smokeUnit.xLast.nowInFrustum)
+    {
+        self.addNewEdge(smokeUnit.xLast,frustum);
+        isEdge = false;
+    }
+    if(smokeUnit.xNext && self.containSmoke(smokeUnit.xNext,frustum) && !smokeUnit.xNext.nowInFrustum)
+    {
+        self.addNewEdge(smokeUnit.xNext,frustum);
+        isEdge = false;
+    }
+    if(smokeUnit.yLast && self.containSmoke(smokeUnit.yLast,frustum) && !smokeUnit.yLast.nowInFrustum)
+    {
+        self.addNewEdge(smokeUnit.yLast,frustum);
+        isEdge = false;
+    }
+    if(smokeUnit.yNext && self.containSmoke(smokeUnit.yNext,frustum) && !smokeUnit.yNext.nowInFrustum)
+    {
+        self.addNewEdge(smokeUnit.yNext,frustum);
+        isEdge = false;
+    }
+    if(smokeUnit.zLast && self.containSmoke(smokeUnit.zLast,frustum) && !smokeUnit.zLast.nowInFrustum)
+    {
+        self.addNewEdge(smokeUnit.zLast,frustum);
+        isEdge = false;
+    }
+    if(smokeUnit.zNext && self.containSmoke(smokeUnit.zNext,frustum) && !smokeUnit.zNext.nowInFrustum)
+    {
+        self.addNewEdge(smokeUnit.zNext,frustum);
+        isEdge = false;
+    }
+    if(isEdge)
+    {
+        smokeUnit.isEdge = true;
+        self.edgeSmokeArr.push(smokeUnit);
+    }
+};
+
+Smoke.prototype.subEdge = function(smokeUnit,frustum)
+{
+    var self = this;
+    if(smokeUnit.xLast)
+    {
+        if(self.containSmoke(smokeUnit.xLast,frustum) && !smokeUnit.xLast.isEdge)
+        {
+            smokeUnit.xLast.isEdge =true;
+            self.edgeSmokeArr.push(smokeUnit.xLast);
+        }
+        if(!self.containSmoke(smokeUnit.xLast,frustum) && smokeUnit.xLast.nowInFrustum && !smokeUnit.xLast.isEdge)
+        {
+            smokeUnit.xLast.nowInFrustum = false;
+            self.nowInSmokeArr.splice(self.nowInSmokeArr.indexOf(smokeUnit.xLast),1);
+            self.subEdge(smokeUnit.xLast,frustum);
+        }
+    }
+    if(smokeUnit.xNext)
+    {
+        if(self.containSmoke(smokeUnit.xNext,frustum) && !smokeUnit.xNext.isEdge)
+        {
+            smokeUnit.xNext.isEdge =true;
+            self.edgeSmokeArr.push(smokeUnit.xNext);
+        }
+        if(!self.containSmoke(smokeUnit.xNext,frustum) && smokeUnit.xNext.nowInFrustum && !smokeUnit.xNext.isEdge)
+        {
+            smokeUnit.xNext.nowInFrustum = false;
+            self.nowInSmokeArr.splice(self.nowInSmokeArr.indexOf(smokeUnit.xNext),1);
+            self.subEdge(smokeUnit.xNext,frustum);
+        }
+    }
+    if(smokeUnit.yLast)
+    {
+        if(self.containSmoke(smokeUnit.yLast,frustum) && !smokeUnit.yLast.isEdge)
+        {
+            smokeUnit.yLast.isEdge =true;
+            self.edgeSmokeArr.push(smokeUnit.yLast);
+        }
+        if(!self.containSmoke(smokeUnit.yLast,frustum) && smokeUnit.yLast.nowInFrustum && !smokeUnit.yLast.isEdge)
+        {
+            smokeUnit.yLast.nowInFrustum = false;
+            self.nowInSmokeArr.splice(self.nowInSmokeArr.indexOf(smokeUnit.yLast),1);
+            self.subEdge(smokeUnit.yLast,frustum);
+        }
+    }
+    if(smokeUnit.yNext)
+    {
+        if(self.containSmoke(smokeUnit.yNext,frustum) && !smokeUnit.yNext.isEdge)
+        {
+            smokeUnit.yNext.isEdge =true;
+            self.edgeSmokeArr.push(smokeUnit.yNext);
+        }
+        if(!self.containSmoke(smokeUnit.yNext,frustum) && smokeUnit.yNext.nowInFrustum && !smokeUnit.yNext.isEdge)
+        {
+            smokeUnit.yNext.nowInFrustum = false;
+            self.nowInSmokeArr.splice(self.nowInSmokeArr.indexOf(smokeUnit.yNext),1);
+            self.subEdge(smokeUnit.yNext,frustum);
+        }
+    }
+    if(smokeUnit.zLast)
+    {
+        if(self.containSmoke(smokeUnit.zLast,frustum) && !smokeUnit.zLast.isEdge)
+        {
+            smokeUnit.zLast.isEdge =true;
+            self.edgeSmokeArr.push(smokeUnit.zLast);
+        }
+        if(!self.containSmoke(smokeUnit.zLast,frustum) && smokeUnit.zLast.nowInFrustum && !smokeUnit.zLast.isEdge)
+        {
+            smokeUnit.zLast.nowInFrustum = false;
+            self.nowInSmokeArr.splice(self.nowInSmokeArr.indexOf(smokeUnit.zLast),1);
+            self.subEdge(smokeUnit.zLast,frustum);
+        }
+    }
+    if(smokeUnit.zNext)
+    {
+        if(self.containSmoke(smokeUnit.zNext,frustum) && !smokeUnit.zNext.isEdge)
+        {
+            smokeUnit.zNext.isEdge =true;
+            self.edgeSmokeArr.push(smokeUnit.zNext);
+        }
+        if(!self.containSmoke(smokeUnit.zNext,frustum) && smokeUnit.zNext.nowInFrustum && !smokeUnit.zNext.isEdge)
+        {
+            smokeUnit.zNext.nowInFrustum = false;
+            self.nowInSmokeArr.splice(self.nowInSmokeArr.indexOf(smokeUnit.zNext),1);
+            self.subEdge(smokeUnit.zNext,frustum);
+        }
+    }
+};
+
 Smoke.prototype.update = function (_this)
 {
     this.smokeShelter(_this);
@@ -705,17 +1062,28 @@ Smoke.prototype.update = function (_this)
         this.smokeBody();
     }
 
+    if(this.edgeSmokeArr.length==0)
+        this.scanPickSmoke(_this);
+    else
+        this.smokeFOI(_this);
+
     this.smokeLocationRepair(_this);
 
     this.smokeSurfaceChange(_this);
 
+    /*
     this.nowInSmokeArr.forEach(function (child)
     {
         _this.step[1] += 0.00005;
         child.smokeCloud.rotation.y=_this.step[1]*(Math.random>0.5?1:-1)*0.6;
     });
 
+     */
+    console.log(this.nowInSmokeArr);
+    console.log(this.edgeSmokeArr);
+
 };
+
 
 //着火点
 function firePoint()
@@ -731,10 +1099,16 @@ function SmokeUnit()
     this.vertexArr =[];//八个顶点坐标所构成的数组
     this.lastInFrustum = false;//上一刻是否在视锥体
     this.nowInFrustum = false;//这一刻是否在视锥体
+    this.isEdge = false;//是否在视锥体边缘
     this.smokeCloud = null;
     this.floor = 0;//烟雾所在楼层
     this.centerPos = new THREE.Vector3(0,0,0);
     this.index = '';
     this.smokeDensity = 0;
-
+    this.xLast = null;
+    this.xNext = null;
+    this.yLast = null;
+    this.yNext = null;
+    this.zLast = null;
+    this.zNext = null;
 }
