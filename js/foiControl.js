@@ -7,7 +7,7 @@ var foiControl = function () {
     this.raycaster = new THREE.Raycaster();
     this.direction= [];
     this.distance = 0;
-    this.testMesh = null;
+    this.testMesh = [];
     this.debugmode = false;
 };
 
@@ -27,12 +27,18 @@ foiControl.prototype.init = function (_this) {
     self.subwayBoxHelper=subwayHelper;
 
 
-    let cubeGeometry = new THREE.CubeGeometry(10, 10,10);
+    let cubeGeometry = new THREE.CubeGeometry(2, 2,2);
     let wireMaterial = new THREE.MeshBasicMaterial({
         color: 0x0000FF,
     });
-    self.testMesh = new THREE.Mesh(cubeGeometry, wireMaterial);
-    _this.scene.add(self.testMesh);
+
+    let i = 0;
+    while(i<50) {
+        self.testMesh[i] = new THREE.Mesh(cubeGeometry, wireMaterial);
+        _this.scene.add(self.testMesh[i]);
+        i++;
+    }
+    //_this.scene.add(self.testMesh);
     self.active = true;
 };
 
@@ -51,14 +57,28 @@ foiControl.prototype.update = function (_this) {
                 let temp;
                 for(let j = 0; j<self.direction.length; j++)
                 {
-                    if(self.direction[j].distance>len) {
+                    if(self.direction[j].distance>len)
+                    {
                         len = self.direction[j].distance;
                         max = self.direction[j].point.length();
                         temp = self.direction[j].point;
                     }
                 }
+
+                //debug用
                 if(temp!=null && self.debugmode)
-                    self.testMesh.position.set(temp.x,temp.y,temp.z);
+                {
+                    for(let i = 0,len = self.testMesh.length;i<len;i++)
+                    {
+                        if(i<self.direction.length) {
+                            self.testMesh[i].visible = true;
+                            self.testMesh[i].position.set(self.direction[i].point.x, self.direction[i].point.y, self.direction[i].point.z);
+                        }
+                        else
+                            self.testMesh[i].visible = false;
+                    }
+                }
+
                 max+=20;
                 if(this.distance===0)
                     this.distance = max;
@@ -84,11 +104,6 @@ foiControl.prototype.update = function (_this) {
             //人物视锥剔除
             for (let i = 0; i < self.peopleBoxHelper.length; i++) {
                 _this.people.blendMeshArr[i].visible = self.frustum.intersectsObject(_this.people.blendMeshArr[i]);
-                // if (self.frustum.intersectsBox(self.peopleBoxHelper[i].geometry.boundingBox) === true) {
-                //     _this.people.blendMeshArr[i].visible = true;
-                // } else {
-                //     _this.people.blendMeshArr[i].visible = false;
-                // }
             }
             // //列车视锥剔除
             // if (self.frustum.intersectsBox(self.subwayBoxHelper.geometry.boundingBox) === true) {
@@ -139,13 +154,8 @@ foiControl.prototype.updateOcclusion = function (_this) {
 foiControl.prototype.updateDistance = function (_this) {
     let self = this;
     if(self.count% 5 === 1) {
-        //let variable = (self.count/5 - 5) / 10;
-        //const v = new THREE.Vector3();
         let test = _this.camera.getWorldDirection();
-        // let temprotation = new THREE.Vector3(_this.camera.rotation.x, _this.camera.rotation.y, _this.camera.rotation.z);
-        // temprotation.normalize();
-        //let temp = new THREE.Vector3(temprotation.x + Math.random()-0.5, temprotation.y + Math.random()-0.5, temprotation.z + Math.random()-0.5);
-        let temp = new THREE.Vector3(test.x + Math.random()-0.5, test.y + Math.random()-0.5, test.z + Math.random()-0.5);
+        let temp = new THREE.Vector3(test.x + (Math.random()-0.5)*Math.random(), test.y + (Math.random()-0.5)*Math.random(), test.z + (Math.random()-0.5)*Math.random());;
         temp.normalize();
         self.raycaster.set(_this.camera.position, temp);
         let intersections = self.raycaster.intersectObjects(_this.Cameracontroller.collideMeshList, false);
