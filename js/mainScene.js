@@ -180,7 +180,7 @@ mainScene.prototype.start = function()
             self.people.update(self);
 
             //视锥剔除
-            self.FOI.update(self);
+            //self.FOI.update(self);
 
             //火车动
             self.underground.update(self,self.delta);
