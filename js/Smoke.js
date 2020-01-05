@@ -936,7 +936,7 @@ Smoke.prototype.smokeFOI = function (_this)
     var frustum = new THREE.Frustum();
     frustum.setFromMatrix(new THREE.Matrix4().multiplyMatrices(_this.camera.projectionMatrix,_this.camera.matrixWorldInverse));
 
-    self.edgeSmokeArr.forEach(function (item,index){
+    self.edgeSmokeArr.forEach(function (item){
         var isIn = self.containSmoke(item,frustum);
         if(isIn)
         {
@@ -1081,7 +1081,7 @@ Smoke.prototype.subEdge = function(_this,smokeUnit,frustum)
         }
         if(!self.containSmoke(smokeUnit.xLast,frustum) && smokeUnit.xLast.nowInFrustum && !smokeUnit.xLast.isEdge)
         {
-            self.subEdge(smokeUnit.xLast,frustum);
+            self.subEdge(_this,smokeUnit.xLast,frustum);
         }
     }
     if(smokeUnit.xNext)
@@ -1093,7 +1093,7 @@ Smoke.prototype.subEdge = function(_this,smokeUnit,frustum)
         }
         if(!self.containSmoke(smokeUnit.xNext,frustum) && smokeUnit.xNext.nowInFrustum && !smokeUnit.xNext.isEdge)
         {
-            self.subEdge(smokeUnit.xNext,frustum);
+            self.subEdge(_this,smokeUnit.xNext,frustum);
         }
     }
     if(smokeUnit.yLast)
@@ -1105,19 +1105,19 @@ Smoke.prototype.subEdge = function(_this,smokeUnit,frustum)
         }
         if(!self.containSmoke(smokeUnit.yLast,frustum) && smokeUnit.yLast.nowInFrustum && !smokeUnit.yLast.isEdge)
         {
-            self.subEdge(smokeUnit.yLast,frustum);
+            self.subEdge(_this,smokeUnit.yLast,frustum);
         }
     }
     if(smokeUnit.yNext)
     {
-        if(self.containSmoke(smokeUnit.yNext,frustum) && !smokeUnit.yNext.isEdge)
+        if(self.containSmoke(smokeUnit.yNext,frustum) &&  !smokeUnit.yNext.isEdge)
         {
             smokeUnit.yNext.isEdge =true;
             self.edgeSmokeArr.push(smokeUnit.yNext);
         }
         if(!self.containSmoke(smokeUnit.yNext,frustum) && smokeUnit.yNext.nowInFrustum && !smokeUnit.yNext.isEdge)
         {
-            self.subEdge(smokeUnit.yNext,frustum);
+            self.subEdge(_this,smokeUnit.yNext,frustum);
         }
     }
     if(smokeUnit.zLast)
@@ -1129,7 +1129,7 @@ Smoke.prototype.subEdge = function(_this,smokeUnit,frustum)
         }
         if(!self.containSmoke(smokeUnit.zLast,frustum) && smokeUnit.zLast.nowInFrustum && !smokeUnit.zLast.isEdge)
         {
-            self.subEdge(smokeUnit.zLast,frustum);
+            self.subEdge(_this,smokeUnit.zLast,frustum);
         }
     }
     if(smokeUnit.zNext)
@@ -1141,7 +1141,7 @@ Smoke.prototype.subEdge = function(_this,smokeUnit,frustum)
         }
         if(!self.containSmoke(smokeUnit.zNext,frustum) && smokeUnit.zNext.nowInFrustum && !smokeUnit.zNext.isEdge)
         {
-            self.subEdge(smokeUnit.zNext,frustum);
+            self.subEdge(_this,smokeUnit.zNext,frustum);
         }
     }
 };
