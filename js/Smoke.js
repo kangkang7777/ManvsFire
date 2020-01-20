@@ -1197,8 +1197,8 @@ Smoke.prototype.update = function (_this)
 
      */
     this.cameraPos = _this.camera.position;
-    console.log(this.nowInSmokeArr);
-    console.log(this.edgeSmokeArr);
+    //console.log(this.nowInSmokeArr);
+    //console.log(this.edgeSmokeArr);
 
 };
 

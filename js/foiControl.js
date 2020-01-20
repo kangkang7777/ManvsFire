@@ -1,6 +1,8 @@
 var foiControl = function () {
     this.frustum = new THREE.Frustum();
     this.peopleBoxHelper = [];
+    this.leaderBoxHelper = [];
+    this.followerArr = [];
     this.subwayBoxHelper = null;
     this.active = false;
     this.count = 0;
@@ -9,16 +11,40 @@ var foiControl = function () {
     this.distance = 0;
     this.testMesh = [];
     this.debugmode = false;
+    this.cullingMode = false;
 };
 
 foiControl.prototype.init = function (_this) {
     let self = this;
+
+    if(_this.number>400)
+        self.cullingMode = true;
 
     //初始化peopleBoxHelper
     for(let i = 0,len = _this.people.blendMeshArr.length;i<len; i++) {
         let temp = new THREE.BoxHelper().setFromObject(_this.people.blendMeshArr[i]);
         temp.geometry.computeBoundingBox();
         self.peopleBoxHelper.push(temp);
+    }
+
+    //初始化leaderBoxHelper
+    for(let i = 0,len = _this.people.leaderMeshArr.length;i<len; i++) {
+        let temp = new THREE.BoxHelper().setFromObject(_this.people.leaderMeshArr[i]);
+        temp.geometry.computeBoundingBox();
+        self.leaderBoxHelper.push(temp);
+    }
+
+    //设置好leader与follower的参数
+    for(let i = 0;i<_this.people.leaderMeshArr.length;i++)
+    {
+        let temp = [];
+        for(let j = 0;j<_this.people.blendMeshArr.length;j++)
+        {
+            let index = _this.people.blendMeshArr[j].position.x + "&" + _this.people.blendMeshArr[j].position.z + '@' + _this.people.blendMeshArr[j].position.y;
+            if (_this.people.leaderMeshArr[i] === _this.people.pathControlMap[index].targetObject)
+                temp.push(_this.people.blendMeshArr[j]);
+        }
+        self.followerArr.push(temp);
     }
 
     //初始化subwayBoxHelper
@@ -101,10 +127,24 @@ foiControl.prototype.update = function (_this) {
         //物体剔除
         if(self.count%30===1) {
 
-            //人物视锥剔除
-            for (let i = 0; i < self.peopleBoxHelper.length; i++) {
-                _this.people.blendMeshArr[i].visible = self.frustum.intersectsObject(_this.people.blendMeshArr[i]);
-            }
+            if(self.cullingMode === false)
+                for (let i = 0; i < self.peopleBoxHelper.length; i++)
+                {//基于全体人群的视锥剔除
+
+                    _this.people.blendMeshArr[i].visible = self.frustum.intersectsObject(_this.people.blendMeshArr[i]);
+                }
+
+            if(self.cullingMode === true)
+                for (let i = 0; i < self.leaderBoxHelper.length; i++)
+                    {//基于leader、follower的视锥剔除
+                    let ans = self.frustum.intersectsObject(_this.people.leaderMeshArr[i]);
+                    _this.people.leaderMeshArr[i].visible = ans;
+                    for(let j = 0 ; j<self.followerArr[i].length;j++)
+                    {
+                        self.followerArr[i][j].visible = ans;
+                    }
+                }
+
             // //列车视锥剔除
             // if (self.frustum.intersectsBox(self.subwayBoxHelper.geometry.boundingBox) === true) {
             //     _this.underground.subway.visible = true;
