@@ -2,7 +2,9 @@ var foiControl = function () {
     this.frustum = new THREE.Frustum();
     this.peopleBoxHelper = [];
     this.leaderBoxHelper = [];
+    this.unFollowerBoxHelper = [];
     this.followerArr = [];
+    this.unfollowerArr = [];
     this.subwayBoxHelper = null;
     this.active = false;
     this.count = 0;
@@ -10,7 +12,7 @@ var foiControl = function () {
     this.direction= [];
     this.distance = 0;
     this.testMesh = [];
-    this.debugmode = false;
+    this.debugmode = true;
     this.cullingMode = false;
 };
 
@@ -34,6 +36,8 @@ foiControl.prototype.init = function (_this) {
         self.leaderBoxHelper.push(temp);
     }
 
+
+
     //设置好leader与follower的参数
     for(let i = 0;i<_this.people.leaderMeshArr.length;i++)
     {
@@ -47,11 +51,38 @@ foiControl.prototype.init = function (_this) {
         self.followerArr.push(temp);
     }
 
+    //找出没有leader的follower
+    for(let k =0;k<_this.people.blendMeshArr.length;k++)
+    {
+        let temp = true;
+        for (let i = 0; i < self.followerArr.length; i++)
+        {
+            for (let j = 0; j < self.followerArr[i].length; j++)
+            {
+                if (self.followerArr[i][j] === _this.people.blendMeshArr[k])
+                {
+                    temp = false;
+                    break;
+                }
+            }
+            if(temp === false)
+                break;
+        }
+        if (temp === true)
+            self.unfollowerArr.push(_this.people.blendMeshArr[k]);
+    }
+
     //初始化subwayBoxHelper
     let subwayHelper = new THREE.BoxHelper().setFromObject(_this.underground.subway);
     subwayHelper.geometry.computeBoundingBox();
     self.subwayBoxHelper=subwayHelper;
 
+    //初始化unFollowerBoxHelper
+    for(let i = 0,len = self.unfollowerArr.length;i<len; i++) {
+        let temp = new THREE.BoxHelper().setFromObject(self.unfollowerArr[i]);
+        temp.geometry.computeBoundingBox();
+        self.unFollowerBoxHelper.push(temp);
+    }
 
     let cubeGeometry = new THREE.CubeGeometry(2, 2,2);
     let wireMaterial = new THREE.MeshBasicMaterial({
@@ -135,15 +166,22 @@ foiControl.prototype.update = function (_this) {
                 }
 
             if(self.cullingMode === true)
+            {
                 for (let i = 0; i < self.leaderBoxHelper.length; i++)
-                    {//基于leader、follower的视锥剔除
+                {//基于leader、follower的视锥剔除
                     let ans = self.frustum.intersectsObject(_this.people.leaderMeshArr[i]);
                     _this.people.leaderMeshArr[i].visible = ans;
-                    for(let j = 0 ; j<self.followerArr[i].length;j++)
+                    for (let j = 0; j < self.followerArr[i].length; j++)
                     {
                         self.followerArr[i][j].visible = ans;
                     }
                 }
+                if(self.unfollowerArr.length!==0)
+                    for (let i = 0; i < self.unFollowerBoxHelper.length; i++)
+                    {//对没有leader的follower视锥剔除
+                        self.unfollowerArr[i].visible = self.frustum.intersectsObject(self.unfollowerArr[i]);
+                    }
+            }
 
             // //列车视锥剔除
             // if (self.frustum.intersectsBox(self.subwayBoxHelper.geometry.boundingBox) === true) {

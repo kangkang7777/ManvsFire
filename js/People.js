@@ -175,6 +175,12 @@ People.prototype.init = function (_this)
                             var newMesh3 = mesh.clone();
                             var newMesh4 = mesh.clone();
                             var newMesh5 = mesh.clone();
+                            var newMesh6 = mesh.clone();
+                            var newMesh7 = mesh.clone();
+                            var newMesh8 = mesh.clone();
+                            var newMesh9 = mesh.clone();
+                            var newMesh10 = mesh.clone();
+
                             var scaleSize = 0.0025*(Math.random()*(9-7+1)+7);
                             newMesh1.position.set(470,19,22);
                             newMesh1.rotation.y=-95;
@@ -192,11 +198,33 @@ People.prototype.init = function (_this)
                             newMesh5.position.set(459,9,30);
                             newMesh5.rotation.y=-95;
                             newMesh5.scale.set(scaleSize, scaleSize, scaleSize);
+
+                            newMesh6.position.set(419,19,40);
+                            newMesh6.rotation.y=-95;
+                            newMesh6.scale.set(scaleSize, scaleSize, scaleSize);
+                            newMesh7.position.set(459,9,30);
+                            newMesh7.rotation.y=-95;
+                            newMesh7.scale.set(scaleSize, scaleSize, scaleSize);
+                            newMesh8.position.set(459,9,30);
+                            newMesh8.rotation.y=-95;
+                            newMesh8.scale.set(scaleSize, scaleSize, scaleSize);
+                            newMesh9.position.set(459,9,30);
+                            newMesh9.rotation.y=-95;
+                            newMesh9.scale.set(scaleSize, scaleSize, scaleSize);
+                            newMesh10.position.set(459,9,30);
+                            newMesh10.rotation.y=-95;
+                            newMesh10.scale.set(scaleSize, scaleSize, scaleSize);
+
                             self.leaderMeshArr.push(newMesh1);
                             self.leaderMeshArr.push(newMesh2);
                             self.leaderMeshArr.push(newMesh3);
                             self.leaderMeshArr.push(newMesh4);
                             self.leaderMeshArr.push(newMesh5);
+                            // self.leaderMeshArr.push(newMesh6);
+                            // self.leaderMeshArr.push(newMesh7);
+                            // self.leaderMeshArr.push(newMesh8);
+                            // self.leaderMeshArr.push(newMesh9);
+                            // self.leaderMeshArr.push(newMesh10);
 
                             for(var j=0;j<self.exitInfoMap[2].length;j++) {
                                 targetPositionArr.push(new THREE.Vector3(self.exitInfoMap[2][j][1], self.exitInfoMap[2][j][2], self.exitInfoMap[2][j][3]));
@@ -242,18 +270,18 @@ People.prototype.init = function (_this)
                                 }
                             }
                             /*如果已经找到leader的blend的数量和总数量不一致，就一直循环来保证所有的blend都找到leader*/
-                            while(getLeaderArr.length != self.blendMeshArr.length){
-                                for(var i=0; i<unGetLeaderArr.length; i++){
-                                    var bestIndex = Utils.getClosePoint(unGetLeaderArr[i],getLeaderArr,20);
+                            while(getLeaderArr.length !== self.blendMeshArr.length){
+                                for(let i=0; i<unGetLeaderArr.length; i++){
+                                    let bestIndex = Utils.getClosePoint(unGetLeaderArr[i],getLeaderArr,20);
                                     if(bestIndex!==-1){
-                                        var pathControl = new THREE.FollowerControl(unGetLeaderArr[i],humanMap,unGetLeaderLODArr[i]);
+                                        let pathControl = new THREE.FollowerControl(unGetLeaderArr[i],humanMap,unGetLeaderLODArr[i]);
                                         pathControl.targetObject = getLeaderArr[bestIndex];
                                         pathControl.randomSeed = Utils.generateRandomNum(-5,5);
                                         pathControl.mapInfoMap = _this.Path.mapInfoMap;
                                         pathControl.targetPositionArr = targetPositionArr;
                                         pathControl.guidPositionArr = Utils.copyArray(guidPosArr);
                                         pathControl.exitConnectionMap = _this.Path.exitConnectionMap;
-                                        var index = unGetLeaderArr[i].position.x + "&" +unGetLeaderArr[i].position.z+'@'+ unGetLeaderArr[i].position.y;
+                                        let index = unGetLeaderArr[i].position.x + "&" +unGetLeaderArr[i].position.z+'@'+ unGetLeaderArr[i].position.y;
                                         self.pathControlMap[index] = pathControl;
                                         self.humanInfoMap[index]=0;
                                         getLeaderArr.push(unGetLeaderArr[i]);
