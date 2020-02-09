@@ -462,6 +462,7 @@ Smoke.prototype.smokeLOD = function(_this)
     })
 };
 
+/*
 Smoke.prototype.createLODSmoke = function(_this,smokeUnit)
 {
     var self = this;
@@ -526,8 +527,134 @@ Smoke.prototype.createLODSmoke = function(_this,smokeUnit)
         }
     }
 };
+ */
 
+Smoke.prototype.createLODSmoke = function(_this,smokeUnit)
+{
+    var self = this;
+    if(smokeUnit.smokeDensity != 0)
+    {
+        if(smokeUnit.smokeCloud)
+        {
+            if(Utils.distant(_this.camera.position,smokeUnit.centerPos) < 10 && smokeUnit.dist != 'close')
+            {
+                _this.scene.remove(smokeUnit.smokeCloud);
+                smokeUnit.smokeCloud.geometry.dispose();
+                smokeUnit.smokeCloud.material.dispose();
+                smokeUnit.dist = 'close';
+                self.createGPUCloud(_this,smokeUnit);
+                smokeUnit.smokeCloud.position.set(smokeUnit.centerPos.x,smokeUnit.centerPos.y,smokeUnit.centerPos.z)
+                smokeUnit.smokeCloud.material.opacity = smokeUnit.smokeDensity;
+            }
+            if(Utils.distant(_this.camera.position,smokeUnit.centerPos) >= 10 && Utils.distant(_this.camera.position,smokeUnit.centerPos) < 20 && smokeUnit.dist != 'medium')
+            {
+                _this.scene.remove(smokeUnit.smokeCloud);
+                smokeUnit.smokeCloud.geometry.dispose();
+                smokeUnit.smokeCloud.material.dispose();
+                smokeUnit.dist = 'medium';
+                self.createGPUCloud(_this,smokeUnit);
+                smokeUnit.smokeCloud.position.set(smokeUnit.centerPos.x,smokeUnit.centerPos.y,smokeUnit.centerPos.z)
+                smokeUnit.smokeCloud.material.opacity = smokeUnit.smokeDensity;
+            }
+            if(Utils.distant(_this.camera.position,smokeUnit.centerPos) >= 20 && smokeUnit.dist != 'far')
+            {
+                _this.scene.remove(smokeUnit.smokeCloud);
+                smokeUnit.smokeCloud.geometry.dispose();
+                smokeUnit.smokeCloud.material.dispose();
+                smokeUnit.dist = 'far';
+                self.createGPUCloud(_this,smokeUnit);
+                smokeUnit.smokeCloud.position.set(smokeUnit.centerPos.x,smokeUnit.centerPos.y,smokeUnit.centerPos.z)
+                smokeUnit.smokeCloud.material.opacity = smokeUnit.smokeDensity;
+            }
+        }
+        else
+        {
+            if(Utils.distant(_this.camera.position,smokeUnit.centerPos) < 10)
+            {
+                smokeUnit.dist = 'close';
+                self.createGPUCloud(_this,smokeUnit);
+                smokeUnit.smokeCloud.position.set(smokeUnit.centerPos.x,smokeUnit.centerPos.y,smokeUnit.centerPos.z)
+                smokeUnit.smokeCloud.material.opacity = smokeUnit.smokeDensity;
+            }
+            else if(Utils.distant(_this.camera.position,smokeUnit.centerPos) < 20)
+            {
+                smokeUnit.dist = 'medium';
+                self.createGPUCloud(_this,smokeUnit);
+                smokeUnit.smokeCloud.position.set(smokeUnit.centerPos.x,smokeUnit.centerPos.y,smokeUnit.centerPos.z)
+                smokeUnit.smokeCloud.material.opacity = smokeUnit.smokeDensity;
+            }
+            else
+            {
+                smokeUnit.dist = 'far';
+                self.createGPUCloud(_this,smokeUnit);
+                smokeUnit.smokeCloud.position.set(smokeUnit.centerPos.x,smokeUnit.centerPos.y,smokeUnit.centerPos.z)
+                smokeUnit.smokeCloud.material.opacity = smokeUnit.smokeDensity;
+            }
+        }
+    }
+};
+
+const vertexShader = '' +
+    'void main(){' +
+    'gl_PointSize = 50.0;' +
+    'bool isPerspective = isPerspectiveMatrix(projectionMatrix);' +
+    'if(isPerspective) gl_PointSize *= (scale / -mvPosition.z);' +
+    'gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);' +
+    '}';
+
+const fragmentShader = '' +
+    'uniform sampler2D texture;' +
+    'void main(){' +
+    'gl_FragColor = texture2D( texture, gl_PointCoord);' +
+    '}';
+
+const shaderPoint = THREE.ShaderLib.points;
+const uniforms = THREE.UniformsUtils.clone(shaderPoint.uniforms);
 //创建烟气单元的烟雾团
+Smoke.prototype.createGPUCloud = function(_this,smokeUnit)
+{
+    var self = this;
+    uniforms.map.value = new THREE.TextureLoader().load('textures/Smoke-Element.png');
+    uniforms.size.value = 50;
+    uniforms.scale.value = 100;
+    var geom=new THREE.Geometry();//创建烟雾团
+    //创建烟雾素材
+    var material=new THREE.ShaderMaterial({
+        //uniforms : {
+        //    texture : {value : new THREE.TextureLoader().load('textures/Smoke-Element.png')}
+        //},
+        uniforms : uniforms,
+        defines : {
+            USE_MAP : "",
+            USE_SIZEATTENUATION : ""
+        },
+        vertexShader : shaderPoint.vertexShader,
+        fragmentShader : shaderPoint.fragmentShader,
+        //blending : THREE.AdditiveBlending,
+        //depthTest : false,
+        transparent : true,
+        depthWrite :false
+        //sizeAttenuation : false
+    });
+    //var range=15;
+    for(var i=0;i<2;i++){
+        for(var j=0;j<2;j++)
+        {
+            //创建烟雾片
+            var particle=new THREE.Vector3(-2+4*i+Math.random()*(Math.random()>0.5?1:-1),0,-2+4*j+Math.random()*(Math.random()>0.5?1:-1));
+            //将烟雾片一片片加入到geom中
+            geom.vertices.push(particle);
+        }
+    }
+    //创建烟雾片
+    //var particle=new THREE.Vector3(0,0,0);
+    //将烟雾片一片片加入到geom中
+    //geom.vertices.push(particle);
+    var cloud=new THREE.Points(geom,material);
+    _this.scene.add(cloud);
+    smokeUnit.smokeCloud = cloud;
+};
+
 Smoke.prototype.createCloseCloud = function (_this,smokeUnit)
 {
     var self = this;
@@ -540,7 +667,7 @@ Smoke.prototype.createCloseCloud = function (_this,smokeUnit)
         map:self.smokeTexture,
         sizeAttenuation:true,
         depthWrite:false,
-        color:0xffffff
+        color:0xffffff,
     });
     //var range=15;
     for(var i=0;i<2;i++){
@@ -1188,16 +1315,15 @@ Smoke.prototype.update = function (_this)
 
     //this.testEdge();
 
-    /*
     this.nowInSmokeArr.forEach(function (child)
     {
-        _this.step[1] += 0.00005;
-        child.smokeCloud.rotation.y=_this.step[1]*(Math.random>0.5?1:-1)*0.6;
+        //_this.step[1] += 0.00005;
+        //child.smokeCloud.rotation.y=_this.step[1]*(Math.random>0.5?1:-1)*0.6;
+        if(child.smokeCloud)
+            console.log("have smoke");
     });
-
-     */
     this.cameraPos = _this.camera.position;
-    //console.log(this.nowInSmokeArr);
+    console.log(this.nowInSmokeArr);
     //console.log(this.edgeSmokeArr);
 
 };

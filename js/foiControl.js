@@ -12,7 +12,7 @@ var foiControl = function () {
     this.direction= [];
     this.distance = 0;
     this.testMesh = [];
-    this.debugmode = true;
+    this.debugmode = false;
     this.cullingMode = false;
 };
 
