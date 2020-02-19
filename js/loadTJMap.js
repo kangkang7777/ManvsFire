@@ -8,6 +8,7 @@ onmessage=function(event){
 
     var data = new myMap();
     readV(event.data,data);
+
 }
 
 function readV(url,data){

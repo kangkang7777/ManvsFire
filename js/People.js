@@ -14,9 +14,9 @@ var People = function ()
 
 People.prototype.init = function (_this)
 {
-    var self = this;
+    let self = this;
     this.exitInfoMap;//出口信息
-    var guidPosArr;//引导点位置信息
+    let guidPosArr;//引导点位置信息
     var meshLoadCount = 0;
     var targetPositionArr = [];
     var blendMeshLodArr = [];    //TODO 此为LOD所建模型 建议删去
@@ -478,9 +478,9 @@ People.prototype.init = function (_this)
 
         //存储行走人流的位置及相应旋转角度的数组
         function createWalkArr(){
-            var walkPeople = [];
-            var x,z;
-            var walkAttribute = new PeopleAttribute();
+            let walkPeople = [];
+            let x,z;
+            let walkAttribute = new PeopleAttribute();
 
             //地下二层
             for (x= 530; x<553; x++)

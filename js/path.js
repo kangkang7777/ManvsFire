@@ -10,160 +10,160 @@ path.prototype.init= function (_this)
     this._this = _this;
     //region路径部分
     //生成寻路网格
-    var self = this;
-    this.pathfinder;//导航网格管理
+    let self = this;
+    //this.pathfinder;//导航网格管理
     this.postCount = 0;
-    var recieveCount = 0;
+    let recieveCount = 0;
     this.finishPathNum = 0;
     this.isCalculateLeader = false;  //是否针对leader做寻路，默认是对人群做寻路
     this.isUseBufferPath = true;  //是否直接从内存里面读取路径数据
-    var pathArr,pathMap;
+    let pathArr,pathMap;
     this.finishTagMap = [];
     //this.staticPathArr;
-    var antCountMap,iterationCountMap,antTotalCount,iterationTotalCount;
+    let antCountMap,iterationCountMap,antTotalCount,iterationTotalCount;
 
-    this.acoPathFindingWorker =  new Worker("js/ACOPathFindingWorker.js"); //创建子线程ACOPathFindingWorker.js为蚁群寻路算法
+    //this.acoPathFindingWorker =  new Worker("js/ACOPathFindingWorker.js"); //创建子线程ACOPathFindingWorker.js为蚁群寻路算法
 
     //createNav();
     //startPathFinding();
 
-    this.acoPathFindingWorker.onmessage=function(event)
-    {
-        recieveCount++;
-        // console.log(recieveCount+"/"+postCount);
-        /***
-         * 接受子线程处理好的数据
-         * 数据包括：pathTag寻路的角色的tag
-         *          pathArr当前线程找到的路径
-         *          resultBool寻路结果
-         *          floor寻路所在的层数
-         *          startPosition寻路的出发点（便于迭代）
-         *          targetPositionArr寻路的目的地数组
-         */
-        var pathTag = event.data.pathTag;
-        //!finishTagMap[pathTag] && recieveCount<=postCount
-        if(true)
-        {
-            if(!pathArr[pathTag])
-            {
-                pathArr[pathTag] = [];
-            }
-            if(event.data.resultBool != -1)
-            {
-                var path = event.data.pathArr;
-//            console.log("find path:" + path.length);
-                pathArr[pathTag].push(path);
-            }
-            else
-            {
-                if(event.data.floor == 19)
-                {
-//                console.log("dead!");
-                }
-            }
-            if(!antCountMap[pathTag])
-            {
-                antCountMap[pathTag]=0;
-            }
-            antCountMap[pathTag]++;
-//            console.log("antCountMap[pathTag]:"+antCountMap[pathTag]);
-            if(antCountMap[pathTag]==antTotalCount)
-            {
-                antCountMap[pathTag]=0;
-                if(pathArr[pathTag].length>0)
-                {
-                    var shortestPath = pathArr[pathTag][0];
-                    var shortesLength = 10000;
-                    for(var i=0; i<pathArr[pathTag].length;i++)
-                    {
-                        //比较路径长度
-                        var tempLength = self.getPathLength(pathArr[pathTag][i]);
-                        if(tempLength<shortesLength)
-                        {
-                            shortestPath = pathArr[pathTag][i];
-                            shortesLength = tempLength;
-                        }
-                    }
-                    for(var j=0;j<shortestPath.length;j++)
-                    {
-                       self.mapInfoMap[shortestPath[j]] = 1*self.mapInfoMap[shortestPath[j]] + 5;
-                    }
-
-                    if(!iterationCountMap[pathTag])
-                    {
-                        iterationCountMap[pathTag]=0;
-                    }
-                    iterationCountMap[pathTag]++;
-//                    console.log(pathTag + "count is:" +iterationCountMap[pathTag]);
-                    if(iterationCountMap[pathTag]!=iterationTotalCount)
-                    {
-//                        console.log("继续迭代");
-                        for(var acoCount=0;acoCount<antTotalCount;acoCount++)
-                        {
-                            self.startACOPathFinding(event.data.startPosition,event.data.targetPositionArr,event.data.floor,pathTag);
-                        }
-                    }
-                    else
-                    {
-                        iterationCountMap[pathTag]=0;
-                        console.log("find best path:" + shortestPath);
-                        console.log("best path length:" + shortesLength);
-
-                        if(!pathMap[pathTag]) pathMap[pathTag]=[];
-                        pathMap[pathTag].push(shortestPath);
-                        pathArr[pathTag] = [];
-                        if(event.data.floor==9)
-                        {
-                            console.log("第一层迭代完成");
-                            var startPosition = self.exitConnectionMap[shortestPath[shortestPath.length-1]][self.exitConnectionMap[shortestPath[shortestPath.length-1]].length-1];
-                            var targetPositionArr = [];
-                            for(var j=0;j<exitInfoMap[2].length;j++) {
-                                targetPositionArr.push(new THREE.Vector3(exitInfoMap[2][j][1], 19, exitInfoMap[2][j][3]));
-                            }
-                            console.log(startPosition);
-                            console.log(targetPositionArr);
-                            for(var acoCount=0;acoCount<antTotalCount;acoCount++)
-                            {
-                                console.log("迭代第二层");
-                                self.startACOPathFinding(startPosition,targetPositionArr,19,pathTag);
-                            }
-                        }
-                        if(event.data.floor==19)
-                        {
-                            console.log("第二层迭代完成");
-                            var runPath = [];
-                            for(var j=0; j<pathMap[pathTag].length; j++)
-                            {
-                                for(var i=0; i<pathMap[pathTag][j].length; i++)
-                                {
-                                    runPath.push(pathMap[pathTag][j][i]);
-                                    if(self.exitConnectionMap[pathMap[pathTag][j][i]])
-                                    {
-                                        for(var n=1; n<self.exitConnectionMap[pathMap[pathTag][j][i]].length-1;n++)
-                                        {
-                                            runPath.push(self.exitConnectionMap[pathMap[pathTag][j][i]][n]);
-                                        }
-                                    }
-                                }
-                            }
-                            self.finishTagMap[pathTag] = true;
-                            console.log("找到一条路径，当前耗时："+ clock.getElapsedTime());
-                            self.drawPath(runPath);
-                        }
-                    }
-                }
-                else
-                {
-                    console.log("20 只蚂蚁全死了"+event.data.floor);
-                    for(var acoCount=0;acoCount<antTotalCount;acoCount++)
-                    {
-                        self.startACOPathFinding(event.data.startPosition,event.data.targetPositionArr,event.data.floor,pathTag);
-                    }
-                }
-            }
-        }
-
-    }
+//     this.acoPathFindingWorker.onmessage=function(event)
+//     {
+//         recieveCount++;
+//          console.log("ttt"+recieveCount+"/"+postCount);
+//         /***
+//          * 接受子线程处理好的数据
+//          * 数据包括：pathTag寻路的角色的tag
+//          *          pathArr当前线程找到的路径
+//          *          resultBool寻路结果
+//          *          floor寻路所在的层数
+//          *          startPosition寻路的出发点（便于迭代）
+//          *          targetPositionArr寻路的目的地数组
+//          */
+//         var pathTag = event.data.pathTag;
+//         //!finishTagMap[pathTag] && recieveCount<=postCount
+//         if(true)
+//         {
+//             if(!pathArr[pathTag])
+//             {
+//                 pathArr[pathTag] = [];
+//             }
+//             if(event.data.resultBool != -1)
+//             {
+//                 var path = event.data.pathArr;
+// //            console.log("find path:" + path.length);
+//                 pathArr[pathTag].push(path);
+//             }
+//             else
+//             {
+//                 if(event.data.floor == 19)
+//                 {
+// //                console.log("dead!");
+//                 }
+//             }
+//             if(!antCountMap[pathTag])
+//             {
+//                 antCountMap[pathTag]=0;
+//             }
+//             antCountMap[pathTag]++;
+// //            console.log("antCountMap[pathTag]:"+antCountMap[pathTag]);
+//             if(antCountMap[pathTag]==antTotalCount)
+//             {
+//                 antCountMap[pathTag]=0;
+//                 if(pathArr[pathTag].length>0)
+//                 {
+//                     var shortestPath = pathArr[pathTag][0];
+//                     var shortesLength = 10000;
+//                     for(var i=0; i<pathArr[pathTag].length;i++)
+//                     {
+//                         //比较路径长度
+//                         var tempLength = self.getPathLength(pathArr[pathTag][i]);
+//                         if(tempLength<shortesLength)
+//                         {
+//                             shortestPath = pathArr[pathTag][i];
+//                             shortesLength = tempLength;
+//                         }
+//                     }
+//                     for(var j=0;j<shortestPath.length;j++)
+//                     {
+//                        self.mapInfoMap[shortestPath[j]] = 1*self.mapInfoMap[shortestPath[j]] + 5;
+//                     }
+//
+//                     if(!iterationCountMap[pathTag])
+//                     {
+//                         iterationCountMap[pathTag]=0;
+//                     }
+//                     iterationCountMap[pathTag]++;
+// //                    console.log(pathTag + "count is:" +iterationCountMap[pathTag]);
+//                     if(iterationCountMap[pathTag]!=iterationTotalCount)
+//                     {
+// //                        console.log("继续迭代");
+//                         for(var acoCount=0;acoCount<antTotalCount;acoCount++)
+//                         {
+//                             self.startACOPathFinding(event.data.startPosition,event.data.targetPositionArr,event.data.floor,pathTag);
+//                         }
+//                     }
+//                     else
+//                     {
+//                         iterationCountMap[pathTag]=0;
+//                         console.log("find best path:" + shortestPath);
+//                         console.log("best path length:" + shortesLength);
+//
+//                         if(!pathMap[pathTag]) pathMap[pathTag]=[];
+//                         pathMap[pathTag].push(shortestPath);
+//                         pathArr[pathTag] = [];
+//                         if(event.data.floor==9)
+//                         {
+//                             console.log("第一层迭代完成");
+//                             var startPosition = self.exitConnectionMap[shortestPath[shortestPath.length-1]][self.exitConnectionMap[shortestPath[shortestPath.length-1]].length-1];
+//                             var targetPositionArr = [];
+//                             for(var j=0;j<exitInfoMap[2].length;j++) {
+//                                 targetPositionArr.push(new THREE.Vector3(exitInfoMap[2][j][1], 19, exitInfoMap[2][j][3]));
+//                             }
+//                             console.log(startPosition);
+//                             console.log(targetPositionArr);
+//                             for(var acoCount=0;acoCount<antTotalCount;acoCount++)
+//                             {
+//                                 console.log("迭代第二层");
+//                                 self.startACOPathFinding(startPosition,targetPositionArr,19,pathTag);
+//                             }
+//                         }
+//                         if(event.data.floor==19)
+//                         {
+//                             console.log("第二层迭代完成");
+//                             var runPath = [];
+//                             for(var j=0; j<pathMap[pathTag].length; j++)
+//                             {
+//                                 for(var i=0; i<pathMap[pathTag][j].length; i++)
+//                                 {
+//                                     runPath.push(pathMap[pathTag][j][i]);
+//                                     if(self.exitConnectionMap[pathMap[pathTag][j][i]])
+//                                     {
+//                                         for(var n=1; n<self.exitConnectionMap[pathMap[pathTag][j][i]].length-1;n++)
+//                                         {
+//                                             runPath.push(self.exitConnectionMap[pathMap[pathTag][j][i]][n]);
+//                                         }
+//                                     }
+//                                 }
+//                             }
+//                             self.finishTagMap[pathTag] = true;
+//                             console.log("找到一条路径，当前耗时："+ clock.getElapsedTime());
+//                             self.drawPath(runPath);
+//                         }
+//                     }
+//                 }
+//                 else
+//                 {
+//                     console.log("20 只蚂蚁全死了"+event.data.floor);
+//                     for(var acoCount=0;acoCount<antTotalCount;acoCount++)
+//                     {
+//                         self.startACOPathFinding(event.data.startPosition,event.data.targetPositionArr,event.data.floor,pathTag);
+//                     }
+//                 }
+//             }
+//         }
+//
+//     }
 
     //endregion
 }
