@@ -193,6 +193,9 @@ Smoke.prototype.init = function(_this)
     };
     //////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//创建烟气单元的烟雾团
+
+
     this.smokeBody=function(){
         //一条烟柱，运动延Y轴方向
         for (var i = 0; i < puffs.length; i++) {
@@ -212,30 +215,114 @@ Smoke.prototype.init = function(_this)
         }
     };
 
+    const vertexShader = 'uniform float size;\n' +
+        'uniform float scale;\n' +
+        'attribute float copacity;\n' +
+        'varying float cloudOpacity;\n' +
+        '#include <common>\n' +
+        '#include <color_pars_vertex>\n' +
+        '#include <fog_pars_vertex>\n' +
+        '#include <shadowmap_pars_vertex>\n' +
+        '#include <logdepthbuf_pars_vertex>\n' +
+        '#include <clipping_planes_pars_vertex>\n' +
+        'void main() {\n' +
+        '\t#include <color_vertex>\n' +
+        '\t#include <begin_vertex>\n' +
+        '\t#include <project_vertex>\n' +
+        '\tcloudOpacity = copacity;\n' +
+        '\t#ifdef USE_SIZEATTENUATION\n' +
+        '\t\tgl_PointSize = size * ( scale / - mvPosition.z );\n' +
+        '\t#else\n' +
+        '\t\tgl_PointSize = size;\n' +
+        '\t#endif\n' +
+        '\t#include <logdepthbuf_vertex>\n' +
+        '\t#include <clipping_planes_vertex>\n' +
+        '\t#include <worldpos_vertex>\n' +
+        '\t#include <shadowmap_vertex>\n' +
+        '\t#include <fog_vertex>\n' +
+        '}';
 
+    const fragmentShader = 'uniform vec3 diffuse;\n' +
+        'uniform float opacity;\n' +
+        'varying float cloudOpacity;\n' +
+        '#include <common>\n' +
+        '#include <color_pars_fragment>\n' +
+        '#include <map_particle_pars_fragment>\n' +
+        '#include <fog_pars_fragment>\n' +
+        '#include <logdepthbuf_pars_fragment>\n' +
+        '#include <clipping_planes_pars_fragment>\n' +
+        'void main() {\n' +
+        '\t#include <clipping_planes_fragment>\n' +
+        '\tvec3 outgoingLight = vec3( 0.0 );\n' +
+        '\tvec4 diffuseColor = vec4( diffuse, cloudOpacity);\n' +
+        '\t#include <logdepthbuf_fragment>\n' +
+        '\t#include <map_particle_fragment>\n' +
+        '\t#include <color_fragment>\n' +
+        '\t#include <alphatest_fragment>\n' +
+        '\toutgoingLight = diffuseColor.rgb;\n' +
+        '\tgl_FragColor = vec4( outgoingLight, diffuseColor.a );\n' +
+        '\t#include <tonemapping_fragment>\n' +
+        '\t#include <encodings_fragment>\n' +
+        '\t#include <fog_fragment>\n' +
+        '\t#include <premultiplied_alpha_fragment>\n' +
+        '}';
     function smokeSceneType()
     {
-        var geom1=new THREE.Geometry();//创建烟雾团
+        const shaderPoint = THREE.ShaderLib.points;
+        const uniforms = THREE.UniformsUtils.clone(shaderPoint.uniforms);
+        uniforms.map.value = new THREE.TextureLoader().load('textures/Smoke-Element.png');
+        uniforms.size.value = 50;
+        uniforms.scale.value = 100;
+        var geom=new THREE.BufferGeometry();//创建烟雾团
         //创建烟雾素材
-        var material1=new THREE.PointsMaterial({
-            size:40,
-            transparent:true,
-            opacity:0,
-            map:self.smokeTexture,
-            sizeAttenuation:true,
-            depthWrite:false,
-            color:0xffffff
+        var material=new THREE.ShaderMaterial({
+            //uniforms : {
+            //    texture : {value : new THREE.TextureLoader().load('textures/Smoke-Element.png')}
+            //},
+            uniforms : uniforms,
+            defines : {
+                USE_MAP : "",
+                USE_SIZEATTENUATION : ""
+            },
+            vertexShader : vertexShader,
+            fragmentShader : fragmentShader,
+            //blending : THREE.AdditiveBlending,
+            //depthTest : false,
+            transparent : true,
+            depthWrite :false,
+            needsUpdate : true
+            //sizeAttenuation : false
         });
         //var range=15;
-        for(var i=0;i<50;i++){
-            //创建烟雾片
-            var particle1=new THREE.Vector3(Math.random()*25-25/2,Math.random()*10-10/2,Math.random()*25-25/2);
-            //将烟雾片一片片加入到geom中
-            geom1.vertices.push(particle1);
+        var positions = new Float32Array([
+            -2+Math.random()*(Math.random()>0.5?1:-1), 0, -2+Math.random()*(Math.random()>0.5?1:-1),
+            2+Math.random()*(Math.random()>0.5?1:-1), 0, -2+Math.random()*(Math.random()>0.5?1:-1),
+            -2+Math.random()*(Math.random()>0.5?1:-1), 0, 2+Math.random()*(Math.random()>0.5?1:-1),
+            2+Math.random()*(Math.random()>0.5?1:-1), 0, 2+Math.random()*(Math.random()>0.5?1:-1)
+        ]);
+        var attr = new THREE.BufferAttribute(positions, 3);
+        var copacity = new THREE.BufferAttribute(new Float32Array([1.0,1.0,1.0,1.0]),1);
+        geom.addAttribute('position', attr);
+        geom.addAttribute('copacity' , copacity);
+        /*
+        for(var i=0;i<2;i++){
+            for(var j=0;j<2;j++)
+            {
+                //创建烟雾片
+                var particle=new THREE.Vector3(-2+4*i+Math.random()*(Math.random()>0.5?1:-1),0,-2+4*j+Math.random()*(Math.random()>0.5?1:-1));
+                //将烟雾片一片片加入到geom中
+                geom.vertices.push(particle);
+            }
         }
-        cloud1=new THREE.Points(geom1,material1);
-        _this.scene.add(cloud1);
-        self.smokeSceneArr.push(cloud1);
+
+         */
+        //创建烟雾片
+        //var particle=new THREE.Vector3(0,0,0);
+        //将烟雾片一片片加入到geom中
+        //geom.vertices.push(particle);
+        var cloud=new THREE.Points(geom,material);
+        _this.scene.add(cloud);
+        self.smokeSceneArr.push(cloud);
     };
 
     for(var e=0;e<46;e++)
@@ -266,6 +353,9 @@ Smoke.prototype.smokeColor = function (_this)
     if (Math.floor(_this.clock.getElapsedTime() + 10) % ((self.kk + 1) * 10) == 0 && self.ii < 61&&!self.iswater) {
         for (var j = 0; j < self.newsmokeData[self.ii].length; j++) {
             self.smokeSceneArr[j].material.opacity = self.newsmokeData[self.ii][j];
+            for (var k = 0; k < self.smokeSceneArr[j].geometry.attributes.copacity.array.length; k++)
+                self.smokeSceneArr[j].geometry.attributes.copacity.array[k] = self.newsmokeData[self.ii][j];
+            self.smokeSceneArr[j].geometry.attributes.copacity.needsUpdate = true;
 
         }
         self.ii++;
@@ -382,5 +472,7 @@ Smoke.prototype.update = function (_this)
         _this.step[1] += 0.00005;
         child.rotation.y=_this.step[1]*(Math.random>0.5?1:-1);
     });
+    //console.log(this.smokeSceneArr[15]);
+    //console.log(this.smokeSceneArr[15].material.opacity);
 
 }
