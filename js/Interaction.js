@@ -164,13 +164,16 @@ Interaction.prototype.fuc3 = function (MainScene)
         var number=Number($('people-number').textContent);
         MainScene.number=number;
         Utils.loading(1000);
-        MainScene.Path.createNav();
+        MainScene.Path.createNav(MainScene);
+        Utils.loading(500);
         MainScene.addPeople();
         MainScene.smoke.smokeStart(MainScene);
     });
 
     $('fireman').addEventListener('click',function (event)
     {
+        //MainScene.Test.init(MainScene);//debug专用
+
         MainScene.active = true;
         MainScene.isfiremanclick=true;
         MainScene.camControlOver.autoRotate = false;

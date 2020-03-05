@@ -17,7 +17,7 @@ THREE.MyPathControl = function ( object) {
     this.isArrive = false;
     this.shouldRotateModel = false;
     // methods
-    var isUpStair = false;
+    let isUpStair = false; //这干啥用的？
     this.update = function ( delta ) {
 
         if(this.waypoints.length>0)
@@ -40,21 +40,16 @@ THREE.MyPathControl = function ( object) {
                 var zPos=this.waypoints[this.currentIndex].substring(pos1+1,pos2);
                 var yPos=this.waypoints[this.currentIndex].substring(pos2+1,this.waypoints[this.currentIndex].length);
                 if(Math.abs(this.object.position.x-xPos)<0.2 && Math.abs(this.object.position.z-zPos)<0.2) {
-                    if (xPos == this.jumpPoint.x && zPos == this.jumpPoint.z) {
+                    if (xPos === this.jumpPoint.x && zPos === this.jumpPoint.z) {
                         isUpStair = true;
                     }
 
-
-
                     if(this.waypoints[this.currentIndex+1])
                     {
-
-
-
                         var forVec = this.forwardVector.clone();
                         forVec = this.object.localToWorld(forVec);
                         forVec.sub(this.object.position);
-                        forVec = forVec.normalize ();
+                        forVec = forVec.normalize();
 
                         var newPos1=this.waypoints[this.currentIndex+1].indexOf("&");
                         var newPos2=this.waypoints[this.currentIndex+1].indexOf("@");
@@ -106,8 +101,6 @@ THREE.MyPathControl = function ( object) {
                         this.object.position.set(1*xPos,1*yPos-0.5,1*zPos);
                         //console.log(this.object.position.x+"-"+this.object.position.y+"-"+this.object.position.z);
                         this.currentIndex++;
-
-
                     }
                     else
                     {
@@ -144,8 +137,6 @@ THREE.MyPathControl = function ( object) {
                     else{
                         this.object.translateZ(-delta*this.velocity);
                     }
-
-
                 }
             }
         }

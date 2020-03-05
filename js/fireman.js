@@ -118,6 +118,7 @@ fireman.prototype.createFireman = function (_this)
             self.cubeFireman.material.map = texture;
 
             self.cubeFireman.position.set(419.05, 18.7, 10.91);
+            //self.cubeFireman.position.set(335, 9, 17);
             //cubeFireman.position.set(335, 9, 17);
 
             self.cubeFireman.meshMixer = new THREE.AnimationMixer(self.cubeFireman);//创建一个动画混合器

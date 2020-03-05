@@ -34,7 +34,7 @@ class Path {
 	/**
 	 * Returns closest node group ID for given position.
 	 * @param  {string} zoneID
-	 * @param  {THREE.Vector3} position
+	 * @param  {[]} position
 	 * @return {number}
 	 */
 	getGroup (zoneID, position) {
@@ -117,7 +117,7 @@ class Path {
 	 * Returns a path between given start and end points. If a complete path
 	 * cannot be found, will return the nearest endpoint available.
 	 *
-	 * @param  {THREE.Vector3} startPosition Start position.
+	 * @param  {[]} startPosition Start position.
 	 * @param  {THREE.Vector3} targetPosition Destination.
 	 * @param  {string} zoneID ID of current zone.
 	 * @param  {number} groupID Current group ID.

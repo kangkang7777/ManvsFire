@@ -10,12 +10,12 @@ var People = function ()
     this.blendMeshArr = [];
     this.leaderMeshArr = [];
     this.humanInfoMap=[];
-}
+    this.exitInfoMap=[];//出口信息
+};
 
 People.prototype.init = function (_this)
 {
     let self = this;
-    this.exitInfoMap;//出口信息
     let guidPosArr;//引导点位置信息
     var meshLoadCount = 0;
     var targetPositionArr = [];
@@ -199,22 +199,6 @@ People.prototype.init = function (_this)
                             newMesh5.rotation.y=-95;
                             newMesh5.scale.set(scaleSize, scaleSize, scaleSize);
 
-                            newMesh6.position.set(419,19,40);
-                            newMesh6.rotation.y=-95;
-                            newMesh6.scale.set(scaleSize, scaleSize, scaleSize);
-                            newMesh7.position.set(459,9,30);
-                            newMesh7.rotation.y=-95;
-                            newMesh7.scale.set(scaleSize, scaleSize, scaleSize);
-                            newMesh8.position.set(459,9,30);
-                            newMesh8.rotation.y=-95;
-                            newMesh8.scale.set(scaleSize, scaleSize, scaleSize);
-                            newMesh9.position.set(459,9,30);
-                            newMesh9.rotation.y=-95;
-                            newMesh9.scale.set(scaleSize, scaleSize, scaleSize);
-                            newMesh10.position.set(459,9,30);
-                            newMesh10.rotation.y=-95;
-                            newMesh10.scale.set(scaleSize, scaleSize, scaleSize);
-
                             self.leaderMeshArr.push(newMesh1);
                             self.leaderMeshArr.push(newMesh2);
                             self.leaderMeshArr.push(newMesh3);
@@ -317,8 +301,8 @@ People.prototype.init = function (_this)
                             self.mixerArr.push(meshMixer);
                         }
                         _this.isFinishLoadCharactor = true;
-                        if(_this.isACO)
-                            _this.Path.startPathFinding(_this);
+                         if(_this.isACO)
+                             _this.Path.startPathFinding(_this);
                         _this.addFOI();
                     });
                 });
@@ -601,19 +585,19 @@ People.prototype.init = function (_this)
         }
     }
 
-}
+};
 
 People.prototype.setWeight=function (action, weight)
 {
     action.enabled = true;
-    var num=Math.floor(Math.random()*8+1);
+    let num=Math.floor(Math.random()*8+1);
     action.setEffectiveTimeScale( num/3 );
     action.setEffectiveWeight( weight );
-}
+};
 
 People.prototype.activateAllActions = function (actions)
 {
-    var self = this;
+    let self = this;
     var num=Math.floor(Math.random()*2+1);
     switch (num)
     {
@@ -628,12 +612,12 @@ People.prototype.activateAllActions = function (actions)
     {
         action.play();
     } );
-}
+};
 
 People.prototype.activateAllActions1 = function (actions)
 {
-    var self = this;
-    var num=Math.floor(Math.random()*2+1);
+    let self = this;
+    let num=Math.floor(Math.random()*2+1);
     switch (num){
         case 1:
             self.setWeight( actions[0], 1 );
@@ -650,22 +634,22 @@ People.prototype.activateAllActions1 = function (actions)
     actions.forEach( function ( action ) {
         action.play();
     } );
-}
+};
 
 People.prototype.isfinishedloadchar = function (_this)
 {
     if(_this.isFinishLoadCharactor)
     {
-        for(var i=0; i<_this.people.mixerArr.length;i++)
+        for(let i=0; i<_this.people.mixerArr.length;i++)
         {
             _this.people.mixerArr[i].update(_this.delta);
         }
     }
-}
+};
 
 People.prototype.ifstartRun = function (_this)
 {
-    var self = this;
+    let self = this;
     if(_this.isStartRun)
     {
         for(var key in self.pathControlMap)
@@ -682,13 +666,13 @@ People.prototype.ifstartRun = function (_this)
             }
         }
     }
-}
+};
 
 People.prototype.update = function (_this)
 {
     this.isfinishedloadchar(_this);
     this.ifstartRun(_this);
-}
+};
 
 function PeopleAttribute(){
     this.position = new THREE.Vector3(0,0,0);

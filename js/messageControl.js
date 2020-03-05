@@ -12,6 +12,7 @@ messageControl.prototype.START = function (_this)
     self.workerLoadSmokeAndPath.onmessage = function (event)
     {
         self.staticPathArr = event.data.staticPathArr;
+        self.staticTargetArr = event.data.staticTargetArr;
     }
 };
 

@@ -102,6 +102,8 @@ var mainScene = function()
 
     this.messagecontrol.START(this);
 
+    //debug专用
+    this.Test = new test();
 }
 
 mainScene.prototype.init = function()
@@ -152,8 +154,7 @@ mainScene.prototype.init = function()
 
     //debug专用
     this.HCI.fuc5(this);
-
-}
+};
 
 mainScene.prototype.start = function()
 {
@@ -179,6 +180,7 @@ mainScene.prototype.start = function()
 
             self.people.update(self);
 
+            self.Test.update(self);
             //视锥剔除
             self.FOI.update(self);
 

@@ -168,7 +168,7 @@ path.prototype.init= function (_this)
     //endregion
 }
 
-path.prototype.createNav = function ()
+path.prototype.createNav = function (_this)
 {//interaction.js创建人群时调用
     var self = this;
         let loader = new THREE.OBJLoader();
@@ -183,7 +183,7 @@ path.prototype.createNav = function ()
                 self.pathfinder = new THREE.Pathfinding();
                 // Create level.
                 self.pathfinder.setZoneData('level1', THREE.Pathfinding.createZone(g));
-
+                //_this.scene.add(object.children[0]);
             },
             // called when loading is in progresses
             function (xhr) {
@@ -432,9 +432,78 @@ path.prototype.startPathFinding = function (_this)
             }
         }
 
+
         if(self.isUseBufferPath){
-            for(var i=0; i<_this.messagecontrol.staticPathArr.length;i++){
-                self.drawPath(_this.messagecontrol.staticPathArr[i]);
+            for(let i=0; i<_this.messagecontrol.staticTargetArr.length;i++){
+                // let b = [_this.messagecontrol.staticTargetArr[i][0]].concat(self.vectorToMark(self.pathfinder.findPath(self.markToVector(_this.messagecontrol.staticTargetArr[i][0]), self.markToVector(_this.messagecontrol.staticTargetArr[i][1]), 'level1', self.pathfinder.getGroup('level1',self.markToVector(_this.messagecontrol.staticTargetArr[i][0])))));
+                // //b = b.concat(self.vectorToMark(self.pathfinder.findPath(self.markToVector(_this.messagecontrol.staticTargetArr[i][0]), self.markToVector(_this.messagecontrol.staticTargetArr[i][1]), 'level1', self.pathfinder.getGroup('level1',self.markToVector(_this.messagecontrol.staticTargetArr[i][0])))));
+                // let c = self.markToVector(b);
+                // let d = self.interpolation(c);
+                self.drawPath([_this.messagecontrol.staticTargetArr[i][0]].concat(self.vectorToMark(self.pathfinder.findPath(self.markToVector(_this.messagecontrol.staticTargetArr[i][0]), self.markToVector(_this.messagecontrol.staticTargetArr[i][1]), 'level1', self.pathfinder.getGroup('level1',self.markToVector(_this.messagecontrol.staticTargetArr[i][0]))))));
             }
+            // for(let i=0; i<_this.messagecontrol.staticPathArr.length;i++){
+            //     self.drawPath(_this.messagecontrol.staticPathArr[i]);
+            // }
         }
-}
+};
+
+//1&2@3转换成正常的Vector3
+path.prototype.markToVector = function (marks)
+{
+    let ans = [];
+    if(marks instanceof Array) {
+        for (let i = 0; i < marks.length; i++) {
+            let pos1 = marks[i].indexOf("&");
+            let pos2 = marks[i].indexOf("@");
+            let x = marks[i].substring(0, pos1);
+            let z = marks[i].substring(pos1 + 1, pos2);
+            let y = marks[i].substring(pos2 + 1, marks[i].length);
+            ans.push(new THREE.Vector3(parseInt(x), parseInt(y), parseInt(z)));
+        }
+    }
+    else
+    {
+        let pos1 = marks.indexOf("&");
+        let pos2 = marks.indexOf("@");
+        let x = marks.substring(0, pos1);
+        let z = marks.substring(pos1 + 1, pos2);
+        let y = marks.substring(pos2 + 1, marks.length);
+        ans =new THREE.Vector3(parseInt(x), parseInt(y), parseInt(z));
+    }
+    return ans;
+};
+
+//Vector3转换成1&2@3
+path.prototype.vectorToMark = function (vectors)
+{
+    let ans = [];
+    if(vectors instanceof Array)
+    {
+        for (let i = 0; i < vectors.length; i++)
+        {
+            let temp = (vectors[i].x) + "&" + (vectors[i].z) + "@" + vectors[i].y;
+            ans.push(temp);
+        }
+    }
+    else
+    {
+        ans = (vectors.x) + "&" + (vectors.z) + "@" + vectors.y;
+    }
+    return ans;
+};
+
+path.prototype.interpolation = function (array) {
+    let ans = [];
+    for(let i = 0;i<array.length;i++)
+    {
+        if(i!==array.length-1)
+        {
+            ans.push(array[i]);
+            let temp = new THREE.Vector3((array[i].x+array[i+1].x+1)/2,(array[i].y+array[i+1].y+2)/2,(array[i].z+array[i+1].z+2)/2);
+            ans.push(temp);
+        }
+        else
+            ans.push(array[i]);
+    }
+    return ans;
+};
