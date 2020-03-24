@@ -188,13 +188,13 @@ THREE.FollowerControl = function ( object,humanMap,lodObj) {
 
             if(tempVec.y>0)
             {
-                this.object.rotation.y += 1*theta;
-                this.lod_low_level_obj.rotation.y += 1*theta;
+                this.object.rotation.y -= 1*theta;
+                this.lod_low_level_obj.rotation.y -= 1*theta;
             }
             else
             {
-                this.object.rotation.y += -1*theta;
-                this.lod_low_level_obj.rotation.y += -1*theta;
+                this.object.rotation.y -= -1*theta;
+                this.lod_low_level_obj.rotation.y -= -1*theta;
             }
         }
         if(!this.object.position.x || (Math.abs(this.object.position.x-this.nextPosition.x)>3 || Math.abs(this.object.position.z-this.nextPosition.z)>3)){
@@ -203,10 +203,10 @@ THREE.FollowerControl = function ( object,humanMap,lodObj) {
 
         if(this.humanMap[this.nextKey]<=0){
             //this.object.translateZ(-0.01*3.5);
-            this.object.translateZ(-delta*this.runSpeed);
+            this.object.translateZ(delta*this.runSpeed);
         }else{
             //this.object.translateZ(-0.01*1.5);
-            this.object.translateZ(-delta*(this.runSpeed/2));
+            this.object.translateZ(delta*(this.runSpeed/2));
         }
         this.lod_low_level_obj.position.set(this.object.position.x,this.object.position.y,this.object.position.z);
     }

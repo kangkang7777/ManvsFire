@@ -13,6 +13,16 @@ var People = function ()
     this.exitInfoMap=[];//出口信息
 };
 
+let meshMixer,meshMixerLeader, meshMixerArr, action, modelURL, clip, rThigh1, rThigh2, rThigh3, rThigh4, lThigh1, lThigh2,
+    lThigh3, lThigh4, lArm1, lArm2, lArm3, rArm1, rArm2, rArm3, head, wist, neck, chest, rib, rShoulder,
+    lShoulder;
+// var v0 = 0.8;//Agent初始速度
+// var vmax = 1.6;//Agent最大速度
+// var fear = 0;//Agent恐慌度，0-1
+// var vt;//当前速度
+var mixers = [];
+var num;
+
 People.prototype.init = function (_this)
 {
     let self = this;
@@ -39,81 +49,128 @@ People.prototype.init = function (_this)
         _this.isStartRun = false;
         //_this.addFOI();
 
+
+
+
         function loadBlendMeshWithPromise() {
             var loadModelPromise = function (modelURL) {
-                return new Promise(function (resolve,reject) {
-                    new THREE.ObjectLoader().load( modelURL, function ( loadedObject ) {
-                        var tempMesh;
-                        loadedObject.traverse( function ( child ) {
-                            //如果找到模型，就将所有子部分赋给mesh
-                            if ( child instanceof THREE.SkinnedMesh ) {
-                                tempMesh = child;
-                                resolve(tempMesh);
-                            }
-                        } );
-                        if ( tempMesh === undefined ) {
-                            reject(new Error('err'));
-                        }
-                    });
-                });
+                return new Promise((resolve) => {
+                    var loader = new THREE.GLTFLoader();
+                    loader.load(modelURL, (gltf) => {
+                        console.log(gltf);
+
+                        resolve(gltf);
+                    })
+                })
             }
+            // var loadLowModelPromise = function (modelURL) {
+            //     return new Promise((resolve) => {
+            //         var loader = new THREE.GLTFLoader();
+            //         loader.load(modelURL, (gltf) => {
+            //             console.log(gltf);
+            //
+            //             resolve(gltf);
+            //         })
+            //     })
+            // }
+            // var loadModelPromise = function (modelURL) {
+            //     return new Promise(function (resolve,reject) {
+            //         new THREE.ObjectLoader().load( modelURL, function ( loadedObject ) {
+            //             var tempMesh;
+            //             loadedObject.traverse( function ( child ) {
+            //                 //如果找到模型，就将所有子部分赋给mesh
+            //                 if ( child instanceof THREE.SkinnedMesh ) {
+            //                     tempMesh = child;
+            //                     resolve(tempMesh);
+            //                 }
+            //             } );
+            //             if ( tempMesh === undefined ) {
+            //                 reject(new Error('err'));
+            //             }
+            //         });
+            //     });
+            // }
+            //
+            // var loadLowModelPromise = function (modelURL) {
+            //     return new Promise(function (resolve,reject) {
+            //         new THREE.ObjectLoader().load( modelURL, function ( loadedObject ) {
+            //             var tempMesh;
+            //             loadedObject.traverse( function ( child ) {
+            //                 //如果找到模型，就将所有子部分赋给mesh
+            //                 if ( child.children[0] instanceof THREE.Mesh ) {
+            //                     tempMesh = child.children[0];
+            //                     resolve(tempMesh);
+            //                 }
+            //             } );
+            //             if ( tempMesh === undefined ) {
+            //                 reject(new Error('err'));
+            //             }
+            //         });
+            //     });
+            // }
 
-            var loadLowModelPromise = function (modelURL) {
-                return new Promise(function (resolve,reject) {
-                    new THREE.ObjectLoader().load( modelURL, function ( loadedObject ) {
-                        var tempMesh;
-                        loadedObject.traverse( function ( child ) {
-                            //如果找到模型，就将所有子部分赋给mesh
-                            if ( child.children[0] instanceof THREE.Mesh ) {
-                                tempMesh = child.children[0];
-                                resolve(tempMesh);
-                            }
-                        } );
-                        if ( tempMesh === undefined ) {
-                            reject(new Error('err'));
-                        }
-                    });
-                });
+            // var modelURL = "Model/manSimple.json";
+            // var modelUrlLod = "Model/manSimple4.json";
+            var modelURL = "Model/ManMix.glb";
+            // var modelUrlLod = "Model/ManMix.glb";
+
+            // var promise1 = loadModelPromise(modelURL);
+            // var promise2 = loadModelPromise(modelURL);
+            // var promise3 = loadModelPromise(modelURL);
+            // var promise4 = loadModelPromise(modelURL);
+            // var promise5 = loadModelPromise(modelURL);
+            // var promise6 = loadModelPromise(modelURL);
+            // var promise7 = loadModelPromise(modelURL);
+            // var promise8 = loadModelPromise(modelURL);
+            // var promise9 = loadModelPromise(modelURL);
+            // var promise10 = loadModelPromise(modelURL);
+            // var promise11 = loadModelPromise(modelURL);
+            // var promise12 = loadModelPromise(modelURL);
+            // var promise13 = loadModelPromise(modelURL);
+            // var promise14 = loadModelPromise(modelURL);
+            var arr = new Array();
+            for (num = 0; num < blendMeshPosArr.length; num++) {
+
+                arr[num] = loadModelPromise(modelURL);
             }
+            console.log(blendMeshPosArr.length);
 
-            var modelURL = "Model/manSimple.json";
-            var modelUrlLod = "Model/manSimple4.json";
+            var promiseLeader1 = loadModelPromise(modelURL);
+            var promiseLeader2 = loadModelPromise(modelURL);
+            var promiseLeader3 = loadModelPromise(modelURL);
+            var promiseLeader4 = loadModelPromise(modelURL);
+            var promiseLeader5 = loadModelPromise(modelURL);
+            var promiseLeader6 = loadModelPromise(modelURL);
+            var promiseLeader7 = loadModelPromise(modelURL);
+            var promiseLeader8 = loadModelPromise(modelURL);
+            var promiseLeader9= loadModelPromise(modelURL);
+            var promiseLeader10 = loadModelPromise(modelURL);
+            // var promiseL1 = loadLowModelPromise(modelUrlLod);
+            // var promiseL2 = loadLowModelPromise(modelUrlLod);
+            // var promiseL3 = loadLowModelPromise(modelUrlLod);
+            // var promiseL4 = loadLowModelPromise(modelUrlLod);
+            // var promiseL5 = loadLowModelPromise(modelUrlLod);
+            // var promiseL6 = loadLowModelPromise(modelUrlLod);
+            // var promiseL7 = loadLowModelPromise(modelUrlLod);
+            // var promiseL8 = loadLowModelPromise(modelUrlLod);
+            // var promiseL9 = loadLowModelPromise(modelUrlLod);
+            // var promiseL10 = loadLowModelPromise(modelUrlLod);
+            // var promiseL11 = loadLowModelPromise(modelUrlLod);
+            // var promiseL12 = loadLowModelPromise(modelUrlLod);
+            // var promiseL13 = loadLowModelPromise(modelUrlLod);
+            // var promiseL14 = loadLowModelPromise(modelUrlLod);
+            // var arrL = new Array();
+            // for (num = 0; num < blendMeshPosArr.length; num++) {
+            //
+            //     arrL[num] = loadLowModelPromise(modelUrlLod);
+            // }
 
-            var promise1 = loadModelPromise(modelURL);
-            var promise2 = loadModelPromise(modelURL);
-            var promise3 = loadModelPromise(modelURL);
-            var promise4 = loadModelPromise(modelURL);
-            var promise5 = loadModelPromise(modelURL);
-            var promise6 = loadModelPromise(modelURL);
-            var promise7 = loadModelPromise(modelURL);
-            var promise8 = loadModelPromise(modelURL);
-            var promise9 = loadModelPromise(modelURL);
-            var promise10 = loadModelPromise(modelURL);
-            var promise11 = loadModelPromise(modelURL);
-            var promise12 = loadModelPromise(modelURL);
-            var promise13 = loadModelPromise(modelURL);
-            var promise14 = loadModelPromise(modelURL);
-
-            var promiseLeader = loadModelPromise(modelURL);
-            var promiseL1 = loadLowModelPromise(modelUrlLod);
-            var promiseL2 = loadLowModelPromise(modelUrlLod);
-            var promiseL3 = loadLowModelPromise(modelUrlLod);
-            var promiseL4 = loadLowModelPromise(modelUrlLod);
-            var promiseL5 = loadLowModelPromise(modelUrlLod);
-            var promiseL6 = loadLowModelPromise(modelUrlLod);
-            var promiseL7 = loadLowModelPromise(modelUrlLod);
-            var promiseL8 = loadLowModelPromise(modelUrlLod);
-            var promiseL9 = loadLowModelPromise(modelUrlLod);
-            var promiseL10 = loadLowModelPromise(modelUrlLod);
-            var promiseL11 = loadLowModelPromise(modelUrlLod);
-            var promiseL12 = loadLowModelPromise(modelUrlLod);
-            var promiseL13 = loadLowModelPromise(modelUrlLod);
-            var promiseL14 = loadLowModelPromise(modelUrlLod);
-
-            var promiseAll = Promise.all([promise1,promise2,promise3,promise4,promise5,promise6,promise7,promise8,promise9,promise10,promise11,promise12,promise13,promise14]).then((data)=>{
-                var promiseLAll = Promise.all([promiseL1,promiseL2,promiseL3,promiseL4,promiseL5,promiseL6,promiseL7,promiseL8,promiseL9,promiseL10,promiseL11,promiseL12,promiseL13,promiseL14]).then((dataL)=>{
+           // var promiseAll = Promise.all([promise1,promise2,promise3,promise4,promise5,promise6,promise7,promise8,promise9,promise10,promise11,promise12,promise13,promise14]).then((data)=>{
+                var promiseAll = Promise.all(arr).then((data)=>{
+                // var promiseLAll = Promise.all([promiseL1,promiseL2,promiseL3,promiseL4,promiseL5,promiseL6,promiseL7,promiseL8,promiseL9,promiseL10,promiseL11,promiseL12,promiseL13,promiseL14]).then((dataL)=>{
+                //     var promiseLAll = Promise.all(arrL).then((dataL)=>{
                     for(var i=0; i<blendMeshPosArr.length;i++) {
-
+                        console.log(blendMeshPosArr.length);
                         var newMesh,newMeshLod,textureURL;
                         var temp = i%14;
                         switch (temp) {
@@ -132,54 +189,153 @@ People.prototype.init = function (_this)
                             case 12:textureURL = './Model/man/man/MarineCv2_colorYellow.jpg';break;
                             case 13:textureURL = './Model/man/man/MarineCv2_DarkBlue.jpg';break;
                         }
-                        newMesh = data[temp].clone();
-                        newMeshLod = dataL[temp].clone();
+                        // newMesh = data[temp].clone();
+                        // newMeshLod = dataL[temp].clone();
+                        newMesh = data[i];
+                        // newMeshLod = dataL[i];
 
-                        var scaleSize = 0.002*(Math.random()*(8-6+1)+6);
-                        newMesh.position.set(blendMeshPosArr[i].position.x,blendMeshPosArr[i].position.y,blendMeshPosArr[i].position.z);
-                        //newMesh.rotation.y=-90;
-                        newMesh.rotation.y=blendMeshPosArr[i].rotation;
-                        newMesh.scale.set(scaleSize, scaleSize, scaleSize);
-                        newMeshLod.position.set(blendMeshPosArr[i].position.x,blendMeshPosArr[i].position.y,blendMeshPosArr[i].position.z);
-                        //newMeshLod.rotation.y=-90;
-                        newMeshLod.rotation.y=blendMeshPosArr[i].rotation;
-                        newMeshLod.scale.set(scaleSize, scaleSize, scaleSize);
+                        // var scaleSize = 0.002*(Math.random()*(8-6+1)+6);
+                        newMesh.scene.position.set(blendMeshPosArr[i].position.x,blendMeshPosArr[i].position.y,blendMeshPosArr[i].position.z);
+                        // newMesh.rotation.y=-90;
+                        newMesh.scene.rotation.y=blendMeshPosArr[i].rotation;
+                        // newMesh.scene.scale.set(scaleSize, scaleSize, scaleSize);
+                        // newMeshLod.scene.position.set(blendMeshPosArr[i].position.x,blendMeshPosArr[i].position.y,blendMeshPosArr[i].position.z);
+                        // newMeshLod.rotation.y=-90;
+                        // newMeshLod.scene.rotation.y=blendMeshPosArr[i].rotation;
+                        // newMeshLod.scene.scale.set(scaleSize, scaleSize, scaleSize);
 
-                        var texture = THREE.ImageUtils.loadTexture(textureURL );
+                        // var texture = THREE.ImageUtils.loadTexture(textureURL );
+                        // texture.anisotropy = _this.renderer.getMaxAnisotropy();
+                        // texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                        // texture.repeat.set( 1, 1 );
+                        //
+                        // newMesh.material.map = texture;
+                        // newMeshLod.material.map = texture;
+                        var loader = new THREE.TextureLoader();
+                        var texture = loader.load(textureURL, function () {
+                        });
+                        var material = new THREE.MeshStandardMaterial();
                         texture.anisotropy = _this.renderer.getMaxAnisotropy();
-                        texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-                        texture.repeat.set( 1, 1 );
+                        //texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                        texture.flipY = false;
+                        texture.repeat.set(1, 1);
+                        material.skinning = true;
+                        material.map = texture;
+                        newMesh.scene.children[0].children[1].material = material;
+                        // newMeshLod.scene.children[0].children[1].material = material;
+                        //人物骨骼参数化
+                        var thighRandom = 1 + (Math.random() / 3);
+                        var armRandom = 1 + (Math.random() / 2);
+                        var headRandom = Math.random() / 2;
+                        var upperRandom1 = 1 + (Math.random() / 3);
+                        var upperRandom2 = 1 + (Math.random() / 2);
+                        var neckRandom = Math.random() / 3;
+                        var shoulderRandom = 1 + Math.random();
 
-                        newMesh.material.map = texture;
-                        newMeshLod.material.map = texture;
+                        head = newMesh.scene.children[0].children[1].skeleton.boneInverses[5];
+                        rThigh1 = newMesh.scene.children[0].children[1].skeleton.boneInverses[20];
+                        rThigh2 = newMesh.scene.children[0].children[1].skeleton.boneInverses[21];
+                        rThigh3 = newMesh.scene.children[0].children[1].skeleton.boneInverses[22];
+                        rThigh4 = newMesh.scene.children[0].children[1].skeleton.boneInverses[23];
+                        lThigh1 = newMesh.scene.children[0].children[1].skeleton.boneInverses[15];
+                        lThigh2 = newMesh.scene.children[0].children[1].skeleton.boneInverses[16];
+                        lThigh3 = newMesh.scene.children[0].children[1].skeleton.boneInverses[17];
+                        lThigh4 = newMesh.scene.children[0].children[1].skeleton.boneInverses[18];
+                        lArm1 = newMesh.scene.children[0].children[1].skeleton.boneInverses[8];
+                        lArm2 = newMesh.scene.children[0].children[1].skeleton.boneInverses[9];
+                        lArm3 = newMesh.scene.children[0].children[1].skeleton.boneInverses[10];
+                        rArm1 = newMesh.scene.children[0].children[1].skeleton.boneInverses[12];
+                        rArm2 = newMesh.scene.children[0].children[1].skeleton.boneInverses[13];
+                        rArm3 = newMesh.scene.children[0].children[1].skeleton.boneInverses[14];
+                        wist = newMesh.scene.children[0].children[1].skeleton.boneInverses[0];
+                        rib = newMesh.scene.children[0].children[1].skeleton.boneInverses[1];
+                        chest = newMesh.scene.children[0].children[1].skeleton.boneInverses[2];
+                        neck = newMesh.scene.children[0].children[1].skeleton.boneInverses[4];
+                        lShoulder = newMesh.scene.children[0].children[1].skeleton.boneInverses[7];
+                        rShoulder = newMesh.scene.children[0].children[1].skeleton.boneInverses[11];
 
-                        _this.scene.add(newMesh);
+                        rThigh1.scale(new THREE.Vector3(thighRandom, 1, thighRandom));
+                        rThigh2.scale(new THREE.Vector3(thighRandom, 1, thighRandom));
+                        rThigh3.scale(new THREE.Vector3(thighRandom, 1, thighRandom));
+                        rThigh4.scale(new THREE.Vector3(thighRandom, 1, thighRandom));
+                        lThigh1.scale(new THREE.Vector3(thighRandom, 1, thighRandom));
+                        lThigh2.scale(new THREE.Vector3(thighRandom, 1, thighRandom));
+                        lThigh3.scale(new THREE.Vector3(thighRandom, 1, thighRandom));
+                        lThigh4.scale(new THREE.Vector3(thighRandom, 1, thighRandom));
+                        lArm1.scale(new THREE.Vector3(thighRandom, 1, armRandom));
+                        lArm2.scale(new THREE.Vector3(thighRandom, 1, armRandom));
+                        lArm3.scale(new THREE.Vector3(thighRandom, 1, armRandom));
+                        rArm1.scale(new THREE.Vector3(thighRandom, 1, armRandom));
+                        rArm2.scale(new THREE.Vector3(thighRandom, 1, armRandom));
+                        rArm3.scale(new THREE.Vector3(thighRandom, 1, armRandom));
+                        head.scale(new THREE.Vector3(1 + headRandom, 1 + headRandom / 5, 1 + headRandom / 4));
+                        wist.scale(new THREE.Vector3(upperRandom2, 1, upperRandom2));
+                        rib.scale(new THREE.Vector3(upperRandom1, 1, upperRandom1));
+                        chest.scale(new THREE.Vector3(upperRandom1, 1, upperRandom1));
+                        neck.scale(new THREE.Vector3(1 + neckRandom, 1 + neckRandom / 4, 1 + neckRandom));
+                        lShoulder.scale(new THREE.Vector3(shoulderRandom, 1, shoulderRandom));
+                        rShoulder.scale(new THREE.Vector3(shoulderRandom, 1, shoulderRandom));
+
+                        let animationNum=Math.floor(Math.random()*2+1);
+                        if(animationNum==1){
+                            animationNum=0;
+                        }
+                        console.log(animationNum);
+                        meshMixer = new THREE.AnimationMixer(newMesh.scene);
+                        self.action = meshMixer.clipAction(newMesh.animations[animationNum]);
+                        clip = newMesh.animations[animationNum];//Running or Scrawling
+                        self.mixerArr.push(meshMixer);
+                        self.activateAllActions(self.action);
+
+                        _this.scene.add(newMesh.scene);
                         //console.log(newMesh.quaternion);
                         //scene.add(newMeshLod);
 
-                        self.blendMeshArr.push(newMesh);
-                        blendMeshLodArr.push(newMeshLod);
+                        self.blendMeshArr.push(newMesh.scene);
+                        // blendMeshLodArr.push(newMeshLod.scene);
                     }
-                    promiseLeader.then((dataLeader)=>{
-                        var texture = THREE.ImageUtils.loadTexture('./Model/man/MarineCv2_color_leader.jpg' );
-                        texture.anisotropy = _this.renderer.getMaxAnisotropy();
-                        texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-                        texture.repeat.set( 1, 1 );
-                        dataLeader.material.map = texture;
-                        initFollowerAndLeader(dataLeader);
 
-                        function initFollowerAndLeader(mesh)
+                    var promiseLeader= Promise.all([promiseLeader1,promiseLeader2,promiseLeader3,promiseLeader4,promiseLeader5,promiseLeader6,promiseLeader7,promiseLeader8,promiseLeader9,promiseLeader10]).then((dataLeader)=>{
+                        // var texture = THREE.ImageUtils.loadTexture('./Model/man/MarineCv2_color_leader.jpg' );
+                        // texture.anisotropy = _this.renderer.getMaxAnisotropy();
+                        // texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                        // texture.repeat.set( 1, 1 );
+                        // dataLeader.material.map = texture;
+                        for(var i=0; i<10;i++) {
+                            var newMeshLeader= dataLeader[i];
+
+                            var loader = new THREE.TextureLoader();
+                            var texture = loader.load('./Model/man/MarineCv2_color_leader.jpg', function () {
+                            });
+                            var material = new THREE.MeshStandardMaterial();
+                            texture.anisotropy = _this.renderer.getMaxAnisotropy();
+                            //texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                            texture.flipY = false;
+                            texture.repeat.set(1, 1);
+                            material.skinning = true;
+                            material.map = texture;
+                            dataLeader[i].scene.children[0].children[1].material = material;
+
+                            meshMixerLeader = new THREE.AnimationMixer(newMeshLeader.scene);
+                            self.action = meshMixerLeader.clipAction(newMeshLeader.animations[1]);
+                            clip = newMeshLeader.animations[1];//Walking
+                            self.mixerArr.push(meshMixerLeader);
+                            self.activateAllActions(self.action);
+                        }
+                        initFollowerAndLeader(dataLeader[0].scene,dataLeader[1].scene,dataLeader[2].scene,dataLeader[3].scene,dataLeader[4].scene,dataLeader[5].scene,dataLeader[6].scene,dataLeader[7].scene,dataLeader[8].scene,dataLeader[9].scene);
+
+                        function initFollowerAndLeader(mesh1,mesh2,mesh3,mesh4,mesh5,mesh6,mesh7,mesh8,mesh9,mesh10)
                         {
-                            var newMesh1 = mesh.clone();
-                            var newMesh2 = mesh.clone();
-                            var newMesh3 = mesh.clone();
-                            var newMesh4 = mesh.clone();
-                            var newMesh5 = mesh.clone();
-                            var newMesh6 = mesh.clone();
-                            var newMesh7 = mesh.clone();
-                            var newMesh8 = mesh.clone();
-                            var newMesh9 = mesh.clone();
-                            var newMesh10 = mesh.clone();
+                            var newMesh1 = mesh1;
+                            var newMesh2 = mesh2;
+                            var newMesh3 = mesh3;
+                            var newMesh4 = mesh4;
+                            var newMesh5 = mesh5;
+                            var newMesh6 = mesh6;
+                            var newMesh7 = mesh7;
+                            var newMesh8 = mesh8;
+                            var newMesh9 = mesh9;
+                            var newMesh10 = mesh10;
 
                             var scaleSize = 0.0025*(Math.random()*(9-7+1)+7);
                             newMesh1.position.set(470,19,22);
@@ -198,6 +354,7 @@ People.prototype.init = function (_this)
                             newMesh5.position.set(459,9,30);
                             newMesh5.rotation.y=-95;
                             newMesh5.scale.set(scaleSize, scaleSize, scaleSize);
+
 
                             self.leaderMeshArr.push(newMesh1);
                             self.leaderMeshArr.push(newMesh2);
@@ -278,6 +435,7 @@ People.prototype.init = function (_this)
                             }
 
                             self.isLoaded = true;
+
                         }
 
                         //////////////////////////////////////////////////////////////////////////////////////////////
@@ -285,29 +443,30 @@ People.prototype.init = function (_this)
                         //初始动画为站立
                         //////////////////////////////////////////////////////////////////////////////////////////////
                         //leader的动作
-                        for(var i=0; i<self.blendMeshArr.length;i++) {
-                            var meshMixer = new THREE.AnimationMixer( self.blendMeshArr[i] );
-                            self.idleAction = meshMixer.clipAction( 'idle' );
-                            self.actions = [ self.idleAction];
-                            self.activateAllActions(self.actions);
-                            self.mixerArr.push(meshMixer);
-                        }
+                        // for(var i=0; i<self.blendMeshArr.length;i++) {
+                        //     meshMixer = new THREE.AnimationMixer( self.blendMeshArr[i] );
+                        //     self.idleAction = meshMixer.clipAction( 'idle' );
+                        //     self.actions = [ self.idleAction];
+                        //     self.activateAllActions(self.actions);
+                        //     self.mixerArr.push(meshMixer);
+                        // }
+
+
                         //follower的动作
-                        for(var iL=0; iL<self.leaderMeshArr.length;iL++) {
-                            var meshMixer = new THREE.AnimationMixer( self.leaderMeshArr[iL] );
-                            self.idleAction = meshMixer.clipAction( 'idle' );
-                            self.actions = [ self.idleAction];
-                            self.activateAllActions(self.actions);
-                            self.mixerArr.push(meshMixer);
-                        }
+                        // for(var iL=0; iL<self.leaderMeshArr.length;iL++) {
+                        //     var meshMixer = new THREE.AnimationMixer( self.leaderMeshArr[iL] );
+                        //     self.idleAction = meshMixer.clipAction( 'idle' );
+                        //     self.actions = [ self.idleAction];
+                        //     self.activateAllActions(self.actions);
+                        //     self.mixerArr.push(meshMixer);
+                        // }
                         _this.isFinishLoadCharactor = true;
-                         if(_this.isACO)
-                             _this.Path.startPathFinding(_this);
+                        if(_this.isACO)
+                            _this.Path.startPathFinding(_this);
                         _this.addFOI();
                     });
+              //  });
                 });
-            });
-
         }
         /*
         function createRandomPos(meshNum) {
@@ -335,9 +494,7 @@ People.prototype.init = function (_this)
                     z= Math.floor(Math.random()*(maxZ2-minZ2+1)+minZ2);
                     y=9;
                 }
-
                 var index1 = x + "&" + z + "@"+y;
-
                 while(blendMeshPosIndexArr.indexOf(index1)!=-1 || _this.Path.mapInfoMap[index1]==0 )
                 {
                     if(Math.random() > 0.5)
@@ -352,7 +509,6 @@ People.prototype.init = function (_this)
                         z= Math.floor(Math.random()*(maxZ2-minZ2+1)+minZ2);
                         y=9;
                     }
-
                     index1 = x + "&" + z + "@"+y;
                 }
                 //blendMeshPosIndexArr.push(index1);
@@ -590,51 +746,62 @@ People.prototype.init = function (_this)
 People.prototype.setWeight=function (action, weight)
 {
     action.enabled = true;
-    let num=Math.floor(Math.random()*8+1);
+    let num;
+    while(num==0){
+        num=Math.floor(Math.random()*8+1);
+    }
     action.setEffectiveTimeScale( num/3 );
     action.setEffectiveWeight( weight );
 };
 
-People.prototype.activateAllActions = function (actions)
-{
+People.prototype.activateAllActions = function (action) {
     let self = this;
-    var num=Math.floor(Math.random()*2+1);
-    switch (num)
-    {
+    var num = Math.floor(Math.random() * 2 + 1);
+    switch (num) {
         case 1:
-            self.setWeight( actions[0], 1 );
+            self.setWeight(action, 1);
             break;
         case 2:
-            self.setWeight( actions[0], 1 );
+            //self.setWeight(action, 0);
             break;
     }
-    actions.forEach( function ( action )
-    {
         action.play();
-    } );
+}
+
+
+People.prototype.activateAllActions1 = function (action)
+{
+    // let self = this;
+    // let num=Math.floor(Math.random()*2+1);
+    // switch (num){
+    //     case 1:
+    //         self.setWeight( actions[0], 1 );
+    //         self.setWeight( actions[1], 0 );
+    //         // setWeight( actions[2], 0 );
+    //         break;
+    //     case 2:
+    //         self.setWeight( actions[0], 1 );
+    //         self.setWeight( actions[1], 0 );
+    //         // setWeight( actions[2], 1 );
+    //         break;
+    // }
+    // // setWeight( actions[1], 1 );
+    // actions.forEach( function ( action ) {
+    //     action.play();
+    // } );
+    var num = Math.floor(Math.random() * 2 + 1);
+    switch (num) {
+        case 1:
+            self.setWeight(action, 1);
+            break;
+        case 2:
+            //setWeight( action, 0 );
+            break;
+    }
+    action.play();
 };
 
-People.prototype.activateAllActions1 = function (actions)
-{
-    let self = this;
-    let num=Math.floor(Math.random()*2+1);
-    switch (num){
-        case 1:
-            self.setWeight( actions[0], 1 );
-            self.setWeight( actions[1], 0 );
-            // setWeight( actions[2], 0 );
-            break;
-        case 2:
-            self.setWeight( actions[0], 1 );
-            self.setWeight( actions[1], 0 );
-            // setWeight( actions[2], 1 );
-            break;
-    }
-    // setWeight( actions[1], 1 );
-    actions.forEach( function ( action ) {
-        action.play();
-    } );
-};
+
 
 People.prototype.isfinishedloadchar = function (_this)
 {
