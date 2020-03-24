@@ -194,11 +194,11 @@ People.prototype.init = function (_this)
                         newMesh = data[i];
                         // newMeshLod = dataL[i];
 
-                        // var scaleSize = 0.002*(Math.random()*(8-6+1)+6);
+                           var scaleSize = 0.002*(Math.random()*(8-6+1)+6);
                         newMesh.scene.position.set(blendMeshPosArr[i].position.x,blendMeshPosArr[i].position.y,blendMeshPosArr[i].position.z);
                         // newMesh.rotation.y=-90;
                         newMesh.scene.rotation.y=blendMeshPosArr[i].rotation;
-                        // newMesh.scene.scale.set(scaleSize, scaleSize, scaleSize);
+                        newMesh.scene.scale.set(scaleSize, scaleSize, scaleSize);
                         // newMeshLod.scene.position.set(blendMeshPosArr[i].position.x,blendMeshPosArr[i].position.y,blendMeshPosArr[i].position.z);
                         // newMeshLod.rotation.y=-90;
                         // newMeshLod.scene.rotation.y=blendMeshPosArr[i].rotation;
@@ -223,6 +223,7 @@ People.prototype.init = function (_this)
                         material.map = texture;
                         newMesh.scene.children[0].children[1].material = material;
                         // newMeshLod.scene.children[0].children[1].material = material;
+                        
                         //人物骨骼参数化
                         var thighRandom = 1 + (Math.random() / 3);
                         var armRandom = 1 + (Math.random() / 2);
