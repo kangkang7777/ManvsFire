@@ -95,7 +95,7 @@ foiControl.prototype.init = function (_this) {
         _this.scene.add(self.testMesh[i]);
         i++;
     }
-    //_this.scene.add(self.testMesh);
+
     self.active = true;
 };
 
@@ -161,7 +161,6 @@ foiControl.prototype.update = function (_this) {
             if(self.cullingMode === false)
                 for (let i = 0; i < self.peopleBoxHelper.length; i++)
                 {//基于全体人群的视锥剔除
-
                     _this.people.blendMeshArr[i].visible = self.frustum.intersectsObject(_this.people.blendMeshArr[i]);
                 }
 

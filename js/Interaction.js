@@ -172,7 +172,7 @@ Interaction.prototype.fuc3 = function (MainScene)
 
     $('fireman').addEventListener('click',function (event)
     {
-        //MainScene.Test.init(MainScene);//debug专用
+        MainScene.Test.init(MainScene);//debug专用
 
         MainScene.active = true;
         MainScene.isfiremanclick=true;

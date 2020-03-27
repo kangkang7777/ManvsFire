@@ -104,7 +104,7 @@ var mainScene = function()
 
     //debug专用
     this.Test = new test();
-}
+};
 
 mainScene.prototype.init = function()
 {
@@ -205,7 +205,7 @@ mainScene.prototype.start = function()
        // self.LOD;//lod算法
     }
 
-}
+};
 
 mainScene.prototype.setScene = function()
 {
@@ -281,17 +281,17 @@ mainScene.prototype.setScene = function()
     this.pMesh = new THREE.Mesh(pointGeo,pointMaterial);
     this.scene.add(this.pMesh);
 //endregion
-}
+};
 
 mainScene.prototype.addPeople = function ()
 {
     this.people.init(this);
-}
+};
 
 mainScene.prototype.addFOI = function()
 {
     this.FOI.init(this);
-}
+};
 
 mainScene.prototype.LOD = function ()
 {
@@ -325,7 +325,7 @@ mainScene.prototype.LOD = function ()
         }
 
     }
-}
+};
 
 //视角的转动 并非调整不同房间
 mainScene.prototype.cameraControl = function ()
@@ -365,9 +365,9 @@ mainScene.prototype.cameraControl = function ()
             //renderer.render(scene,cameraPerspective);
         }
     }
-}
+};
 
 mainScene.prototype.camera_tatus_change = function ()
 {
 
-}
+};

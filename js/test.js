@@ -4,6 +4,7 @@
  */
 
 const test = function () {
+
     this.testCube = null;
     this.target = new THREE.Vector3(419.05, 18.7, 10.91);
     this.path = new Set();
@@ -13,6 +14,14 @@ const test = function () {
 };
 
 test.prototype.init = function (_this) {
+    let self = this;
+
+    //self.test_1(_this);
+    self.test_2(_this);
+};
+
+test.prototype.test_1 = function(_this)
+{
     let self = this;
     self.active = true;
     let cubeGeometry = new THREE.CubeGeometry(3, 3,3);
@@ -25,6 +34,26 @@ test.prototype.init = function (_this) {
     //let a = _this.Path.pathfinder.findPath(new THREE.Vector3(470, 19, 22), new THREE.Vector3(424, 19, 7), 'level1', _this.Path.pathfinder.getGroup('level1',new THREE.Vector3(470, 19, 22)));
     self.path = _this.Path.pathfinder.findPath(self.testCube.position, self.target, 'level1', _this.Path.pathfinder.getGroup('level1',self.testCube.position));
     let tt;
+};
+
+test.prototype.test_2 = function(_this)
+{
+    let self = this;
+
+    //let a = [[1,2,3],[2,3,4]];
+
+    const gpu = new GPU({ mode: 'gpu' });
+    const kernel = gpu.createKernel(function(array) {
+        const [first, second,third] = array;
+        return first + second + third + this.thread.x;
+    }, {
+        output: [20],//这个指的是输出的窗口大小，也就是线程数
+        argumentTypes: { array: 'Array(2)' }//这个指的是输入的数据类型
+    });
+    //console.log(kernel([13,122,123]));
+   // console.log(kernel(a));
+
+    let e = 0;
 };
 
 test.prototype.update = function (_this) {
