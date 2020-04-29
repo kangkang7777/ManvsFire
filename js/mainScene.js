@@ -1,3 +1,4 @@
+
 var mainScene = function()
 {
         this.stats = initStats();
@@ -161,11 +162,61 @@ mainScene.prototype.start = function()
     var self = this;
     this.clock.start();  //todo maybe stop
 
-    //self.Path.createNav();
+    //self.renderer.vr.enabled = true;
+    document.body.appendChild( VRButton.createButton( self.renderer ) );
+
+    self.Path.createNav();
         animate();
+
+    // function animate()
+    // {
+    //     self.delta = self.clock.getDelta();
+    //
+    //     if(self.active)
+    //     {
+    //         self.water.update();    //todo debug here
+    //
+    //         self.fire.update(self);
+    //
+    //         self.smoke.update(self);
+    //
+    //         self.Fireman.update(self);
+    //
+    //         self.people.update(self);
+    //
+    //         self.Test.update(self);
+    //         //视锥剔除
+    //         self.FOI.update(self);
+    //
+    //         //火车动
+    //         self.underground.update(self,self.delta);
+    //     }
+    //     //self.Cameracontroller.update1(self);
+    //
+    //     self.cameraControl();
+    //
+    //     TWEEN.update();
+    //
+    //     self.stats.update();
+    //
+    //     requestAnimationFrame(animate);
+    //     self.renderer.clear();
+    //     self.renderer.setViewport(0, 0, window.innerWidth, window.innerHeight);
+    //     self.renderer.render(self.scene, self.camera);
+    //
+    //
+    //     //todo self.renderer.clear();    与renderer.autoClear = false 对应 不知道意义何在
+    //     //self.stats.end();
+    //
+    //    // self.LOD;//lod算法
+    // }
 
     function animate()
     {
+        self.renderer.setAnimationLoop( render );
+    }
+
+    function render() {
         self.delta = self.clock.getDelta();
 
         if(self.active)
@@ -199,10 +250,12 @@ mainScene.prototype.start = function()
         self.renderer.clear();
         self.renderer.setViewport(0, 0, window.innerWidth, window.innerHeight);
         self.renderer.render(self.scene, self.camera);
+
+
         //todo self.renderer.clear();    与renderer.autoClear = false 对应 不知道意义何在
         //self.stats.end();
 
-       // self.LOD;//lod算法
+        // self.LOD;//lod算法
     }
 
 }
@@ -215,6 +268,7 @@ mainScene.prototype.setScene = function()
     this.camera.lookAt(200,0,25);
 
     this.renderer = new THREE.WebGLRenderer( { antialias: true } );
+    this.renderer.xr.enabled = true;
     this.renderer.autoClear = true;    //todo 不声明的话默认为true,原demo为false, 与start.animate 中renderer.clear()对应
     this.renderer.setSize( window.innerWidth, window.innerHeight );
     this.renderer.setClearColor( 0xbbd0d9 );
