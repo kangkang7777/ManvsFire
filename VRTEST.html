@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Underground Fire Simulation</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="css/tongCss.css">
+
+
+    <script src="lib/three.js"></script>
+    <script src="lib/stats.js"></script>
+    <script src="lib/WebVR.js"></script>
+    <script src="lib/HelioWebXRPolyfill.js"></script>
+    <script src="js/Loader/DRACOLoader.js"></script>
+    <script src="lib/OrbitControls.js"></script>
+    <script src="lib/jquery-1.8.2.js"></script>
+    <script src="js/Loader/GLTFLoader.js"></script>
+    <script src="lib/FirstPersonControls.js"></script>
+    <script src="lib/TransformControls.js"></script>
+    <script src="lib/MyOrbitControls.js"></script>
+    <script src="lib/Tween.js"></script>
+    <script src="js/Loader/OBJLoader.js" ></script>
+    <script src="js/Loader/OBJMTLLoader.js" ></script>
+
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+    <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+    <script src="lib/OBJLoader.js"></script>
+    <script src="lib/GPUParticleSystem.js"></script>
+
+    <style>
+        body {
+            font-family: Monospace;
+            background-color: #bbd0d9;
+            margin: 0px;
+        }
+        button
+        {
+            background-color: white;
+            color: black;
+            opacity: 0.8;
+        }
+        * {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .timePanel{
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #333;
+            font-size: 4rem;
+            font-weight:200;
+            display: block;
+            top:4%;
+            width: 100%;
+            height: 10vh;
+            position: absolute;
+            text-align: center;
+        }
+        .btn-default
+        {
+            color:white;
+            background: rgb(0,0,0);
+        }
+
+    </style>
+
+</head>
+<body>
+<div style="position: absolute; left: 20px; top: 40px;padding:10px;width:200px;">
+    <!--    <div>-->
+    <!--        <label style="font-size: 15px;color:#ffffff">三角面片数:</label>-->
+    <!--        <label id="triNum" style="font-size: 15px;color:#ffffff">0</label>-->
+    <!--    </div>-->
+
+    <div>
+        <label style="font-size: 15px;color:#ffffff">加载时间:</label>
+        <label id="loadTime" style="font-size: 15px;color:#ffffff">0</label>
+    </div>
+</div>
+<div id="loading" class="loading" style="z-index: 2"><img src="images/loading.gif"/></div>
+<div id="progress"></div>
+<nav class="navbar navbar-default  navbar-fixed-top" role="navigation" style="background: rgb(0, 0, 0); opacity:0.8">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#" style="color:white; margin-left:600px"><b>同济大学地铁站火灾逃生模拟平台</b></a>
+
+        </div>
+    </div>
+</nav>
+<div id="setting" class="btn btn-default btn-lg" style="width:50px;height:45px;background:rgb(0, 0, 0);border:none;display: none">
+    <span class="glyphicon glyphicon-cog"></span>
+</div>
+<div class="rightside-menu" style="background:rgb(255, 255, 255);display: block; opacity:0.8">
+    <div  style="height:3%;background:rgb(0, 0, 0)">
+        <button id="minimize" type="button" class="btn btn-default btn-xs" style="background:rgb(0, 0, 0);border:none;margin-top:0;position: absolute;right:0;top:0;">
+            <span class="glyphicon glyphicon-play-circle"></span>
+        </button>
+    </div>
+    <!--<p>fps统计：</p>-->
+    <div id="Stats-output"></div>
+    <div id="escapeTimePanel" class="timePanel"></div>
+    <div class="illustration">
+        <div id="illustration-title" style="font-size:18px; font-weight:bolder">使用说明</div>
+        <div id="illustration-context">
+            <p>欢迎体验本火灾模拟实验平台!</p>
+            <br/>您可以切换漫游视角和环绕视角，通过鼠标键盘进行场景漫游或底部菜单栏快速变换视角以观察场景。
+            <p></p>
+            <p>若想模拟火灾请先创建人群。</p>
+        </div>
+    </div>
+    <form style="position:absolute;top:57%;left:10%">
+        <div id="View">
+            <input type="radio" id="OrbitView" name="View" checked="checked"><label for="OrbitView">环绕视角</label>
+            <input type="radio" id="freeView" name="View"><label for="freeView">漫游视角</label>
+        </div>
+    </form>
+    <div id='createPerson'>
+        <div id="person-slider" style="position:absolute;top:70%;left:10%;width:80%;background: gray"></div>
+        <span id="people-number"style="position:absolute;top:75%;left:30%;width: 35%;font-size: 18px">100</span>
+        <p style="position:absolute;top:75%;left:40%;width: 40%;font-size: 18px">人</p>
+        <button  id="createPersonBtn" class="btn btn-default btn-lg" style="left:10%;width:80%;position:absolute;top:80%">创建人群</button>
+    </div>
+
+    <div id="Menu" style="display: none">
+
+        <button  id="startRun" class="btn btn-default btn-lg" style="left:10%;width:80%;position: absolute;top:80%">开始模拟</button>
+        <div id="active" style="display: none">
+            <button  id="pause" class="btn btn-default btn-lg" style="left:10%;width:80%;position:absolute;top:65%"><span class="glyphicon glyphicon-pause"></span>暂停</button>
+            <button  id="continue" class="btn btn-default btn-lg" style="left:10%;width:80%;position:absolute;top:65%;display: none;"><span class="glyphicon glyphicon-play"></span>继续</button>
+        </div>
+        <button  id="transformSmoke" class="btn btn-default btn-lg" style="left:10%;width:80%;position:absolute;top:65%">编辑烟雾</button>
+        <button  id="fireman" class="btn btn-default btn-lg" style="display:none;left:10%;width:80%;position:absolute;top:80%">开始灭火</button>
+        <button  id="cancelFollow" class="btn btn-default btn-lg" style="display:none;left:10%;width:80%;position:absolute;top:80%">取消跟随</button>
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(function() {
+
+        $( ".rightside-menu" ).draggable();
+        $("#setting").draggable();
+        $( "#View" ).buttonset();
+        $("#minimize").click(function(){
+            $(".rightside-menu").hide(200);
+            $("#setting").css("display","block");
+            $("#setting").css("left", $(".rightside-menu").css("left"));
+            $("#setting").css("top", $(".rightside-menu").css("top"));
+        });
+        $("#setting").click(function(){
+            $("#setting").hide(0);
+            $(".rightside-menu").css("left", $("#setting").css("left"));
+            $(".rightside-menu").css("top",  $("#setting").css("top"));
+            $(".rightside-menu").show(200);
+        });
+        $("#person-slider").slider(
+            {
+                value:100,
+                max:1000,
+                step:10,
+                slide:refesh
+            }
+        );
+        function refesh() {
+            var temp=$('#person-slider').slider("value");
+            document.getElementById("people-number").textContent=temp;
+        }
+    });
+</script>
+
+<!--<div id="WebGL-output">-->
+<!--</div>-->
+
+<div id="bottom-menu" class="bottom-menu" style="display:block; opacity:0.8">
+    <div id="floor-menu">
+        <button  id="escapeDoor1" class="btn btn-default btn-lg">逃生门1</button>
+        <button  id="escapeDoor2" class="btn btn-default btn-lg">逃生门2</button>
+        <button  id="escapeDoor3" class="btn btn-default btn-lg">逃生门3</button>
+        <button  id="floor1" class="btn btn-default btn-lg">地下一层</button>
+        <button  id="floor2" class="btn btn-default btn-lg">地下二层</button>
+        <a  id="view_pos"></a>
+        <a  id="mesh_pos"></a>
+        <a  id="flag"></a>
+        <a  id="_flag"></a>
+        <a  id="x_1"></a>
+        <a  id="x_2"></a>
+        <a  id="x_3"></a>
+        <a  id="x_4"></a>
+    </div>
+    <div id="fire-menu" style="display:none">
+        <button  id="toNo1" class="btn btn-default btn-lg">1号火灾情景</button>
+        <button  id="toNo2" class="btn btn-default btn-lg">2号火灾情景</button>
+        <button  id="toNo3" class="btn btn-default btn-lg">3号火灾情景</button>
+        <button  id="toNo4" class="btn btn-default btn-lg">4号火灾情景</button>
+        <button  id="toNo5" class="btn btn-default btn-lg">5号火灾情景</button>
+    </div>
+</div>
+
+
+<script src="js/particle_system.js"></script>
+<script src="js/fire.js"></script>
+<script src="js/three-pathfinding.js"></script>
+
+<script src="js/test.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/Smoke_Insert.js"></script>
+<script src="js/Interaction.js"></script>
+<script src="js/waterControl.js"></script>
+<script src="js/CameraController.js"></script>
+<script src="js/foiControl.js"></script>
+<script src="js/fireControl.js"></script>
+<script src="js/messageControl.js"></script>
+<script src="js/path.js"></script>
+<script src="js/fireman.js"></script>
+<script src="js/Underground.js"></script>
+<script src="js/Light.js"></script>
+<script src="js/mainScene.js"></script>
+<script src="js/Smoke.js"></script>
+<script src="js/FollowerControl.js"></script>
+<script src="js/MyPathControl.js"></script>
+<script src="js/People.js"></script>
+<script src="js/launch.js"></script>
+
+
+</body>
+</html>

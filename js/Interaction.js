@@ -32,9 +32,9 @@ Interaction.prototype.fuc1 = function (_this)
         _this.camControl.lat = -85;
         _this.camControl.lon = -285;
     });
-    document.getElementById('WebGL-output').addEventListener('click',function(event){
-        _this.freeViewControl.autoRotate=false;
-    });
+    // document.getElementById('WebGL-output').addEventListener('click',function(event){
+    //     _this.freeViewControl.autoRotate=false;
+    // });
 
     // document.getElementById('floor1').addEventListener('click',function(event)
     // {

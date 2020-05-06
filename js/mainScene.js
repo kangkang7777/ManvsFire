@@ -154,7 +154,7 @@ mainScene.prototype.init = function()
     //this.HCI.fuc4(this);
 
     //debug专用
-    this.HCI.fuc5(this);
+    //this.HCI.fuc5(this);
 };
 
 mainScene.prototype.start = function()
@@ -163,60 +163,42 @@ mainScene.prototype.start = function()
     this.clock.start();  //todo maybe stop
 
     //self.renderer.vr.enabled = true;
-    document.body.appendChild( VRButton.createButton( self.renderer ) );
+    //document.body.appendChild( WEBVR.createButton( self.renderer ) );
+
+    let container = document.createElement( 'div' );
+    document.body.appendChild( container );
+
+    // var info = document.createElement( 'div' );
+    // info.style.position = 'absolute';
+    // info.style.top = '10px';
+    // info.style.width = '100%';
+    // info.style.textAlign = 'center';
+    // info.innerHTML = '<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> webvr - daydream';
+    // container.appendChild( info );
+
+    container.appendChild( self.renderer.domElement );
+
+    WEBVR.checkAvailability().catch( function( message ) {
+
+        document.body.appendChild( WEBVR.getMessageContainer( message ) );
+
+    } );
 
     self.Path.createNav();
         animate();
 
-    // function animate()
-    // {
-    //     self.delta = self.clock.getDelta();
+    document.body.appendChild( WEBVR.createButton( self.renderer ) );
+
+    // WEBVR.getVRDisplay( function ( device ) {
     //
-    //     if(self.active)
-    //     {
-    //         self.water.update();    //todo debug here
+    //     self.renderer.vr.setDevice( device );
+    //     document.body.appendChild( WEBVR.getButton( device, self.renderer.domElement ) );
     //
-    //         self.fire.update(self);
-    //
-    //         self.smoke.update(self);
-    //
-    //         self.Fireman.update(self);
-    //
-    //         self.people.update(self);
-    //
-    //         self.Test.update(self);
-    //         //视锥剔除
-    //         self.FOI.update(self);
-    //
-    //         //火车动
-    //         self.underground.update(self,self.delta);
-    //     }
-    //     //self.Cameracontroller.update1(self);
-    //
-    //     self.cameraControl();
-    //
-    //     TWEEN.update();
-    //
-    //     self.stats.update();
-    //
-    //     requestAnimationFrame(animate);
-    //     self.renderer.clear();
-    //     self.renderer.setViewport(0, 0, window.innerWidth, window.innerHeight);
-    //     self.renderer.render(self.scene, self.camera);
-    //
-    //
-    //     //todo self.renderer.clear();    与renderer.autoClear = false 对应 不知道意义何在
-    //     //self.stats.end();
-    //
-    //    // self.LOD;//lod算法
-    // }
+    // } );
+
 
     function animate()
     {
-        self.renderer.setAnimationLoop( render );
-    }
-
-    function render() {
         self.delta = self.clock.getDelta();
 
         if(self.active)
@@ -255,6 +237,48 @@ mainScene.prototype.start = function()
         //todo self.renderer.clear();    与renderer.autoClear = false 对应 不知道意义何在
         //self.stats.end();
 
+    }
+
+
+    function render() {
+        self.delta = self.clock.getDelta();
+
+        if(self.active)
+        {
+            self.water.update();    //todo debug here
+
+            self.fire.update(self);
+
+            self.smoke.update(self);
+
+            self.Fireman.update(self);
+
+            self.people.update(self);
+
+            self.Test.update(self);
+            //视锥剔除
+            self.FOI.update(self);
+
+            //火车动
+            self.underground.update(self,self.delta);
+        }
+        //self.Cameracontroller.update1(self);
+
+        //self.cameraControl();
+
+        TWEEN.update();
+
+        self.stats.update();
+
+        requestAnimationFrame(animate);
+        self.renderer.clear();
+        self.renderer.setViewport(0, 0, window.innerWidth, window.innerHeight);
+        self.renderer.render(self.scene, self.camera);
+
+
+        //todo self.renderer.clear();    与renderer.autoClear = false 对应 不知道意义何在
+        //self.stats.end();
+
         // self.LOD;//lod算法
     }
 
@@ -268,12 +292,12 @@ mainScene.prototype.setScene = function()
     this.camera.lookAt(200,0,25);
 
     this.renderer = new THREE.WebGLRenderer( { antialias: true } );
-    this.renderer.xr.enabled = true;
+    this.renderer.vr.enabled = true;
     this.renderer.autoClear = true;    //todo 不声明的话默认为true,原demo为false, 与start.animate 中renderer.clear()对应
     this.renderer.setSize( window.innerWidth, window.innerHeight );
     this.renderer.setClearColor( 0xbbd0d9 );
     this.renderer.setPixelRatio( window.devicePixelRatio );
-    document.getElementById("WebGL-output").appendChild(this.renderer.domElement);
+    //document.getElementById("WebGL-output").appendChild(this.renderer.domElement);
 
     this.camControlOver = new THREE.OrbitControls(this.camera, this.renderer.domElement);
     this.camControlOver.center = new THREE.Vector3(430,24,21);
