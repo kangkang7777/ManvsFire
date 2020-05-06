@@ -110,7 +110,10 @@ fireman.prototype.createFireman = function (_this)
             // cubeFireman.rotation.y = - 90 * Math.PI / 180;//让模型Y轴为基准，旋转-135度
             self.cubeFireman.scale.set(0.02, 0.02, 0.02);
             // cubeFireman.geometry.computeBoundingSphere();
+
             _this.scene.add(self.cubeFireman);//将模型加入场景
+
+
             let texture = THREE.ImageUtils.loadTexture('./Model/man/Fireman.jpg');
             texture.anisotropy = _this.renderer.getMaxAnisotropy();
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping;

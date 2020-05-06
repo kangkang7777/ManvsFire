@@ -154,7 +154,7 @@ mainScene.prototype.init = function()
     //this.HCI.fuc4(this);
 
     //debug专用
-    //this.HCI.fuc5(this);
+    this.HCI.fuc5(this);
 };
 
 mainScene.prototype.start = function()
@@ -304,6 +304,10 @@ mainScene.prototype.setScene = function()
     this.camControlOver.userPan = false;
     this.camControlOver.autoRotate=true;
 
+    let user = new THREE.Group();
+    user.position.set( 339,-109,346);
+    this.scene.add( user );
+    user.add( this.camera );
 
     this.freeViewControl = this.camControlOver;
 
