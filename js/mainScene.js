@@ -103,6 +103,7 @@ var mainScene = function()
 
     this.messagecontrol.START(this);
 
+    this.vrFlag=1;
     //debug专用
     this.Test = new test();
 }
@@ -217,6 +218,7 @@ mainScene.prototype.start = function()
             //视锥剔除
             self.FOI.update(self);
 
+            self.vrDemoUpdate(self);
             //火车动
             self.underground.update(self,self.delta);
         }
@@ -289,7 +291,8 @@ mainScene.prototype.setScene = function()
     //region 基础场景
     this.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 2000000);
     this.camera.position.set(639,160,106);
-    this.camera.lookAt(200,0,25);
+    //this.camera.lookAt(200,0,25);
+    this.camera.lookAt(1000,0,0);
 
     this.renderer = new THREE.WebGLRenderer( { antialias: true } );
     this.renderer.vr.enabled = true;
@@ -304,10 +307,11 @@ mainScene.prototype.setScene = function()
     this.camControlOver.userPan = false;
     this.camControlOver.autoRotate=true;
 
-    let user = new THREE.Group();
-    user.position.set( 339,-109,346);
-    this.scene.add( user );
-    user.add( this.camera );
+    this.user = new THREE.Group();
+    this.user.position.set( 339,-109,346);
+    //user.lookAt(0,0,0);
+    this.scene.add( this.user );
+    this.user.add( this.camera );
 
     this.freeViewControl = this.camControlOver;
 
@@ -453,3 +457,47 @@ mainScene.prototype.camera_tatus_change = function ()
 {
 
 }
+
+mainScene.prototype.vrDemo = function ()
+{
+    let cubeGeometry = new THREE.CubeGeometry(3, 3,3);
+    let wireMaterial = new THREE.MeshBasicMaterial({
+        color: 0x0000FF,
+    });
+    let testCube = new THREE.Mesh(cubeGeometry, wireMaterial);
+    testCube.position.set(639,160,106);
+    this.scene.add(testCube);
+    testCube.add(this.camera);
+}
+
+mainScene.prototype.vrDemoUpdate = function (self)
+{
+
+    if(this.vrFlag === 1)
+    {
+        this.user.position.set(this.user.position.x + 0.1, this.user.position.y, this.user.position.z);
+        if(this.user.position.x>400)
+            this.vrFlag =2;
+    }
+    else if(this.vrFlag ===2)
+    {
+        this.user.rotation.y=Math.PI/2;
+        this.user.position.set(405,24,18);
+        this.vrFlag =3;
+    }
+    else if(this.vrFlag === 3)
+    {
+        this.user.position.set(this.user.position.x-0.1, this.user.position.y, this.user.position.z);
+    }
+
+
+    //this.user.rotation.y = this.user.rotation.y+Math.PI/150;
+    //setKeyEvents(self);
+}
+// function setKeyEvents(self){
+//     window.addEventListener('keydown',function(e)
+//     {
+//         if(e.keycode==39)
+//             self.user.position.set(self.user.position.x+0.01, self.user.position.y, self.user.position.z);
+//     });
+// }
