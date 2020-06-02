@@ -153,7 +153,7 @@ mainScene.prototype.init = function()
     //this.HCI.fuc4(this);
 
     //debug专用
-    this.HCI.fuc5(this);
+    //this.HCI.fuc5(this);
 };
 
 mainScene.prototype.start = function()
